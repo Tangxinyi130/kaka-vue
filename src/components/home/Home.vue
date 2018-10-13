@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div class="row" v-if="isLogin">
+      <div class="row" v-if="!isLogin">
         <div class="col-sm-8" style="background-color: lightblue">
           <app-homesynopsis></app-homesynopsis>
         </div>
@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="row" v-if="!isLogin">
+      <div class="row" v-if="isLogin">
         <div class="col-sm-8" style="background-color: lightblue">
           <app-homepostcard></app-homepostcard>
         </div>
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-  import App from "../../App"
 
   import HomeSynopsis from "@/components/home/HomeSynopsis";
   import HomeLogin from "@/components/home/HomeLogin.vue";
@@ -56,6 +55,8 @@
   import HomeWall from "@/components/home/HomeWall.vue";
   import HomePostcard from "@/components/home/HomePostcard";
   import HomeUser from "@/components/home/HomeUser";
+
+  import {mapGetters} from "vuex"
     export default {
         name: "Home",
         components: {
@@ -69,11 +70,10 @@
           "app-homepostcard": HomePostcard,
           "app-homeuser": HomeUser,
         },
-        data() {
-          return{
-            isLogin: App.isLogin
-          }
-        }
+      computed: mapGetters([
+        "isLogin",
+        "userId"
+      ])
     }
 </script>
 

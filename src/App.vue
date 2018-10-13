@@ -6,16 +6,16 @@
 </template>
 
 <script>
-  const isLogin = false;
-  const userId = 1;
+  // const isLogin = false;
+  // const userId = 1;
   import Header from "./components/Header.vue";
   export default {
     name: 'App',
     components: {
       "app-header": Header,
     },
-    isLogin,
-    userId,
+    // isLogin,
+    // userId,
   }
 </script>
 
