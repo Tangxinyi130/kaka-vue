@@ -46,9 +46,9 @@
           "app-userpersonal": UserPersonal,
         },
         data() {
-          return {
-            id: this.$route.params.id
-          }
+            return {
+              id: this.$route.params.id
+            }
         },
     }
 </script>
