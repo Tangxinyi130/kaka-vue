@@ -21,8 +21,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">明信片 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <router-link tag="li" role="presentation" to="/postcards/postcardssend"><a class="text-color">发送</a></router-link>
-                  <router-link tag="li" role="presentation" to="/postcards/postcardsreceive"><a class="text-color">收到</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardssend"><a class="text-color">发送</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardsreceive"><a class="text-color">收到</a></router-link>
                 </ul>
               </li>
               <router-link tag="li" active-class="active" role="presentation" to="/wall"><a class="text-color">展示墙</a></router-link>
