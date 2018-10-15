@@ -1,17 +1,8 @@
 <template>
-<<<<<<< Updated upstream
-    $END$
-</template>
-
-<script>
-    export default {
-        name: "ActivityAll"
-=======
   <div class="container" style="background-color: antiquewhite">
     <activity-list></activity-list>
     <activity-data></activity-data>
   </div>
-
 </template>
 
 <script>
@@ -23,7 +14,7 @@
           'activity-list':ActivityList,
           'activity-data':ActivityDate
         }
->>>>>>> Stashed changes
+
     }
 </script>
 

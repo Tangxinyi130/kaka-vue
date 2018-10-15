@@ -61,7 +61,6 @@ export default new Router({
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
         {path: ":id/aboutme", component: UserAboutme},
-<<<<<<< Updated upstream
         {path: ":id/send", component: UserSend, children: [
             {path: ":postcardId", component: UserPic}
           ]
@@ -88,13 +87,10 @@ export default new Router({
         {path: "fan", component: UserAttentionOthers}
       ]
     },
-=======
         {path: ":id/send", component: UserSend},
         {path: ":id/receive", component: UserReceive},
         {path: ":id/wall", component: UserWall},
         {path: ":id/map", component: UserMap}
-      ]},
->>>>>>> Stashed changes
 
   ]
 })
