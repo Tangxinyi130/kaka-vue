@@ -29,16 +29,16 @@
               <router-link tag="li" active-class="active" role="presentation" to="/activity"><a class="text-color">主题活动</a></router-link>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right" v-if="isLogin">
+            <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
               <router-link tag="li" active-class="active" role="presentation" to="/login"><a class="text-color">登录</a></router-link>
               <router-link tag="li" active-class="active" role="presentation" to="/register"><a class="text-color">注册</a></router-link>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
+            <ul class="nav navbar-nav navbar-right" v-if="isLogin">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>  个人中心 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <router-link tag="li" role="presentation" to="/user"><a class="text-color">我的首页</a></router-link>
+                  <router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>
                   <router-link tag="li" role="presentation" to="/activity"><a class="text-color">我的活动</a></router-link>
                   <router-link tag="li" role="presentation" to="/postcard"><a class="text-color">查询明信片</a></router-link>
                   <router-link tag="li" role="presentation" to="/"><a class="text-color">退出登录</a></router-link>
@@ -53,14 +53,13 @@
 </template>
 
 <script>
-  import App from "../App.vue";
+  import {mapGetters} from "vuex"
     export default {
         name: "Header",
-        data() {
-          return {
-            isLogin: App.isLogin
-          }
-        }
+        computed: mapGetters([
+          "isLogin",
+          "userId"
+        ])
     }
 
 
