@@ -1,7 +1,6 @@
 <template>
   <div>
-<app-postcardssendannouncements></app-postcardssendannouncements>
-
+ <app-postcardssendannouncements></app-postcardssendannouncements>
   </div>
 
 </template>
