@@ -1,7 +1,6 @@
 <template>
     <div class="container">
       <postcards-detail></postcards-detail>
-      <router-view></router-view>
       <postcards-detailPic></postcards-detailPic>
     </div>
 </template>

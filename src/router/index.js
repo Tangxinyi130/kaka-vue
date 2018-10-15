@@ -40,13 +40,14 @@ export default new Router({
   mode: "history",
   routes: [
     {path: '/', name: 'Home', component: Home},
-    {path: "/postcards", component: Postcards, children: [
-        {path: "postcardssend", component: PostcardsSend},
-        {path: "postcardsreceive", component: PostcardsReceive},
-        {path: "postcardsreceiveupload", component:PostcardsReceiveUpload},
-        {path: "postcardssendinterface", component:PostcardsSendInterface},
-      ]
-    },
+    {path: "/postcards", component: Postcards},
+    // , children: [
+        {path: "/postcardssend", component: PostcardsSend},
+        {path: "/postcardsreceive", component: PostcardsReceive},
+        {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
+        {path: "/postcardssendinterface", component:PostcardsSendInterface},
+      // ]
+    // },
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
     {path: "/login", component: Login},
@@ -55,7 +56,6 @@ export default new Router({
     {path: "/registernumber", component:RegisterNumber},
     {path: "/registerpassword", component:RegisterPassword},
     {path: "/registersuccess", component:RegisterSuccess},
-    
 
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
