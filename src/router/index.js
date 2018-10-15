@@ -18,7 +18,14 @@ import UserAboutme from "@/components/user/UserAboutme.vue"
 import UserSend from "@/components/user/UserSend.vue"
 import UserReceive from "@/components/user/UserReceive.vue"
 import UserWall from "@/components/user/UserWall.vue"
+import UserWallPic from "@/components/user/UserWallPic.vue"
 import UserMap from "@/components/user/UserMap.vue"
+import UserPic from "@/components/user/UserPic.vue"
+import UserMyActivity from "@/components/user/UserMyactivity.vue"
+import UserSearchcard from "@/components/user/UserSearchcard.vue"
+import UserSet from "@/components/user/UserSet.vue"
+import UserAttention from "@/components/user/UserAttention.vue"
+import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 
 Vue.use(Router)
 
@@ -38,10 +45,30 @@ export default new Router({
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
         {path: ":id/aboutme", component: UserAboutme},
-        {path: ":id/send", component: UserSend},
-        {path: ":id/receive", component: UserReceive},
-        {path: ":id/wall", component: UserWall},
-        {path: ":id/map", component: UserMap}
+        {path: ":id/send", component: UserSend, children: [
+            {path: ":postcardId", component: UserPic}
+          ]
+        },
+        {path: ":id/receive", component: UserReceive, children: [
+            {path: ":postcardId", component: UserPic}
+          ]
+        },
+        {path: ":id/wall", component: UserWall, children: [
+            {path: "send", component: UserWallPic},
+            {path: "receive", component: UserWallPic},
+            {path: "collection", component: UserWallPic}
+          ]
+        },
+        {path: ":id/map", component: UserMap},
+
+      ]
+    },
+    {path: "/myactivity", component: UserMyActivity},
+    {path: "/searchcard", component: UserSearchcard},
+    {path: "/userset", component: UserSet},
+    {path: "/attention/:id", component: UserAttention, children: [
+        {path: "att", component: UserAttentionOthers},
+        {path: "fan", component: UserAttentionOthers}
       ]
     },
   ]

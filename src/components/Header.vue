@@ -39,12 +39,12 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>  个人中心 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>
-                  <router-link tag="li" role="presentation" to="/activity"><a class="text-color">我的活动</a></router-link>
-                  <router-link tag="li" role="presentation" to="/postcard"><a class="text-color">查询明信片</a></router-link>
+                  <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
+                  <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
                   <router-link tag="li" role="presentation" to="/"><a class="text-color">退出登录</a></router-link>
                 </ul>
               </li>
-              <router-link tag="li" role="presentation" to="/"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
+              <router-link tag="li" role="presentation" to="/userset"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
