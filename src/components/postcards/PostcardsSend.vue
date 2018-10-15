@@ -1,10 +1,20 @@
 <template>
-    <h3>发送明信片</h3>
+  <div>
+<app-postcardssendannouncements></app-postcardssendannouncements>
+
+  </div>
+
 </template>
 
 <script>
+
+  import PostcardsSendAnnouncements from "./PostcardsSendAnnouncements";
+
     export default {
-        name: "PostcardsSend"
+        name: "PostcardsSend",
+      components: {
+        "app-postcardssendannouncements":PostcardsSendAnnouncements,
+      },
     }
 </script>
 
