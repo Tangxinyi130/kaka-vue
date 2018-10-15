@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>设置完密码，注册成功</h3>
-    <router-link to="/register/registersuccess">设置完密码，注册成功</router-link>
+    <router-link to="/registersuccess">设置完密码，注册成功</router-link>
   </div>
 </template>
 

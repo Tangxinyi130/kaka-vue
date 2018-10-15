@@ -1,6 +1,6 @@
 <template>
   <div>
-
+<app-postcardssendannouncements></app-postcardssendannouncements>
 
   </div>
 

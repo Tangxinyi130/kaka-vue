@@ -9,8 +9,7 @@
 <script>
   export default {
         name: "PostcardsSendAnnouncements",
-
-    }
+  }
 </script>
 
 <style scoped>
