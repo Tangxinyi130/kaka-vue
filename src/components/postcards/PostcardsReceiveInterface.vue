@@ -1,7 +1,7 @@
 <template>
     <div>
       <h3>接收界面</h3>
-      <router-link to="/postcards/postcardsreceiveupload">提交</router-link>
+      <router-link to="/postcardsreceiveupload">提交</router-link>
       <router-view></router-view>
     </div>
 </template>
