@@ -55,8 +55,7 @@ export default new Router({
     {path: "/registernumber", component:RegisterNumber},
     {path: "/registerpassword", component:RegisterPassword},
     {path: "/registersuccess", component:RegisterSuccess},
-
-    {path: "/user", component: User},
+    
 
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
@@ -87,6 +86,5 @@ export default new Router({
         {path: "fan", component: UserAttentionOthers}
       ]
     },
-
   ]
 })
