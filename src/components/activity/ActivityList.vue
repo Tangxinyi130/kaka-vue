@@ -1,12 +1,17 @@
 <template>
     <div>
-      <div>所有活动</div>
+      <router-link to="/activity/activitydetail"><activity-type></activity-type></router-link>
     </div>
 </template>
 
 <script>
+  import ActivityType from './ActivityType'
     export default {
-        name: "ActivityType"
+        name: "ActivityType",
+      components:{
+          'activity-type':ActivityType
+
+      }
     }
 </script>
 

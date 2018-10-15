@@ -32,6 +32,8 @@ import UserSearchcard from "@/components/user/UserSearchcard.vue"
 import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
+import ActivityDetail from "@/components/activity/ActivityDetail"
+import ActivityConfire from "@/components/activity/ActivityConfire"
 
 
 Vue.use(Router)
@@ -49,13 +51,15 @@ export default new Router({
     },
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
+    {path:'/activity/activitydetail',component:ActivityDetail},
+    {path:'/activity/activityconfire',component:ActivityConfire},
     {path: "/login", component: Login},
     {path: "/register", component: Register},
 
     {path: "/registernumber", component:RegisterNumber},
     {path: "/registerpassword", component:RegisterPassword},
     {path: "/registersuccess", component:RegisterSuccess},
-    
+
 
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},

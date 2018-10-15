@@ -1,5 +1,4 @@
 <template>
-
     <div>
       <div>图片轮播</div>
     </div>

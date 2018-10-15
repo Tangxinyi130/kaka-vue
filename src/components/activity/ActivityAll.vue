@@ -1,7 +1,10 @@
 <template>
   <div class="container" style="background-color: antiquewhite">
-    <activity-list></activity-list>
-    <activity-data></activity-data>
+    <div class="row">
+      <activity-list></activity-list>
+      <activity-data></activity-data>
+    </div>
+    <router-view></router-view>
   </div>
 </template>
 
