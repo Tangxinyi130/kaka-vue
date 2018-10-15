@@ -1,10 +1,20 @@
 <template>
-    <h3>主题活动</h3>
+  <div>
+    <activity-carousel></activity-carousel>
+    <activity-all></activity-all>
+  </div>
+
 </template>
 
 <script>
+  import ActivityCarousel from './ActivityCarousel'
+  import ActivityAll from './ActivityAll'
     export default {
-        name: "Activity"
+        name: "Activity",
+      components:{
+        'activity-carousel':ActivityCarousel,
+        'activity-all':ActivityAll
+      }
     }
 </script>
 
