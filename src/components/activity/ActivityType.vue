@@ -1,5 +1,9 @@
 <template>
-    <div>我是单个活动</div>
+    <div>
+      <div>
+        我是单个活动
+      </div>
+    </div>
 </template>
 
 <script>
@@ -9,5 +13,9 @@
 </script>
 
 <style scoped>
-
+div{
+  width: 600px;
+  height: 200px;
+  background-color: brown;
+}
 </style>

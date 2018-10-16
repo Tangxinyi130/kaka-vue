@@ -34,6 +34,7 @@ import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 import ActivityDetail from "@/components/activity/ActivityDetail"
 import ActivityConfire from "@/components/activity/ActivityConfire"
+import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
 
 Vue.use(Router)
@@ -53,7 +54,10 @@ export default new Router({
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
     {path:'/activity/activitydetail',component:ActivityDetail},
-    {path:'/activity/activityconfire',component:ActivityConfire},
+    {path:'/activity/activityconfire',component:ActivityConfire,children:[
+        {path:'activitysucess',component:ActivityPaySucess}
+        ]},
+
     {path: "/login", component: Login},
     {path: "/register", component: Register},
 
