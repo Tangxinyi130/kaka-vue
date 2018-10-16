@@ -1,7 +1,26 @@
 <template>
-    <div>
-        我是明信片
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img src="../../assets/picture.jpg" alt="...">
+      </a>
     </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img src="../../assets/picture.jpg" alt="...">
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img src="../../assets/picture.jpg" alt="...">
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img src="../../assets/picture.jpg" alt="...">
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,10 +31,6 @@
 
 <style scoped>
 
-  div{
-    width: 300px;
-    height: 200px;
-    background-color: aquamarine;
-  }
+
 
 </style>
