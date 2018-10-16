@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>注册</h3>
     <app-registeragreement></app-registeragreement>
   </div>
 </template>
