@@ -23,7 +23,7 @@ export default new Vuex.Store({
     isLogin(state) {
       return state.isLogin;
     },
-    userId(state) {
+    userId(state){
       return state.userId;
     },
   },
