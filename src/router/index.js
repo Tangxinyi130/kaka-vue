@@ -48,7 +48,7 @@ export default new Router({
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
-    
+
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
     {path:'/activity/activitydetail',component:ActivityDetail},

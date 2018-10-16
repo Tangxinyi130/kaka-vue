@@ -13,7 +13,7 @@
           <span class="input-group-addon" id="basic-addon2">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-        <input type="text" name="password" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
+        <input type="password" name="password" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
       </div>
       <div style="height: 10px"></div>
       <div style="font-size: 12px;" class="row">
