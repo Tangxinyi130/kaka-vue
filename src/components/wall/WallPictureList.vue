@@ -1,14 +1,8 @@
 <template>
   <div class="container text-center" style="height: 600px;background-color: antiquewhite">
-<<<<<<< Updated upstream
-  <div>
-
-  </div>
-=======
     <div>
       <router-link to="/postcards"><wall-picture></wall-picture></router-link>
     </div>
->>>>>>> Stashed changes
   </div>
 </template>
 
