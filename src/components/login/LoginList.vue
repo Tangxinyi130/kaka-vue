@@ -1,19 +1,19 @@
 <template>
   <div style="width: 250px" >
     <div style="height: 30px"></div>
-    <form action="http://localhost:3000/users/doLogin" method="post">
+    <form action="" method="post">
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">
             <span class="glyphicon glyphicon-user"></span>
           </span>
-        <input type="text" class="form-control" placeholder="请输入用户名:" aria-describedby="basic-addon1">
+        <input type="text" name="username" class="form-control" placeholder="请输入手机号:" aria-describedby="basic-addon1">
       </div>
       <div style="height: 30px "></div>
       <div class="input-group ">
           <span class="input-group-addon" id="basic-addon2">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-        <input type="text" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
+        <input type="text" name="password" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
       </div>
       <div style="height: 10px"></div>
       <div style="font-size: 12px;" class="row">
@@ -25,7 +25,7 @@
       <div style="height: 30px"></div>
       <div style="" class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <button type="button" class="btn btn-primary btn-lg" style="width:180px;">
+          <button id="toLogin" type="button" class="btn btn-primary btn-lg" style="width:180px;">
             登 录
           </button>
         </div>
@@ -42,7 +42,7 @@
 
 <script>
     window.onload = function () {
-          $("input:last").click(function () {
+          $("#toLogin").click(function () {
           let user = {};
           user.username = $("[name='username']").val();
           user.password = $("[name='password']").val();
