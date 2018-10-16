@@ -43,7 +43,6 @@
 <style scoped>
   .carousel-inner{
     width: 100%;
-    height: 433px;
   }
   #carousel-banner{
     position:relative;
