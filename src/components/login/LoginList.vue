@@ -41,9 +41,65 @@
 </template>
 
 <script>
-  export default {
-    name: "LoginList"
-  }
+    window.onload = function () {
+          $("input:last").click(function () {
+          let user = {};
+          user.username = $("[name='username']").val();
+          user.password = $("[name='password']").val();
+          $.ajax({
+            // xhrFields: {
+            //   withCredentials: true
+          // },
+          url: "http://localhost:3000/users/doLogin",
+          type: "post",
+          data: {
+            username: user.username,
+            password: user.password
+          },
+          success: function (result) {
+            if (result.data == 1) {
+              alert("用户名错误");
+            } else if (result.data == 2) {
+              alert("密码错误");
+            } else if (result.data == 3) {
+              alert("登录成功");
+
+              save(user.username);
+
+              location.href = "http://localhost:8080";
+            } else {
+              alert("服务器错误");
+            }
+          }
+        })
+      })
+    };
+
+    //将用户id存到localStorage中
+    function save(tel) {
+      $.ajax({
+        url: "http://localhost:3000/users/getUserId",
+        type: "post",
+        data: {
+          userTel: tel
+        },
+        success: function (result) {
+          if(localStorage) {
+            localStorage.setItem("userId", JSON.stringify(result.data.userId));
+          }
+        }
+      })
+    }
+
+    import {mapGetters} from "vuex"
+    export default {
+      name: "LoginList",
+      computed: mapGetters([
+        "isLogin",
+        "userId"
+      ])
+    }
+
 </script>
 
 <style scoped>

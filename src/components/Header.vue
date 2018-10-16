@@ -30,7 +30,8 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
-              <router-link tag="li" active-class="active" role="presentation" to="/login"><a class="text-color">登录</a></router-link>
+              <li><a class="text-color" href="http://localhost:8080/login">登录</a></li>
+              <!--<router-link tag="li" active-class="active" role="presentation"><a class="text-color" href="http://localhost:8080/users/login">登录</a></router-link>-->
               <router-link tag="li" active-class="active" role="presentation" to="/register"><a class="text-color">注册</a></router-link>
             </ul>
 
@@ -41,7 +42,9 @@
                   <router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>
                   <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
                   <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
-                  <router-link tag="li" role="presentation" to="/"><a class="text-color">退出登录</a></router-link>
+                  <li @click="logOff"><a class="text-color" href="http://localhost:8080">退出登录</a></li>
+                  <!--<router-link tag="li" role="presentation" @click="logOff" ><a class="text-color">退出登录</a></router-link>-->
+                  <!--<button >log off</button>-->
                 </ul>
               </li>
               <router-link tag="li" role="presentation" to="/userset"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
@@ -53,13 +56,20 @@
 </template>
 
 <script>
+
+  
   import {mapGetters} from "vuex"
     export default {
         name: "Header",
         computed: mapGetters([
           "isLogin",
           "userId"
-        ])
+        ]),
+        methods: {
+          logOff: function () {
+            localStorage.clear();
+          }
+        }
     }
 
 
@@ -73,6 +83,10 @@
   li .text-color, .dropdown .dropdown-toggle {
     /*color: #FFFEEE;*/
     font-size: 16px;
+  }
+
+  li {
+    cursor: pointer;
   }
 
   /*.active .text-color{*/

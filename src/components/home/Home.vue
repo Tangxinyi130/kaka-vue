@@ -45,7 +45,6 @@
 </template>
 
 <script>
-
   import HomeSynopsis from "@/components/home/HomeSynopsis";
   import HomeLogin from "@/components/home/HomeLogin.vue";
   import HomeDynamic from "@/components/home/HomeDynamic.vue";
@@ -72,8 +71,13 @@
         },
       computed: mapGetters([
         "isLogin",
-        "userId"
-      ])
+        "userId",
+      ]),
+      // data() {
+      //     return {
+      //       token: document.cookie
+      //     }
+      // }
     }
 </script>
 

@@ -32,6 +32,9 @@ import UserSearchcard from "@/components/user/UserSearchcard.vue"
 import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
+import ActivityDetail from "@/components/activity/ActivityDetail"
+import ActivityConfire from "@/components/activity/ActivityConfire"
+import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
 
 Vue.use(Router)
@@ -41,21 +44,25 @@ export default new Router({
   routes: [
     {path: '/', name: 'Home', component: Home},
     {path: "/postcards", component: Postcards},
-    // , children: [
-        {path: "/postcardssend", component: PostcardsSend},
-        {path: "/postcardsreceive", component: PostcardsReceive},
-        {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
-        {path: "/postcardssendinterface", component:PostcardsSendInterface},
-      // ]
-    // },
+    {path: "/postcardssend", component: PostcardsSend},
+    {path: "/postcardsreceive", component: PostcardsReceive},
+    {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
+    {path: "/postcardssendinterface", component:PostcardsSendInterface},
+    
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
+    {path:'/activity/activitydetail',component:ActivityDetail},
+    {path:'/activity/activityconfire',component:ActivityConfire,children:[
+        {path:'activitysucess',component:ActivityPaySucess}
+        ]},
+
     {path: "/login", component: Login},
     {path: "/register", component: Register},
 
     {path: "/registernumber", component:RegisterNumber},
     {path: "/registerpassword", component:RegisterPassword},
     {path: "/registersuccess", component:RegisterSuccess},
+
 
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
