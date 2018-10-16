@@ -44,13 +44,11 @@ export default new Router({
   routes: [
     {path: '/', name: 'Home', component: Home},
     {path: "/postcards", component: Postcards},
-    // , children: [
-        {path: "/postcardssend", component: PostcardsSend},
-        {path: "/postcardsreceive", component: PostcardsReceive},
-        {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
-        {path: "/postcardssendinterface", component:PostcardsSendInterface},
-      // ]
-    // },
+    {path: "/postcardssend", component: PostcardsSend},
+    {path: "/postcardsreceive", component: PostcardsReceive},
+    {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
+    {path: "/postcardssendinterface", component:PostcardsSendInterface},
+    
     {path: "/wall", component: Wall},
     {path: "/activity", component: Activity},
     {path:'/activity/activitydetail',component:ActivityDetail},
