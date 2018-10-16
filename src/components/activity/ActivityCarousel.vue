@@ -9,16 +9,16 @@
 
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <a target="_blank" href="http://imbeer.com/news.php?art_id=10094"><img width="100%"  src="../../assets/1.jpg" alt="ayinger"></a>
+        <a target="_blank" href="#"><img width="100%" src="../../assets/1.jpg" alt="ayinger"></a>
       </div>
       <div class="item ">
-        <a target="_blank" href="http://imbeer.com/news.php?art_id=10090"><img width="100%"  src="../../assets/2.jpg" alt="2"></a>
+        <a target="_blank" href="#"><img width="100%" src="../../assets/2.jpg" alt="2"></a>
       </div>
       <div class="item ">
-        <a target="_blank" href="http://imbeer.com/news.php?art_id=10088"><img width="100%"  src="../../assets/1.jpg" alt="3"></a>
+        <a target="_blank" href="#"><img width="100%" src="../../assets/1.jpg" alt="3"></a>
       </div>
       <div class="item ">
-        <a target="_blank" href="http://imbeer.com/news.php?art_id=9589"><img width="100%"  src="../../assets/2.jpg" alt="2016年中国市售瓶装精酿啤酒TOP100榜单"></a>
+        <a target="_blank" href="#"><img width="100%" src="../../assets/2.jpg" alt="2016年中国市售瓶装精酿啤酒TOP100榜单"></a>
       </div>
     </div>
 
@@ -41,7 +41,13 @@
 </script>
 
 <style scoped>
-
+  .carousel-inner{
+    width: 100%;
+  }
+  #carousel-banner{
+    position:relative;
+    top:-20px;
+  }
 
 
 </style>

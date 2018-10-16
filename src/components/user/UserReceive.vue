@@ -10,7 +10,12 @@
 
 <script>
     export default {
-        name: "UserReceive"
+        name: "UserReceive",
+        data() {
+          return {
+            id: this.$route.params.id
+          }
+        }
     }
 </script>
 

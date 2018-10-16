@@ -18,10 +18,5 @@
 
 <style scoped>
 
-  li{
-    width: 300px;
-    height: 200px;
-    background-color: aquamarine;
-  }
 
 </style>
