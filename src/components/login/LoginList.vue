@@ -76,6 +76,25 @@
             alert("密码错误");
           } else if (result.data == 3) {
             alert("登录成功");
+    window.onload = function () {
+          $("#toLogin").click(function () {
+          let user = {};
+          user.username = $("[name='username']").val();
+          user.password = $("[name='password']").val();
+          $.ajax({
+          url: "http://localhost:3000/users/doLogin",
+          type: "post",
+          data: {
+            username: user.username,
+            password: user.password
+          },
+          success: function (result) {
+            if (result.data == 1) {
+              alert("用户名错误");
+            } else if (result.data == 2) {
+              alert("密码错误");
+            } else if (result.data == 3) {
+              alert("登录成功");
 
             save(user.username);
 
