@@ -6,14 +6,14 @@
           <span class="input-group-addon" id="basic-addon1">
             <span class="glyphicon glyphicon-user"></span>
           </span>
-        <input type="text" name="username" class="form-control" placeholder="请输入手机号:" aria-describedby="basic-addon1">
+        <input type="text" name="username" v-model="username" class="form-control" placeholder="请输入手机号:" aria-describedby="basic-addon1">
       </div>
       <div style="height: 30px "></div>
       <div class="input-group ">
           <span class="input-group-addon" id="basic-addon2">
             <span class="glyphicon glyphicon-lock"></span>
           </span>
-        <input type="password" name="password" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
+        <input type="password" name="password" v-model="password" class="form-control" placeholder="请输入密码:" aria-describedby="basic-addon2">
       </div>
       <div style="height: 10px"></div>
       <div style="font-size: 12px;" class="row">
@@ -25,7 +25,7 @@
       <div style="height: 30px"></div>
       <div style="" class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <button id="toLogin" type="button" class="btn btn-primary btn-lg" style="width:180px;">
+          <button  @click="toLogin" type="button" class="btn btn-primary btn-lg" style="width:180px;">
             登 录
           </button>
         </div>
@@ -41,37 +41,6 @@
 </template>
 
 <script>
-    window.onload = function () {
-          $("#toLogin").click(function () {
-          let user = {};
-          user.username = $("[name='username']").val();
-          user.password = $("[name='password']").val();
-          $.ajax({
-          url: "http://localhost:3000/users/doLogin",
-          type: "post",
-          data: {
-            username: user.username,
-            password: user.password
-          },
-          success: function (result) {
-            if (result.data == 1) {
-              alert("用户名错误");
-            } else if (result.data == 2) {
-              alert("密码错误");
-            } else if (result.data == 3) {
-              alert("登录成功");
-
-              save(user.username);
-
-              location.href = "http://localhost:8080";
-            } else {
-              alert("服务器错误");
-            }
-          }
-        })
-      })
-    };
-
     //将用户id存到localStorage中
     function save(tel) {
       $.ajax({
@@ -94,7 +63,37 @@
       computed: mapGetters([
         "isLogin",
         "userId"
-      ])
+      ]),
+      data() {
+        return {
+          username: "",
+          password: ""
+        }
+      },
+      methods: {
+        toLogin: function () {
+          let _this =this;
+          axios.post("http://localhost:3000/users/doLogin",
+            {
+              username: _this.username,
+              password: _this.password
+          }).then(function (result) {
+              if (result.data.data == 1) {
+                alert("用户名错误");
+              } else if (result.data.data == 2) {
+                alert("密码错误");
+              } else if (result.data.data == 3) {
+                alert("登录成功");
+                save(_this.username);
+                location.href = "http://localhost:8080";
+              } else {
+                alert("服务器错误");
+              }
+          }, function (err) {
+            console.log(err);
+          })
+        }
+      },
     }
 
 </script>

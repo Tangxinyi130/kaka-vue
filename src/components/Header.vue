@@ -30,8 +30,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
-              <li><a class="text-color" href="/login">登录</a></li>
-              <!--<router-link tag="li" active-class="active" role="presentation"><a class="text-color" href="http://localhost:8080/users/login">登录</a></router-link>-->
+              <router-link tag="li" active-class="active" role="presentation" to="/login"><a class="text-color">登录</a></router-link>
               <router-link tag="li" active-class="active" role="presentation" to="/register"><a class="text-color">注册</a></router-link>
             </ul>
 
@@ -43,7 +42,7 @@
                   <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
                   <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
                   <li @click="logOff"><a class="text-color" href="/">退出登录</a></li>
-                  <!--<router-link tag="li" role="presentation" @click="logOff" ><a class="text-color">退出登录</a></router-link>-->
+                  <!--<router-link tag="li" role="presentation" to="/"><a class="text-color" @click="logOff" >退出登录</a></router-link>-->
                   <!--<button >log off</button>-->
                 </ul>
               </li>

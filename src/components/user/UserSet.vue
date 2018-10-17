@@ -166,23 +166,23 @@
   province["新疆"] = ['乌鲁木齐','克拉玛依','石河子','吐鲁番','哈密','和田','阿克苏','喀什','克孜勒苏','巴音郭楞','昌吉','博尔塔拉','伊犁'];
   province["台湾"] = ['台北', '高雄', '基隆', '台中', '台南', '新竹', '嘉义'];
 
-  window.onload = function () {
-    // var pro = document.getElementById("pro");
-    // var citys = document.getElementById("citys");
-    // var optionPro = new Option();
-    // for (var i = 0; i < province.length; i++) {
-    //   optionPro[i] = new Option(province[i], "proNo" + i);
-    //   pro.options.add(optionPro[i]);
-    // }
-    // pro.onchange = function () {
-    //   var proName = pro.options[pro.selectedIndex].text;
-    //   citys.options.length = 0;
-    //   for(var i = 0; i < province[proName].length; i++) {
-    //     var optionCity = new Option(province[proName][i], province[proName][i]);
-    //     citys.options.add(optionCity);
-    //   }
-    // }
-  }
+  // window.onload = function () {
+  //   // var pro = document.getElementById("pro");
+  //   // var citys = document.getElementById("citys");
+  //   // var optionPro = new Option();
+  //   // for (var i = 0; i < province.length; i++) {
+  //   //   optionPro[i] = new Option(province[i], "proNo" + i);
+  //   //   pro.options.add(optionPro[i]);
+  //   // }
+  //   // pro.onchange = function () {
+  //   //   var proName = pro.options[pro.selectedIndex].text;
+  //   //   citys.options.length = 0;
+  //   //   for(var i = 0; i < province[proName].length; i++) {
+  //   //     var optionCity = new Option(province[proName][i], province[proName][i]);
+  //   //     citys.options.add(optionCity);
+  //   //   }
+  //   // }
+  // }
 
   // function save() {
   //   $.ajax({
