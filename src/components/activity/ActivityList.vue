@@ -11,7 +11,7 @@
                   <li class="am-gallery-item">
                     <div class="img_box col-md-4">
                       <a href="">
-                        <img width="225" height="180" src="../../assets/picture.jpg">
+                        <img width="100%" height="180" src="../../assets/picture.jpg">
                       </a>
                     </div>
                     <div class="intro col-md-8">
@@ -23,7 +23,7 @@
                       <div class="iconCon" data-art-id="10473">
 											<span><i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
 											</span>
-                        <span><i class="iconfont commic" style="color: rgb(102, 102, 102);"></i><b>0</b></span>
+                        <span><i class="iconfont glyphicon glyphicon-shopping-cart" ></i><b>0</b></span>
                         <span><i class="iconfont share"></i><b>0</b></span>
                       </div>
                     </div>
