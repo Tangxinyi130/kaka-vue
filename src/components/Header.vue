@@ -42,8 +42,6 @@
                   <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
                   <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
                   <li @click="logOff"><a class="text-color" href="/">退出登录</a></li>
-                  <!--<router-link tag="li" role="presentation" to="/"><a class="text-color" @click="logOff" >退出登录</a></router-link>-->
-                  <!--<button >log off</button>-->
                 </ul>
               </li>
               <router-link tag="li" role="presentation" to="/userset"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
