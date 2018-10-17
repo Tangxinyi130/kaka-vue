@@ -47,9 +47,6 @@
           user.username = $("[name='username']").val();
           user.password = $("[name='password']").val();
           $.ajax({
-            // xhrFields: {
-            //   withCredentials: true
-          // },
           url: "http://localhost:3000/users/doLogin",
           type: "post",
           data: {
