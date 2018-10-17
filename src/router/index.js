@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import axios from 'axios'
 
 import Home from "@/components/home/Home.vue"
 // import HomeLogin from "@/components/home/HomeLogin.vue"
@@ -36,7 +37,7 @@ import ActivityDetail from "@/components/activity/ActivityDetail"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
-
+Vue.prototype.$ajax = axios
 Vue.use(Router)
 
 export default new Router({
