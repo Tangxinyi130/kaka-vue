@@ -42,6 +42,7 @@
       </div>
 
     </div>
+
 </template>
 
 <script>
@@ -82,5 +83,23 @@
 </script>
 
 <style scoped>
-
+  .main{
+    background-color: rebeccapurple;
+  }
+  #home-container{
+    width:90%;
+    margin: 0 auto;
+  }
+  .box{
+    height: 50px;
+  }
+  .content{
+    background-color: chartreuse;
+  }
+  .content1{
+    background-color: aquamarine;
+  }
+  .content2{
+    background-color: salmon;
+  }
 </style>
