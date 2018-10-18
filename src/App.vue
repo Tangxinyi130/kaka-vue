@@ -20,5 +20,7 @@
 </script>
 
 <style>
-
+  #app {
+    background-color: #ebf6df;
+  }
 </style>

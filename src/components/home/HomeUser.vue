@@ -8,9 +8,9 @@
             </div>
           </a>
           <div class="header-right">
-            <h4>安然{{userId}}</h4>
-            <p>已发送: <span>{{}}</span>张</p>
-            <p>已收到: <span>{{}}</span>张</p>
+            <h4>{{userNickName}}</h4>
+            <p>已发送: <span>{{sendNum}}</span>张</p>
+            <p>已收到: <span>{{receiveNum}}</span>张</p>
           </div>
         </div>
         <div class="card-body">
@@ -18,7 +18,7 @@
               <li class="user-info-li">
                 <a href="">
                   <div class="user-item">
-                    <strong>12 <span>{{}}</span></strong>
+                    <strong>{{attentionNum}}</strong>
                     <span>我的关注</span>
                   </div>
                 </a>
@@ -26,7 +26,7 @@
               <li class="user-info-li">
                 <a href="">
                   <div class="user-item">
-                    <strong>12 <span>{{}}</span></strong>
+                    <strong>{{fansNum}}</strong>
                     <span>我的粉丝</span>
                   </div>
                 </a>
@@ -34,7 +34,7 @@
               <li class="user-info-li">
                 <a href="">
                   <div class="user-item">
-                    <strong>12 <span>{{}}</span></strong>
+                    <strong>{{collectionNum}}</strong>
                     <span>我的收藏</span>
                   </div>
                 </a>
@@ -48,15 +48,39 @@
 </template>
 
 <script>
-  window.onload
   import {mapGetters} from "vuex"
     export default {
       name: "HomeUser",
       computed: mapGetters([
         "isLogin",
         "userId"
-      ])
-    }
+      ]),
+      data(){
+        return {
+          headPic:"",
+          userNickName:"",
+          sendNum:0,
+          receiveNum:0,
+          attentionNum:0,
+          fansNum:0,
+          collectionNum:0
+        }
+      },
+      created(){
+        let _this = this;
+        this.$axios.get(`http://localhost:3000/userCard/${this.userId}`
+        ).then(function(result){
+            _this.userNickName=result.data.data.nickName[0].userNickname;
+            _this.headPic = result.data.data.headPic[0].userHeadPic;
+            _this.sendNum = result.data.data.sendNum[0].sendNum;
+            _this.receiveNum = result.data.data.receiveNum[0].receiveNum;
+            _this.fansNum = result.data.data.fansNum[0].fanNum;
+            _this.collectionNum = result.data.data.collectionNum[0].collectionNum;
+        },function (err) {
+          console.log(err);
+        })
+      },
+  }
 </script>
 
 <style scoped>
@@ -105,7 +129,7 @@
     margin: 0 auto;
   }
   .user-item strong,.user-item>span {
-    display: inline-block;
+    display: block;
   }
   @media  screen and (max-width: 479px) {
     #homeuser{

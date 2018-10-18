@@ -5,18 +5,19 @@
         <div class="glyphicon glyphicon-align-justify wallpublic" @click="flag=!flag"></div>
         <span v-if="flag">所有城市</span>
       </div>
-      <div class="col-xs-7 col-md-8 text-center">
+      <div class="col-xs-8 col-md-7 text-center">
         <div class="wllTopic wallpublic">展示墙</div>
       </div>
-      <div class="col-xs-2 col-md-2 ">
+      <div class="col-xs-2 col-md-3 ">
           <div class="input-group wallSearch-a">
-            <div class="col-xs-9 col-md-9">
-            <input type="text" class="form-control" placeholder="输入搜索...">
+            <div class="col-xs-7 col-md-9">
+              <input type="text" class="form-control" placeholder="输入搜索...">
             </div>
-            <div class="col-xs-3 col-md-3">
+            <div class="col-xs-5 col-md-3">
               <span class="glyphicon glyphicon-search"></span>
             </div>
           </div>
+
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
-    <div>
-      所有城市
+    <div class="container">
+
     </div>
 </template>
 
