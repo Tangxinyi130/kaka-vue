@@ -2,7 +2,6 @@
   <div class="container" style="background-color: antiquewhite">
     <div class="row">
       <activity-list></activity-list>
-      <activity-data></activity-data>
     </div>
     <router-view></router-view>
   </div>
