@@ -37,7 +37,7 @@ import ActivityDetail from "@/components/activity/ActivityDetail"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
-Vue.prototype.$axios = axios
+Vue.prototype.$ajax = axios
 Vue.use(Router)
 
 export default new Router({

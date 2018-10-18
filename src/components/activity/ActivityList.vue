@@ -5,12 +5,8 @@
         <div class="row">
           <div class="content">
             <!--所有活动-->
-
               <activity-alllist></activity-alllist>
-
-
               <activity-data></activity-data>
-
           </div>
         </div>
         <!--分页-->
