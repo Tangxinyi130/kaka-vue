@@ -1,9 +1,10 @@
 <template>
   <div class="container" style="background-color: antiquewhite">
     <div class="row">
+      <!--<router-view></router-view>-->
       <activity-list></activity-list>
+
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
