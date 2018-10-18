@@ -1,8 +1,5 @@
 <template>
-    <div class="container">
-      <div class="row" style="background-color: #528970">
-        <h3>用户个人中心id:{{id}}</h3>
-      </div>
+    <div>
       <div class="row">
         <app-userinfo></app-userinfo>
       </div>
@@ -26,5 +23,7 @@
 </script>
 
 <style scoped>
-
+  .row {
+    margin-top: 30px;
+  }
 </style>

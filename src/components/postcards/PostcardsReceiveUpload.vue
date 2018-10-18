@@ -35,6 +35,13 @@
   export default {
     methods: {
       up:function () {
+        console.log(this.$store.state.cardId);
+        this.$ajax.get(`http://localhost:3000/receive/uploadPic/` + this.$store.state.cardId+"/上传图片"
+        ).then(function (result) {
+          console.log("图片上传成功")
+        }, function (err) {
+          console.log(err);
+        });
         this.$router.replace({path:"/user"})
       },
       cancel:function () {

@@ -38,7 +38,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>  个人中心 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>
+                  <!--<router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>-->
+                  <li><a class="text-color" :href="'/user/' + userId + '/aboutme'">我的首页</a></li>
                   <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
                   <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
                   <li @click="logOff"><a class="text-color" href="/">退出登录</a></li>
