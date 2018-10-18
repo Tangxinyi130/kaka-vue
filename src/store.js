@@ -18,6 +18,10 @@ export default new Vuex.Store({
   state: {
     userId: isLogin().userId,
     isLogin: isLogin().isLogin,
+    iphoneNumber:false,
+    setPassword:false,
+    success:false,
+    upload:false
   },
   getters: {
     isLogin(state) {

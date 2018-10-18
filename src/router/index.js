@@ -37,7 +37,7 @@ import ActivityDetail from "@/components/activity/ActivityDetail"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
-Vue.prototype.$ajax = axios
+Vue.prototype.$axios = axios
 Vue.use(Router)
 
 export default new Router({
@@ -56,13 +56,16 @@ export default new Router({
     {path:'/activity/activityconfire',component:ActivityConfire,children:[
         {path:'activitysucess',component:ActivityPaySucess}
         ]},
-
     {path: "/login", component: Login},
     {path: "/register", component: Register},
 
-    {path: "/registernumber", component:RegisterNumber},
-    {path: "/registerpassword", component:RegisterPassword},
-    {path: "/registersuccess", component:RegisterSuccess},
+
+    // {path: "/login", component: Login},
+    // {path: "/register", component: Register},
+    //
+    // {path: "/registernumber", component:RegisterNumber},
+    // {path: "/registerpassword", component:RegisterPassword},
+    // {path: "/registersuccess", component:RegisterSuccess},
 
 
     {path: "/user", component: User, children: [

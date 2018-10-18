@@ -9,16 +9,16 @@
 </template>
 
 <script>
-  import {mapGetters} from "vuex"
+  import {mapGetters} from "vuex"   //必须导入
     export default {
         name: "UserAboutmeDetail",
-        computed: mapGetters([
-        "isLogin",
-        "userId"
+        computed: mapGetters([    //使用store.js中的数据模板，不变
+        "isLogin",   //判断是否有用户登录，登录为true，未登录为false
+        "userId"    //登录进去的用户id
         ]),
       data() {
         return {
-          id: this.$route.params.id
+          id: this.$route.params.id     //路由上的参数id
         }
       }
     }

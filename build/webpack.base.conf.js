@@ -70,11 +70,11 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: 'fonts/[name].[ext]',
-        }
+        },
       }
-
     ]
   },
+
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
