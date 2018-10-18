@@ -28,7 +28,7 @@
             url: 'http://localhost:3000/postcards/JS-00001'
           }).then(res => {
             console.log(res)
-            this.msg = res.data.data.cardComment[0].commentUserId;
+            this.msg = JSON.stringify(res.data.data);
             document.getElementById('main').innerHTML= this.msg
           })
         }
