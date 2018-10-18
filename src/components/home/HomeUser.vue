@@ -66,7 +66,7 @@
           collectionNum:0
         }
       },
-      created(){
+      mounted(){
         let _this = this;
         this.$axios.get(`http://localhost:3000/userCard/${this.userId}`
         ).then(function(result){
@@ -190,6 +190,7 @@
   @media screen and (min-width: 480px) and (max-width: 767px){
     #homeuser{
       display: none;
+      /*visibility:hidden;*/
     }
   }
   @media screen and (min-width:768px) and (max-width:991px ){
