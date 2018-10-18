@@ -1,11 +1,13 @@
 <template>
     <div class="container">
       <div class="row" v-if="!isLogin">
-        <div class="col-sm-8" style="background-color: lightblue">
+        <div class="col-xs-12 col-sm-12 col-md-8" style="background-color: lightblue">
           <app-homesynopsis></app-homesynopsis>
         </div>
-        <div class="col-sm-4" style="background-color: lightcoral">
-          <app-homelogin></app-homelogin>
+        <div class="hidden-xs hidden-sm col-md-4">
+          <div class="login" style="background-color: salmon">
+            <app-homelogin></app-homelogin>
+          </div>
         </div>
       </div>
 
@@ -20,7 +22,7 @@
 
 
       <div class="row">
-        <div class="col-sm-8" style="background-color: lightgoldenrodyellow">
+        <div class="col-sm-8 " style="background-color: lightgoldenrodyellow">
           <app-homedynamic></app-homedynamic>
         </div>
         <div class="col-sm-4" style="background-color: lightgreen">
@@ -29,11 +31,11 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-8" style="background-color: lightblue">
-          <app-homeactivity></app-homeactivity>
-        </div>
         <div class="col-sm-4" style="background-color: lightcoral">
           <app-homeinformation></app-homeinformation>
+        </div>
+        <div class="col-sm-8" style="background-color: lightblue">
+          <app-homeactivity></app-homeactivity>
         </div>
       </div>
 
@@ -55,6 +57,7 @@
   import HomeWall from "@/components/home/HomeWall.vue";
   import HomePostcard from "@/components/home/HomePostcard";
   import HomeUser from "@/components/home/HomeUser";
+  import LoginList from "@/components/login/LoginList.vue"
 
   import {mapGetters} from "vuex"
     export default {
@@ -69,6 +72,7 @@
           "app-homewall": HomeWall,
           "app-homepostcard": HomePostcard,
           "app-homeuser": HomeUser,
+          "app-login":LoginList,
         },
       computed: mapGetters([
         "isLogin",

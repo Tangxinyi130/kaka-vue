@@ -8,14 +8,23 @@
       <div class="row" style="height:447px;background-color:lightgoldenrodyellow">
         <div class="container col-sm-8 col-sm-offset-2">
           <div class="row" style="height:380px;margin-top:30px;background-color:#fafafa">
-            <ol style="font-size: 13px">
-              <li>请将地址填写准确。</li>
-              <li>请及时发送明信片。</li>
-              <li>请勿随意透露他人信息。</li>
-              <li>一切解释权由本网站决定。</li>
-            </ol>
+              <p style="margin:15px">
+                第1条： 服务概要/目的<br>
+                &nbsp;&nbsp;  本服务旨在为用户提供本公司商品信息，并接受购买商品的订单。<br>
+                第２条 本条约的使用范围<br>
+                &nbsp;&nbsp;    本条约适用于由于本服务而产生的用户和本公司之间的所有事项
+                本公司在未得到用户允许的情况下，对本条约拥有变更的权利。并且，本公司将使用合适的方法告知用户
+                第3条 本服务的权利<br>
+                &nbsp;&nbsp;    用户在遵守本条约前提下，承诺只使用本公司提供的服务。本服务中提供的信息及相关著作权等一些知识产权，属本公司所有。
+                用户在使用本服务时，对网站提供的信息，数据，图像用作其他用途时，本公司有追究的权利。<br>
+                第4条 网站账号ID及密码<br>
+                &nbsp;&nbsp;   本公司对于利用本服务的用户，免费提供网站登录的账号及密码。
+                用户对从本公司接收的账号和密码的保管，以及运营管理负有全部的责任。若因用户的保管及使用管理上的遗漏所产生的损害，本公司不承担一切法律责任。
+                用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担
+                用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。
+                用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时，本公司会立即提供新的账号及密码后重新通知用户。
+              </p>
             <form>
-            <div class="row" style="height:230px"></div>
             <div class="row" style="text-align: center">
               <button type="button" class="btn btn-primary btn-lg " style="width:200px;" @click="submit" >
                 <span style="color: white">阅读并同意相关事项</span>
@@ -32,12 +41,12 @@
 </template>
 <script>
   export default {
+    name: "PostcardsSendAnnouncements",
     methods: {
       submit: function () {
         this.$router.replace({path: "/postcardssendinterface"})
       },
     },
-    name: "PostcardsSendAnnouncements",
   }
 </script>
 <style scoped>
