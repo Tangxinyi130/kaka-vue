@@ -3,15 +3,27 @@
     <div class="dynamic-box">
       <div class="dynamic-nav"><span class="dynamic-nav-text">实时动态</span></div>
       <div class="daynamic-item">
-        <div class="send">
-          <img src="../../assets/user.jpg" width="40" height="40" alt="">
-          <span class="username">迪丽热巴</span>
-          <span class="region">新疆</span>
+        <div v-for="item in newSend" class="send">
+          <img :src="item.senderHeadPic" width="40" height="40" alt="">
+          <span class="username">{{item.cardSenderName}}</span>
+          <span class="region">{{item.cardSendRegion}}</span>
           <span class="state">发送一张明信片给</span>
-          <img src="../../assets/user.jpg" width="40" height="40" alt="">
-          <span class="username">MARY</span>
-          <span class="region">浙江</span>
+          <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+          <span class="username">{{item.cardReceiverName}}</span>
+          <span class="region">{{item.cardReceiveRegion}}</span>
         </div>
+      </div>
+      <div class="daynamic-item">
+        <div v-for="item in newReceive" class="receive">
+          <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+          <span class="username">{{item.cardReceiverName}}</span>
+          <span class="region">{{item.cardReceiveRegion}}</span>
+          <span class="state">收到来自</span>
+          <img :src="item.senderHeadPic" width="40" height="40" alt="">
+          <span class="username">{{item.cardSenderName}}</span>
+          <span class="region">{{item.cardSendRegion}}</span>
+          <span>发的明信片</span>
+      </div>
       </div>
     </div>
 
@@ -20,7 +32,25 @@
 
 <script>
     export default {
-        name: "HomeDynamic"
+        name: "HomeDynamic",
+        data(){
+          return{
+            newSend:[],
+            newReceive:[],
+          }
+        },
+        mounted(){
+          let _this = this;
+          this.$ajax.post(`http://localhost:3000/realtimeDynamic`
+          ).then(function(result){
+            _this.newSend = result.data.data.newSend[0];
+            _this.newReceive = result.data.data.newReceive[0];
+            console.log(_this.newSend);
+            console.log(_this.newReceive);
+          },function (err) {
+            console.log(err);
+          })
+        }
     }
 </script>
 
@@ -50,7 +80,7 @@
   padding-left: 15px;
 }
 
-.daynamic-item .send{
+.daynamic-item .send,.daynamic-item .receive{
   height: 50px;
   width: 100%;
   border: 1px solid #ccc;

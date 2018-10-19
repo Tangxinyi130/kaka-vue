@@ -5,28 +5,7 @@
       <div class="ranking-info">
         <div v-for="item in rankingInfo" class="ranking-item">
           <span class="ranking-index">{{item.ranking}}</span>
-          <img src="../../assets/user.jpg" width="50" height="50" alt="">
-          <span class="ranking-username">{{item.userName}}</span>
-          <span class="ranking-bron">{{item.userCity}}</span>
-          <span class="ranking-bron">{{item.receiverNum}}</span>
-        </div>
-        <div v-for="item in rankingInfo" class="ranking-item">
-          <span class="ranking-index">{{item.ranking}}</span>
-          <img src="../../assets/user.jpg" width="50" height="50" alt="">
-          <span class="ranking-username">{{item.userName}}</span>
-          <span class="ranking-bron">{{item.userCity}}</span>
-          <span class="ranking-bron">{{item.receiverNum}}</span>
-        </div>
-        <div v-for="item in rankingInfo" class="ranking-item">
-          <span class="ranking-index">{{item.ranking}}</span>
-          <img src="../../assets/user.jpg" width="50" height="50" alt="">
-          <span class="ranking-username">{{item.userName}}</span>
-          <span class="ranking-bron">{{item.userCity}}</span>
-          <span class="ranking-bron">{{item.receiverNum}}</span>
-        </div>
-        <div v-for="item in rankingInfo" class="ranking-item">
-          <span class="ranking-index">{{item.ranking}}</span>
-          <img src="../../assets/user.jpg" width="50" height="50" alt="">
+          <img :src="item.userHeadPic" width="50" height="50" alt="">
           <span class="ranking-username">{{item.userName}}</span>
           <span class="ranking-bron">{{item.userCity}}</span>
           <span class="ranking-bron">{{item.receiverNum}}</span>
@@ -54,10 +33,9 @@
       },
       mounted(){
         let _this = this;
-        this.$axios.post(`http://localhost:3000/rankingSend`
+        this.$ajax.post(`http://localhost:3000/rankingSend`
         ).then(function(result){
             _this.rankingInfo =result.data.data[0];
-            // console.log(result.data.data[0].userName);
         },function (err) {
           console.log(err);
         })

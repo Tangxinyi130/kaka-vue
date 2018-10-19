@@ -2,11 +2,11 @@
     <div id="homeuser">
       <div class="card">
         <div class="card-header">
-          <a href="">
-            <div class="pic-content">
-              <img class="pic-img" src="../../assets/user.jpg" alt="">
-            </div>
-          </a>
+            <a :href="'/user/' + userId + '/aboutme'">
+              <div class="pic-content">
+                <img :src="headPic" class="pic-img"   alt="">
+              </div>
+            </a>
           <div class="header-right">
             <h4>{{userNickName}}</h4>
             <p>已发送: <span>{{sendNum}}</span>张</p>
@@ -68,7 +68,7 @@
       },
       mounted(){
         let _this = this;
-        this.$axios.get(`http://localhost:3000/userCard/${this.userId}`
+        this.$ajax.get(`http://localhost:3000/userCard/${this.userId}`
         ).then(function(result){
             _this.userNickName=result.data.data.nickName[0].userNickname;
             _this.headPic = result.data.data.headPic[0].userHeadPic;
@@ -76,6 +76,7 @@
             _this.receiveNum = result.data.data.receiveNum[0].receiveNum;
             _this.fansNum = result.data.data.fansNum[0].fanNum;
             _this.collectionNum = result.data.data.collectionNum[0].collectionNum;
+            console.log(_this.headPic);
         },function (err) {
           console.log(err);
         })

@@ -12,20 +12,19 @@
       </div>
 
       <div class="row" v-if="isLogin">
-        <div class="col-sm-8" style="background-color: lightblue">
+        <div class="col-sm-8" >
           <app-homepostcard></app-homepostcard>
         </div>
-        <div class="col-sm-4" style="background-color: lightcoral">
+        <div class="col-sm-4">
           <app-homeuser></app-homeuser>
         </div>
       </div>
 
-
       <div class="row">
-        <div class="col-sm-8 " style="background-color: lightgoldenrodyellow">
+        <div class="col-sm-8 ">
           <app-homedynamic></app-homedynamic>
         </div>
-        <div class="col-sm-4" style="background-color: lightgreen">
+        <div class="col-sm-4" >
           <app-homeranking></app-homeranking>
         </div>
       </div>
@@ -87,23 +86,19 @@
 </script>
 
 <style scoped>
-  .main{
-    background-color: rebeccapurple;
+  @media  screen and (max-width: 479px) {
+
   }
-  #home-container{
-    width:90%;
-    margin: 0 auto;
+  @media screen and (min-width: 480px) and (max-width: 767px){
+
   }
-  .box{
-    height: 50px;
+  @media screen and (min-width:768px) and (max-width:991px ){
+
   }
-  .content{
-    background-color: chartreuse;
+  @media screen and (min-width:992px) and (max-width:1199px ){
+
   }
-  .content1{
-    background-color: aquamarine;
-  }
-  .content2{
-    background-color: salmon;
+  @media screen and (min-width: 1200px){
+
   }
 </style>
