@@ -2,51 +2,88 @@
   <div id="homeDynamic">
     <div class="dynamic-box">
       <div class="dynamic-nav"><span class="dynamic-nav-text">实时动态</span></div>
-      <div class="daynamic-item">
-        <div v-for="item in newSend" class="send">
-          <img :src="item.senderHeadPic" width="40" height="40" alt="">
-          <span class="username">{{item.cardSenderName}}</span>
-          <span class="region">{{item.cardSendRegion}}</span>
-          <span class="state">发送一张明信片给</span>
-          <img :src="item.receiverHeadPic" width="40" height="40" alt="">
-          <span class="username">{{item.cardReceiverName}}</span>
-          <span class="region">{{item.cardReceiveRegion}}</span>
+      <div class="dynamic-item-box">
+        <div  v-for="item in realDynamic" class="dynamic-item">
+          <div v-if="item.state=='发送'" class="dynamic-item-detail">
+            <a href="">
+              <img :src="item.senderHeadPic" width="40" height="40" alt="">
+              <span class="username">{{item.cardSenderName}}</span>
+            </a>
+            <span class="region">{{item.cardSendRegion}}</span>
+            <span class="state">{{item.state}}了一张明信片给</span>
+            <a href="">
+              <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+              <span class="username">{{item.cardReceiverName}}</span>
+            </a>
+            <span class="region">{{item.cardReceiveRegion}}</span>
+          </div>
+          <div v-if="item.state=='收到'" class="dynamic-item-detail">
+            <a href="">
+              <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+              <span class="username">{{item.cardReceiverName}}</span>
+            </a>
+            <span class="region">{{item.cardReceiveRegion}}</span>
+            <span class="state">{{item.state}}了一张明信片来自</span>
+            <a href="">
+              <img :src="item.senderHeadPic" width="40" height="40" alt="">
+              <span class="username">{{item.cardSenderName}}</span>
+            </a>
+            <span class="region">{{item.cardSendRegion}}</span>
+          </div>
         </div>
       </div>
-      <div class="daynamic-item">
-        <div v-for="item in newReceive" class="receive">
-          <img :src="item.receiverHeadPic" width="40" height="40" alt="">
-          <span class="username">{{item.cardReceiverName}}</span>
-          <span class="region">{{item.cardReceiveRegion}}</span>
-          <span class="state">收到来自</span>
-          <img :src="item.senderHeadPic" width="40" height="40" alt="">
-          <span class="username">{{item.cardSenderName}}</span>
-          <span class="region">{{item.cardSendRegion}}</span>
-          <span>发的明信片</span>
-      </div>
-      </div>
+
     </div>
 
   </div>
 </template>
 
 <script>
+  $(function() {
+    //获得当前<ul>
+    var $ibDynamic = $("div.dynamic-item-box");
+    var timer = null;
+    //触摸清空定时器
+    $ibDynamic.hover(function() {
+        clearInterval(timer);
+      },
+      function() { //离开启动定时器
+        timer = setInterval(function() {
+            scrollList($ibDynamic);
+          },
+          2000);
+      }).trigger("mouseleave"); //自动触发触摸事件
+    //滚动动画
+    function scrollList(obj) {
+      //获得当前<li>的高度
+      var scrollHeight = $(".dynamic-item-box .daynamic-item:first").height();
+      //滚动出一个<li>的高度
+      $ibDynamic.stop().animate({
+          marginTop: -scrollHeight
+        },
+        600,
+        function() {
+          //动画结束后，将当前<ul>marginTop置为初始值0状态，再将第一个<li>拼接到末尾。
+          $ibDynamic.css({
+            marginTop: 0
+          }).find(".dynamic-item-detail:first").appendTo($ibDynamic);
+        });
+    }
+  });
+
+
     export default {
         name: "HomeDynamic",
         data(){
           return{
-            newSend:[],
-            newReceive:[],
+            realDynamic:{},
           }
         },
         mounted(){
           let _this = this;
           this.$ajax.post(`http://localhost:3000/realtimeDynamic`
           ).then(function(result){
-            _this.newSend = result.data.data.newSend[0];
-            _this.newReceive = result.data.data.newReceive[0];
-            console.log(_this.newSend);
-            console.log(_this.newReceive);
+            _this.realDynamic = result.data.data;
           },function (err) {
             console.log(err);
           })
@@ -79,14 +116,27 @@
   display: inline-block;
   padding-left: 15px;
 }
-
-.daynamic-item .send,.daynamic-item .receive{
+.dynamic-item-box{
+  max-width: 700px;
+  height: 200px;
+  background-color: wheat;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.dynamic-item-detail {
   height: 50px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
+.dynamic-item-detail .username{
+  font-size:14px;
+  font-weight: bold;
+  color: #1db0ff;
+}
+.dynamic-item-detail .state{
+  font-size: 14px;
+}
 
 @media  screen and (max-width: 479px) {
 
