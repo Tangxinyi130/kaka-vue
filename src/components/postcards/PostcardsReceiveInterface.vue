@@ -56,6 +56,7 @@
   export default {
     data() {
       return {
+        receivecards:0,
         send: true,
       }
     },
@@ -66,14 +67,22 @@
       submit: function () {
         this.$store.state.cardId = $("#cardId").val();
         console.log(this.$store.state.cardId );
+        let _this = this;
         this.$ajax.get(`http://localhost:3000/receive/doReceive/` + (this.$store.state.cardId)
         ).then(function (result) {
-          console.log("成功")
+          _this.receivecards = result.data.data.receivecards;
+          if( _this.receivecards>0){
+            _this.send = false;
+            _this.$store.state.upload = true;
+          }else {
+            alert("您的明信片可以不小心输入错误了，请仔细检查哦！");
+          }
+          console.log("成功");
+          console.log("我是receivcards"+_this.receivecards);
         }, function (err) {
           console.log(err);
         });
-        this.send = false;
-        this.$store.state.upload = true;
+
       },
       reset: function () {
         this.$store.state.upload = false;

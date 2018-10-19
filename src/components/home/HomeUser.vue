@@ -68,7 +68,7 @@
       },
       created(){
         let _this = this;
-        this.$axios.get(`http://localhost:3000/userCard/${this.userId}`
+        this.$ajax.get(`http://localhost:3000/userCard/${this.userId}`
         ).then(function(result){
             _this.userNickName=result.data.data.nickName[0].userNickname;
             _this.headPic = result.data.data.headPic[0].userHeadPic;

@@ -42,9 +42,45 @@
 <script>
   export default {
     name: "PostcardsSendAnnouncements",
+    data() {
+      return {
+        times:0,
+        pooltimes:0,
+      }
+    },
+    created() {
+      let _this = this;
+      this.$ajax.get(`http://localhost:3000/send/limitTimes/`+(localStorage.userId)
+      ).then(function (result) {
+        console.log(result.data.data);
+        _this.times = result.data.data.times;
+        _this.pooltimes = result.data.data.pooltimes;
+        console.log("我是已经发送次数的总数"+_this.times)
+        console.log("我是pool池里面的数据总数"+_this.pooltimes)
+      }, function (err) {
+        console.log(err);
+      })
+    },
     methods: {
       submit: function () {
-        this.$router.replace({path: "/postcardssendinterface"})
+        //如果次数在5次之内可以发送，如果超过5次将不会发送
+        if(this.times<5){
+          //如果pool池里面的数据不足将会提示用户
+          if(this.pooltimes<1){
+            alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
+            location.href = "http://localhost:8080";
+          }else {
+            if(this.$store.state.isLogin){
+              this.$router.replace({path: "/postcardssendinterface"})
+            }else {
+              this.$router.replace({path: "/login"})
+            }
+          }
+        }else {
+          alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
+          location.href = "http://localhost:8080";
+        }
+
       },
     },
   }
