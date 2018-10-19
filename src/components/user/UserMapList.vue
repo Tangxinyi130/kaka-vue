@@ -11,7 +11,10 @@
         <div class="maplist_bottom">
           <table class="table" border="0" style="text-align: center;">
             <tr>
-              <td class="col-sm-2"><img src="../../assets/images/maplist/top.png" alt=""></td>
+              <td class="col-sm-2">
+                <!--<img src="../../assets/images/maplist/top.png" alt="">-->
+                <span class="stitle">排名</span>
+              </td>
               <td class="col-sm-2"><span class="maplist_region stitle">省份</span></td>
               <td class="col-sm-5"><span class="maplist_num stitle">收到的明信片数量</span></td>
             </tr>
@@ -88,7 +91,7 @@
               _this.list[key].region = result.data.data[key].cardSendRegion;
               _this.list[key].num = result.data.data[key].cardSum;
             }
-            console.log(_this.list);
+            // console.log(_this.list);
           }, function (err) {
             console.log(err);
           });
@@ -131,7 +134,7 @@
   }
   .stitle {
     font-weight: bold;
-    /*margin-left:;*/
+    color: #5E5E5E;
     font-size: 16px;
   }
   .maplist_num {
