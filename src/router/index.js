@@ -38,7 +38,7 @@ import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 import ActivityDetail from "@/components/activity/ActivityDetail.vue"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
-import test from "@/components/activity/test"
+
 
 Vue.prototype.$ajax = axios
 Vue.use(Router)
