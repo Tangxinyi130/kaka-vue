@@ -10,7 +10,8 @@
         <div class="container col-sm-10 col-sm-offset-1" style="height:380px;background-color:#fafafa;margin-top:30px;">
           <div class="row" style="height:133px">
             <div class="col-sm-2 col-sm-offset-1" style="border: 1px solid black;width:150px;height:150px;margin-top: 30px;border-radius:50%">
-              <h3>头像</h3>
+              <!--<h3>头像</h3>-->
+              <img :src="userHeadPic" alt="" width="122px" height="122px">
             </div>
             <div class="col-sm-7 col-sm-offset-1" style="border: 1px solid black;height:150px;margin-top:30px">
               <div class="row" style="height: 10px"></div>
@@ -26,7 +27,7 @@
               <div class="row" style="height: 10px"></div>
               <div class="row">
                 <div class="col-sm-3 col-sm-offset-2" > 性别:{{userSex}} </div>
-                <div class="col-sm-5 " > 生日:{{userBirthday}} </div>
+                <div class="col-sm-5 " > 生日:{{ userBirthday}} </div>
               </div>
               <div class="row" style="height: 10px"></div>
               <div class="row">
@@ -49,12 +50,6 @@
             </div>
 
           </div>
-          <!--<div class="row">-->
-            <!--<div class="col-sm-10 col-sm-offset-1 text-center"-->
-                 <!--style="border: 1px solid black;height:35px;margin-top: 10px">-->
-              <!--您已经发送了一张明信片-->
-            <!--</div>-->
-          <!--</div>-->
           <div class="row">
             <div class="col-sm-10 col-sm-offset-5" style="height:30px;margin-top:30px">
               <form>
@@ -105,7 +100,7 @@
         _this.userSex = result.data.data.userSex;
         _this.userEmail = result.data.data.userEmail;
         _this.cardId = result.data.data.cardId;
-        _this.userBirthday = result.data.data.userBirthday.substring(0, 10);
+        _this.userBirthday = result.data.data.userBirthday.substring(0,10);
       }, function (err) {
         console.log(err);
       })

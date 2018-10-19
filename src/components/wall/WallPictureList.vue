@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center" style="height: 600px;background-color: antiquewhite">
     <div>
-      <router-link to="/postcards"><wall-picture></wall-picture></router-link>
+      <wall-picture></wall-picture>
     </div>
   </div>
 </template>

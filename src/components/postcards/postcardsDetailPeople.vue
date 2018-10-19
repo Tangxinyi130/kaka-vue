@@ -4,9 +4,9 @@
         <div class="top">详情</div>
       </div>
       <div class="row twoPeople" >
-        <div class="col-md-6 ">
-          <ul class="cont-list list-unstyled">
-            <li class="am-gallery-item">
+        <div class="col-xs-12 col-md-6 ">
+          <ul class="cont-list list-unstyled ">
+            <li class="am-gallery-item" >
                 <div class="img_box col-md-3">
                   <a href="">
                     <img src="../../assets/picture.jpg">
@@ -15,15 +15,15 @@
                 <div class="intro col-md-3">
                   <h3>
                     <a href="/">
-                     ID
+                     ID:{{cardsInformation.userId}}
                     </a>
                   </h3>
-                 <p>昵称：小可爱</p><div class="iconCon">
+                 <p>昵称：{{cardsInformation.userNickname}}</p><div class="iconCon">
                   <button>+关注</button>
                 </div>
                 </div>
             </li>
-            <li class="am-gallery-item">
+            <li class="am-gallery-item ">
               <div class="img_box col-md-3">
                 <a href="">
                   <img src="../../assets/picture.jpg">
@@ -32,17 +32,17 @@
               <div class="intro col-md-3">
                 <h3>
                   <a href="/">
-                    ID
+                    ID:{{cardsInformation.userId1}}
                   </a>
                 </h3>
-                <p>昵称：小可爱</p>
+                <p>昵称：{{cardsInformation.userNickname1}}</p>
                 <button>+关注</button>
               </div>
 
             </li>
           </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-12 col-md-6">
             <div class="twoPeopleMap">
               地图
             </div>
@@ -53,7 +53,27 @@
 
 <script>
     export default {
-        name: "cardDetail"
+        name: "cardDetail",
+        data(){
+          return {
+            cardId:this.$route.params.cardId,
+            cardsInformation:{}
+          }
+        },
+      // watch:{
+      //     '$router'(to,from){
+      //
+      //     }
+      // },
+        created(){
+          this.$ajax({
+            method:'get',
+            url:'http://localhost:3000/postcards/'+this.cardId
+          }).then((res)=>{
+            this.cardsInformation=res.data.data.cardInformation[0]
+          })
+
+        }
     }
 </script>
 

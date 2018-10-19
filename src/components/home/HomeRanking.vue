@@ -3,12 +3,14 @@
     <div class="ranking-box">
       <div class="ranking-nav"><span class="ranking-nav-text">排行榜</span></div>
       <div class="ranking-info">
-        <div v-for="item in rankingInfo" class="ranking-item">
-          <span class="ranking-index">{{item.ranking}}</span>
-          <img :src="item.userHeadPic" width="50" height="50" alt="">
-          <span class="ranking-username">{{item.userName}}</span>
-          <span class="ranking-bron">{{item.userCity}}</span>
-          <span class="ranking-bron">{{item.receiverNum}}</span>
+        <div class="ranking-info-box">
+          <div v-for="item in rankingInfo" class="ranking-item">
+            <span class="ranking-index">{{item.ranking}}</span>
+            <img :src="item.userHeadPic" width="50" height="50" alt="">
+            <span class="ranking-username">{{item.userName}}</span>
+            <span class="ranking-bron">{{item.userCity}}</span>
+            <span class="ranking-bron">{{item.receiverNum}}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -83,8 +85,10 @@
     background: rgba(0,0,0,0.1);
   }
 
-  .ranking-index{
-
+  .ranking-item{
+    width: 340px;
+    margin: 0 auto;
+    padding-right: 10px;
   }
 
   .ranking-nav .ranking-nav-text{
