@@ -5,8 +5,9 @@
         <div class="row">
           <div class="content">
             <!--所有活动-->
-              <activity-alllist></activity-alllist>
-              <activity-data></activity-data>
+            <!--<activity-alllist></activity-alllist>-->
+            <router-view></router-view>
+            <activity-data></activity-data>
           </div>
         </div>
         <!--分页-->
