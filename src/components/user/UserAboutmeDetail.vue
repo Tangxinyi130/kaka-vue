@@ -14,11 +14,6 @@
       <div class="row">
         <div class="detailBottom">
           <div v-if="!isChange">{{aboutme}}</div>
-          <!--<div>-->
-            <!--<form action="">-->
-              <!---->
-            <!--</form>-->
-          <!--</div>-->
         </div>
       </div>
     </div>

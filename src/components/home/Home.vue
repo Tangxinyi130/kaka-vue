@@ -1,39 +1,40 @@
 <template>
     <div class="container">
       <div class="row" v-if="!isLogin">
-        <div class="col-sm-8" style="background-color: lightblue">
+        <div class="col-xs-12 col-sm-12 col-md-8" style="background-color: lightblue">
           <app-homesynopsis></app-homesynopsis>
         </div>
-        <div class="col-sm-4" style="background-color: lightcoral">
-          <app-homelogin></app-homelogin>
+        <div class="hidden-xs hidden-sm col-md-4">
+          <div class="login" style="background-color: salmon">
+            <app-homelogin></app-homelogin>
+          </div>
         </div>
       </div>
 
       <div class="row" v-if="isLogin">
-        <div class="col-sm-8" style="background-color: lightblue">
+        <div class="col-sm-8" >
           <app-homepostcard></app-homepostcard>
         </div>
-        <div class="col-sm-4" style="background-color: lightcoral">
+        <div class="col-sm-4">
           <app-homeuser></app-homeuser>
         </div>
       </div>
 
-
       <div class="row">
-        <div class="col-sm-8" style="background-color: lightgoldenrodyellow">
+        <div class="col-sm-8 ">
           <app-homedynamic></app-homedynamic>
         </div>
-        <div class="col-sm-4" style="background-color: lightgreen">
+        <div class="col-sm-4" >
           <app-homeranking></app-homeranking>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-8" style="background-color: lightblue">
-          <app-homeactivity></app-homeactivity>
-        </div>
         <div class="col-sm-4" style="background-color: lightcoral">
           <app-homeinformation></app-homeinformation>
+        </div>
+        <div class="col-sm-8" style="background-color: lightblue">
+          <app-homeactivity></app-homeactivity>
         </div>
       </div>
 
@@ -55,6 +56,7 @@
   import HomeWall from "@/components/home/HomeWall.vue";
   import HomePostcard from "@/components/home/HomePostcard";
   import HomeUser from "@/components/home/HomeUser";
+  import LoginList from "@/components/login/LoginList.vue"
 
   import {mapGetters} from "vuex"
     export default {
@@ -69,6 +71,7 @@
           "app-homewall": HomeWall,
           "app-homepostcard": HomePostcard,
           "app-homeuser": HomeUser,
+          "app-login":LoginList,
         },
       computed: mapGetters([
         "isLogin",
@@ -83,23 +86,19 @@
 </script>
 
 <style scoped>
-  .main{
-    background-color: rebeccapurple;
+  @media  screen and (max-width: 479px) {
+
   }
-  #home-container{
-    width:90%;
-    margin: 0 auto;
+  @media screen and (min-width: 480px) and (max-width: 767px){
+
   }
-  .box{
-    height: 50px;
+  @media screen and (min-width:768px) and (max-width:991px ){
+
   }
-  .content{
-    background-color: chartreuse;
+  @media screen and (min-width:992px) and (max-width:1199px ){
+
   }
-  .content1{
-    background-color: aquamarine;
-  }
-  .content2{
-    background-color: salmon;
+  @media screen and (min-width: 1200px){
+
   }
 </style>

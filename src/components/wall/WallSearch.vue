@@ -3,7 +3,8 @@
     <div class="row wallCity">
       <div class="col-xs-2 col-md-2">
         <div class="glyphicon glyphicon-align-justify wallpublic" @click="flag=!flag"></div>
-        <span v-if="flag">所有城市</span>
+        <!--<span v-if="flag">所有城市</span>-->
+        <wall-city v-if="flag"></wall-city>
       </div>
       <div class="col-xs-8 col-md-7 text-center">
         <div class="wllTopic wallpublic">展示墙</div>
@@ -11,7 +12,7 @@
       <div class="col-xs-2 col-md-3 ">
           <div class="input-group wallSearch-a">
             <div class="col-xs-7 col-md-9">
-              <input type="text" class="form-control" placeholder="输入搜索...">
+              <input type="text" class="form-control" placeholder="输入搜索..." v-model="search">
             </div>
             <div class="col-xs-5 col-md-3">
               <span class="glyphicon glyphicon-search"></span>
@@ -24,11 +25,22 @@
 </template>
 
 <script>
+  import WallCity from './WallCity'
     export default {
         name: "WallSearch",
       data(){
-          return {flag:false}
-      }
+        return {
+          flag:false,
+          search:''
+        }
+      },
+      method:{
+
+      },
+      components:{
+        'wall-city':WallCity
+      },
+
     }
 </script>
 

@@ -10,9 +10,11 @@ import  PostcardsSendInterface from "@/components/postcards/PostcardsSendInterfa
 import  PostcardsReceiveUpload from "@/components/postcards/PostcardsReceiveUpload.vue"
 import PostcardsReceive from "@/components/postcards/PostcardsReceive.vue"
 
-
 import Wall from "@/components/wall/Wall.vue"
+
 import Activity from "@/components/activity/Activity.vue"
+import ActivityAllList from "@/components/activity/ActivityAllList.vue"
+
 import Login from "@/components/login/Login.vue"
 import Register from "@/components/register/Register.vue"
 import RegisterNumber from "@/components/register/RegisterNumber.vue"
@@ -33,9 +35,10 @@ import UserSearchcard from "@/components/user/UserSearchcard.vue"
 import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
-import ActivityDetail from "@/components/activity/ActivityDetail"
+import ActivityDetail from "@/components/activity/ActivityDetail.vue"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
+
 
 Vue.prototype.$ajax = axios
 Vue.use(Router)
@@ -44,15 +47,19 @@ export default new Router({
   mode: "history",
   routes: [
     {path: '/', name: 'Home', component: Home},
-    {path: "/postcards", component: Postcards},
+    {path: "/postcards/:cardId", component: Postcards},
     {path: "/postcardssend", component: PostcardsSend},
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
 
     {path: "/wall", component: Wall},
-    {path: "/activity", component: Activity},
-    {path:'/activity/activitydetail',component:ActivityDetail},
+    {path: "/activity", component: Activity,children:[
+        {path: "", component: ActivityAllList},
+        {path:':year/:month',component:ActivityAllList}
+      ]},
+    {path:'/activitydetail/:activityId',component:ActivityDetail
+    },
     {path:'/activity/activityconfire',component:ActivityConfire,children:[
         {path:'activitysucess',component:ActivityPaySucess}
         ]},
