@@ -47,7 +47,7 @@ export default new Router({
   mode: "history",
   routes: [
     {path: '/', name: 'Home', component: Home},
-    {path: "/postcards", component: Postcards},
+    {path: "/postcards/:cardId", component: Postcards},
     {path: "/postcardssend", component: PostcardsSend},
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},

@@ -1,8 +1,14 @@
 <template>
     <div>
-      <h3>我的地图</h3>
-      <app-mapcollection></app-mapcollection>
-      <app-maplist></app-maplist>
+      <!--我的地图-->
+      <div class="row">
+        <div class="col-sm-6">
+          <app-mapcollection></app-mapcollection>
+        </div>
+        <div class="col-sm-offset-1 col-sm-4">
+          <app-maplist></app-maplist>
+        </div>
+      </div>
     </div>
 
 </template>
