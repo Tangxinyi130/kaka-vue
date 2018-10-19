@@ -99,7 +99,7 @@
     width: 360px;
     height: 300px;
     border-radius: 5px;
-    background-color: #f2f2f5;
+    background-color: wheat;
     position: relative;
     justify-content: center;
     align-items: center;
