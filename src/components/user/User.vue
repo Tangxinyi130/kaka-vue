@@ -63,7 +63,7 @@
 
 <style scoped>
   #set {
-    height: 800px;
+    height: 850px;
     background-color: #fafafa;
     /*background-color: #ebf6df;*/
   }
@@ -113,6 +113,7 @@
     border: 1px solid #797979;
     border-radius: 3px;
     padding: 30px;
+    /*box-sizing: border-box;*/
     /*padding-bottom: 30px;*/
     /*padding-left: 30px;*/
     /*padding-right: 30px;*/
