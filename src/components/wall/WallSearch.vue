@@ -12,7 +12,7 @@
       <div class="col-xs-2 col-md-3 ">
           <div class="input-group wallSearch-a">
             <div class="col-xs-7 col-md-9">
-              <input type="text" class="form-control" placeholder="输入搜索...">
+              <input type="text" class="form-control" placeholder="输入搜索..." v-model="search">
             </div>
             <div class="col-xs-5 col-md-3">
               <span class="glyphicon glyphicon-search"></span>
@@ -30,8 +30,12 @@
         name: "WallSearch",
       data(){
         return {
-          flag:false
+          flag:false,
+          search:''
         }
+      },
+      method:{
+
       },
       components:{
         'wall-city':WallCity

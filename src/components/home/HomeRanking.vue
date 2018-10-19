@@ -54,7 +54,7 @@
       },
       mounted(){
         let _this = this;
-        this.$axios.post(`http://localhost:3000/rankingSend`
+        this.$ajax.post(`http://localhost:3000/rankingSend`
         ).then(function(result){
             _this.rankingInfo =result.data.data[0];
             // console.log(result.data.data[0].userName);
