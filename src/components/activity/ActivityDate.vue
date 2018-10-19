@@ -1,8 +1,9 @@
 <template>
+  <div >
   <div class="rightc col-md-4">
   <div class="col-md-10 col-md-offset-2">
     <div class="row">
-      <div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px">最近</div>
+      <div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px">全部</div>
     </div>
     <div class="row">
       <ul class="list-group" id="my-data">
@@ -10,7 +11,9 @@
         <span class="data-year"></span><span class="data-year-txt">{{year}}
           <div v-if="type==key">
             <ul>
-               <li v-for="month in months[key]" class="month">{{month.activityMonth}}月</li>
+               <li v-for="month in months[key]" class="month">
+                 <router-link role="presentation" :to="{path:'/activity/'+year+'/'+month.activityMonth}">{{month.activityMonth}}月</router-link>
+               </li>
             </ul>
           </div>
         </span>
@@ -19,16 +22,20 @@
     </div>
   </div>
   </div>
+
+</div>
 </template>
 
 <script>
+  import ActivityAllList from './ActivityAllList'
     export default {
         name: "ActivityDate",
         data(){
             return {
               years:[],
               months:{},
-              type:-1
+              type:-1,
+              flag:false
             }
         },
         created(){
@@ -43,7 +50,9 @@
             console.log(this.months)
             console.log(this.years)
           })
-        }
+        }, components:{
+        'activity-alllist':ActivityAllList
+      }
     }
 </script>
 
@@ -51,12 +60,7 @@
   ul{
     list-style: none;
   }
-  .iconCon{
-    text-align: right;
-  }
-  .iconfont{
-    margin-right: 10px;
-  }
+
   #my-data>.list-group-item{
     padding: 0;
     vertical-align: baseline;
@@ -83,9 +87,7 @@
     padding: 0;
     margin-top: 20px;
   }
-  #month{
-    padding: 0;
-  }
+
 
 
 </style>

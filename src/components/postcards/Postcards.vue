@@ -2,8 +2,6 @@
     <div class="container">
       <postcards-detail></postcards-detail>
       <postcards-detailPic></postcards-detailPic>
-      <button @click="getMsg">获取</button>
-      <span id="main"></span>
     </div>
 </template>
 

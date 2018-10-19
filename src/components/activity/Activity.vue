@@ -2,6 +2,7 @@
   <div>
     <activity-carousel></activity-carousel>
     <activity-all></activity-all>
+
   </div>
 
 </template>

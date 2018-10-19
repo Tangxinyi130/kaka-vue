@@ -21,7 +21,8 @@ export default new Vuex.Store({
     iphoneNumber:false,
     setPassword:false,
     success:false,
-    upload:false
+    upload:false,
+    cardId:''
   },
   getters: {
     isLogin(state) {
