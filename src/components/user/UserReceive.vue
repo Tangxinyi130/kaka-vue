@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="userReceive">
       <!--已收到的明信片-->
       <div class="row">
         <table class="table" border="1" style="text-align: center; border-radius: 3px">
@@ -20,6 +20,9 @@
             <td>
               <router-link :to="'/user/' + id + '/receive/' + data.cardId" v-if="data.cardPic">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
+              </router-link>
+              <router-link :to="'/user/' + id + '/receive/' + data.cardId" v-if="!data.cardPic">
+                <img src="../../assets/images/usercenter/upload4.png" alt="">
               </router-link>
             </td>
           </tr>
@@ -52,7 +55,7 @@
 </script>
 
 <style scoped>
-  .userSend {
+  .userReceive {
     margin-top: -20px;
   }
   .stitle {
@@ -67,6 +70,9 @@
     border-radius: 3px;
     line-height: 30px;
     /*border: 1px solid black;*/
+  }
+  span {
+    color: #5E5E5E;
   }
   table .first_tr {
     background-color: #528970;
