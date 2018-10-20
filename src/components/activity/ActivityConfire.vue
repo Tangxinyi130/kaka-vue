@@ -21,7 +21,12 @@
 
 <script>
     export default {
-        name: "ActivityConfire"
+        name: "ActivityConfire",
+      data(){
+          return {
+
+          }
+      }
     }
 </script>
 

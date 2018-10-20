@@ -64,7 +64,7 @@
             <!--<a style="position:absolute;top:488px; left:432px; z-index:10;" href="index.html">广西</a>-->
           </div>
           <div class="city">
-            <div class="citybg" style="top:288px; left:461px; width:118px; height:92px; display: block"
+            <div class="citybg" style="top:288px; left:461px; width:89px; height:88px; display: block"
                  :style="{backgroundImage:`url(${henan.prov})`,zIndex:henan.show}"></div>
             <!--<a style="position:absolute;top:320px; left:490px; z-index:10;" href="index.html">河南</a>-->
           </div>
