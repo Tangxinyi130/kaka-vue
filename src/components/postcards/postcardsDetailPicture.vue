@@ -5,9 +5,12 @@
         <img src="../../assets/picture.jpg" width="100%" height="400px" alt="">
       </div>
       <div class="col-md-4 text-center comment">
-        <button class="btn btn-default btn-lg">评论</button>
+        <router-link to=""><button class="btn btn-default btn-lg">评论</button></router-link>
         <button class="btn btn-default btn-lg">收藏</button>
       </div>
+    </div>
+    <div >
+      <postcards-comment></postcards-comment>
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -23,8 +26,12 @@
 </template>
 
 <script>
+  import postcardsComment from './postcardsComment'
     export default {
-        name: "postcardsDetailPicture"
+        name: "postcardsDetailPicture",
+        components:{
+           'postcards-comment':postcardsComment
+        }
     }
 </script>
 
