@@ -47,7 +47,7 @@
             _this.sendNum = result.data.data.userSendNum;
             _this.receiveNum = result.data.data.userReceiveNum;
             if (result.data.data.userSendDistance) {
-              _this.distance = result.data.data.userSendDistance;
+              _this.distance = result.data.data.userSendDistance.toFixed(1);
             }
             _this.joinTime = result.data.data.userJoinTime;
           }, function (err) {
