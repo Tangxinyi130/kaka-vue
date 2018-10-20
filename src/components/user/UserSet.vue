@@ -282,7 +282,7 @@
                 userAddress: _this.address,
                 userId: _this.userid,
               }).then(function (result) {
-                location.href = "/userset";
+                location.href = `/user/${this.$store.state.userId}/aboutme`;
             }, function (err) {
               console.log(err)
             })
