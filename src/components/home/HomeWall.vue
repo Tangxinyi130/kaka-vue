@@ -5,26 +5,47 @@
       <div class="wall-item-box">
         <div v-for="item in recentPic" class="wall-item">
           <a href="">
-            <img :src="item.cardPic" alt="" width="180px" height="135px">
+            <img :src="item.cardPic">
           </a>
-          <p>
+          <span class="text-cardid">
             {{item.cardId}}
-          </p>
-          <span>点赞</span>
-          <span>收藏</span>
+          </span>
+          <a href="">
+            <span class="glyphicon glyphicon-heart"></span>
+          </a>
+          <a href="">
+            <span>收藏</span>
+          </a>
         </div>
         <div v-for="item in recentPic" class="wall-item">
           <a href="">
             <img :src="item.cardPic">
           </a>
-          <p>
+          <span class="text-cardid">
             {{item.cardId}}
-          </p>
-          <span>点赞</span>
-          <span>收藏</span>
+          </span>
+          <a href="">
+            <span class="glyphicon glyphicon-heart"></span>
+          </a>
+          <a href="">
+            <span>收藏</span>
+          </a>
+        </div>
+        <div v-for="item in recentPic" class="wall-item">
+          <a href="">
+            <img :src="item.cardPic">
+          </a>
+          <span class="text-cardid">
+            {{item.cardId}}
+          </span>
+          <a href="">
+            <span class="glyphicon glyphicon-heart"></span>
+          </a>
+          <a href="">
+            <span>收藏</span>
+          </a>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -80,6 +101,7 @@
     height: 450px;
     margin: 0 auto;
     border: 1px solid coral;
+    overflow: hidden;
   }
   .wall-item{
     width: 250px;
@@ -101,16 +123,17 @@
       width:190px;
       height:98px;
     }
+
   }
   @media screen and (min-width: 480px) and (max-width: 767px){
     .wall-item{
-      width: 220px;
-      height: 170px;
+      width: 200px;
+      height: 150px;
       margin: 9px;
     }
     .wall-item img{
-      width:220px;
-      height:119px;
+      width:200px;
+      height:105px;
     }
   }
   @media screen and (min-width:768px) and (max-width:991px ){

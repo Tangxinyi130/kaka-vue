@@ -7,8 +7,8 @@
           <div v-for="item in rankingInfo" class="ranking-item">
             <span class="ranking-index">{{item.ranking}}</span>
             <img :src="item.userHeadPic" width="50" height="50" alt="">
-            <span class="ranking-username">{{item.userName}}</span>
-            <span class="ranking-bron">{{item.userCity}}</span>
+            <span>{{item.userNickname}}</span>
+            <span class="ranking-bron">{{item.userProvince}}</span>
             <span class="ranking-bron">{{item.receiverNum}}</span>
           </div>
         </div>
@@ -24,20 +24,15 @@
         name: "HomeRanking",
       data(){
         return {
-          rankingInfo:{
-            userId:0,
-            userName:'nihao',
-            userCity:'',
-            receiverNum:0,
-            ranking:0,
-          },
+          rankingInfo:{},
         }
       },
-      mounted(){
+      created(){
         let _this = this;
         this.$ajax.post(`http://localhost:3000/rankingSend`
         ).then(function(result){
             _this.rankingInfo =result.data.data[0];
+            console.log(_this.rankingInfo)
         },function (err) {
           console.log(err);
         })
