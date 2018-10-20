@@ -63,9 +63,8 @@
 
 <style scoped>
   #set {
-    height: 850px;
     background-color: #fafafa;
-    /*background-color: #ebf6df;*/
+    padding-bottom: 30px;
   }
   .top {
     height: 53px;

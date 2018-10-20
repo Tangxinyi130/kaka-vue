@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="about">
-          <app-detail></app-detail>
+          <user-detail></user-detail>
         </div>
 
     </div>
@@ -28,7 +28,7 @@
     export default {
         name: "UserAboutme",
         components: {
-          "app-detail": UserAboutmeDetail,
+          "user-detail": UserAboutmeDetail,
           "user-myaddress": UserMyAddress
         },
         data() {
@@ -46,7 +46,9 @@
           ).then(function (result) {
             _this.sendNum = result.data.data.userSendNum;
             _this.receiveNum = result.data.data.userReceiveNum;
-            _this.distance = result.data.data.userSendDistance;
+            if (result.data.data.userSendDistance) {
+              _this.distance = result.data.data.userSendDistance;
+            }
             _this.joinTime = result.data.data.userJoinTime;
           }, function (err) {
             console.log(err);

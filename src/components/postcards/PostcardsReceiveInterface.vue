@@ -68,14 +68,14 @@
         this.$store.state.cardId = $("#cardId").val();
         console.log(this.$store.state.cardId );
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/receive/doReceive/` + (this.$store.state.cardId)
+        this.$ajax.get(`http://localhost:3000/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
         ).then(function (result) {
           _this.receivecards = result.data.data.receivecards;
           if( _this.receivecards>0){
             _this.send = false;
             _this.$store.state.upload = true;
           }else {
-            alert("您的明信片可以不小心输入错误了，请仔细检查哦！");
+            alert("您的明信片可能不小心输入错误了，请仔细检查哦！");
           }
           console.log("成功");
           console.log("我是receivcards"+_this.receivecards);

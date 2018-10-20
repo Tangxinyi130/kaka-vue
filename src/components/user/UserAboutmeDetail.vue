@@ -9,9 +9,6 @@
         </div>
       </div>
       <div class="row">
-        <div class="line"></div>
-      </div>
-      <div class="row">
         <div class="detailBottom">
           <div v-if="!isChange">{{aboutme}}</div>
         </div>
