@@ -6,7 +6,7 @@
         <router-link :to="'/activitydetail/' + data.activityId">
           <div class="img_box col-md-4">
             <a href="">
-              <img width="100%" height="162" src="../../assets/picture.jpg">
+              <img width="100%" height="162" :src='data.goodsPic'>
             </a>
           </div>
           <div class="intro col-md-8">

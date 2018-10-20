@@ -2,7 +2,7 @@
   <div class="row cardsWall">
     <div class="col-xs-6 col-md-3" v-for="pic in allPic">
       <a :href="'/postcards/'+pic.cardId" class="thumbnail">
-        <img width="100%" src="../../assets/picture.jpg" alt="...">
+        <img width="100%" height="167px" :src="pic.cardPic" alt="...">
       </a>
     </div>
 
