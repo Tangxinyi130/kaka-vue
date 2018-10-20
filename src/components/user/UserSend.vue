@@ -16,7 +16,8 @@
             <td>{{data.userNickname}}</td>
             <td>{{data.cardReceiveRegion}}</td>
             <td>{{data.cardSendTime.substring(0, 10)}}</td>
-            <td>{{data.cardReceiveTime.substring(0, 10)}}</td>
+            <td v-if="data.cardReceiveTime">{{data.cardReceiveTime.substring(0, 10)}}</td>
+            <td v-if="!data.cardReceiveTime"></td>
             <td>
               <router-link :to="'/user/' + id + '/send/' + data.cardId" v-if="data.cardPic">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
