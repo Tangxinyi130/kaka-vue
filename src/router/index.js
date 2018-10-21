@@ -19,9 +19,10 @@ import ActivityAllList from "@/components/activity/ActivityAllList.vue"
 
 import Login from "@/components/login/Login.vue"
 import Register from "@/components/register/Register.vue"
-import RegisterNumber from "@/components/register/RegisterNumber.vue"
-import RegisterPassword from "@/components/register/RegisterPassword.vue"
-import RegisterSuccess from "@/components/register/RegisterSuccess.vue"
+import newRegister from "@/components/register/newRegister.vue"
+// import RegisterNumber from "@/components/register/RegisterNumber.vue"
+// import RegisterPassword from "@/components/register/RegisterPassword.vue"
+// import RegisterSuccess from "@/components/register/RegisterSuccess.vue"
 import User from "@/components/user/User.vue"
 
 import UserPersonal from "@/components/user/UserPersonal.vue"
@@ -29,7 +30,11 @@ import UserAboutme from "@/components/user/UserAboutme.vue"
 import UserSend from "@/components/user/UserSend.vue"
 import UserReceive from "@/components/user/UserReceive.vue"
 import UserWall from "@/components/user/UserWall.vue"
-import UserWallPic from "@/components/user/UserWallPic.vue"
+
+import UserWallSend from "@/components/user/UserWallSend.vue"
+import UserWallReceive from "@/components/user/UserWallReceive.vue"
+import UserWallCollection from "@/components/user/UserWallCollection.vue"
+
 import UserMap from "@/components/user/UserMap.vue"
 import UserPic from "@/components/user/UserPic.vue"
 import UserMyActivity from "@/components/user/UserMyactivity.vue"
@@ -72,7 +77,7 @@ export default new Router({
         ]},
     {path: "/login", component: Login},
     {path: "/register", component: Register},
-
+    {path: "/newregister", component:newRegister},
 
     // {path: "/login", component: Login},
     // {path: "/register", component: Register},
@@ -94,9 +99,9 @@ export default new Router({
           ]
         },
         {path: ":id/wall", component: UserWall, children: [
-            {path: "send", component: UserWallPic},
-            {path: "receive", component: UserWallPic},
-            {path: "collection", component: UserWallPic}
+            {path: "send", component: UserWallSend},
+            {path: "receive", component: UserWallReceive},
+            {path: "collection", component: UserWallCollection}
           ]
         },
         {path: ":id/map", component: UserMap},

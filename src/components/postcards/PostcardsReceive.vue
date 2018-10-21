@@ -17,7 +17,6 @@
         components: {
         "app-postcardsreceiveinterface":PostcardsReceiveInterface,
       },
-
     }
 </script>
 
