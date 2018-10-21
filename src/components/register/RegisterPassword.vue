@@ -1,5 +1,4 @@
 <template>
-
     <div class="container" style=" height: 500px;background-color:lightgoldenrodyellow" v-if="$store.state.setPassword">
       <div class="row" style="height:447px;">
         <div class="container col-sm-10 col-sm-offset-1"style="height:380px;background-color:#fafafa;margin-top:30px;">

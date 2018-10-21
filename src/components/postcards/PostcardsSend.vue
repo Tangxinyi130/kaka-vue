@@ -1,22 +1,17 @@
 <template>
-  <div>
- <app-postcardssendannouncements></app-postcardssendannouncements>
-  </div>
-
+    <div>
+        <app-postcardssendannouncements></app-postcardssendannouncements>
+    </div>
 </template>
-
 <script>
-
   import PostcardsSendAnnouncements from "./PostcardsSendAnnouncements";
-
-    export default {
+      export default {
         name: "PostcardsSend",
-      components: {
+        components: {
         "app-postcardssendannouncements":PostcardsSendAnnouncements,
       },
     }
 </script>
-
 <style scoped>
 
 </style>

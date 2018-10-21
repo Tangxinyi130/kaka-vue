@@ -21,8 +21,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">明信片 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <router-link tag="li" role="presentation" to="/postcardssend"><a class="text-color">发送</a></router-link>
-                  <router-link tag="li" role="presentation" to="/postcardsreceive"><a class="text-color">收到</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardssend"@click.native="change" ><a class="text-color">发送</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardsreceive"@click.native="changeReceive" ><a class="text-color">收到</a></router-link>
                 </ul>
               </li>
               <router-link tag="li" active-class="active" role="presentation" to="/wall"><a class="text-color">展示墙</a></router-link>
@@ -31,7 +31,7 @@
 
             <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
               <router-link tag="li" active-class="active" role="presentation" to="/login"><a class="text-color">登录</a></router-link>
-              <router-link tag="li" active-class="active" role="presentation" to="/register"><a class="text-color">注册</a></router-link>
+              <router-link tag="li" active-class="active" role="presentation" to="/newregister"><a class="text-color">注册</a></router-link>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" v-if="isLogin">
@@ -66,6 +66,16 @@
         methods: {
           logOff: function () {
             localStorage.clear();
+          },
+          change:function () {
+            this.$store.state.postSendAnn=true;
+            this.$store.state.postSend=false;
+            console.log("我是header时候的pa"+this.$store.state.postSendAnn)
+            this.$router.replace({path: "/postcardssend"})
+          },
+          changeReceive:function () {
+            this.$store.state.send=true;
+            this.$store.state.upload=false;
           }
         }
     }
