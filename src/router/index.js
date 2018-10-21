@@ -30,7 +30,11 @@ import UserAboutme from "@/components/user/UserAboutme.vue"
 import UserSend from "@/components/user/UserSend.vue"
 import UserReceive from "@/components/user/UserReceive.vue"
 import UserWall from "@/components/user/UserWall.vue"
-import UserWallPic from "@/components/user/UserWallPic.vue"
+
+import UserWallSend from "@/components/user/UserWallSend.vue"
+import UserWallReceive from "@/components/user/UserWallReceive.vue"
+import UserWallCollection from "@/components/user/UserWallCollection.vue"
+
 import UserMap from "@/components/user/UserMap.vue"
 import UserPic from "@/components/user/UserPic.vue"
 import UserMyActivity from "@/components/user/UserMyactivity.vue"
@@ -96,9 +100,9 @@ export default new Router({
           ]
         },
         {path: ":id/wall", component: UserWall, children: [
-            {path: "send", component: UserWallPic},
-            {path: "receive", component: UserWallPic},
-            {path: "collection", component: UserWallPic}
+            {path: "send", component: UserWallSend},
+            {path: "receive", component: UserWallReceive},
+            {path: "collection", component: UserWallCollection}
           ]
         },
         {path: ":id/map", component: UserMap},

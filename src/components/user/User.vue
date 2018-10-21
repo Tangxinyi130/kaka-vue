@@ -23,7 +23,7 @@
               </router-link>
             </div>
             <div class="col-sm-2">
-              <router-link role="presentation" :to="'/user/' + id + '/wall'">
+              <router-link role="presentation" :to="'/user/' + id + '/wall/receive'">
                 <button class="btn wall">我的明信片墙</button>
               </router-link>
             </div>

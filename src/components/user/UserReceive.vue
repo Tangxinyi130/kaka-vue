@@ -24,7 +24,6 @@
               <!--<div v-if="!data.cardPic" @click="upPic(data.cardId)" class="point">-->
                 <!--<img src="../../assets/images/usercenter/upload4.png" alt="">-->
               <!--</div>-->
-
             </td>
           </tr>
         </table>
