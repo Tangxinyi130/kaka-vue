@@ -1,11 +1,11 @@
 <template>
     <div class="container">
       <div class="row" v-if="!isLogin">
-        <div class="col-xs-12 col-sm-12 col-md-8" style="background-color: lightblue">
+        <div class="col-xs-12 col-sm-12 col-md-8">
           <app-homesynopsis></app-homesynopsis>
         </div>
         <div class="hidden-xs hidden-sm col-md-4">
-          <div class="login" style="background-color: salmon">
+          <div class="login">
             <app-homelogin></app-homelogin>
           </div>
         </div>
@@ -30,15 +30,15 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-4" style="background-color: lightcoral">
+        <div class="col-sm-4" >
           <app-homeinformation></app-homeinformation>
         </div>
-        <div class="col-sm-8" style="background-color: lightblue">
+        <div class="col-sm-8">
           <app-homeactivity></app-homeactivity>
         </div>
       </div>
 
-      <div class="row" style="background-color: lightgoldenrodyellow">
+      <div class="row" >
         <app-homewall></app-homewall>
       </div>
 
