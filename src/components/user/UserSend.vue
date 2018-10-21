@@ -19,7 +19,7 @@
             <td v-if="data.cardReceiveTime">{{data.cardReceiveTime.substring(0, 10)}}</td>
             <td v-if="!data.cardReceiveTime"></td>
             <td>
-              <div v-if="data.cardPic" @click="showThis(data.cardId)">
+              <div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
               </div>
               <!--<router-link :to="'/user/' + id + '/send/' + data.cardId">-->
@@ -146,5 +146,8 @@
   }
   table .first_tr {
     background-color: #528970;
+  }
+  .point {
+    cursor: pointer;
   }
 </style>
