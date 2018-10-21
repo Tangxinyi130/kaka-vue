@@ -56,11 +56,10 @@ export default new Router({
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
 
     {path: "/wall", component: Wall,children:[
-        // {path:"",component:WallPicture},
+        {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
         {path:"walls/:city",component:WallPictureList}
       ]},
-
 
     {path: "/activity", component: Activity,children:[
         {path: "", component: ActivityAllList},

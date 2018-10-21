@@ -11,7 +11,7 @@
     <!--<ul v-show="nextPage" class="li-page" v-tap="{methods: goNextPage}">下一页</ul>-->
   <!--</div>-->
   <div>
-    <button v-for="i in totalPage"><a :href="'/wall/'+i">{{i}}</a></button>
+    <button v-for="i in totalPage"><router-link :to="'/wall/'+i">{{i}}</router-link></button>
   </div>
 </template>
 
