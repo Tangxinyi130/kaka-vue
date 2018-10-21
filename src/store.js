@@ -23,7 +23,8 @@ export default new Vuex.Store({
     success:false,
     upload:false,
     cardId:'',
-    city:''
+    city:'',
+    offset:0
   },
   getters: {
     isLogin(state) {

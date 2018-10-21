@@ -14,7 +14,7 @@
       <!--<span class="send" @click=send()>选择表情</span>-->
       <span class="send btn btn-default " @click=send()>发送</span>
       <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
-      <div id="face" style="width: 300px;height: 195px;" @click=choice_face($event) v-if="flag"></div>
+      <div id="face" style="width: 300px;height: 192px;" @click=choice_face($event) v-if="flag"></div>
     </div>
   </div>
 </template>
@@ -35,8 +35,8 @@
         // if (this.isClick) {
         //   this.flag = false;
         // } else {
-          for(var i=1;i<=53;i++){      //根据表情文件数量决定循环次数，这里为75个表情
-            $("div#face").append(`<img src="/static/eoim/${i}.png"  width="32px" height="32px" >`);
+          for(var i=1;i<=54;i++){      //根据表情文件数量决定循环次数，这里为75个表情
+            $("div#face").append(`<img src="/static/eoim/${i}.png" class="eoimPic" width="32px" height="32px" >`);
 
           }
           this.flag = true;

@@ -11,6 +11,8 @@ import  PostcardsReceiveUpload from "@/components/postcards/PostcardsReceiveUplo
 import PostcardsReceive from "@/components/postcards/PostcardsReceive.vue"
 
 import Wall from "@/components/wall/Wall.vue"
+import WallPicture from "@/components/wall/Wallpicture.vue"
+import WallPictureList from "@/components/wall/WallPictureList.vue"
 
 import Activity from "@/components/activity/Activity.vue"
 import ActivityAllList from "@/components/activity/ActivityAllList.vue"
@@ -53,7 +55,13 @@ export default new Router({
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
 
-    {path: "/wall", component: Wall},
+    {path: "/wall", component: Wall,children:[
+        // {path:"",component:WallPicture},
+        {path:":page",component:WallPictureList},
+        {path:"walls/:city",component:WallPictureList}
+      ]},
+
+
     {path: "/activity", component: Activity,children:[
         {path: "", component: ActivityAllList},
         {path:':year/:month',component:ActivityAllList}
