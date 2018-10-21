@@ -86,7 +86,7 @@
     methods: {
       submit: function () {
         this.$store.state.cardId = $("#cardId").val();
-        console.log(this.$store.state.cardId );
+        console.log("this.$store.state.cardId" + this.$store.state.cardId );
         let _this = this;
         this.$ajax.get(`http://localhost:3000/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
         ).then(function (result) {
@@ -277,9 +277,7 @@
             });
 
           });
-
-
-
+          
           console.log(this.a);
           console.log(this.b);
         }, 20)
