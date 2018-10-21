@@ -42,6 +42,7 @@ import UserSearchcard from "@/components/user/UserSearchcard.vue"
 import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
+import UserAttentionFans from "@/components/user/UserAttentionFans.vue"
 import ActivityDetail from "@/components/activity/ActivityDetail.vue"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
@@ -61,21 +62,20 @@ export default new Router({
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
 
     {path: "/wall", component: Wall,children:[
-        // {path:"",component:WallPicture},
+        {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
-        {path:"walls/:city",component:WallPictureList}
+        {path:"search/:city",component:WallPictureList}
       ]},
-
 
     {path: "/activity", component: Activity,children:[
         {path: "", component: ActivityAllList},
         {path:':year/:month',component:ActivityAllList}
       ]},
-    {path:'/activitydetail/:activityId',component:ActivityDetail
-    },
+    {path:'/activitydetail/:activityId',component:ActivityDetail},
     {path:'/activity/activityconfire',component:ActivityConfire,children:[
         {path:'activitysucess',component:ActivityPaySucess}
         ]},
+
     {path: "/login", component: Login},
     {path: "/register", component: Register},
     {path: "/newregister", component:newRegister},
@@ -114,7 +114,7 @@ export default new Router({
     {path: "/userset", component: UserSet},
     {path: "/attention/:id", component: UserAttention, children: [
         {path: "att", component: UserAttentionOthers},
-        {path: "fan", component: UserAttentionOthers}
+        {path: "fan", component: UserAttentionFans}
       ]
     },
   ]

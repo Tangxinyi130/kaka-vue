@@ -1,0 +1,110 @@
+<template>
+    <!--显示粉丝用户-->
+    <div class="row showOthers">
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="others" v-for="data in others">
+        <div class="row">
+          <div class="col-sm-3">
+            <img :src="data.userHeadPic" alt="" class="headPic othersHead">
+          </div>
+          <div class="col-sm-3 othersInfo">
+            <div>用户ID：{{data.userId}}</div>
+            <div>昵称：{{data.userNickname}}</div>
+            <div>性别：{{data.userSex}}</div>
+            <div>地区：{{data.userProvince}}  {{data.userCity}}</div>
+          </div>
+          <div class="col-sm-3 othersInfo">
+            <div>加入天数：{{data.joinTime}}</div>
+            <div>关注数：{{data.thisUserAttentionCount}}</div>
+            <div>粉丝数：{{data.thisUserFansCount}}</div>
+          </div>
+          <div class="col-sm-2 othersBtn">
+            <button v-if="data.isAttention == 0" class="btn">关注</button>
+            <button v-if="data.isAttention == 1" class="btn">取消关注</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+    export default {
+        name: "UserAttentionFans",
+      data() {
+        return {
+          id: this.$route.params.id,
+          user: {},
+          others: []
+        }
+      },
+      created() {
+        let _this = this;
+        this.$ajax.get(`http://localhost:3000/users/attention/myFans/${this.id}`
+        ).then(function (result) {
+          _this.others = result.data.data;
+        }, function (err) {
+          console.log(err);
+        });
+      }
+    }
+</script>
+
+<style scoped>
+  div {
+    color: #5E5E5E;;
+  }
+
+  #set {
+
+    padding-bottom: 30px;
+  }
+  .contant {
+    background-color: #fafafa;
+    padding-bottom: 30px;
+  }
+  .top {
+    height: 53px;
+    background-color: #528970;
+  }
+  .topTitle {
+    height: 53px;
+    line-height: 52px;
+    font-size: 18px;
+    color: white;
+    margin-left: 20px;
+  }
+  .headPic {
+    width: 122px;
+    height: 122px;
+    border-radius: 122px;
+    border: 1px solid #797979;
+  }
+  .row.head {
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .others {
+    border: 1px solid #797979;
+    border-radius: 3px;
+    height: 140px;
+    padding-top: 8px;
+    margin-bottom: 5px;
+  }
+  .othersHead {
+    margin-left: 20px;
+  }
+  .othersInfo {
+    padding-top: 10px;
+  }
+  .othersInfo div {
+    padding-bottom: 5px;
+  }
+  .othersBtn {
+    padding-top: 10px;
+  }
+  .showOthers {
+    margin-top: 20px;
+  }
+</style>
