@@ -22,8 +22,12 @@ export default new Vuex.Store({
     setPassword:false,
     success:false,
     upload:false,
+    send:true,
     cardId:'',
-    city:''
+    city:'',
+    postSend: false,
+    postSendAnn:true,
+
   },
   getters: {
     isLogin(state) {

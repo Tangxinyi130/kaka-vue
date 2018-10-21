@@ -17,9 +17,10 @@ import ActivityAllList from "@/components/activity/ActivityAllList.vue"
 
 import Login from "@/components/login/Login.vue"
 import Register from "@/components/register/Register.vue"
-import RegisterNumber from "@/components/register/RegisterNumber.vue"
-import RegisterPassword from "@/components/register/RegisterPassword.vue"
-import RegisterSuccess from "@/components/register/RegisterSuccess.vue"
+import newRegister from "@/components/register/newRegister.vue"
+// import RegisterNumber from "@/components/register/RegisterNumber.vue"
+// import RegisterPassword from "@/components/register/RegisterPassword.vue"
+// import RegisterSuccess from "@/components/register/RegisterSuccess.vue"
 import User from "@/components/user/User.vue"
 
 import UserPersonal from "@/components/user/UserPersonal.vue"
@@ -65,7 +66,7 @@ export default new Router({
         ]},
     {path: "/login", component: Login},
     {path: "/register", component: Register},
-
+    {path: "/newregister", component:newRegister},
 
     // {path: "/login", component: Login},
     // {path: "/register", component: Register},
