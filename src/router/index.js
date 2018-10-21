@@ -63,18 +63,18 @@ export default new Router({
     {path: "/wall", component: Wall,children:[
         {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
-        {path:"walls/:city",component:WallPictureList}
+        {path:"search/:city",component:WallPictureList}
       ]},
 
     {path: "/activity", component: Activity,children:[
         {path: "", component: ActivityAllList},
         {path:':year/:month',component:ActivityAllList}
       ]},
-    {path:'/activitydetail/:activityId',component:ActivityDetail
-    },
+    {path:'/activitydetail/:activityId',component:ActivityDetail},
     {path:'/activity/activityconfire',component:ActivityConfire,children:[
         {path:'activitysucess',component:ActivityPaySucess}
         ]},
+
     {path: "/login", component: Login},
     {path: "/register", component: Register},
     {path: "/newregister", component:newRegister},

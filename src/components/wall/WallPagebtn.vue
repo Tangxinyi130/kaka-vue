@@ -21,7 +21,7 @@
       data(){
           return {
             num:6,
-            limit:3
+            limit:9
           }
       },
       props:['sumCount'],

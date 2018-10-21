@@ -16,7 +16,8 @@
             return {
               allPic:{},
               page:1,
-              sumPage:0
+              sumPage:0,
+              city:''
             }
         },
         created(){
@@ -27,12 +28,23 @@
             }).then((res)=>{
               this.allPic=res.data.data;
             })
-          }else{
+          }else if(this.$route.params.page!=undefined){
+            console.log("类型"+this.$route.params.page)
             this.page=this.$route.params.page
             console.log(this.page)
             this.$ajax({
               method:'get',
               url: `http://localhost:3000/wall/walls/${this.page}`
+            }).then((res)=>{
+              this.allPic=res.data.data;
+              console.log(this.allPic)
+            })
+          }else{
+            this.city=this.$route.params.city
+            console.log('搜索城市:'+this.city)
+            this.$ajax({
+              method:'get',
+              url: `http://localhost:3000/wall/search/${this.city}`
             }).then((res)=>{
               this.allPic=res.data.data;
               console.log(this.allPic)
