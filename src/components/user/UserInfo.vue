@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-sm-offset-1 col-sm-2">
           <!--用户头像-->
-          <img :src="headpic" alt="" width="122px" height="122px">
+          <img :src="headpic" alt="">
         </div>
         <div class="col-sm-2">
           <!--用户简介-->

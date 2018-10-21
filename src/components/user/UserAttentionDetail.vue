@@ -1,10 +1,11 @@
 <template>
     <div>
-      <h3>关注和粉丝块id: {{id}}</h3>
+      <!--<h3>关注和粉丝块id: {{id}}</h3>-->
+      <!--<div>用户信息</div>-->
       <app-attention-info></app-attention-info>
-      <app-attention-search></app-attention-search>
+      <!--<app-attention-search></app-attention-search>-->
       <hr>
-      <router-view></router-view>
+
     </div>
 </template>
 
