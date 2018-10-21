@@ -29,9 +29,25 @@
   import postcardsComment from './postcardsComment'
     export default {
         name: "postcardsDetailPicture",
+      data(){
+          return {
+            cardId:this.$route.params.cardId,
+            cardComment:{}
+          }
+      },
         components:{
            'postcards-comment':postcardsComment
-        }
+        },
+      created(){
+        this.$ajax({
+          method:'get',
+          url:'http://localhost:3000/postcards/'+this.cardId
+        }).then((res)=>{
+          this.cardComment=res.data.data.cardComment[0]
+        })
+
+      }
+
     }
 </script>
 

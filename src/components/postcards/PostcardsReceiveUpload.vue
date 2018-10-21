@@ -7,8 +7,13 @@
       <form con-form >
         <div class="row" style="height: 30px"></div>
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-            <input type="file"/>
+          <div class="col-sm-6 col-sm-offset-3">
+            <input type="file"
+                   name="avatar"
+                   @change="changeImage($event)"
+                   accept="image/gif,image/jpeg,image/jpg,image/png"
+                   ref="avatarInput"/>
+            <input type="text" v-model="mydata" style="display: none">
           </div>
         </div>
         <div class="row" style="height: 30px"></div>
@@ -33,24 +38,55 @@
 </template>
 <script>
   export default {
-    methods: {
-      up:function () {
-        console.log(this.$store.state.cardId);
-        this.$ajax.get(`http://localhost:3000/receive/uploadPic/` + this.$store.state.cardId+"/上传图片"
-        ).then(function (result) {
-          console.log("图片上传成功")
-        }, function (err) {
-          console.log(err);
-        });
-        this.$router.replace({path:"/user"})
-      },
-      cancel:function () {
-        this.$router.replace({path: "/"})
+    name: "PostcardsReceiveUpload",
+    data(){
+      return {
+        upath:'',  //保存选中的文件
+        mydata: "",
+        nodejsPath:"",
       }
     },
-    name: "PostcardsReceiveUpload"
+    created() {
+      this.mydata = this.$store.state.cardId;
+    },
+    methods: {
+      up:function () {
+        setTimeout(() => {
+          let _this = this;
+          // console.log(this.upath);
+          // console.log("this.mydata:  " + this.mydata)
+          var zipFormData = new FormData();
+          //依次添加多个文件
+          for(var i = 0 ; i< this.upath.length ; i++){
+            zipFormData.append('filename', this.upath[i]);
+          }
+          //添加其他的表单元素
+          // zipFormData.append('mydata',this.mydata)
+          zipFormData.append("mydata", this.$store.state.cardId);
+          let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+          axios.post('http://localhost:3000/receive/uploadfile', zipFormData,config
+          ).then(function (response) {
+            // console.log(response);
+            // console.log(response.data);
+            // console.log(response.bodyText);
+            setTimeout(() => {
+              location.href = `/user/${_this.$store.state.userId}/aboutme`;
+            }, 20);
+          });
+        }, 1000);
+      },
+      cancel:function () {
+        location.href = "/";
+      },
+      //选中文件后，将文件保存到实例的变量中
+      changeImage(e) {
+        this.upath = e.target.files;
+      }
+    },
+
   }
 </script>
+
 <style scoped>
   .con{
     width: 300px;

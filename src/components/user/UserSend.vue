@@ -19,13 +19,24 @@
             <td v-if="data.cardReceiveTime">{{data.cardReceiveTime.substring(0, 10)}}</td>
             <td v-if="!data.cardReceiveTime"></td>
             <td>
-              <router-link :to="'/user/' + id + '/send/' + data.cardId" v-if="data.cardPic">
+              <div v-if="data.cardPic" @click="showThis(data.cardId)">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
-              </router-link>
+              </div>
+              <!--<router-link :to="'/user/' + id + '/send/' + data.cardId">-->
+                <!---->
+              <!--</router-link>-->
             </td>
           </tr>
         </table>
-        <router-view></router-view>
+
+        <div v-if="showPic">
+          <div class="fade"></div>
+          <div class="succ-pop">
+            <!--<h3>查看明信片图片id:{{postcardId}}</h3>-->
+            <img :src="postcardStr" alt="" id="show">
+            <button @click="showPic = !showPic">关闭</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -38,9 +49,26 @@
         data() {
           return {
             id: this.$route.params.id,
-            sendCard: []
+            sendCard: [],
+            showPic: false,
+            postcardStr: ""
           }
         },
+      methods: {
+        showThis(id) {
+          this.showPic = true;
+          this.postcardId = id;
+          let _this = this;
+          this.$ajax.get(`http://localhost:3000/users/showPic/${this.postcardId}`
+          ).then(function (result) {
+            _this.postcardStr = result.data.data.cardPic;
+          }, function (err) {
+            console.log(err);
+          });
+
+
+        }
+      },
         created() {
           // this.getSend();
             let _this = this;
@@ -62,19 +90,44 @@
 </script>
 
 <style scoped>
-  .top {
-    height: 32px;
-    line-height: 32px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-bottom: 2px solid #797979;
+  /*灰色遮罩层*/
+  .fade{
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.5);
+    /*background-color: #ccc;*/
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
   }
-  .topTitle {
-    font-size: 18px;
-    color: #5E5E5E;
-    font-weight: bold;
-    padding-left: 20px;
+  /*弹出层*/
+  .succ-pop{
+    width: 100%;
+    height: 100%;
+    /*background: #fff;*/
+    background:rgba(0, 0, 0, 0.3);
+    position: fixed;
+    text-align: center;
+    left: 0px;
+    top: 0px;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin-left: -200px;*/
+    /*margin-top: -200px;*/
+    z-index: 999;
+    border-radius: 5px;
   }
+  /*#show {*/
+    /*position: fixed;*/
+    /*margin-top: 200px;*/
+  /*}*/
+
+  /*.succ-pop h3.title{*/
+    /*text-align: center;*/
+    /*font-size: 22px;*/
+    /*color: #ce002c;*/
+  /*}*/
   .userSend {
     margin-top: -20px;
   }
