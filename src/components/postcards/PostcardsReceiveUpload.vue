@@ -64,15 +64,20 @@
           // zipFormData.append('mydata',this.mydata)
           zipFormData.append("mydata", this.$store.state.cardId);
           let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-          axios.post('http://localhost:3000/receive/uploadfile', zipFormData,config
+          this.$ajax.post('http://localhost:3000/receive/uploadfile', zipFormData,config
           ).then(function (response) {
-            // console.log(response);
-            // console.log(response.data);
-            // console.log(response.bodyText);
-            setTimeout(() => {
-              location.href = `/user/${_this.$store.state.userId}/aboutme`;
-            }, 20);
+            console.log(response);
+            console.log(response.data);
+            console.log(response.bodyText);
           });
+          setTimeout(() => {
+            if (this.upath) {
+              location.href = `/user/${_this.$store.state.userId}/aboutme`;
+            } else {
+              alert("请选择图片!");
+            }
+
+          }, 20);
         }, 1000);
       },
       cancel:function () {
