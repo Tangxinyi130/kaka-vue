@@ -4,6 +4,11 @@
       <div class="ranking-nav"><span class="ranking-nav-text">排行榜</span></div>
       <div class="ranking-info">
         <div class="ranking-info-box">
+          <div class="ranking-item">
+            <span>排行名</span>
+            <span>用户信息</span>
+            <span>收到总量</span>
+          </div>
           <div v-for="item in rankingInfo" class="ranking-item">
             <span class="ranking-index">{{item.ranking}}</span>
             <img :src="item.userHeadPic" width="50" height="50" alt="">

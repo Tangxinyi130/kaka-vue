@@ -32,8 +32,6 @@
           _this.distanceTotal = info.distanceTotal[0].distanceTotal;
           _this.usersCount = info.usersNum[0].usersCount;
           _this.cityTotal = info.cityTotal[0].cityTotal;
-
-
         },function (err) {
           console.log(err);
         })

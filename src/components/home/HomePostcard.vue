@@ -32,7 +32,7 @@
 
 <script>
     export default {
-        name: "HomePostcard",
+      name: "HomePostcard",
       data(){
           return{
             transmitsNum:5,
