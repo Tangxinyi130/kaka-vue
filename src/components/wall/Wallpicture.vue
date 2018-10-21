@@ -1,9 +1,9 @@
 <template>
   <div class="row cardsWall">
     <div class="col-xs-6 col-md-3" v-for="pic in allPic">
-      <a :href="'/postcards/'+pic.cardId" class="thumbnail">
-        <img width="100%" src="../../assets/picture.jpg" alt="...">
-      </a>
+      <router-link :to="'/postcards/'+pic.cardId" class="thumbnail">
+        <img width="100%" height="167px" :src="pic.cardPic" alt="...">
+      </router-link>
     </div>
 
   </div>
@@ -14,18 +14,30 @@
         name: "Wallpicture",
         data(){
             return {
-              allPic:{}
+              allPic:{},
+              page:1,
+              sumPage:0
             }
         },
         created(){
+          if(JSON.stringify(this.$route.params)==='{}'){
             this.$ajax({
               method:'get',
-              url: 'http://localhost:3000/wall'
+              url: "http://localhost:3000/wall/walls/1"
             }).then((res)=>{
-                console.log(res.data.data.allPicture)
-              this.allPic=res.data.data.allPicture;
-                console.log(this.allPic)
+              this.allPic=res.data.data;
             })
+          }else{
+            this.page=this.$route.params.page
+            console.log(this.page)
+            this.$ajax({
+              method:'get',
+              url: `http://localhost:3000/wall/walls/${this.page}`
+            }).then((res)=>{
+              this.allPic=res.data.data;
+              console.log(this.allPic)
+            })
+          }
         }
     }
 </script>

@@ -8,7 +8,7 @@
   import  RegisterAgreement from "./RegisterAgreement";
     export default {
         name: "Register",
-      components: {
+        components: {
         "app-registeragreement":RegisterAgreement,
       },
     }

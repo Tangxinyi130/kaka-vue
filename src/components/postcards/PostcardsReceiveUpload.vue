@@ -1,13 +1,13 @@
 <template>
   <div style="width: 300px;height: 300px;background-color:lightgrey" v-if="$store.state.upload">
-    <div class="container" style="width: 300px;height: 300px;">
-      <div class="row" style="height:53px;background-color:#528970">
-        <div class="col-sm-12" style="width:200px;height:53px;line-height: 52px;font-size: 18px;color: white">上传图片</div>
+    <div class="container con">
+      <div class="row con-nav" >
+        <div class="col-sm-12 con-nav-body">上传图片</div>
       </div>
-      <form>
+      <form con-form >
         <div class="row" style="height: 30px"></div>
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-1">
+          <div class="col-sm-6 col-sm-offset-3">
             <input type="file"
                    name="avatar"
                    @change="changeImage($event)"
@@ -18,16 +18,16 @@
         </div>
         <div class="row" style="height: 30px"></div>
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-1">
-            <button type="button" class="btn btn-primary btn-lg" style="width:180px;" @click="up">
+          <div class="col-sm-6 col-sm-offset-3">
+              <button type="button" class="btn btn-lg con-form-btn" @click="up">
               <span style="color: white">确定上传</span>
             </button>
           </div>
         </div>
         <div class="row" style="height: 30px"></div>
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-1">
-            <button type="button" class="btn btn-primary btn-lg" style="width:180px;" @click="cancel">
+          <div class="col-sm-6 col-sm-offset-3">
+            <button type="button" class="btn  btn-lg con-form-btn" @click="cancel">
               <span style="color: white">取消上传</span>
             </button>
           </div>
@@ -93,5 +93,24 @@
 </script>
 
 <style scoped>
-
+  .con{
+    width: 300px;
+    height: 300px;
+    background-color:lavender;
+  }
+  .con-nav{
+    height:53px;
+    background-color:#528970
+  }
+  .con-nav-body{
+    width:200px;
+    height:53px;
+    line-height:52px;
+    font-size:18px;
+    color: white;
+  }
+  .con-form-btn{
+    width:140px;
+    background-color:lightskyblue;
+  }
 </style>
