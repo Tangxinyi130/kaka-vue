@@ -15,7 +15,7 @@
                 {{data.activityName}}
               </a>
             </h3>
-            <p>{{data.activityDetails}}</p>
+            <p style="height: 100px">{{data.activityDetails}}</p>
             <div class="iconCon">
 							<span>
                 <i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
