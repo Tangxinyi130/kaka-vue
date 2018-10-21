@@ -1,6 +1,7 @@
 <template>
     <div>
-      <h3>查看明信片图片id:{{postcardId}}</h3>
+
+
     </div>
 </template>
 
@@ -11,10 +12,16 @@
           return {
             postcardId: this.$route.params.postcardId
           }
-       }
+       },
+      methods: {
+          back() {
+
+          }
+      }
     }
 </script>
 
 <style scoped>
+
 
 </style>

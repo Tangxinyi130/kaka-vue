@@ -44,7 +44,13 @@
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="twoPeopleMap">
-              地图
+              <div id="container"
+                   style="position: absolute;
+                    width: 430px;
+                    height: 350px;
+                    border: 1px solid gray;
+                    overflow:hidden;">
+              </div>
             </div>
         </div>
       </div>
@@ -57,7 +63,21 @@
         data(){
           return {
             cardId:this.$route.params.cardId,
-            cardsInformation:{}
+            cardsInformation:{},
+            a: {
+              title: "",
+              lng: 0,
+              lat: 0,
+              userId: "",
+              address: "",
+            },
+            b: {
+              title: "",
+              lng: 0,
+              lat: 0,
+              userId: "",
+              address: ""
+            },
           }
         },
       // watch:{
@@ -71,7 +91,96 @@
             url:'http://localhost:3000/postcards/'+this.cardId
           }).then((res)=>{
             this.cardsInformation=res.data.data.cardInformation[0]
-          })
+          });
+
+
+        },
+        mounted() {
+          setTimeout(() => {
+            setTimeout(() => {
+              let _this = this;
+              //获取两地的地址
+              this.$ajax.get(`http://localhost:3000/receive/getAddress/${this.cardsInformation.userId}/${this.cardsInformation.userId1}`
+              ).then(function (result) {
+                _this.a.address = result.data.data[0].userAddress;
+                _this.b.address = result.data.data[1].userAddress;
+                console.log("a的地址：" + _this.a.address);
+                console.log("b的地址：" + _this.b.address);
+              }, function (err) {
+                console.log(err);
+              });
+            }, 20);
+            setTimeout(() => {
+              //地图
+              let _this = this;
+              this.SearchByStationName(_this.a.address, async function (data) {
+                var point1;
+                point1 = data;
+                console.log(data.title + ": "+ data.point.lng + ", " + data.point.lat);
+                setTimeout(() => {
+                  _this.a.title = data.title;
+                  _this.a.lng = data.point.lng;
+                  _this.a.lat = data.point.lat;
+                }, 20);
+
+                // //获取b的经纬度
+                _this.SearchByStationName(_this.b.address, async function (data) {
+                  var point2;
+                  point2 = data;
+                  console.log(data.title + ": " + data.point.lng + ", " + data.point.lat);
+                  setTimeout(() => {
+                    _this.b.title = data.title;
+                    _this.b.lng = data.point.lng;
+                    _this.b.lat = data.point.lat;
+                  }, 20);
+                  setTimeout(() => {
+                    var map = new BMap.Map("container",{minZoom:4,maxZoom:13}); // 创建Map实例,设置地图允许的最小/大级别
+                    map.centerAndZoom(new BMap.Point(116.404, 39.915), 10);
+                    map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+                    // map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+                    map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+                    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+                    map.centerAndZoom(new BMap.Point(104.403119, 38.028658), 3);
+                    point1 = new BMap.Point(_this.a.lng, _this.a.lat);
+                    point2 = new BMap.Point(_this.b.lng, _this.b.lat);
+                    var points = [point1,point2];
+                    var curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5}); //创建弧线对象
+                    map.addOverlay(curve); //添加到地图中
+                    curve.enableEditing(); //开启编辑功能
+                  }, 1000)
+
+                })
+
+              })
+            }, 1000)
+          }, 20)
+        },
+        methods: {
+          SearchByStationName(keyword, callback) {
+            var map = new BMap.Map("container");
+            var map = new BMap.Map("container",{minZoom:4,maxZoom:13}); // 创建Map实例,设置地图允许的最小/大级别
+
+            map.centerAndZoom(new BMap.Point(116.404, 39.915), 10);
+            map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+            // map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+            map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+            map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+            // map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+            var localSearch = new BMap.LocalSearch(map);
+            localSearch.enableAutoViewport(); //允许自动调节窗体大小
+            localSearch.setSearchCompleteCallback(function (searchResult) {
+              let poi = searchResult.getPoi(0);
+              map.centerAndZoom(poi.point, 13);
+              var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+              map.addOverlay(marker);
+              callback(poi);
+            });
+            localSearch.search(keyword);
+          },
+
 
         }
     }
@@ -106,7 +215,7 @@ img{
   .twoPeopleMap{
     width: 100%;
     height: 400px;
-    background-color: blue;
+    /*background-color: blue;*/
   }
 
 </style>

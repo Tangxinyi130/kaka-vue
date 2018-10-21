@@ -21,7 +21,7 @@
               <router-link :to="'/user/' + id + '/receive/' + data.cardId" v-if="data.cardPic">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
               </router-link>
-              <router-link :to="'/user/' + id + '/receive/' + data.cardId" v-if="!data.cardPic">
+              <router-link :to="'/user/' + id + '/receive/' + data.cardId" v-if="!data.cardPic && id == userId">
                 <img src="../../assets/images/usercenter/upload4.png" alt="">
               </router-link>
             </td>
@@ -34,8 +34,13 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
     export default {
         name: "UserReceive",
+      computed: mapGetters([
+        "isLogin",
+        "userId"
+      ]),
       data() {
         return {
           id: this.$route.params.id,
