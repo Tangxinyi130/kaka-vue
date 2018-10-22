@@ -7,7 +7,7 @@
       <div class="row con-body">
         <div class="container col-sm-8 col-sm-offset-2 con-body-con text-center">
           <div style="height: 50px"></div>
-          <div class="row col-sm-5 " style="border: 1px solid #ccc;height:300px;">
+          <div class="row col-sm-5 col-sm-offset-6 col-list">
               <div class="row">
                 <div style="height: 50px"></div>
                 <form>
@@ -110,8 +110,14 @@
     margin-top:30px;
     height:400px;
     background-color:#fafafa;
-    border: 1px solid red;
-    /*background-image: url("../../assets/p.jpg");*/
+    /*border: 1px solid red;*/
+    background-image: url("../../assets/reg2.jpg");
+  }
+  .col-list{
+    border: 1px solid #ccc;
+    height:300px;
+    background-color: lavender;
+    opacity: 0.7;
   }
 
 </style>
