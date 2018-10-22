@@ -39,15 +39,28 @@
             }
         },
         created(){
+          if(JSON.stringify(this.$route.params)==='{}'){
+            this.$ajax({
+              method: 'get',
+              url: 'http://localhost:3000/activity'
+            }).then(res => {
+              // for(let i=0;i<res.data.data.allData.length;i++){
+              this.activityData=res.data.data.allData;
+              // }
+              console.log("this.activityData"+this.activityData[0].activityId)
+            })
+          }else{
+            this.year=this.$route.params.year
+            this.month=this.$route.params.month
           this.$ajax({
             method: 'get',
-            url: 'http://localhost:3000/activity'
+            url: 'http://localhost:3000/activity/'+this.year+"/"+this.month
           }).then(res => {
             // for(let i=0;i<res.data.data.allData.length;i++){
-              this.activityData=res.data.data.allData;
+              this.activityData=res.data.data;
             // }
-            console.log("this.activityData"+this.activityData[0].activityId)
           })
+        }
         }
     }
 </script>

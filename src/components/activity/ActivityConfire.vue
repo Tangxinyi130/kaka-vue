@@ -13,7 +13,7 @@
         商品金额和支付方式
       </div>
       <div class="row text-right">
-        <router-link to="/activity/activityconfire/activitysucess"><button>确认支付</button></router-link>
+        <router-link to="/activity/activitysucess"><button>确认支付</button></router-link>
         <router-view></router-view>
       </div>
 

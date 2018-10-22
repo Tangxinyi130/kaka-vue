@@ -54,6 +54,7 @@
     margin-top:30px;
     height:400px;
     background-color:#fafafa;
+    /*opacity: 0.5;*/
     /*background-image: url("../../assets/p12.jpg");*/
   }
   .body-con-con-row{
