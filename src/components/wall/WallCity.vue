@@ -1,7 +1,7 @@
 <template>
   <div class="col-xs-12 col-md-12 allCity">
       <ul>
-        <li v-for="city in allCityName">{{city}}</li>
+        <li v-for="city in allCityName" @click="upshow"><a :href="'/wall/search/'+city">{{city}}</a></li>
       </ul>
     </div>
 </template>
@@ -25,7 +25,12 @@
               this.allCityName.push(res.data.data.allCity[i].regionName);
             }
           })
-        }
+        },
+      methods:{
+        upshow(){
+            this.$emit("up-show",false)
+          }
+      }
     }
 </script>
 

@@ -4,7 +4,7 @@
       <div class="col-xs-2 col-md-2">
         <div class="glyphicon glyphicon-align-justify wallpublic" @click="flag=!flag"></div>
         <!--<span v-if="flag">所有城市</span>-->
-        <wall-city v-if="flag"></wall-city>
+        <wall-city v-if="flag" :up-show="upflag"></wall-city>
       </div>
       <div class="col-xs-8 col-md-7 text-center">
         <div class="wllTopic wallpublic">展示墙</div>
@@ -40,6 +40,7 @@
           searchResult:false
         }
       },
+
       created(){
           this.$ajax({
             method:'get',
@@ -50,6 +51,10 @@
           })
       },
       methods:{
+        upflag(data){
+          this.flag=data
+          console.log("我是flag:"+this.flag)
+        },
         mysearch(){
           this.result=[];
           console.log('我是搜索')

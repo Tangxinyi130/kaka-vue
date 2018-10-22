@@ -2,11 +2,11 @@
   <div>
     <div class="row">
       <div class="col-md-8">
-        <img src="../../assets/picture.jpg" width="100%" height="400px" alt="">
+        <img :src="postcardPic.cardPic" width="100%"  alt="">
       </div>
       <div class="col-md-4 text-center comment">
-        <router-link to=""><button class="btn btn-default btn-lg">评论</button></router-link>
-        <button class="btn btn-default btn-lg">收藏</button>
+        <span class="btn btn-default glyphicon glyphicon-thumbs-up" style="font-size: 30px"></span>
+        <span class="btn btn-default glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
       </div>
     </div>
     <div >
@@ -15,9 +15,10 @@
     <div class="row">
       <div class="col-md-12">
         <h3>全部评论：</h3>
-        <dl>
-          <dt>某个小可爱：</dt>
-          <dd>哇，好漂亮的明信片哇，好漂亮的明信片哇，好漂亮的明信片哇，好漂亮的明信片哇，好漂亮的明信片</dd>
+        <dl v-for="content in cardComment">
+          <dt>{{content.commentUserId}}：</dt>
+          <dd v-html="content.commentContent"><p contenteditable="true" id="input_conta">{{content.commentContent}}</p></dd>
+          <dd>{{content.commentTime}}</dd>
         </dl>
       </div>
     </div>
@@ -32,7 +33,8 @@
       data(){
           return {
             cardId:this.$route.params.cardId,
-            cardComment:{}
+            cardComment:{},
+            postcardPic:{}
           }
       },
         components:{
@@ -43,8 +45,20 @@
           method:'get',
           url:'http://localhost:3000/postcards/'+this.cardId
         }).then((res)=>{
-          this.cardComment=res.data.data.cardComment[0]
+          this.postcardPic=res.data.data.cardInformation[0]
+          console.log(this.postcardPic)
+          this.cardComment=res.data.data.cardComment
+          console.log(this.cardComment.length)
+          for(let i=0;i<this.cardComment.length;i++){
+            this.$ajax({
+              method:'get',
+              url:'http://localhost:3000/users/'+this.cardComment[i].commentUserId
+            }).then((res)=>{
+              this.cardComment[i].commentUserId=res.data.data.userName
+            })
+          }
         })
+
 
       }
 

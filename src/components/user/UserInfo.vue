@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-sm-offset-1 col-sm-2">
           <!--用户头像-->
-          <img :src="headpic" alt="" width="122px" height="122px">
+          <img :src="headpic" alt="">
         </div>
         <div class="col-sm-2">
           <!--用户简介-->
@@ -14,9 +14,9 @@
           <br>
         </div>
         <div class="col-sm-6">
-          <router-link :to="'/attention/' + id"><a class="text">我的关注：{{attentionnum}}</a></router-link>
+          <router-link :to="'/attention/' + id + '/att'"><a class="text">我的关注：{{attentionnum}}</a></router-link>
           <br>
-          <router-link :to="'/attention/' + id"><a class="text">我的粉丝：{{fansnum}}</a></router-link>
+          <router-link :to="'/attention/' + id + '/fan'"><a class="text">我的粉丝：{{fansnum}}</a></router-link>
         </div>
       </div>
     </div>

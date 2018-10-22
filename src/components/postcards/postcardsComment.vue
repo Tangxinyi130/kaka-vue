@@ -88,7 +88,7 @@
   }
   #input_conta{
     margin:0;
-    min-height: 200px;
+    min-height: 150px;
     text-align:left;
   }
   .icon-emoji{

@@ -9,7 +9,7 @@
             <li class="am-gallery-item" >
                 <div class="img_box col-md-3">
                   <a href="">
-                    <img src="../../assets/picture.jpg">
+                    <img :src="cardsInformation.userHeadPic">
                   </a>
                 </div>
                 <div class="intro col-md-3">
@@ -26,7 +26,7 @@
             <li class="am-gallery-item ">
               <div class="img_box col-md-3">
                 <a href="">
-                  <img src="../../assets/picture.jpg">
+                  <img :src="cardsInformation.userHeadPic1">
                 </a>
               </div>
               <div class="intro col-md-3">
@@ -41,6 +41,12 @@
 
             </li>
           </ul>
+          <div style="width: 90%;height: 200px;background-color: white;margin-top:130px;margin-left:20px;border: 4px dashed ghostwhite">
+            <h3>相关介绍</h3>
+            <p>发送：{{cardsInformation.userCity}} <span style="margin-left: 40px">接受：{{cardsInformation.userCuty1}}</span></p>
+            <p>两地相距：{{cardsInformation.cardDistance}}</p>
+            <p>天数：{{cardsInformation.DAY}}</p>
+          </div>
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="twoPeopleMap">
@@ -80,11 +86,6 @@
             },
           }
         },
-      // watch:{
-      //     '$router'(to,from){
-      //
-      //     }
-      // },
         created(){
           this.$ajax({
             method:'get',
