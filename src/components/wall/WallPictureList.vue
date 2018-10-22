@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center" style="height: 600px;background-color: antiquewhite">
+  <div class="container text-center" style="background-color: antiquewhite">
     <div>
       <wall-picture></wall-picture>
       <!--<router-view></router-view>-->
@@ -23,6 +23,7 @@
         'wall-picture':wallpicture,
         'Wall-pagebtn':WallPagebtn
       },
+
       created(){
         if(JSON.stringify(this.$route.params)==='{}'){
           this.$ajax({
@@ -43,6 +44,19 @@
             console.log(this.sumCount)
           })
         }
+      },
+      methods:{
+          getPic(){
+            this.city=this.$route.params.city
+            console.log('我是搜索的城市:'+this.city)
+            this.$ajax({
+              method:'get',
+              url: `http://localhost:3000/wall/search/${this.city}`
+            }).then((res)=>{
+              this.sumCount=res.data.data.length;
+              console.log(this.sumCount)
+            })
+          }
       }
     }
 </script>

@@ -3,19 +3,19 @@
     <div style="width: 740px; height: 240px; margin: 0 auto;position: absolute; top: 35px">
       <ul class="cont-list">
         <li class="am-gallery-item">
-          <router-link :to="'/activitydetail/' + activityData[0].activityId">
+          <router-link :to="'/activitydetail/' + activityData.activityId">
             <div class="img_box col-md-4">
               <a href="">
-                <img width="100%" height="162" :src='activityData[0].goodsPic'>
+                <img width="100%" height="162" :src='activityData.goodsPic'>
               </a>
             </div>
             <div class="intro col-md-8">
               <h3>
                 <a href="/">
-                  {{activityData[0].activityName}}
+                  {{activityData.activityName}}
                 </a>
               </h3>
-              <p style="height: 100px">{{activityData[0].activityDetails}}</p>
+              <p style="height: 100px">{{activityData.activityDetails}}</p>
               <div class="iconCon">
                 <span>
                   <i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
@@ -45,9 +45,8 @@
           url: 'http://localhost:3000/activity'
         }).then(res => {
           // for(let i=0;i<res.data.data.allData.length;i++){
-          this.activityData=res.data.data.allData;
+          this.activityData=res.data.data.allData[0];
           // }
-          console.log("this.activityData"+this.activityData[0].activityId)
         })
       }
     }
