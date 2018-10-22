@@ -12,7 +12,7 @@
             <td class="stitle">图片</td>
           </tr>
           <tr v-for="data in sendCard">
-            <td>{{data.cardId}}</td>
+            <td><router-link :to="'/postcards/' + data.cardId" style="color: #5E5E5E; text-underline: none">{{data.cardId}}</router-link></td>
             <td>{{data.userNickname}}</td>
             <td>{{data.cardReceiveRegion}}</td>
             <td>{{data.cardSendTime.substring(0, 10)}}</td>

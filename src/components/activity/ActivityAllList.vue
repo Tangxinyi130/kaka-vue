@@ -38,6 +38,9 @@
               activityData:{}
             }
         },
+      watch:{
+         "$router":"created"
+      },
         created(){
           if(JSON.stringify(this.$route.params)==='{}'){
             this.$ajax({
@@ -61,7 +64,7 @@
             // }
           })
         }
-        }
+        },
     }
 </script>
 

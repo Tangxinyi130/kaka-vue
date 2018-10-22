@@ -10,8 +10,24 @@
     <!--</ul>-->
     <!--<ul v-show="nextPage" class="li-page" v-tap="{methods: goNextPage}">下一页</ul>-->
   <!--</div>-->
-  <div>
-    <button v-for="i in totalPage"><router-link :to="'/wall/'+i">{{i}}</router-link></button>
+  <div class="row">
+    <nav class="paging">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous" title="上一页">
+            <span aria-hidden="true">«</span>
+          </a>
+        </li>
+        <li v-for="i in totalPage">
+          <router-link :to="'/wall/'+i">{{i}}</router-link>
+        </li>
+        <li>
+          <a href="" aria-label="Next">
+            <span aria-hidden="true">»</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -21,9 +37,10 @@
       data(){
           return {
             num:6,
-            limit:9
+            limit:12
           }
       },
+
       props:['sumCount'],
       computed:{
           totalPage(){

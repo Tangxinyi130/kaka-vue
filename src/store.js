@@ -27,7 +27,8 @@ export default new Vuex.Store({
     city:'',
     postSend: false,
     postSendAnn:true,
-    offset:0
+    offset:0,
+    sumPage:0
   },
   getters: {
     isLogin(state) {
