@@ -18,9 +18,9 @@
               <span style="margin-left: 30px">粉丝：{{user.userFansNum}}</span>
             </router-link>
           </div>
-          <div class="row">
-            <input type="text" class="col-sm-offset-8">
-          </div>
+          <!--<div class="row">-->
+            <!--<input type="text" class="col-sm-offset-8">-->
+          <!--</div>-->
         </div>
         <router-view></router-view>
       </div>

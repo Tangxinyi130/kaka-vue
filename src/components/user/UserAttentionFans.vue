@@ -19,9 +19,50 @@
             <div>粉丝数：{{data.thisUserFansCount}}</div>
           </div>
           <div class="col-sm-2 othersBtn">
-            <button v-if="data.isAttention == 0" class="btn">关注</button>
-            <button v-if="data.isAttention == 1" class="btn">取消关注</button>
+            <button v-if="data.isAttention == 0" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
+            <button v-if="data.isAttention == 1" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
           </div>
+
+          <!-- 关注模态框 -->
+          <div class="modal fade bs-example-modal-sm" id="att" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                  是否关注？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary" @click="toAtt(clickId)">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 取消关注模态框 -->
+          <div class="modal fade bs-example-modal-sm" id="fan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                  是否取消关注？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary" @click="cancelAtt(clickId)">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
@@ -35,17 +76,54 @@
         return {
           id: this.$route.params.id,
           user: {},
-          others: []
+          others: [],
+          clickId: "",
         }
       },
       created() {
-        let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/attention/myFans/${this.id}`
-        ).then(function (result) {
-          _this.others = result.data.data;
-        }, function (err) {
-          console.log(err);
-        });
+        this.mycreate();
+      },
+      // watch() {
+      //   "$store": ""
+      // },
+
+      methods: {
+        getModalId(x) {
+          console.log(x);
+          this.clickId = x;
+          // $("#myModal").on
+        },
+
+        //关注用户
+        toAtt(otherId) {
+          let _this = this;
+          this.$ajax.get(`http://localhost:3000/users/attention/focus/${this.$store.state.userId}/${otherId}`
+          ).then(function (result) {
+              location.href = `/attention/${_this.$store.state.userId}/att`;
+          }, function (err) {
+            console.log(err);
+          });
+        },
+        //取消关注
+        cancelAtt(otherId) {
+          let _this = this;
+          this.$ajax.get(`http://localhost:3000/users/attention/unfollow/${this.$store.state.userId}/${otherId}`
+          ).then(function (result) {
+            location.href = `/attention/${_this.$store.state.userId}/att`;
+          }, function (err) {
+            console.log(err);
+          });
+        },
+
+        mycreate() {
+          let _this = this;
+          this.$ajax.get(`http://localhost:3000/users/attention/myFans/${this.id}`
+          ).then(function (result) {
+            _this.others = result.data.data;
+          }, function (err) {
+            console.log(err);
+          });
+        }
       }
     }
 </script>
