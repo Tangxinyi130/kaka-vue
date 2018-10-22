@@ -40,6 +40,7 @@
             limit:12
           }
       },
+
       props:['sumCount'],
       computed:{
           totalPage(){

@@ -2,7 +2,7 @@
   <div class="row cardsWall">
     <div class="col-xs-6 col-md-3 picList" v-for="pic in allPic" >
       <router-link :to="'/postcards/'+pic.cardId" class="thumbnail">
-        <img width="100%" height="167" :src="pic.cardPic" alt="..." >
+        <img width="100%" style="height: 170px" :src="pic.cardPic" alt="..." >
       </router-link>
     </div>
 
@@ -67,7 +67,7 @@
   margin-top: 40px;
 }
 .picList{
-  height: 220px;
+  height: 200px;
 }
 
 
