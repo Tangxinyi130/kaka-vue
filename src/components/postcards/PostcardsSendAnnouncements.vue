@@ -96,6 +96,7 @@
     name: "PostcardsSendAnnouncements",
     data() {
       return {
+        addresscounts:0,
         times:0,
         pooltimes:0,
         cardId:'',
@@ -120,8 +121,10 @@
         console.log(result.data.data);
         _this.times = result.data.data.times;
         _this.pooltimes = result.data.data.pooltimes;
+        _this.addresscounts=result.data.data.addresscount;
         console.log("我是已经发送次数的总数"+_this.times)
         console.log("我是pool池里面的数据总数"+_this.pooltimes)
+        console.log("我是否有地址1，无地址。0有地址"+_this.addresscounts)
       }, function (err) {
         console.log(err);
       })
@@ -149,25 +152,34 @@
         })
       },
       submit: function () {
-        //如果次数在5次之内可以发送，如果超过5次将不会发送
-        if(this.times<5){
-          //如果pool池里面的数据不足将会提示用户
-          if(this.pooltimes<1){
-            alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
-            location.href = "http://localhost:8080";
-          }else {
-            if(this.$store.state.isLogin){
-              this.send();
-              this.$store.state.postSendAnn=false;
-              this.$store.state.postSend=true;
-            }else {
-              this.$router.replace({path: "/login"})
-            }
-          }
+        //如果没有设置地址将会跳到设置界面让用户先去设置地址
+        if(this.addresscounts>0){
+          //去设置界面设置地址
+          alert("要先设置好个人信息才能加入我们的发送哦！")
+          location.href = "http://localhost:8080/userset";
         }else {
-          alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
-          location.href = "http://localhost:8080";
+          //进行进一步的判断
+          //如果次数在5次之内可以发送，如果超过5次将不会发送
+          if(this.times<5){
+            //如果pool池里面的数据不足将会提示用户
+            if(this.pooltimes<1){
+              alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
+              location.href = "http://localhost:8080";
+            }else {
+              if(this.$store.state.isLogin){
+                this.send();
+                this.$store.state.postSendAnn=false;
+                this.$store.state.postSend=true;
+              }else {
+                this.$router.replace({path: "/login"})
+              }
+            }
+          }else {
+            alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
+            location.href = "http://localhost:8080";
+          }
         }
+
 
       },
     },

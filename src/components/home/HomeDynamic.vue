@@ -107,7 +107,7 @@
   max-width: 750px;
   height: 45px;
   line-height: 45px;
-  background-color: salmon;
+  background-color: #528970;
   border-radius: 5px 5px 0px 0px;
 }
 .dynamic-nav .dynamic-nav-text{
@@ -118,8 +118,7 @@
 }
 .dynamic-item-box{
   max-width: 700px;
-  height: 200px;
-  background-color: wheat;
+  height: 400px;
   margin: 0 auto;
   overflow: hidden;
 }
