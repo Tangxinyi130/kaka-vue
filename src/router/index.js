@@ -73,9 +73,9 @@ export default new Router({
       ]},
     {path:'/activitydetail/:activityId',component:ActivityDetail},
     {path:'/activity/activityconfire',component:ActivityConfire,children:[
-        {path:'activitysucess',component:ActivityPaySucess}
+        // {path:'activitysucess',component:ActivityPaySucess}
         ]},
-
+    {path:'/activity/activitysucess',component:UserMyActivity},
     {path: "/login", component: Login},
     {path: "/register", component: Register},
     {path: "/newregister", component:newRegister},
