@@ -13,7 +13,9 @@
 
 <style scoped>
   #homeActivity{
-    height: 200px;
+    margin-top: 15px;
+    height: 260px;
+    background-color: coral;
   }
   @media  screen and (max-width: 479px) {
 

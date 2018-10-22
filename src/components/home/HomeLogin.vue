@@ -98,8 +98,8 @@
   #homeLogin{
     width: 360px;
     height: 300px;
-    border-radius: 5px;
-    background-color: wheat;
+    border-radius: 1px;
+    background-color: #c5dff5;
     position: relative;
     justify-content: center;
     align-items: center;

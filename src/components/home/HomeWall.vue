@@ -78,7 +78,7 @@
   }
   .wall-box{
     max-width: 1140px;
-    height: 500px;
+    height: 510px;
     margin: 0 auto;
     background-color: honeydew;
     border-radius: 5px 5px 0px 0px;
@@ -87,7 +87,7 @@
     max-width: 1140px;
     height: 45px;
     line-height: 45px;
-    background-color: salmon;
+    background-color: #7C6254;
     border-radius: 5px 5px 0px 0px;
   }
   .wall-nav .wall-nav-text{
@@ -100,7 +100,6 @@
     max-width: 1100px;
     height: 450px;
     margin: 0 auto;
-    border: 1px solid coral;
     overflow: hidden;
   }
   .wall-item{

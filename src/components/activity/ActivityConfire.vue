@@ -14,8 +14,9 @@
       </div>
       <div class="row text-right">
         <router-link to="/activity/activityconfire/activitysucess"><button>确认支付</button></router-link>
+        <router-view></router-view>
       </div>
-      <router-view></router-view>
+
     </div>
 </template>
 
