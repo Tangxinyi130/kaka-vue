@@ -5,13 +5,13 @@
       <div class="dynamic-item-box">
         <div  v-for="item in realDynamic" class="dynamic-item">
           <div v-if="item.state=='发送'" class="dynamic-item-detail">
-            <a href="">
+            <a :href="'/user/' + item.cardSenderId + '/aboutme'">
               <img :src="item.senderHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardSenderName}}</span>
             </a>
             <span class="region">{{item.cardSendRegion}}</span>
             <span class="state">{{item.state}}了一张明信片给</span>
-            <a href="">
+            <a :href="'/user/' + item.cardReceiverId + '/aboutme'">
               <img :src="item.receiverHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardReceiverName}}</span>
             </a>
@@ -135,6 +135,9 @@
 }
 .dynamic-item-detail .state{
   font-size: 14px;
+}
+.dynamic-item-detail a{
+  text-decoration: none;
 }
 
 @media  screen and (max-width: 479px) {

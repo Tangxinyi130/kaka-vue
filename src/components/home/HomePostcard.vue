@@ -13,16 +13,20 @@
         <div class="col-xs-6" style="background-color: lightgreen">
           <div id="sendCard">
             <router-link role="presentation" to="/postcardssend">
-              发送明信片
+              <div>
+                <img  src="../../assets/images/home/send.png" alt="">
+                <span>发送明信片</span>
+              </div>
             </router-link>
           </div>
         </div>
         <div class="col-xs-6" style="background-color: lightsalmon">
           <div id="receiveCard" >
             <router-link to="/postcardsreceive">
-              <a href="">
-                收到明信片
-              </a>
+              <div>
+                <img src="../../assets/images/home/receive.png" alt="">
+                <span>收到明信片</span>
+              </div>
             </router-link>
           </div>
         </div>
@@ -71,11 +75,16 @@
     justify-content: center;
     align-items: center;
     background-color: salmon;
+    border-radius: 5px;
   }
   #sendCard,#receiveCard{
     height: 100px;
     text-align: center;
     line-height: 100px;
+  }
+  #sendCard img,#receiveCard img{
+    width: 50px;
+    height: 50px;
   }
 
 

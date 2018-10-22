@@ -11,7 +11,8 @@
           <div v-for="item in rankingInfo" class="ranking-item">
             <span v-if="item.ranking<=3" :title="item.ranking" class="ranking-index"><i class="list"></i></span>
             <span v-if="item.ranking>3" class="ranking-index">{{item.ranking}}</span>
-            <img class="ranking-headepic" :src="item.userHeadPic" alt="">
+            <a :href="'/user/' + item.userId + '/aboutme'"><img class="ranking-headepic" :src="item.userHeadPic" alt=""></a>
+
             <span class="ranking-username">{{item.userNickname}}</span>
             <span class="ranking-bron">{{item.userProvince}}</span>
             <span class="ranking-recever">{{item.receiverNum}}</span>

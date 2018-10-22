@@ -1,7 +1,7 @@
 <template>
     <footer class="container-fluid">
       <div class="container">
-        底部网站版本信息
+        <p>底部网站版本信息</p>
       </div>
     </footer>
 </template>
@@ -16,7 +16,7 @@
 footer{
   margin-top:40px;
   height: 50px;
-  background-color: cadetblue;
+  background-color: rgba(49, 43, 52, 0.67);
   display: flex;
 }
 </style>

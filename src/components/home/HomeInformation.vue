@@ -1,30 +1,32 @@
 <template>
   <div id="homeInfomation">
-    <p style="font-size: 18px">本站数据量统计</p>
+    <p style="font-size: 18px; color: #666; text-align: center;line-height: 18px">本站数据量统计</p>
     <table>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/users.png" alt="">
-        <td>:{{usersCount}}用户加入我们的网站</td>
+        <td><img width="30px" height="30px" src="../../assets/images/home/users.png" alt=""></td>
+        <td>:&nbsp;&nbsp;<span> {{usersCount}}</span>:&nbsp;&nbsp;用户加入我们的网站</td>
       </tr>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/send.png" alt="">
-        <td>:{{travelingCardNum}}明信片正在漂流</td>
+        <td><img width="30px" height="30px" src="../../assets/images/home/send.png" alt=""></td>
+        <td>:&nbsp;&nbsp;<span>{{travelingCardNum}}</span>:&nbsp;&nbsp;明信片正在漂流</td>
       </tr>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/receive.png" alt="">
-        <td>:{{receivedNum}}张总收到明信片</td>
+        <td><img width="30px" height="30px" src="../../assets/images/home/receive.png" alt=""></td>
+        <td>:&nbsp;&nbsp;<span>{{receivedNum}}</span>:&nbsp;&nbsp;张总收到明信片</td>
       </tr>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/time.png" alt="">
-        <td>:{{recentReceivedNum}}最近一小时收到的明信片</td>
+        <td> <img width="30px" height="30px" src="../../assets/images/home/time.png" alt=""></td>
+        <td>::&nbsp;&nbsp;<span>{{recentReceivedNum}}</span>:&nbsp;&nbsp;最近一小时收到的明信片</td>
       </tr>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/china.png" alt="">
-        <td>:{{cityTotal}}个省份已经加入</td>
+        <td><img width="30px" height="30px" src="../../assets/images/home/china.png" alt=""></td>
+        <td>:&nbsp;&nbsp;<span>{{cityTotal}}</span>:&nbsp;&nbsp;个省份已经加入</td>
       </tr>
       <tr>
-        <img width="30px" height="30px" src="../../assets/images/home/distance.png" alt="">
-        <td>:{{distanceTotal}}的明信片漂流总距离</td>
+        <td>
+          <img width="30px" height="30px" src="../../assets/images/home/distance.png" alt="">
+        </td>
+        <td>:&nbsp;&nbsp;<span>{{distanceTotal}}</span>:&nbsp;&nbsp;的明信片漂流总距离</td>
       </tr>
     </table>
   </div>
@@ -63,12 +65,9 @@
 <style scoped>
   #homeInfomation{
     margin-top: 15px;
-    height: 260px;
+    height: 270px;
     max-width: 360px;
-    background-color: wheat;
-  }
-  #homeInfomation span{
-    display: block;
+    background-color: honeydew;
   }
   #homeInfomation table{
     margin: 0 auto;
@@ -77,10 +76,15 @@
     height: 38px;
   }
   #homeInfomation table tr:first-child{
-    max-width: 90px;
+    width: 90px;
   }
   #homeInfomation table tr:last-child{
     max-width: 260px;
+  }
+  table tr td span{
+
+    color: skyblue;
+    font-size: 20px;
   }
   @media  screen and (max-width: 479px) {
 

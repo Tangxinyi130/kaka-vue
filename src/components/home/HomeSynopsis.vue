@@ -13,7 +13,12 @@
           <img src="../../assets/images/home/1.jpg" alt="First slide">
           <div class="carousel-caption">
             <h2>拾笺</h2>
+            <br>
             <p>车水马龙，静下心写一封明信片寄信向陌生的你</p>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
 
         </div>
@@ -21,13 +26,17 @@
           <img src="../../assets/images/home/2.jpg" alt="Second slide">
           <div class="carousel-caption">
             <h2>回归纸笔邮件</h2>
+            <br>
             <p>车水马龙，静下心写一封明信片寄信向陌生的你</p>
+            <br>
+            <br>
           </div>
         </div>
         <div class="item">
           <img src="../../assets/images/home/3.jpg" alt="Third slide">
           <div class="carousel-caption">
             <h2>怀念</h2>
+            <br>
             <p>车水马龙，静下心写一封明信片寄信向陌生的你</p>
           </div>
         </div>
@@ -59,6 +68,9 @@
     background-color: aqua;
   }
   #myCarousel{
+    height: 300px;
+  }
+  .carousel-inner{
     height: 300px;
   }
   img{

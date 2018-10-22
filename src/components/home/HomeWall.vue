@@ -4,44 +4,46 @@
       <div class="wall-nav"><span class="wall-nav-text">近期明信片</span></div>
       <div class="wall-item-box">
         <div v-for="item in recentPic" class="wall-item">
-          <a href="">
+          <a :href="'/postcards/'+item.cardId">
+            <img :src="item.cardPic">
+          </a>
+          <div>
+             <span class="text-cardid">
+            {{item.cardId}}
+          </span>
+            <a href="">
+              <span class="glyphicon glyphicon-heart"></span>
+            </a>
+            <a href="">
+              <span>收藏</span>
+            </a>
+          </div>
+        </div>
+        <div v-for="item in recentPic" class="wall-item">
+          <a :href="'/postcards/'+item.cardId">
             <img :src="item.cardPic">
           </a>
           <span class="text-cardid">
             {{item.cardId}}
           </span>
-          <a href="">
+          <a >
             <span class="glyphicon glyphicon-heart"></span>
           </a>
-          <a href="">
+          <a>
             <span>收藏</span>
           </a>
         </div>
         <div v-for="item in recentPic" class="wall-item">
-          <a href="">
+          <a :href="'/postcards/'+item.cardId">
             <img :src="item.cardPic">
           </a>
           <span class="text-cardid">
             {{item.cardId}}
           </span>
-          <a href="">
+          <a>
             <span class="glyphicon glyphicon-heart"></span>
           </a>
-          <a href="">
-            <span>收藏</span>
-          </a>
-        </div>
-        <div v-for="item in recentPic" class="wall-item">
-          <a href="">
-            <img :src="item.cardPic">
-          </a>
-          <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-          <a href="">
-            <span class="glyphicon glyphicon-heart"></span>
-          </a>
-          <a href="">
+          <a >
             <span>收藏</span>
           </a>
         </div>
@@ -106,6 +108,7 @@
     width: 250px;
     height: 200px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     float:left;
   }
   .wall-item img{
