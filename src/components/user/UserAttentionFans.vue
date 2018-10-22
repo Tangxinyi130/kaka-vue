@@ -117,7 +117,7 @@
 
         mycreate() {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/attention/myFans/${this.id}`
+          this.$ajax.get(`http://localhost:3000/users/attention/myFans/${this.id}/${this.$store.state.userId}`
           ).then(function (result) {
             _this.others = result.data.data;
           }, function (err) {
