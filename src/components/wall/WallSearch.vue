@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="row wallCity" @click="flag=!flag">
-      <div class="col-xs-2 col-md-2">
+    <div class="row wallCity" >
+      <div class="col-xs-2 col-md-2" @click="flag=!flag">
         <div class="glyphicon glyphicon-align-justify wallpublic" ></div>
         <!--<span v-if="flag">所有城市</span>-->
         <wall-city v-if="flag" :up-show="upflag"></wall-city>

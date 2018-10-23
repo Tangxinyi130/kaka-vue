@@ -19,7 +19,7 @@
           <!--</a>-->
         <!--</li>-->
         <!--<li v-for="i in totalPage">-->
-          <button v-for="i in totalPage" @click="go(i)">{{i}}</button>
+          <button class="a_btn" v-for="i in totalPage" @click="go(i)">{{i}}</button>
         <!--</li>-->
         <!--<li>-->
           <!--<a href="" aria-label="Next">-->
@@ -68,5 +68,10 @@
 </script>
 
 <style scoped>
-
+.a_btn{
+  width: 35px;
+  height: 28px;
+  background-color: white;
+  border: none;
+}
 </style>
