@@ -96,6 +96,8 @@
     name: "PostcardsSendAnnouncements",
     data() {
       return {
+        sendemail:'',
+        emailcounts:0,
         addresscounts:0,
         times:0,
         pooltimes:0,
@@ -122,9 +124,13 @@
         _this.times = result.data.data.times;
         _this.pooltimes = result.data.data.pooltimes;
         _this.addresscounts=result.data.data.addresscount;
+        _this.emailcounts=result.data.data.useremail;
+        _this.sendemail=result.data.data.sendemail;
         console.log("我是已经发送次数的总数"+_this.times)
         console.log("我是pool池里面的数据总数"+_this.pooltimes)
         console.log("我是否有地址1，无地址。0有地址"+_this.addresscounts)
+        console.log("我是否有邮箱1，无地址。0有地址"+_this.emailcounts)
+        console.log("我是该用户的邮箱"+_this.sendemail)
       }, function (err) {
         console.log(err);
       })
@@ -132,6 +138,14 @@
     methods: {
       tohome:function(){
         this.$router.replace({path:"/"})
+      },
+      sendEmail:function(){
+        this.$ajax({
+          method:'get',
+          url:'http://localhost:3000/send/sendEmail/'+(localStorage.userId)
+        }).then((res)=>{
+          console.log("成功")
+        })
       },
       send:function(){
         let _this = this;
@@ -152,34 +166,39 @@
         })
       },
       submit: function () {
-        //如果没有设置地址将会跳到设置界面让用户先去设置地址
-        if(this.addresscounts>0){
-          //去设置界面设置地址
-          alert("要先设置好个人信息才能加入我们的发送哦！")
-          location.href = "http://localhost:8080/userset";
-        }else {
-          //进行进一步的判断
-          //如果次数在5次之内可以发送，如果超过5次将不会发送
-          if(this.times<5){
-            //如果pool池里面的数据不足将会提示用户
-            if(this.pooltimes<1){
-              alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
-              location.href = "http://localhost:8080";
-            }else {
-              if(this.$store.state.isLogin){
+        if(this.$store.state.isLogin){
+          // ******************
+          //如果没有设置地址将会跳到设置界面让用户先去设置地址
+          if(this.addresscounts>0 || this.emailcounts>0 ){
+            //去设置界面设置地址
+            alert("要先设置好个人信息才能加入我们的发送哦！")
+            location.href = "http://localhost:8080/userset";
+          }else {
+            //进行进一步的判断
+            //如果次数在5次之内可以发送，如果超过5次将不会发送
+            if(this.times<5){
+              //如果pool池里面的数据不足将会提示用户
+              if(this.pooltimes<1){
+                alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
+                location.href = "http://localhost:8080";
+              }else {
+                // ***********
                 this.send();
+                this.sendEmail();
                 this.$store.state.postSendAnn=false;
                 this.$store.state.postSend=true;
-              }else {
-                this.$router.replace({path: "/login"})
+                // ***************
               }
+            }else {
+              alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
+              location.href = "http://localhost:8080";
             }
-          }else {
-            alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
-            location.href = "http://localhost:8080";
           }
+          // ******************
+        }else {
+          alert("请前往登录")
+          this.$router.replace({path: "/login"})
         }
-
 
       },
     },

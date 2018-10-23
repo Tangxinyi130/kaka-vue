@@ -2,6 +2,9 @@
   "name": "test-vue",
   "version": "1.0.0",
   "description": "A Vue.js project",
+  "keywords": [
+    "email"
+  ],
   "author": "TXY <532868890@qq.com>",
   "private": true,
   "scripts": {

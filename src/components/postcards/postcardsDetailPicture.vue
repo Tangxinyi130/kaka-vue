@@ -40,7 +40,7 @@
         components:{
            'postcards-comment':postcardsComment
         },
-      created(){
+           created(){
         this.$ajax({
           method:'get',
           url:'http://localhost:3000/postcards/'+this.cardId
