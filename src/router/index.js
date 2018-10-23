@@ -64,7 +64,7 @@ export default new Router({
     {path: "/wall", component: Wall,children:[
         {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
-        {path:"search/:city",component:WallPictureList}
+        {path:"search/:city/:page",component:WallPictureList}
       ]},
 
     {path: "/activity", component: Activity,children:[
