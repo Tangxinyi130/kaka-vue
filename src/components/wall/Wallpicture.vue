@@ -17,7 +17,7 @@
               allPic:{},
               page:1,
               sumPage:0,
-              city:''
+              city:'',
             }
         },
       watch:{
@@ -25,6 +25,7 @@
       },
       methods:{
           getPicture(){
+            console.log(this.$route)
             if(JSON.stringify(this.$route.params)==='{}'){
               this.$ajax({
                 method:'get',
@@ -32,7 +33,7 @@
               }).then((res)=>{
                 this.allPic=res.data.data;
               })
-            }else if(this.$route.params.page!=undefined){
+            }else if(this.$route.params.page != undefined && this.$route.path.indexOf('search') === -1 ){
               console.log("类型"+this.$route.params.page)
               this.page=this.$route.params.page
               console.log(this.page)
@@ -48,7 +49,9 @@
               console.log('搜索城市:'+this.city)
               this.$ajax({
                 method:'get',
-                url: `http://localhost:3000/wall/search/${this.city}`
+                url: `http://localhost:3000/wall/search/${this.city}/${this.page}`
+              //  http://localhost:3000/wall/search/${this.city} 这是搜索城市
+              //  http://localhost:3000/wall/search/${this.city}/1 城市的第一页,这样就行了啊
               }).then((res)=>{
                 this.allPic=res.data.data;
                 console.log(this.allPic)

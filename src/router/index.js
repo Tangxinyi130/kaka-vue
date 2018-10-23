@@ -9,7 +9,7 @@ import PostcardsSend from "@/components/postcards/PostcardsSend.vue"
 import  PostcardsSendInterface from "@/components/postcards/PostcardsSendInterface.vue"
 import  PostcardsReceiveUpload from "@/components/postcards/PostcardsReceiveUpload.vue"
 import PostcardsReceive from "@/components/postcards/PostcardsReceive.vue"
-
+import email from "@/components/postcards/email.vue"
 import Wall from "@/components/wall/Wall.vue"
 import WallPicture from "@/components/wall/Wallpicture.vue"
 import WallPictureList from "@/components/wall/WallPictureList.vue"
@@ -62,11 +62,12 @@ export default new Router({
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
     {path: "/postcardssendinterface", component:PostcardsSendInterface},
+    {path: "/email", component:email},
 
     {path: "/wall", component: Wall,children:[
         {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
-        {path:"search/:city",component:WallPictureList}
+        {path:"search/:city/:page",component:WallPictureList}
       ]},
 
     {path: "/activity", component: Activity,children:[
