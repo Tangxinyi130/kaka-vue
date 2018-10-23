@@ -94,7 +94,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-12  text-center">
-                      <button  form="setUser" @click="upText" class="btn btn-default">保存</button>
+                      <button  form="setUser" @click="save" class="btn btn-default">保存</button>
                     </div>
                   </div>
                 </div>
@@ -277,13 +277,15 @@
                 userAddress: _this.address,
                 userId: _this.userid,
               }).then(function (result) {
-              location.href = `/user/${this.$store.state.userId}/aboutme`;
+              setTimeout(() => {}, 20);
+              location.href = `/user/${_this.$store.state.userId}/aboutme`;
             }, function (err) {
-              location.href = `/user/${this.$store.state.userId}/aboutme`;
+              setTimeout(() => {}, 20);
+              location.href = `/user/${_this.$store.state.userId}/aboutme`;
               console.log(err)
             })
             setTimeout(() => {}, 20);
-            location.href = `/user/${this.$store.state.userId}/aboutme`;
+            location.href = `/user/${_this.$store.state.userId}/aboutme`;
           },
           // to() {
           //   location.href = `http://localhost:8080/user/${this.$store.state.userId}/aboutme`
