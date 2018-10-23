@@ -92,20 +92,9 @@
                       <textarea form="setUser" class="form-control myText" name="address" rows="5" v-model="address" style="resize:none" ></textarea>
                     </div>
                   </div>
-                  <!--<div class="form-group">-->
-                    <!--<label class="col-sm-2 control-label">案例</label>-->
-                    <!--<div class="col-sm-10">-->
-                      <!--<div>-->
-                        <!--<span>江苏省 苏州市</span><br>-->
-                        <!--<span>215000</span><br>-->
-                        <!--<span>东新路3号2楼1室</span><br>-->
-                        <!--<span>王安娜</span>-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</div>-->
                   <div class="form-group">
                     <div class="col-sm-12  text-center">
-                      <button  form="setUser" @click="save" class="btn btn-default">保存</button>
+                      <button  form="setUser" @click="upText" class="btn btn-default">保存</button>
                     </div>
                   </div>
                 </div>
@@ -114,11 +103,16 @@
 
 
               <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
-                <form class="form-horizontal" id="updateHead" method="post" enctype="multipart/form-data" action="http://localhost:3000/users/setUserHeadPic"></form>
+                <form class="form-horizontal" id="updateHead" method="post" enctype="multipart/form-data"></form>
                 <input type="text" name="id" v-model="userid" style="display: none" form="updateHead">
                 <img src="../../assets/picture.jpg" alt="" class="img-responsive" form="updateHead">
-                <input type="file" name="file" form="updateHead">
-                <button type="submit" form="updateHead">保存头像</button>
+                <input type="file"
+                       name="avatar"
+                       @change="changeImage($event)"
+                       accept="image/gif,image/jpeg,image/jpg,image/png"
+                       form="updateHead"
+                       ref="avatarInput"/>
+                <button type="button" form="updateHead" @click="up">保存头像</button>
               </div>
             </div>
           </div>
@@ -220,6 +214,7 @@
         },
         data() {
           return {
+            upath:'',  //保存选中的文件
             userid: this.$store.state.userId,
             name: "",
             password: "",
@@ -268,7 +263,7 @@
             //   ctx.request.body.userId
 
             let _this = this;
-            axios.post("http://localhost:3000/users/updata",
+            this.$ajax.post("http://localhost:3000/users/updata",
               {
                 userName: _this.name,
                 userPwd: _this.password,
@@ -282,11 +277,104 @@
                 userAddress: _this.address,
                 userId: _this.userid,
               }).then(function (result) {
-                location.href = `/user/${this.$store.state.userId}/aboutme`;
+              location.href = `/user/${this.$store.state.userId}/aboutme`;
             }, function (err) {
+              location.href = `/user/${this.$store.state.userId}/aboutme`;
               console.log(err)
             })
-          }
+            setTimeout(() => {}, 20);
+            location.href = `/user/${this.$store.state.userId}/aboutme`;
+          },
+          // to() {
+          //   location.href = `http://localhost:8080/user/${this.$store.state.userId}/aboutme`
+          // },
+          //选中文件后，将文件保存到实例的变量中
+          changeImage(e) {
+            this.upath = e.target.files;
+          },
+          upText:function () {
+            setTimeout(() => {
+              let _this = this;
+              // console.log(this.upath);
+              // console.log("this.mydata:  " + this.mydata)
+              var zipFormData = new FormData();
+              //依次添加多个文件
+              // for(var i = 0 ; i< this.upath.length ; i++){
+              //   zipFormData.append('filename', this.upath[i]);
+              // }
+              //添加其他的表单元素
+              // zipFormData.append('mydata',this.mydata)
+              console.log("bbbbbb")
+              var strPro = JSON.stringify($("#selPro option:selected"));
+              var arr = strPro.split(",");
+              var myprovince = "{" + arr[1] + "}";
+              var userProvince = JSON.parse(myprovince).name;
+              // console.log("save中   " + JSON.parse(myprovince).name);
+              var strCity = JSON.stringify($("#selCity option:selected"));
+              var arrCity = strCity.split(",");
+              var mycity = "{" + arrCity[1] + "}";
+              var userCity = JSON.parse(mycity).name;
+
+
+              // zipFormData.append("filename", "");
+              zipFormData.append("id", this.$store.state.userId);
+              zipFormData.append("name", this.name);
+              zipFormData.append("password", this.password);
+              zipFormData.append("nickname", this.nickname);
+              zipFormData.append("sex", this.sex);
+              zipFormData.append("email", this.email);
+              zipFormData.append("birthday", this.birthday);
+              zipFormData.append("selected", userProvince);
+              zipFormData.append("citySelected", userCity);
+              zipFormData.append("postcode", this.postcode);
+              zipFormData.append("address", this.address);
+
+              let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+              this.$ajax.post('http://localhost:3000/users/uploadInfo', zipFormData,config
+              ).then(function (response) {
+                console.log(response);
+                console.log(response.data);
+                console.log(response.bodyText);
+                // location.href = `/user/${_this.$store.state.userId}/aboutme`;
+              });
+              // setTimeout(() => {
+              //   if (this.upath) {
+              //
+              //   } else {
+              //     alert("请选择图片!");
+              //   }
+              // }, 20);
+            }, 1000);
+          },
+          up:function () {
+            setTimeout(() => {
+              let _this = this;
+              // console.log(this.upath);
+              // console.log("this.mydata:  " + this.mydata)
+              var zipFormData = new FormData();
+              //依次添加多个文件
+              for(var i = 0 ; i< this.upath.length ; i++){
+                zipFormData.append('filename', this.upath[i]);
+              }
+              //添加其他的表单元素
+              zipFormData.append("mydata", this.$store.state.userId);
+
+              let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+              this.$ajax.post('http://localhost:3000/users/uploadfile', zipFormData,config
+              ).then(function (response) {
+                console.log(response);
+                console.log(response.data);
+                console.log(response.bodyText);
+              });
+              setTimeout(() => {
+                if (this.upath) {
+                  location.href = `/user/${_this.$store.state.userId}/aboutme`;
+                } else {
+                  alert("请选择图片!");
+                }
+              }, 20);
+            }, 1000);
+          },
         },
         watch: {
           selected: function () {

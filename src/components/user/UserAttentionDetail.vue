@@ -1,11 +1,7 @@
 <template>
     <div>
-      <!--<h3>关注和粉丝块id: {{id}}</h3>-->
-      <!--<div>用户信息</div>-->
+      <!-- 用户信息 -->
       <app-attention-info></app-attention-info>
-      <!--<app-attention-search></app-attention-search>-->
-      <hr>
-
     </div>
 </template>
 

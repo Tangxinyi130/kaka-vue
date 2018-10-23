@@ -1,7 +1,6 @@
 <template>
     <div>
       <!--<h3>用户信息</h3>-->
-
       <div class="row showOthers">
         <div class="col-sm-offset-1 col-sm-10">
           <div class="others" v-for="data in others">
@@ -21,8 +20,8 @@
                 <div>粉丝数：{{data.thisUserFansCount}}</div>
               </div>
               <div class="col-sm-2 othersBtn">
-                <button v-if="data.isAttention == 0" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
-                <button v-if="data.isAttention == 1" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
+                <button v-if="data.isAttention == 0 && data.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
+                <button v-if="data.isAttention == 1 && data.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
               </div>
 
 
@@ -74,8 +73,13 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
     export default {
         name: "UserAttentionOthers",
+      computed: mapGetters([
+        "isLogin",
+        "userId"
+      ]),
       data() {
         return {
           id: this.$route.params.id,
@@ -86,7 +90,7 @@
       },
       created() {
           let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/attention/myAttention/${this.id}`
+        this.$ajax.get(`http://localhost:3000/users/attention/myAttention/${this.id}/${this.$store.state.userId}`
         ).then(function (result) {
           _this.others = result.data.data;
         }, function (err) {
@@ -97,7 +101,6 @@
         getModalId(x) {
           console.log(x);
           this.clickId = x;
-          // $("#myModal").on
         },
 
         //关注用户
@@ -128,37 +131,12 @@
   div {
     color: #5E5E5E;;
   }
-
-  #set {
-
-    padding-bottom: 30px;
-  }
-  .contant {
-    background-color: #fafafa;
-    padding-bottom: 30px;
-  }
-  .top {
-    height: 53px;
-    background-color: #528970;
-  }
-  .topTitle {
-    height: 53px;
-    line-height: 52px;
-    font-size: 18px;
-    color: white;
-    margin-left: 20px;
-  }
   .headPic {
     width: 122px;
     height: 122px;
     border-radius: 122px;
     border: 1px solid #797979;
   }
-  .row.head {
-    text-align: center;
-    padding-top: 30px;
-  }
-
   .others {
     border: 1px solid #797979;
     border-radius: 3px;

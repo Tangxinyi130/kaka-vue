@@ -19,8 +19,8 @@
             <div>粉丝数：{{data.thisUserFansCount}}</div>
           </div>
           <div class="col-sm-2 othersBtn">
-            <button v-if="data.isAttention == 0" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
-            <button v-if="data.isAttention == 1" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
+            <button v-if="data.isAttention == 0 && data.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
+            <button v-if="data.isAttention == 1 && data.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
           </div>
 
           <!-- 关注模态框 -->
@@ -61,8 +61,6 @@
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -70,11 +68,17 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
     export default {
         name: "UserAttentionFans",
+      computed: mapGetters([
+        "isLogin",
+        "userId"
+      ]),
       data() {
         return {
           id: this.$route.params.id,
+          loginId: this.$store.state.userId,
           user: {},
           others: [],
           clickId: "",
@@ -83,15 +87,10 @@
       created() {
         this.mycreate();
       },
-      // watch() {
-      //   "$store": ""
-      // },
-
       methods: {
         getModalId(x) {
           console.log(x);
           this.clickId = x;
-          // $("#myModal").on
         },
 
         //关注用户
@@ -132,37 +131,12 @@
   div {
     color: #5E5E5E;;
   }
-
-  #set {
-
-    padding-bottom: 30px;
-  }
-  .contant {
-    background-color: #fafafa;
-    padding-bottom: 30px;
-  }
-  .top {
-    height: 53px;
-    background-color: #528970;
-  }
-  .topTitle {
-    height: 53px;
-    line-height: 52px;
-    font-size: 18px;
-    color: white;
-    margin-left: 20px;
-  }
   .headPic {
     width: 122px;
     height: 122px;
     border-radius: 122px;
     border: 1px solid #797979;
   }
-  .row.head {
-    text-align: center;
-    padding-top: 30px;
-  }
-
   .others {
     border: 1px solid #797979;
     border-radius: 3px;
