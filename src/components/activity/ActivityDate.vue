@@ -12,7 +12,7 @@
           <div v-if="type==key">
             <ul>
                <li v-for="month in months[key]" class="month">
-                 <a role="presentation" :href="'/activity/'+year+'/'+month.activityMonth">{{month.activityMonth}}月</a>
+                 <router-link role="presentation" :to="'/activity/'+year+'/'+month.activityMonth">{{month.activityMonth}}月</router-link>
                </li>
             </ul>
           </div>

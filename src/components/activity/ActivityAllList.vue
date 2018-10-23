@@ -1,6 +1,7 @@
 <template>
   <div>
-  <div class="leftc col-md-8">
+    <!--所有活动列表、分页-->
+    <div class="leftc col-md-8">
     <div class="row">
       <div class="contList">
         <ul class="cont-list">
@@ -31,7 +32,7 @@
       </div>
     </div>
     <!--分页-->
-    <div class="row">
+    <div class="row text-center">
       <div class="block">
         <span class="demonstration"></span>
         <el-pagination ref="elpage"
@@ -45,7 +46,6 @@
       </div>
     </div>
   </div>
-
   </div>
 </template>
 
@@ -68,12 +68,18 @@
           return this.activitys
         }
       },
+      watch:{
+          "$route":"mounted"
+      },
+      created(){
+          this.mounted();
+      },
       methods:{
         loadData() {
           this.activitys = [];
           let start = (this.pageIndex - 1) * this.pagesize;
           let end = start + this.pagesize;
-          if (end >= this.pageCount) {
+          if (end >= this.pageCount){
             end = this.pageCount
           }
           for (var i = start; i < end; i++) {
@@ -83,17 +89,32 @@
         },
         change(){
           this.loadData();
+        },
+        mounted(){
+          let _this=this
+          console.log("切换年份："+this.$route.params.year)
+          console.log("切换月份："+this.$route.params.month)
+          if(this.$route.params.year!=undefined){
+            let year=this.$route.params.year
+            let month=this.$route.params.month
+            axios.get(`http://localhost:3000/activity/${year}/${month}`).then((res) =>{
+              _this.myActData= res.data.data;
+              _this.pageCount=_this.myActData.length
+              console.log("结果"+_this.pageCount)
+              _this.loadData()
+            })
+          }else{
+            axios.get("http://localhost:3000/activity").then((res) =>{
+              _this.myActData= res.data.data.allData;
+              _this.pageCount=_this.myActData.length
+              console.log("结果"+_this.pageCount)
+              _this.loadData()
+            })
+          }
+
         }
       },
-      mounted(){
-        let _this=this
-        axios.get("http://localhost:3000/activity").then((res) =>{
-          _this.myActData= res.data.data.allData;
-          _this.pageCount=_this.myActData.length
-          console.log("结果"+_this.pageCount)
-          _this.loadData()
-        })
-      },
+
       // watch:{
       //    "$router":"created"
       // },
