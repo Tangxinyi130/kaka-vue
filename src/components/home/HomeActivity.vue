@@ -45,7 +45,7 @@
           url: 'http://localhost:3000/activity'
         }).then(res => {
           // for(let i=0;i<res.data.data.allData.length;i++){
-          this.activityData=res.data.data.allData[0];
+          this.activityData=res.data.data.allData[1];
           // }
         })
       }

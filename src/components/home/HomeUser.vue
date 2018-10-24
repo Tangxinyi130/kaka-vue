@@ -66,7 +66,7 @@
           collectionNum:0
         }
       },
-      mounted(){
+      created(){
         let _this = this;
         // this.$ajax.get(`http://localhost:3000/userCard/${this.userId}`
         this.$ajax.get(`${axios.defaults.baseURL}/userCard/${this.userId}`
@@ -75,9 +75,10 @@
             _this.headPic = result.data.data.headPic[0].userHeadPic;
             _this.sendNum = result.data.data.sendNum[0].sendNum;
             _this.receiveNum = result.data.data.receiveNum[0].receiveNum;
+            _this.attentionNum = result.data.data.attentionNum[0].attentionNum;
             _this.fansNum = result.data.data.fansNum[0].fanNum;
             _this.collectionNum = result.data.data.collectionNum[0].collectionNum;
-            console.log(_this.headPic);
+
         },function (err) {
           console.log(err);
         })
