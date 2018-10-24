@@ -14,7 +14,7 @@
             <div class="col-xs-7 col-md-9">
               <input type="text" class="form-control" @keyup="mysearch" placeholder="输入搜索省..." v-model="inputVal">
               <ul v-if="searchResult" id="show">
-                <li v-for="index in result">{{index}}</li>
+                <li v-for="index in result" @click="choice_city">{{index}}</li>
               </ul>
             </div>
             <div class="col-xs-5 col-md-3">
@@ -75,6 +75,9 @@
           console.log(this.result.length)
           this.searchResult=true;
           return this.result;
+        },
+        choice_city(){
+          console.log(this.val())
         }
       },
 
