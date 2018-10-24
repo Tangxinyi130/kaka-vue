@@ -6,7 +6,9 @@
           <div class="others" v-for="data in others">
             <div class="row">
               <div class="col-sm-3">
-                <img :src="data.userHeadPic" alt="" class="headPic othersHead">
+                <router-link :to="'/user/' + data.userId + '/aboutme'">
+                  <img :src="data.userHeadPic" alt="" class="headPic othersHead">
+                </router-link>
               </div>
               <div class="col-sm-3 othersInfo">
                 <div>用户ID：{{data.userId}}</div>

@@ -144,9 +144,10 @@
         this.$router.replace({path:"/"})
       },
       sendEmail:function(){
+        let _this = this;
         this.$ajax({
           method:'get',
-          url:`${axios.defaults.baseURL}/send/sendEmail/${this.$store.state.userId}`
+          url:`${axios.defaults.baseURL}/send/sendEmail/${_this.$store.state.userId}`
         }).then((res)=>{
           console.log("成功")
         })
