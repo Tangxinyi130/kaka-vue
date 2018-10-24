@@ -18,9 +18,14 @@
               <span style="margin-left: 30px">粉丝：{{user.userFansNum}}</span>
             </router-link>
           </div>
-          <!--<div class="row">-->
-            <!--<input type="text" class="col-sm-offset-8">-->
-          <!--</div>-->
+          <div class="row">
+            <div id="search">
+              <input type="text" v-model="searchInput" id="searchInput">
+              <router-link :to="'/attention/' + this.$store.state.userId + '/search/' + this.searchInput">
+                <img src="../../assets/images/usercenter/search.png" alt="">
+              </router-link>
+            </div>
+          </div>
         </div>
         <router-view></router-view>
       </div>
@@ -35,6 +40,7 @@
           return {
             id: this.$route.params.id,
             user: {},
+            searchInput: "",
           }
         },
       created() {
@@ -45,6 +51,22 @@
         }, function (err) {
           console.log(err);
         });
+      },
+      methods: {
+          searchUser() {
+            let _this = this;
+            console.log(this.searchInput);
+            this.$ajax.get(`http://localhost:3000/users/attention/searchUser/${this.$store.state.userId}/${this.searchInput}`
+            ).then(function (result) {
+               _this.$store.state.mySearchUser = result.data.data;
+
+              setTimeout(() => {}, 20);
+
+               console.log(_this.$store.state.mySearchUser);
+            }, function (err) {
+              console.log(err);
+            });
+          }
       }
     }
 </script>
@@ -53,25 +75,9 @@
   div {
     color: #5E5E5E;;
   }
-
-  #set {
-
-    padding-bottom: 30px;
-  }
   .contant {
     background-color: #fafafa;
     padding-bottom: 30px;
-  }
-  .top {
-    height: 53px;
-    background-color: #528970;
-  }
-  .topTitle {
-    height: 53px;
-    line-height: 52px;
-    font-size: 18px;
-    color: white;
-    margin-left: 20px;
   }
   .headPic {
     width: 122px;
@@ -83,27 +89,25 @@
     text-align: center;
     padding-top: 30px;
   }
-
-  .others {
-    border: 1px solid #797979;
-    border-radius: 3px;
-    height: 140px;
-    padding-top: 8px;
-    margin-bottom: 5px;
-  }
-  .othersHead {
-    margin-left: 20px;
-  }
-  .othersInfo {
-    padding-top: 10px;
-  }
   .othersInfo div {
     padding-bottom: 5px;
   }
-  .othersBtn {
-    padding-top: 10px;
-  }
-  .showOthers {
+  #search {
+    float: right;
+    margin-right: 80px;
     margin-top: 20px;
+    border: 1px solid #aaa;
+    border-radius: 13px;
+    height: 34px;
+    line-height: 34px;
+    /*width: 250px;*/
   }
+  #searchInput {
+    height: 30px;
+    /*border: 1px solid black;*/
+    border-radius: 15px;
+    border: none;
+    margin-left: 8px;
+  }
+
 </style>

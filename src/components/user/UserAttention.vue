@@ -10,8 +10,8 @@
               </div>
               <app-attention-detail></app-attention-detail>
             </div>
-            <div class="col-sm-offset-1 col-sm-3">
-              <!--<app-attention-list></app-attention-list>-->
+            <div class="col-sm-4">
+              <app-attention-list></app-attention-list>
               <!--<div class="top">-->
                 <!--<div class="topTitle">关注的用户排行榜</div>-->
               <!--</div>-->

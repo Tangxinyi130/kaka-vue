@@ -28,7 +28,10 @@ export default new Vuex.Store({
     postSend: false,
     postSendAnn:true,
     offset:0,
-    sumPage:0
+    sumPage:0,
+
+    //查找用户
+    mySearchUser: [],
   },
   getters: {
     isLogin(state) {

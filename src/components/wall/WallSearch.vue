@@ -118,4 +118,7 @@
     height: 40px;
     line-height: 40px;
   }
+  .wallpublic {
+    color: white;
+  }
 </style>

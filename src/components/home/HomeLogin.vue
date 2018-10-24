@@ -5,7 +5,7 @@
         <span>登录</span>
       </nav>
       <form role="form-horizontal">
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 20px">
           <input type="text" class="form-control" v-model="username"  id="login" placeholder="请输入手机号">
         </div>
         <div class="form-group">
@@ -13,17 +13,17 @@
         </div>
         <div class="row" style="height: 30px">
           <div class="col-sm-6 ">
-              <input type="checkbox"> 记住密码
+              <!--<input type="checkbox"> 记住密码-->
           </div>
           <div class="col-sm-4 col-sm-offset-2" style="text-align: right ">
-              <router-link to="/" style="">忘记密码?</router-link>
+              <!--<router-link to="/" style="">忘记密码?</router-link>-->
           </div>
         </div>
-        <button type="submit" @click="toLogin" class="btn btn-default btn-info form-control">登录</button>
+        <button type="submit" @click="toLogin" class="btn btn-default btn-info form-control" style="margin-top: -20px">登录</button>
       </form>
       <div style="height: 1px; border-top:1px solid #ccc; margin-top: 12px "></div>
       <div style="height: 30px; line-height: 30px">
-        其他登录：<router-link to="/" style="">QQ</router-link>&nbsp;&nbsp;<router-link to="/" style="">微信</router-link>
+        <!--其他登录：<router-link to="/" style="">QQ</router-link>&nbsp;&nbsp;<router-link to="/" style="">微信</router-link>-->
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
             } else if (result.data.data == 3) {
               alert("登录成功");
               save(_this.username);
-              location.href = "http://localhost:8080";
+              location.href = "/";
             } else {
               alert("服务器错误");
             }

@@ -97,14 +97,14 @@
           if(this.$route.params.year!=undefined){
             let year=this.$route.params.year
             let month=this.$route.params.month
-            axios.get(`http://localhost:3000/activity/${year}/${month}`).then((res) =>{
+            axios.get(`${axios.defaults.baseURL}/activity/${year}/${month}`).then((res) =>{
               _this.myActData= res.data.data;
               _this.pageCount=_this.myActData.length
               console.log("结果"+_this.pageCount)
               _this.loadData()
             })
           }else{
-            axios.get("http://localhost:3000/activity").then((res) =>{
+            axios.get(`${axios.defaults.baseURL}/activity`).then((res) =>{
               _this.myActData= res.data.data.allData;
               _this.pageCount=_this.myActData.length
               console.log("结果"+_this.pageCount)
