@@ -289,7 +289,7 @@
       },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/mapCollection/${this.$route.params.id}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/mapCollection/${this.$route.params.id}`
         ).then(function (result) {
           for(var key in result.data.data) {
               _this.toShowMap(result.data.data[key].cardSendRegion);

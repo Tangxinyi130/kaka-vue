@@ -59,10 +59,10 @@
           this.showPic = true;
           this.postcardId = id;
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/showPic/${this.postcardId}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/showPic/${this.postcardId}`
           ).then(function (result) {
 
-            _this.postcardStr = result.data.data.cardPic;
+            _this.postcardStr = `${axios.defaults.baseURL}${result.data.data.cardPic}`;
           }, function (err) {
             console.log(err);
           });
@@ -97,7 +97,7 @@
         created() {
           // this.getSend();
             let _this = this;
-            this.$ajax.get(`http://localhost:3000/users/userSend/${this.$route.params.id}`
+            this.$ajax.get(`${axios.defaults.baseURL}/users/userSend/${this.$route.params.id}`
             ).then(function (result) {
               _this.sendCard = result.data.data;
               // console.log(result.data.data);

@@ -95,9 +95,12 @@
         searchUser() {
           let _this = this;
           console.log(this.searchInput);
-          this.$ajax.get(`http://localhost:3000/users/attention/searchUser/${this.$store.state.userId}/${this.$route.params.name}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/attention/searchUser/${this.$store.state.userId}/${this.$route.params.name}`
           ).then(function (result) {
             _this.others = result.data.data;
+            for (var i in _this.others) {
+              _this.others[i].userHeadPic = `${axios.defaults.baseURL}${_this.others[i].userHeadPic}`
+            }
           }, function (err) {
             console.log(err);
           });
@@ -109,7 +112,7 @@
         //关注用户
         toAtt(otherId) {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/attention/focus/${this.$store.state.userId}/${otherId}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/attention/focus/${this.$store.state.userId}/${otherId}`
           ).then(function (result) {
             location.href = `/attention/${_this.$store.state.userId}/att`;
           }, function (err) {
@@ -119,7 +122,7 @@
         //取消关注
         cancelAtt(otherId) {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/attention/unfollow/${this.$store.state.userId}/${otherId}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/attention/unfollow/${this.$store.state.userId}/${otherId}`
           ).then(function (result) {
             location.href = `/attention/${_this.$store.state.userId}/att`;
           }, function (err) {

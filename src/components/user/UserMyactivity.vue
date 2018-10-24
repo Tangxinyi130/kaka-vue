@@ -1,44 +1,44 @@
 <template>
     <!--<h3>我的活动</h3>-->
-  <div class="con">
-    <div class="container con1">
-      <div class="row con-nav">
-        <div class="col-sm-12 con-nav-col">我的活动</div>
-      </div>
-      <div class="row con-body">
-        <div class="container col-sm-8 col-sm-offset-2 con-body-con text-center">
-          <div style="height: 30px"></div>
-          <!--*********************-->
-          <div class="leftc col-sm-10">
-            <div class="contList">
-              <ul class="cont-list">
-                <li class="am-gallery-item" v-for="data in myactivityData">
-                  <router-link :to="'/activitydetail/' + data.activityId">
-                    <div class="row col-sm-offset-1" style="border: 1px solid #ccc">
-                      <div class="img_box col-md-4">
-                      <a href="">
-                        <img width="100%" height="162px" :src='data.goodsPic'>
-                      </a>
-                    </div>
-                      <div class="intro col-md-8" style="text-align: left">
-                          <div class="row"><p>活动名称:{{data.activityName}}</p></div>
-                          <div class="row"><p>活动详情:{{data.activityDetails}}</p></div>
-                          <div class="row"><p>活动对应的商品名称:{{data.goodsName}}</p></div>
-                          <div class="row"><p>在该活动中购买的商品名称:{{data.goodsName}}</p></div>
-                          <div class="row"><p>商品的价格:{{data.goodsPrice}}</p></div>
-                          <div class="row"><p>商品的介绍:{{data.goodsDetails}}</p></div>
-                     </div>
-                    </div>
-                  </router-link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!--***************************-->
-        </div>
-      </div>
-    </div>
-  </div>
+  <!--<div class="con">-->
+    <!--<div class="container con1">-->
+      <!--<div class="row con-nav">-->
+        <!--<div class="col-sm-12 con-nav-col">我的活动</div>-->
+      <!--</div>-->
+      <!--<div class="row con-body">-->
+        <!--<div class="container col-sm-8 col-sm-offset-2 con-body-con text-center">-->
+          <!--<div style="height: 30px"></div>-->
+          <!--&lt;!&ndash;*********************&ndash;&gt;-->
+          <!--<div class="leftc col-sm-10">-->
+            <!--<div class="contList">-->
+              <!--<ul class="cont-list">-->
+                <!--<li class="am-gallery-item" v-for="data in myactivityData">-->
+                  <!--<router-link :to="'/activitydetail/' + data.activityId">-->
+                    <!--<div class="row col-sm-offset-1" style="border: 1px solid #ccc">-->
+                      <!--<div class="img_box col-md-4">-->
+                      <!--<a href="">-->
+                        <!--<img width="100%" height="162px" :src='data.goodsPic'>-->
+                      <!--</a>-->
+                    <!--</div>-->
+                      <!--<div class="intro col-md-8" style="text-align: left">-->
+                          <!--<div class="row"><p>活动名称:{{data.activityName}}</p></div>-->
+                          <!--<div class="row"><p>活动详情:{{data.activityDetails}}</p></div>-->
+                          <!--<div class="row"><p>活动对应的商品名称:{{data.goodsName}}</p></div>-->
+                          <!--<div class="row"><p>在该活动中购买的商品名称:{{data.goodsName}}</p></div>-->
+                          <!--<div class="row"><p>商品的价格:{{data.goodsPrice}}</p></div>-->
+                          <!--<div class="row"><p>商品的介绍:{{data.goodsDetails}}</p></div>-->
+                     <!--</div>-->
+                    <!--</div>-->
+                  <!--</router-link>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;***************************&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </template>
 
 <script>
