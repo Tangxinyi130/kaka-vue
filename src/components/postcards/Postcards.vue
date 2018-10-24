@@ -23,7 +23,7 @@
         getMsg() {
           this.$ajax({
             method: 'get',
-            url: 'http://localhost:3000/postcards/JS-00001'
+            url: `${axios.defaults.baseURL}/postcards/JS-00001`
           }).then(res => {
             console.log(res)
             this.msg = JSON.stringify(res.data.data);
