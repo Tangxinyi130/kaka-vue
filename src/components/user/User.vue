@@ -6,24 +6,24 @@
         </div>
         <div class="row bottom">
           <app-userpersonal></app-userpersonal>
-          <div class="row">
+          <div class="row btns">
             <div class="col-sm-offset-1 col-sm-2">
-              <router-link role="presentation" :to="'/user/' + id + '/aboutme'">
+              <router-link role="presentation" :to="'/user/' + id + '/aboutme'" style="margin-left: -14px">
                 <button class="btn aboutme">关于我</button>
               </router-link>
             </div>
             <div class="col-sm-2">
-              <router-link role="presentation" :to="'/user/' + id + '/send'">
+              <router-link role="presentation" :to="'/user/' + id + '/send'" style="margin-left: -10px">
                 <button class="btn send">已发送的明信片</button>
               </router-link>
             </div>
             <div class="col-sm-2">
-              <router-link role="presentation" :to="'/user/' + id + '/receive'">
+              <router-link role="presentation" :to="'/user/' + id + '/receive'" style="margin-left: -6px">
                 <button class="btn receive">已收到的明信片</button>
               </router-link>
             </div>
             <div class="col-sm-2">
-              <router-link role="presentation" :to="'/user/' + id + '/wall/receive'">
+              <router-link role="presentation" :to="'/user/' + id + '/wall/receive'" style="margin-left: -4px">
                 <button class="btn wall">我的明信片墙</button>
               </router-link>
             </div>
@@ -81,7 +81,7 @@
   }
 
   .btn {
-    width: 160px;
+    width: 180px;
     height: 50px;
     border: 1px solid #797979;
     border-radius: 3px;
@@ -102,6 +102,7 @@
   }
   .btn.map {
     background-color: #FDECD0;
+    width: 185px;
   }
 
   .userView {
@@ -117,4 +118,10 @@
     /*padding-left: 30px;*/
     /*padding-right: 30px;*/
   }
+  /*.btns {*/
+    /*margin-left: 70px;*/
+  /*}*/
+  /*.btn div {*/
+    /*margin-right: 20px;*/
+  /*}*/
 </style>

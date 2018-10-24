@@ -8,44 +8,104 @@
           <ul class="cont-list list-unstyled ">
             <li class="am-gallery-item" >
                 <div class="img_box col-md-3">
-                  <a href="">
-                    <img :src="cardsInformation.userHeadPic">
-                  </a>
+                  <router-link :to="'/user/' + cardsInformation.userId + '/aboutme'">
+                    <img :src="cardsInformation.userHeadPic" class="head">
+                  </router-link>
                 </div>
                 <div class="intro col-md-3">
-                  <h3>
-                    <a href="/">
-                     ID:{{cardsInformation.userId}}
-                    </a>
-                  </h3>
-                 <p>昵称：{{cardsInformation.userNickname}}</p><div class="iconCon">
-                  <button>+关注</button>
-                </div>
+                  <div class="pUserInfo">
+                    <p class="text">
+                      ID:{{cardsInformation.userId}}
+                    </p>
+                    <p class="text">昵称：{{cardsInformation.userNickname}}</p>
+                    <div class="iconCon">
+                      <button v-if="userId != null && sendAtt == false && cardsInformation.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId)">关注</button>
+                      <button v-if="userId != null && sendAtt == true && cardsInformation.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId)">取消关注</button>
+                    </div>
+                  </div>
                 </div>
             </li>
+            <!-- 关注模态框 -->
+            <div class="modal fade bs-example-modal-sm" id="att" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                  </div>
+                  <div class="modal-body">
+                    是否关注？
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" @click="toAtt(clickId)">确定</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- 取消关注模态框 -->
+            <div class="modal fade bs-example-modal-sm" id="fan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提示</h4>
+                  </div>
+                  <div class="modal-body">
+                    是否取消关注？
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" @click="cancelAtt(clickId)">确定</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <li class="am-gallery-item ">
               <div class="img_box col-md-3">
-                <a href="">
-                  <img :src="cardsInformation.userHeadPic1">
-                </a>
+                <router-link :to="'/user/' + cardsInformation.userId1 + '/aboutme'">
+                  <img :src="cardsInformation.userHeadPic1" class="head">
+                </router-link>
               </div>
               <div class="intro col-md-3">
-                <h3>
-                  <a href="/">
+                <div class="pUserInfo">
+                  <p class="text">
                     ID:{{cardsInformation.userId1}}
-                  </a>
-                </h3>
-                <p>昵称：{{cardsInformation.userNickname1}}</p>
-                <button>+关注</button>
+                  </p>
+                  <p class="text">昵称：{{cardsInformation.userNickname1}}</p>
+                  <div class="iconCon">
+                    <button v-if="userId != null && receiveAtt == false && cardsInformation.userId1 != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId1)">关注</button>
+                    <button v-if="userId != null && receiveAtt == true && cardsInformation.userId1 != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId1)">取消关注</button>
+                  </div>
+                </div>
               </div>
 
             </li>
           </ul>
-          <div style="width: 90%;height: 200px;background-color: white;margin-top:130px;margin-left:20px;border: 4px dashed ghostwhite">
-            <h3>相关介绍</h3>
-            <p>发送：{{cardsInformation.userCity}} <span style="margin-left: 40px">接受：{{cardsInformation.userCuty1}}</span></p>
-            <p>两地相距：{{cardsInformation.cardDistance}}</p>
-            <p>天数：{{cardsInformation.DAY}}</p>
+          <div id="introduction">
+            <!--<p class="text">相关介绍</p>-->
+            <div class="text addressDiv addStart">
+              <span class="textT">起始地</span><br>
+              <span>{{cardsInformation.userProvince}}&nbsp;&nbsp;{{cardsInformation.userCity}}</span>
+            </div>
+            <div class="addressDiv addPic">
+              <img src="../../assets/images/line.png" alt="" width="259px" height="31px">
+            </div>
+            <div class="text addressDiv addEnd">
+              <span class="textT">目的地</span><br>
+              <span>{{cardsInformation.userProvince1}}&nbsp;&nbsp;{{cardsInformation.userCity1}}</span>
+            </div>
+            <div style="clear: both"></div>
+            <div id="km_days">
+              <p class="text">{{cardsInformation.cardDistance}} km  </p>
+              <p class="text">{{cardsInformation.DAY}} days</p>
+            </div>
+
+
           </div>
         </div>
         <div class="col-xs-12 col-md-6">
@@ -64,12 +124,19 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
     export default {
         name: "cardDetail",
+        computed: mapGetters([
+          "isLogin",
+          "userId"
+        ]),
         data(){
           return {
             cardId:this.$route.params.cardId,
             cardsInformation:{},
+            sendAtt: "",
+            receiveAtt: "",
             a: {
               title: "",
               lng: 0,
@@ -87,18 +154,35 @@
           }
         },
         created(){
+          let _this = this;
           this.$ajax({
             method:'get',
             url:`${axios.defaults.baseURL}/postcards/`+this.cardId
           }).then((res)=>{
-            this.cardsInformation=res.data.data.cardInformation[0];
-            this.cardsInformation.userHeadPic = `${axios.defaults.baseURL}${this.cardsInformation.userHeadPic}`;
-            this.cardsInformation.userHeadPic1 = `${axios.defaults.baseURL}${this.cardsInformation.userHeadPic1}`;
+            _this.cardsInformation = res.data.data.cardInformation[0];
+            if (!_this.cardsInformation.cardDistance) {
+              _this.cardsInformation.cardDistance = "?";
+            }
+            if (!_this.cardsInformation.DAY) {
+              _this.cardsInformation.DAY = "?";
+            }
+            _this.cardsInformation.userHeadPic = `${axios.defaults.baseURL}${_this.cardsInformation.userHeadPic}`;
+            _this.cardsInformation.userHeadPic1 = `${axios.defaults.baseURL}${_this.cardsInformation.userHeadPic1}`;
           });
+
+          setTimeout(() => {
+            this.isSend();
+            this.isReceive();
+          }, 20);
+
+
+
+
 
 
         },
         mounted() {
+          //地图显示
           setTimeout(() => {
             setTimeout(() => {
               let _this = this;
@@ -160,6 +244,7 @@
           }, 20)
         },
         methods: {
+          //获取两地经纬度
           SearchByStationName(keyword, callback) {
             var map = new BMap.Map("container");
             var map = new BMap.Map("container",{minZoom:4,maxZoom:13}); // 创建Map实例,设置地图允许的最小/大级别
@@ -184,41 +269,151 @@
             localSearch.search(keyword);
           },
 
+          //判断是否关注了发送方
+          isSend() {
+            //判断登录的用户是否关注发送方
+            setTimeout(() => {
+              let _this = this;
+              this.$ajax({
+                method:'get',
+                url:`${axios.defaults.baseURL}/users/isAttention/${this.$store.state.userId}/${this.cardsInformation.userId}`
+              }).then((res)=>{
+                console.log("判断发送方的数据" + res.data.data.sum);
+                if (res.data.data.sum == 1) {
+                  _this.sendAtt = true;
+                } else {
+                  _this.sendAtt = false;
+                }
+              });
+            }, 50);
+          },
+          isReceive() {
+            //判断登录的用户是否关注收件方
+            setTimeout(() => {
+              let _this = this;
+              this.$ajax({
+                method:'get',
+                url:`${axios.defaults.baseURL}/users/isAttention/${this.$store.state.userId}/${this.cardsInformation.userId1}`
+              }).then((res)=>{
+                console.log("判断接收方的数据" + res.data.data.sum);
+                if (res.data.data.sum == 0) {
+                  _this.receiveAtt = false;
+                } else {
+                  _this.receiveAtt = true;
+                }
+              });
+            }, 50);
+          },
 
+          getModalId(x) {
+            console.log(x);
+            this.clickId = x;
+          },
+          //关注用户
+          toAtt(otherId) {
+            let _this = this;
+            this.$ajax.get(`${axios.defaults.baseURL}/users/attention/focus/${this.$store.state.userId}/${otherId}`
+            ).then(function (result) {
+              location.href = `/attention/${_this.$store.state.userId}/att`;
+            }, function (err) {
+              console.log(err);
+            });
+          },
+          //取消关注
+          cancelAtt(otherId) {
+            let _this = this;
+            this.$ajax.get(`${axios.defaults.baseURL}/users/attention/unfollow/${this.$store.state.userId}/${otherId}`
+            ).then(function (result) {
+              location.href = `/attention/${_this.$store.state.userId}/att`;
+            }, function (err) {
+              console.log(err);
+            });
+          }
         }
     }
 </script>
 
 <style scoped>
+  #km_days {
+    margin-left: -20px;
+  }
+  .btn {
+    background: transparent;
+    border: 1px solid #797979;
+    color: #5E5E5E;
+  }
+  .btn:hover {
+    color: #4e91ff;
+  }
+  .textT {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .addressDiv {
+    float: left;
+    text-align: center;
+  }
+  .addressDiv span {
+    padding-top: 10px;
+  }
+
+  .addStart {
+    margin-left: 23px;
+    margin-top: 12px;
+  }
+  .addEnd {
+    margin-top: 12px;
+  }
+  .addPic {
+    margin-top: 20px;
+    /*margin-left: 6px;*/
+  }
+  #introduction {
+    width: 90%;
+    height: 150px;
+    margin-top:150px;
+    margin-left:20px;
+    border: 4px dashed #bdd1ff;
+    text-align: center;
+  }
+
+  .text {
+    color: #5E5E5E;
+    font-size: 16px;
+  }
+  .pUserInfo {
+    margin-top: 12px;
+    margin-left: 5px;
+  }
+
   .twoPeople{
     margin-top: 30px;
   }
-.top{
-  height: 52px;
-  font-size: 20px;
-  line-height: 52px;
-  text-align: center;
-  color: white;
-  background-color: rgb(82,137,112);
-  }
-img{
-  width: 122px;
-  height: 122px;
-  border-radius: 122px;
+  .top{
+    height: 52px;
+    font-size: 20px;
+    line-height: 52px;
+    text-align: center;
+    color: white;
+    background-color: rgb(82,137,112);
+    }
+    .head{
+      width: 122px;
+      height: 122px;
+      border-radius: 122px;
 
-}
- .send-text>p,.receive>p{
-   text-align: center;
-   margin-left: -45px;
-   margin-top: 15px;
- }
+    }
+   .send-text>p,.receive>p{
+     text-align: center;
+     margin-left: -45px;
+     margin-top: 15px;
+   }
   .send-text>button,.receive>button{
     margin-left: 50px;
   }
   .twoPeopleMap{
     width: 100%;
     height: 400px;
-    /*background-color: blue;*/
   }
 
 </style>

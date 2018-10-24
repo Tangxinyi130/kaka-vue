@@ -30,7 +30,7 @@
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">性别</label>
-                    <label class="radio-inline">
+                    <label class="radio-inline" style="margin-left: 15px">
                       <input type="radio" name="sex" id="inlineRadio1" value="男" v-model="sex" form="setUser"> 男
                     </label>
                     <label class="radio-inline">
@@ -375,7 +375,8 @@
     color: white;
   }
   .bottom {
-    background-color: #ebf6df;
+    background-color: #fafafa;
+    height: 600px;
   }
 
   .setForm {
