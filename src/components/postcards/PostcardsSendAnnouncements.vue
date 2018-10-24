@@ -110,6 +110,7 @@
         userNickname:'',
         userProvince:'',
         userSex:0,
+        receivemsg:{}
       }
     },
     created() {
@@ -118,7 +119,7 @@
       console.log(this.$store.state.postSendAnn);
       console.log(this.$store.state.postSend)
       let _this = this;
-      this.$ajax.get(`http://localhost:3000/send/limitTimes/`+(localStorage.userId)
+      this.$ajax.get(`${axios.default.baseURL}/send/limitTimes/`+(localStorage.userId)
       ).then(function (result) {
         console.log(result.data.data);
         _this.times = result.data.data.times;
@@ -142,19 +143,29 @@
       sendEmail:function(){
         this.$ajax({
           method:'get',
-          url:'http://localhost:3000/send/sendEmail/'+(localStorage.userId)
+          url:`${axios.default.baseURL}/send/sendEmail/`+(localStorage.userId)
         }).then((res)=>{
           console.log("成功")
         })
       },
+      // sendEmail:function(){
+      //   let _this = this;
+      //   this.$ajax({
+      //     method:'get',
+      //     url:'http://localhost:3000/send/sendEmail/'+ _this.$store.state.userId
+      //   }).then((res)=>{
+      //     console.log("成功")
+      //   })
+      // },
       send:function(){
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/send/sendPostcard/`+(localStorage.userId)
+        this.$ajax.get(`${axios.default.baseURL}/send/sendPostcard/`+(localStorage.userId)
         ).then(function (result) {
           // console.log(result.data.data.userHeadPic);
           console.log(result.data.data);
+          _this.receivemsg=result.data.data;
           _this.userNickname = result.data.data.userNickname;
-          _this.userHeadPic = result.data.data.userHeadPic;
+          _this.userHeadPic = `${axios.default.baseURL}${result.data.data.userHeadPic}`;
           _this.userProvince = result.data.data.userProvince;
           _this.userCity = result.data.data.userCity;
           _this.userSex = result.data.data.userSex;
@@ -172,7 +183,7 @@
           if(this.addresscounts>0 || this.emailcounts>0 ){
             //去设置界面设置地址
             alert("要先设置好个人信息才能加入我们的发送哦！")
-            location.href = "http://localhost:8080/userset";
+            location.href = "/userset";
           }else {
             //进行进一步的判断
             //如果次数在5次之内可以发送，如果超过5次将不会发送
@@ -180,7 +191,7 @@
               //如果pool池里面的数据不足将会提示用户
               if(this.pooltimes<1){
                 alert("给您跪下了！我们系统目前繁忙暂时用不了，先去别处逛逛吧！")
-                location.href = "http://localhost:8080";
+                location.href = "/";
               }else {
                 // ***********
                 this.send();
@@ -191,7 +202,7 @@
               }
             }else {
               alert("您发送的次数已经超过5次了，静静等待小伙伴的接收吧。");
-              location.href = "http://localhost:8080";
+              location.href = "/";
             }
           }
           // ******************

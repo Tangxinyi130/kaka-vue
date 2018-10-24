@@ -19,37 +19,24 @@
                           <div class="row row-con-row6" >
                               <div class="container">
                                  <div class="row">
-                                      <div class="container col-sm-4 col-sm-offset-3"style="height: 180px">
+                                      <div class="container col-sm-4 col-sm-offset-3"style="height:200px;">
                                           <form>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <select class="form-control">
-                                                            <option selected>中国大陆 +86</option>
-                                                            <option>日本     +81</option>
-                                                            <option>韩国     +84</option>
-                                                            <option>泰国     +87</option>
-                                                            <option>香港     +80</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-2">
-                                                        <input type="text" placeholder="请输入手机号："/>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style="height:30px"></div>
-                                                 <div class="row">
-                                                      <div class="col-sm-5">
-                                                          <input type="button" value="点击获取验证码"/>
-                                                      </div>
-                                                      <div class="col-sm-2">
-                                                          <input type="text" placeholder="请输入验证码："/>
-                                                      </div>
-                                                 </div>
-                                                <div class="row" style="height:30px"></div>
-                                                <div class="col-sm-4  col-sm-offset-2">
-                                                  <button type="button" class="btn btn-primary btn-lg" style="width:180px;" @click="submit">
+                                                <!--<div class="row" style="height:30px"></div>-->
+                                                   <div class="row col-sm-10 formStyle col-sm-offset-1">
+                                                     <input @change="countTel" type="text" id="tel" class="form-control leftStyle" placeholder="请输入手机号" v-model="mobile">
+                                                     <span :mobile="mobile" >{{tiShi1}}</span>
+                                                   </div>
+                                                   <!--<div class="row" style="height:20px"></div>-->
+                                                   <div class="row col-sm-10 buttonStyle col-sm-offset-1" style="margin-top:20px;">
+                                                     <input type="text" class="form-control col-xs-6 formStyle3" placeholder="请输入验证码" v-model="vCode">
+                                                     <button type="button" class="btn btn-default  formStyle3 col-xs-6" @click="sendCode">获取短信验证码</button><br>
+                                                     <span :vCode="vCode" class="spanW"style="margin-top: 20px">{{tiShi3}}</span>
+                                                   </div>
+                                                    <div class="row col-sm-10  col-sm-offset-1"style="margin-top: 20px;">
+                                                        <button type="button" class="btn btn-primary btn-lg col-xs-6 col-xs-offset-3" style="" @click="submit">
                                                           <span style="color: white">下一步</span>
-                                                  </button>
-                                                </div>
+                                                        </button>
+                                                    </div>
                                           </form>
                                       </div>
                                  </div>
@@ -63,14 +50,91 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
     export default {
+      data() {
+        return {
+          vCode:'',
+          mobile:'',
+          Num:'',
+          telnum:0,
+          inputTel:'',
+          pwd:'',
+          tiShi1:'',
+          tiShi3:'',
+         teltrue:1,
+        }
+      },
       methods:{
+        sendCode(){
+          this.Num = '';
+          let num = this.Num;      //容器
+          for(let i =0;i<6;i++){   //循环六次
+            num += Math.floor(Math.random()*10);
+          }
+          this.Num = num;
+          console.log(this.Num)
+          // axios.get('/proxy?mobile=13812865905&tpl_id=109157&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
+          //   .then((res)=>{
+          //     console.log(res)
+          //   }).catch(err=>{console.log(err)})
+        },
         submit:function () {
           this.$store.state.iphoneNumber=false;
           this.$store.state.setPassword=true;
+        },
+        tologin:function(){
+          this.$router.replace({path:"/login"})
+        },
+        countTel: function () {
+          this.inputTel = $("#tel").val();
+          const reg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+          console.log("输入的手机号是"+this.inputTel);
+          let _this = this;
+          this.$ajax.get(`${axios.default.baseURL}/users/getTel/` + (_this.inputTel)
+          ).then(function (result) {
+            console.log(_this.inputTel);
+            console.log("输入的手机号在数据库中的数量为"+ result.data.data[0].sum)
+            if(!(reg.test(_this.inputTel))){
+              alert("对不起您的手机号输入错误");
+              this.teltrue=0;
+            }else if(result.data.data[0].sum>0){
+              alert("您已经注册过了，点击去登录");
+              _this.tologin();
+            }
+          }, function (err) {
+            console.log(err);
+          });
+        },
+        send:function () {
+          //判断手机号的格式是否正确，如果不正确将会提示手机号输出错误
+          if(this.tishi1=''){
+            console.log('手机格式正确了')
+          }
+
         }
       },
         name: "RegisterNumber",
+       watch:{
+        mobile(newmobile,oldmobile){
+          const ha = this;
+          const reg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+          if(!(reg.test(ha.mobile))){
+              ha.tiShi1 = '手机号不正确！';
+            }else{
+              ha.tiShi1 = ''
+            }
+
+        },
+        vCode(newmobile,oldmobile){
+          const ha = this;
+          if(ha.vCode != ha.Num){
+            ha.tiShi3 = '验证码不正确！'
+          }else {
+            ha.tiShi3 = ''
+          }
+        },
+      },
 
     }
 </script>
@@ -98,5 +162,6 @@
   .row-con-row4-sm{
     border: 1px solid #cccccc
   }
-
+  /*******/
+  span{color: red;}
 </style>

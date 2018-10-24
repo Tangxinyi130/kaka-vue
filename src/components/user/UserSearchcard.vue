@@ -66,7 +66,7 @@
           console.log(this.$store.state.city);
           console.log(localStorage.userId)
           let _this =this;
-          axios.post("http://localhost:3000/users/searchMyPostcards",
+          axios.post(`${axios.default.baseURL}/users/searchMyPostcards`,
             {
               userId:localStorage.userId,
               province:this.$store.state.city
@@ -85,7 +85,7 @@
       created() {
         this.$ajax({
           method: 'get',
-          url: 'http://localhost:3000/wall'
+          url: `${axios.default.baseURL}/wall`
         }).then(res => {
           for(let i=0;i<res.data.data.allCity.length;i++){
             this.allCityId.push(res.data.data.allCity[i].regionId);

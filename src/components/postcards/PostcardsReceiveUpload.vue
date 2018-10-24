@@ -64,7 +64,7 @@
           // zipFormData.append('mydata',this.mydata)
           zipFormData.append("mydata", this.$store.state.cardId);
           let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-          this.$ajax.post('http://localhost:3000/receive/uploadfile', zipFormData,config
+          this.$ajax.post(`${axios.default.baseURL}/receive/uploadfile`, zipFormData,config
           ).then(function (response) {
             console.log(response);
             console.log(response.data);
