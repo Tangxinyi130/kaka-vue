@@ -29,7 +29,7 @@
                                                    <!--<div class="row" style="height:20px"></div>-->
                                                    <div class="row col-sm-10 buttonStyle col-sm-offset-1" style="margin-top:20px;">
                                                      <input type="text" class="form-control col-xs-6 formStyle3" placeholder="请输入验证码" v-model="vCode">
-                                                     <button type="button" class="btn btn-default  formStyle3 col-xs-6" @click="sendCode">获取短信验证码</button><br>
+                                                     <button type="button" class="btn btn-default  formStyle3 col-xs-6" @click="sendCode" @change="code" >获取短信验证码</button><br>
                                                      <span :vCode="vCode" class="spanW"style="margin-top: 20px">{{tiShi3}}</span>
                                                    </div>
                                                     <div class="row col-sm-10  col-sm-offset-1"style="margin-top: 20px;">
@@ -63,6 +63,7 @@
           tiShi1:'',
           tiShi3:'',
          teltrue:1,
+          codetrue:1
         }
       },
       methods:{
@@ -86,6 +87,9 @@
         tologin:function(){
           this.$router.replace({path:"/login"})
         },
+        code:function(){
+          
+        },
         countTel: function () {
           this.inputTel = $("#tel").val();
           const reg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
@@ -98,9 +102,10 @@
             if(!(reg.test(_this.inputTel))){
               alert("对不起您的手机号输入错误");
               this.teltrue=0;
-            }else if(result.data.data[0].sum>0){
-              alert("您已经注册过了，点击去登录");
-              _this.tologin();
+              if(result.data.data[0].sum>0){
+                alert("您已经注册过了，点击去登录");
+                _this.tologin();
+              }
             }
           }, function (err) {
             console.log(err);
@@ -108,9 +113,7 @@
         },
         send:function () {
           //判断手机号的格式是否正确，如果不正确将会提示手机号输出错误
-          if(this.tishi1=''){
-            console.log('手机格式正确了')
-          }
+
 
         }
       },
