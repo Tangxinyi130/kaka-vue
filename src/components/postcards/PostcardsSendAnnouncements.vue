@@ -122,7 +122,7 @@
       console.log(this.$store.state.postSendAnn);
       console.log(this.$store.state.postSend)
       let _this = this;
-      this.$ajax.get(`${axios.default.baseURL}/send/limitTimes/`+(localStorage.userId)
+      this.$ajax.get(`${axios.defaults.baseURL}/send/limitTimes/${this.$store.state.userId}`
       ).then(function (result) {
         console.log(result.data.data);
         _this.times = result.data.data.times;
@@ -146,7 +146,7 @@
       sendEmail:function(){
         this.$ajax({
           method:'get',
-          url:`${axios.default.baseURL}/send/sendEmail/`+(localStorage.userId)
+          url:`${axios.defaults.baseURL}/send/sendEmail/${this.$store.state.userId}`
         }).then((res)=>{
           console.log("成功")
         })
@@ -162,13 +162,13 @@
       // },
       send:function(){
         let _this = this;
-        this.$ajax.get(`${axios.default.baseURL}/send/sendPostcard/`+(localStorage.userId)
+        this.$ajax.get(`${axios.defaults.baseURL}/send/sendPostcard/${this.$store.state.userId}`
         ).then(function (result) {
           // console.log(result.data.data.userHeadPic);
           console.log(result.data.data);
           _this.receivemsg=result.data.data;
           _this.userNickname = result.data.data.userNickname;
-          _this.userHeadPic = `${axios.default.baseURL}${result.data.data.userHeadPic}`;
+          _this.userHeadPic = `${axios.defaults.baseURL}${result.data.data.userHeadPic}`;
           _this.userProvince = result.data.data.userProvince;
           _this.userCity = result.data.data.userCity;
           _this.userSex = result.data.data.userSex;
