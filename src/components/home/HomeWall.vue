@@ -2,50 +2,22 @@
   <div id="homeWall">
     <div class="wall-box">
       <div class="wall-nav"><span class="wall-nav-text">近期明信片</span></div>
-      <div class="wall-item-box">
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <div>
-             <span class="text-cardid">
-            {{item.cardId}}
-          </span>
+      <div class="row">
+        <div v-for="item in recentPic" class="col-xs-6 col-sm-3 col-md-3">
+          <div class="thumbnail">
             <a href="">
-              <span class="glyphicon glyphicon-heart"></span>
+              <img :src="item.cardPic" height="200px" alt="">
             </a>
-            <a href="">
-              <span>收藏</span>
-            </a>
+            <div class="caption">
+              <span class="text-cardid">{{item.cardId}}</span>
+              <a href="">
+                <span class="glyphicon glyphicon-heart"></span>
+              </a>
+              <a href="">
+                <span>收藏</span>
+              </a>
+            </div>
           </div>
-        </div>
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-          <a >
-            <span class="glyphicon glyphicon-heart"></span>
-          </a>
-          <a>
-            <span>收藏</span>
-          </a>
-        </div>
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-          <a>
-            <span class="glyphicon glyphicon-heart"></span>
-          </a>
-          <a >
-            <span>收藏</span>
-          </a>
         </div>
       </div>
     </div>
@@ -82,12 +54,10 @@
 
 <style scoped>
   #homeWall{
-    height: 500px;
     margin-top:15px;
   }
   .wall-box{
     max-width: 1140px;
-    height: 510px;
     margin: 0 auto;
     background-color: honeydew;
     border-radius: 5px 5px 0px 0px;
