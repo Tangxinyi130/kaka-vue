@@ -66,13 +66,13 @@
           collectionNum:0
         }
       },
+
       created(){
         let _this = this;
-        // this.$ajax.get(`http://localhost:3000/userCard/${this.userId}`
         this.$ajax.get(`${axios.defaults.baseURL}/userCard/${this.userId}`
         ).then(function(result){
             _this.userNickName=result.data.data.nickName[0].userNickname;
-            _this.headPic = result.data.data.headPic[0].userHeadPic;
+            _this.headPic = `${axios.defaults.baseURL}${result.data.data.headPic[0].userHeadPic}`;
             _this.sendNum = result.data.data.sendNum[0].sendNum;
             _this.receiveNum = result.data.data.receiveNum[0].receiveNum;
             _this.attentionNum = result.data.data.attentionNum[0].attentionNum;

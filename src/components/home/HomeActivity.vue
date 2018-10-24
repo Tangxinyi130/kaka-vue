@@ -42,10 +42,11 @@
       created(){
         this.$ajax({
           method: 'get',
-          url: 'http://localhost:3000/activity'
+          url: `${axios.defaults.baseURL}/activity`
         }).then(res => {
           // for(let i=0;i<res.data.data.allData.length;i++){
           this.activityData=res.data.data.allData[1];
+          this.activityData.goodsPic = `${axios.defaults.baseURL}${this.activityData.goodsPic}`
           // }
         })
       }

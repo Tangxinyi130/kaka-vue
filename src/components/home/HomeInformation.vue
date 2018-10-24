@@ -47,7 +47,7 @@
       },
       mounted(){
         let _this = this;
-        this.$ajax.get('http://localhost:3000/information').then(function (result) {
+        this.$ajax.get(`${axios.defaults.baseURL}/information`).then(function (result) {
           let info= result.data.data;
           _this.receivedNum = info.receivedNum[0].receivedNum;
           _this.recentReceivedNum = info.recentReceivedNum[0].receivedNum;

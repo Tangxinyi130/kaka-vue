@@ -49,7 +49,7 @@
       },
       mounted(){
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/statusBar/${this.$store.state.userId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/statusBar/${this.$store.state.userId}`
         ).then(function(result){
           _this.transmitsNum = result.data.data.transmitsNum;
           _this.unabsorbedNum = result.data.data.unabsorbedNum[0].unabsorbedNum;
