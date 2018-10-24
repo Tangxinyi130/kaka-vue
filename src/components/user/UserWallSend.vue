@@ -23,10 +23,14 @@
         },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/userWallSend/${this.$store.state.userId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/userWallSend/${this.$store.state.userId}`
         ).then(function (result) {
           _this.pics = result.data.data;
-          console.log(_this.pics);
+          for(var i in _this.pics) {
+            _this.pics[i].cardPic = `${axios.defaults.baseURL}${_this.pics[i].cardPic}`
+          }
+
+          // console.log(_this.pics);
         }, function (err) {
           console.log(err);
         });

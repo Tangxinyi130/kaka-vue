@@ -10,8 +10,8 @@
               </div>
               <app-attention-detail></app-attention-detail>
             </div>
-            <div class="col-sm-offset-1 col-sm-3">
-              <!--<app-attention-list></app-attention-list>-->
+            <div class="col-sm-4">
+              <app-attention-list></app-attention-list>
               <!--<div class="top">-->
                 <!--<div class="topTitle">关注的用户排行榜</div>-->
               <!--</div>-->
@@ -51,24 +51,11 @@
           }
         },
         created() {
-          // let _this = this;
-          // this.$ajax.get(`http://localhost:3000/users/attention/${this.id}`
-          // ).then(function (result) {
-          //   _this.user = result.data.data;
-          // }, function (err) {
-          //   console.log(err);
-          // });
-          // this.$ajax.get(`http://localhost:3000/users/attention/myAttention/${this.id}`
-          // ).then(function (result) {
-          //   _this.others = result.data.data;
-          // }, function (err) {
-          //   console.log(err);
-          // });
+
         }
     }
 </script>
-<!--http://localhost:3000/users/attention/:userId-->
-<!--http://localhost:3000/users/attention/myAttention/:userId-->
+
 <style scoped>
   div {
     color: #5E5E5E;;

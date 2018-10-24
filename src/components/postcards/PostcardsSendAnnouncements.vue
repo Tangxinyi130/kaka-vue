@@ -71,7 +71,10 @@
                                   <div class="row">
                                       <div class="col-sm-8 col-sm-offset-3" style="font-size: 14px">
                                       <div style="height: 15px"></div>
-                                        小提示:您已经给{{userNickname}}发送了一张明信片,ID是:{{cardId}}
+                                        小提示：【{{userNickname}}】的用户信息已发送到你的邮箱<br>
+                                        记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
+
+                                        ID：<span style="font-weight: bold">{{cardId}}</span>
                                       </div>
                                   </div>
                               </div>
@@ -297,6 +300,7 @@
   }
   .but{
     width:130px;
-    background-color:lightskyblue
+    background-color:lightskyblue;
+    margin-top: 20px;
   }
 </style>

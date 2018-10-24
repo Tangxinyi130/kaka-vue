@@ -10,35 +10,6 @@
             <activity-data></activity-data>
           </div>
         </div>
-        <!--分页-->
-        <div class="row">
-          <nav class="paging">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous" title="上一页">
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
-              <li>
-                <a href="" title="第1页">1</a>
-              </li>
-              <li>
-                <span style="color:red;">2</span>
-              </li>
-              <li>
-                <a href="" title="第3页">3</a>
-              </li>
-              <li>
-                <a href="" title="第4页">4</a>
-              </li>
-              <li>
-                <a href="" aria-label="Next">
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
       </div>
     </div>
 </template>

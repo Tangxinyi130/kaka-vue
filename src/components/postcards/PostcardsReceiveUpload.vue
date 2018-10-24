@@ -53,15 +53,12 @@
       up:function () {
         setTimeout(() => {
           let _this = this;
-          // console.log(this.upath);
-          // console.log("this.mydata:  " + this.mydata)
           var zipFormData = new FormData();
           //依次添加多个文件
           for(var i = 0 ; i< this.upath.length ; i++){
             zipFormData.append('filename', this.upath[i]);
           }
           //添加其他的表单元素
-          // zipFormData.append('mydata',this.mydata)
           zipFormData.append("mydata", this.$store.state.cardId);
           let config = { headers: { 'Content-Type': 'multipart/form-data' } };
           this.$ajax.post(`${axios.default.baseURL}/receive/uploadfile`, zipFormData,config
@@ -76,7 +73,6 @@
             } else {
               alert("请选择图片!");
             }
-
           }, 20);
         }, 1000);
       },

@@ -31,12 +31,19 @@
           rankingInfo:{},
         }
       },
+      methods:{
+        rHeadPic(rankingData){
+          for(let i in rankingData){
+            rankingData[i].userHeadPic = `${axios.defaults.baseURL}${rankingData[i].userHeadPic}`
+          }
+        }
+      },
       created(){
         let _this = this;
-        this.$ajax.post(`http://localhost:3000/rankingSend`
+        this.$ajax.post(`${axios.defaults.baseURL}/rankingSend`
         ).then(function(result){
             _this.rankingInfo =result.data.data[0];
-            console.log(_this.rankingInfo)
+            _this.rHeadPic(_this.rankingInfo);
         },function (err) {
           console.log(err);
         })

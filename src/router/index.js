@@ -44,6 +44,8 @@ import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 import UserAttentionFans from "@/components/user/UserAttentionFans.vue"
+import UserAttentionSearch from "@/components/user/UserAttentionSearch.vue"
+
 import ActivityDetail from "@/components/activity/ActivityDetail.vue"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
@@ -67,7 +69,7 @@ export default new Router({
     {path: "/wall", component: Wall,children:[
         {path:"",component:WallPicture},
         {path:":page",component:WallPictureList},
-        {path:"search/:city",component:WallPictureList}
+        {path:"search/:city/:page",component:WallPictureList}
       ]},
 
     {path: "/activity", component: Activity,children:[
@@ -117,7 +119,8 @@ export default new Router({
     {path: "/userset", component: UserSet},
     {path: "/attention/:id", component: UserAttention, children: [
         {path: "att", component: UserAttentionOthers},
-        {path: "fan", component: UserAttentionFans}
+        {path: "fan", component: UserAttentionFans},
+        {path: "search/:name", component: UserAttentionSearch}
       ]
     },
   ]

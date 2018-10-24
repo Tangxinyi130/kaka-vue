@@ -15,8 +15,8 @@
             <td>{{data.cardId}}</td>
             <td>{{data.userNickname}}</td>
             <td>{{data.cardSendRegion}}</td>
-            <td>{{data.cardSendTime.substring(0, 10)}}</td>
-            <td>{{data.cardReceiveTime.substring(0, 10)}}</td>
+            <td>{{data.cardSendTime}}</td>
+            <td>{{data.cardReceiveTime}}</td>
             <td>
               <div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
@@ -64,14 +64,37 @@
           this.showPic = true;
           this.postcardId = id;
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/showPic/${this.postcardId}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/showPic/${this.postcardId}`
           ).then(function (result) {
-            _this.postcardStr = result.data.data.cardPic;
+            _this.postcardStr = `${axios.defaults.baseURL}${result.data.data.cardPic}`;
           }, function (err) {
             console.log(err);
           });
         },
 
+        changeTime(date){
+          date = new Date(date);
+          var y = date.getFullYear();
+          var m = date.getMonth() + 1;
+          m = m < 10 ? '0' + m : m;
+          var d = date.getDate();
+          d = d < 10 ? ('0' + d) : d;
+          var h = date.getHours();
+          h = h < 10 ? ('0' + h) : h;
+          var mm = date.getMinutes();
+          mm = mm < 10 ? ('0' + mm) : mm;
+          var s = date.getSeconds();
+          s = s < 10 ? ('0' + s) : s;
+          return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
+        },
+        changeArrTime(x) {
+          for (var key in x) {
+            x[key].cardSendTime = this.changeTime(x[key].cardSendTime);
+            if (x[key].cardReceiveTime) {
+              x[key].cardReceiveTime = this.changeTime(x[key].cardReceiveTime);
+            }
+          }
+        },
 
         // //上传图片
         // upPic:function () {
@@ -113,9 +136,10 @@
       },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/userReceived/${this.$route.params.id}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/userReceived/${this.$route.params.id}`
         ).then(function (result) {
           _this.receiveCard = result.data.data;
+          _this.changeArrTime(_this.receiveCard);
         }, function (err) {
           console.log(err);
         });

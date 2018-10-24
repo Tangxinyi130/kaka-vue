@@ -1,7 +1,7 @@
 <template>
     <footer class="container-fluid">
-      <div class="container">
-        <p>底部网站版本信息</p>
+      <div class="container" style="text-align: center">
+        <p>@CopyRight 2018 拾笺</p>
       </div>
     </footer>
 </template>
@@ -16,6 +16,7 @@
 footer{
   margin-top:40px;
   height: 50px;
+  line-height: 50px;
   background-color: rgba(49, 43, 52, 0.67);
   display: flex;
 }

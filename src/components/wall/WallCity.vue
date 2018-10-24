@@ -1,7 +1,8 @@
 <template>
   <div class="col-xs-12 col-md-12 allCity">
       <ul>
-        <li v-for="city in allCityName" @click="upshow"><router-link :to="'/wall/search/'+city">{{city}}</router-link></li>
+        <li><router-link to="/wall">全部</router-link></li>
+        <li v-for="city in allCityName" @click="upshow"><router-link :to="'/wall/search/'+city+'/1'">{{city}}</router-link></li>
       </ul>
     </div>
 </template>
