@@ -53,7 +53,7 @@
             this.inputTel = $("#tel").val();
             console.log("输入的手机号是" + this.inputTel);
             let _this = this;
-            this.$ajax.get(`${axios.default.baseURL}/users/getTel/` + (_this.inputTel)
+            this.$ajax.get(`${axios.defaults.baseURL}/users/getTel/${this.inputTel}`
             ).then(function (result) {
               _this.telnum = result.data.data[0].sum;
               console.log("输入的手机号在数据库中的数量为" + _this.telnum)
@@ -69,7 +69,7 @@
             this.pwd = $("#pwd").val();
             console.log("输入的密码是" + this.pwd);
             let _this = this;
-            this.$ajax.get(`${axios.default.baseURL}/users/insertUser/` + (_this.inputTel) + '/' + (_this.pwd)
+            this.$ajax.get(`${axios.defaults.baseURL}/users/insertUser/${this.inputTel}/${this.pwd}`
             ).then(function (result) {
               alert("注册成功去登录吧")
               _this.tologin();

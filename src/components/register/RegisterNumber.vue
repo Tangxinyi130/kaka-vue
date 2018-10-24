@@ -91,7 +91,7 @@
           const reg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
           console.log("输入的手机号是"+this.inputTel);
           let _this = this;
-          this.$ajax.get(`${axios.default.baseURL}/users/getTel/` + (_this.inputTel)
+          this.$ajax.get(`${axios.defaults.baseURL}/users/getTel/` + (_this.inputTel)
           ).then(function (result) {
             console.log(_this.inputTel);
             console.log("输入的手机号在数据库中的数量为"+ result.data.data[0].sum)
