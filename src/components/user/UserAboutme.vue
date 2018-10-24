@@ -42,7 +42,7 @@
         },
         created() {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/introduction/${this.id}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/introduction/${this.id}`
           ).then(function (result) {
             _this.sendNum = result.data.data.userSendNum;
             _this.receiveNum = result.data.data.userReceiveNum;

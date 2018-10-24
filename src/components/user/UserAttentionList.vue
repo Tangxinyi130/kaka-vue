@@ -99,7 +99,7 @@
       },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/list/${this.$store.state.userId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/list/${this.$store.state.userId}`
         ).then(function (result) {
           for(var key in result.data.data) {
             _this.list[key].region = result.data.data[key].userNickname;

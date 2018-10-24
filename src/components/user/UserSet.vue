@@ -259,7 +259,7 @@
             var userCity = JSON.parse(mycity).name;
 
             let _this = this;
-            this.$ajax.post("http://localhost:3000/users/updata",
+            this.$ajax.post(`${axios.defaults.baseURL}/users/updata`,
               {
                 userName: _this.name,
                 userPwd: _this.password,
@@ -289,7 +289,7 @@
             var inputFile = document.querySelector("[type='file']");
             var reader = new FileReader();
             reader.onload = function(event) {
-              document.querySelector("img").src = event.target.result;
+              document.querySelector("img").src = `${event.target.result}`;
               document.querySelector("#myPic").style.backgroundColor = "transparent";
             };
             reader.readAsDataURL(inputFile.files[0]);
@@ -310,7 +310,7 @@
               zipFormData.append("mydata", this.$store.state.userId);
 
               let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-              this.$ajax.post('http://localhost:3000/users/uploadfile', zipFormData,config
+              this.$ajax.post(`${axios.defaults.baseURL}/users/uploadfile`, zipFormData,config
               ).then(function (response) {
                 console.log(response);
                 console.log(response.data);
@@ -328,7 +328,7 @@
 
           selectLogin() {
             let _this = this;
-            this.$ajax.get(`http://localhost:3000/users/${this.$store.state.userId}`
+            this.$ajax.get(`${axios.defaults.baseURL}/users/${this.$store.state.userId}`
             ).then(function (result) {
               _this.name = result.data.data.userName;
               _this.password = result.data.data.userPwd;
@@ -339,7 +339,7 @@
               _this.selected = result.data.data.userProvince;
               _this.postcode = result.data.data.userPostcode;
               _this.address = result.data.data.userAddress;
-              _this.headpic = result.data.data.userHeadPic;
+              _this.headpic = `${axios.defaults.baseURL}${result.data.data.userHeadPic}`;
             }, function (err) {
               console.log(err);
             });

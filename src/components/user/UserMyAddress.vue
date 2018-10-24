@@ -22,7 +22,7 @@
         },
         created() {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/map/${this.id}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/map/${this.id}`
           ).then(function (result) {
             _this.address = result.data.data.userAddress;
           }, function (err) {

@@ -51,24 +51,11 @@
           }
         },
         created() {
-          // let _this = this;
-          // this.$ajax.get(`http://localhost:3000/users/attention/${this.id}`
-          // ).then(function (result) {
-          //   _this.user = result.data.data;
-          // }, function (err) {
-          //   console.log(err);
-          // });
-          // this.$ajax.get(`http://localhost:3000/users/attention/myAttention/${this.id}`
-          // ).then(function (result) {
-          //   _this.others = result.data.data;
-          // }, function (err) {
-          //   console.log(err);
-          // });
+
         }
     }
 </script>
-<!--http://localhost:3000/users/attention/:userId-->
-<!--http://localhost:3000/users/attention/myAttention/:userId-->
+
 <style scoped>
   div {
     color: #5E5E5E;;

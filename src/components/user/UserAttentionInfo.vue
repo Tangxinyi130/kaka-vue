@@ -45,9 +45,10 @@
         },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/attention/${this.id}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/attention/${this.id}`
         ).then(function (result) {
           _this.user = result.data.data;
+          _this.user.userHeadPic = `${axios.defaults.baseURL}${_this.user.userHeadPic}`
         }, function (err) {
           console.log(err);
         });
@@ -55,14 +56,18 @@
       methods: {
           searchUser() {
             let _this = this;
-            console.log(this.searchInput);
-            this.$ajax.get(`http://localhost:3000/users/attention/searchUser/${this.$store.state.userId}/${this.searchInput}`
+            // console.log(this.searchInput);
+            this.$ajax.get(`${axios.defaults.baseURL}/users/attention/searchUser/${this.$store.state.userId}/${this.searchInput}`
             ).then(function (result) {
                _this.$store.state.mySearchUser = result.data.data;
+              for (var i in _this.$store.state.mySearchUser) {
+                _this.$store.state.mySearchUser[i].userHeadPic = `${axios.defaults.baseURL}${_this.$store.state.mySearchUser[i].userHeadPic}`
+              }
+
 
               setTimeout(() => {}, 20);
 
-               console.log(_this.$store.state.mySearchUser);
+               // console.log(_this.$store.state.mySearchUser);
             }, function (err) {
               console.log(err);
             });

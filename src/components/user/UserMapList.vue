@@ -85,7 +85,7 @@
         },
         created() {
           let _this = this;
-          this.$ajax.get(`http://localhost:3000/users/mapCharts/${this.$route.params.id}`
+          this.$ajax.get(`${axios.defaults.baseURL}/users/mapCharts/${this.$route.params.id}`
           ).then(function (result) {
             for(var key in result.data.data) {
               _this.list[key].region = result.data.data[key].cardSendRegion;
