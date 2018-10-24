@@ -10,7 +10,7 @@
       created(){
         this.$ajax({
           method:'get',
-          url:'http://localhost:3000/send/sendEmail'
+          url:`${axios.defaults.baseURL}/send/sendEmail`
         }).then((res)=>{
        console.log("成功")
         })

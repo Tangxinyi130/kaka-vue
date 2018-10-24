@@ -19,7 +19,7 @@
         created() {
           this.$ajax({
             method: 'get',
-            url: 'http://localhost:3000/wall'
+            url: `${axios.defaults.baseURL}/wall`
           }).then(res => {
             for(let i=0;i<res.data.data.allCity.length;i++){
               this.allCityId.push(res.data.data.allCity[i].regionId);

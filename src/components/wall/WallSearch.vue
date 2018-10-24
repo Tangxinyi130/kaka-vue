@@ -44,7 +44,7 @@
       created(){
           this.$ajax({
             method:'get',
-            url:'http://localhost:3000/wall'
+            url:`${axios.defaults.baseURL}/wall`
           }).then((res)=>{
             this.city=res.data.data.allCity
             console.log("城市:"+this.city)

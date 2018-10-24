@@ -75,6 +75,11 @@
           this.mounted();
       },
       methods:{
+        activityPic(data){
+          for(let i in data){
+            data[i].goodsPic = `${axios.defaults.baseURL}${data[i].goodsPic}`
+          }
+        },
         loadData() {
           this.activitys = [];
           let start = (this.pageIndex - 1) * this.pagesize;
@@ -99,6 +104,7 @@
             let month=this.$route.params.month
             axios.get(`${axios.defaults.baseURL}/activity/${year}/${month}`).then((res) =>{
               _this.myActData= res.data.data;
+              _this.activityPic(_this.myActData);
               _this.pageCount=_this.myActData.length
               console.log("结果"+_this.pageCount)
               _this.loadData()
@@ -106,6 +112,7 @@
           }else{
             axios.get(`${axios.defaults.baseURL}/activity`).then((res) =>{
               _this.myActData= res.data.data.allData;
+              _this.activityPic(_this.myActData);
               _this.pageCount=_this.myActData.length
               console.log("结果"+_this.pageCount)
               _this.loadData()

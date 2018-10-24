@@ -47,7 +47,7 @@
               console.log('我是搜索的城市:' + this.city)
               this.$ajax({
                 method: 'get',
-                url: `http://localhost:3000/wall/search/${this.city}`
+                url: `${axios.defaults.baseURL}/wall/search/${this.city}`
               }).then((res) => {
                 this.sumCount = res.data.data.length;
                 console.log("按城市搜的数量" + this.sumCount)
@@ -56,7 +56,7 @@
               this.id.type=true
               this.$ajax({
                     method: 'get',
-                    url: "http://localhost:3000/wall"
+                    url: `${axios.defaults.baseURL}/wall`
                   }).then((res) => {
                     this.sumCount = res.data.data.allPicture.length;
                     console.log("sum: " + this.sumCount)

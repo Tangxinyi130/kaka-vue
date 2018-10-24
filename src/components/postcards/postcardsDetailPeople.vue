@@ -89,9 +89,11 @@
         created(){
           this.$ajax({
             method:'get',
-            url:'http://localhost:3000/postcards/'+this.cardId
+            url:`${axios.defaults.baseURL}/postcards/`+this.cardId
           }).then((res)=>{
-            this.cardsInformation=res.data.data.cardInformation[0]
+            this.cardsInformation=res.data.data.cardInformation[0];
+            this.cardsInformation.userHeadPic = `${axios.defaults.baseURL}${this.cardsInformation.userHeadPic}`;
+            this.cardsInformation.userHeadPic1 = `${axios.defaults.baseURL}${this.cardsInformation.userHeadPic1}`;
           });
 
 
@@ -101,7 +103,7 @@
             setTimeout(() => {
               let _this = this;
               //获取两地的地址
-              this.$ajax.get(`http://localhost:3000/receive/getAddress/${this.cardsInformation.userId}/${this.cardsInformation.userId1}`
+              this.$ajax.get(`${axios.defaults.baseURL}/receive/getAddress/${this.cardsInformation.userId}/${this.cardsInformation.userId1}`
               ).then(function (result) {
                 _this.a.address = result.data.data[0].userAddress;
                 _this.b.address = result.data.data[1].userAddress;
