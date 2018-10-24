@@ -89,30 +89,36 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">详细地址</label>
                     <div class="col-sm-10">
-                      <textarea form="setUser" class="form-control myText" name="address" rows="5" v-model="address" style="resize:none" ></textarea>
+                      <input form="setUser" class="form-control myText" name="address" type="text" v-model="address" style="resize:none" >
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-12  text-center">
-                      <button  form="setUser" @click="save" class="btn btn-default">保存</button>
+                    <div class="col-sm-10  text-center saveText">
+                      <button  form="setUser" @click="save" class="btn btn-default">保存修改信息</button>
                     </div>
                   </div>
                 </div>
               </form>
 
-
-
               <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
                 <form class="form-horizontal" id="updateHead" method="post" enctype="multipart/form-data"></form>
                 <input type="text" name="id" v-model="userid" style="display: none" form="updateHead">
-                <img src="../../assets/picture.jpg" alt="" class="img-responsive" form="updateHead">
-                <input type="file"
-                       name="avatar"
-                       @change="changeImage($event)"
-                       accept="image/gif,image/jpeg,image/jpg,image/png"
-                       form="updateHead"
-                       ref="avatarInput"/>
-                <button type="button" form="updateHead" @click="up">保存头像</button>
+                <div id="myPic">
+                  <img :src="headpic" alt="" id="loginHead" class="img-responsive" form="updateHead">
+                  <div id="myFile">
+                    <input type="file"
+                           name="avatar"
+                           @change="changeImage($event)"
+                           accept="image/gif,image/jpeg,image/jpg,image/png"
+                           form="updateHead"
+                           ref="avatarInput"
+                           class="btn"/>
+                  </div>
+                </div>
+                <div style="padding-left: 35px; padding-top: 5px">
+                  <span style="color: #5E5E5E" v-if="!isSaveHead">点击头像修改</span>
+                </div>
+                <button v-if="isSaveHead" type="button" form="updateHead" @click="up" class="btn saveHead btn-default">保存头像</button>
               </div>
             </div>
           </div>
@@ -209,8 +215,9 @@
           "userId"
         ]),
         created() {
-          this.provinceL = [...province]
-
+          this.provinceL = [...province];
+            // this.changeHead();
+          this.selectLogin();
         },
         data() {
           return {
@@ -235,9 +242,11 @@
             areaSelected: {},
             provinceL: [],
             cityL: [],
+            isSaveHead: false
           }
         },
         methods: {
+          //保存设置的文本信息
           save() {
             var strPro = JSON.stringify($("#selPro option:selected"));
             var arr = strPro.split(",");
@@ -248,19 +257,6 @@
             var arrCity = strCity.split(",");
             var mycity = "{" + arrCity[1] + "}";
             var userCity = JSON.parse(mycity).name;
-            // console.log(JSON.parse(mycity).name)
-            // console.log()
-
-            // ctx.request.body.userName,
-            //   ctx.request.body.userPwd,
-            //   ctx.request.body.userNickname,
-            //   ctx.request.body.userSex,
-            //   ctx.request.body.userEmail,
-            //   ctx.request.body.userBirthday,
-            //   ctx.request.body.userProvince,
-            //   ctx.request.body.userCity,
-            //   ctx.request.body.userAddress,
-            //   ctx.request.body.userId
 
             let _this = this;
             this.$ajax.post("http://localhost:3000/users/updata",
@@ -287,67 +283,19 @@
             setTimeout(() => {}, 20);
             location.href = `/user/${_this.$store.state.userId}/aboutme`;
           },
-          // to() {
-          //   location.href = `http://localhost:8080/user/${this.$store.state.userId}/aboutme`
-          // },
           //选中文件后，将文件保存到实例的变量中
           changeImage(e) {
             this.upath = e.target.files;
+            var inputFile = document.querySelector("[type='file']");
+            var reader = new FileReader();
+            reader.onload = function(event) {
+              document.querySelector("img").src = event.target.result;
+              document.querySelector("#myPic").style.backgroundColor = "transparent";
+            };
+            reader.readAsDataURL(inputFile.files[0]);
+            this.isSaveHead = true;
           },
-          upText:function () {
-            setTimeout(() => {
-              let _this = this;
-              // console.log(this.upath);
-              // console.log("this.mydata:  " + this.mydata)
-              var zipFormData = new FormData();
-              //依次添加多个文件
-              // for(var i = 0 ; i< this.upath.length ; i++){
-              //   zipFormData.append('filename', this.upath[i]);
-              // }
-              //添加其他的表单元素
-              // zipFormData.append('mydata',this.mydata)
-              console.log("bbbbbb")
-              var strPro = JSON.stringify($("#selPro option:selected"));
-              var arr = strPro.split(",");
-              var myprovince = "{" + arr[1] + "}";
-              var userProvince = JSON.parse(myprovince).name;
-              // console.log("save中   " + JSON.parse(myprovince).name);
-              var strCity = JSON.stringify($("#selCity option:selected"));
-              var arrCity = strCity.split(",");
-              var mycity = "{" + arrCity[1] + "}";
-              var userCity = JSON.parse(mycity).name;
-
-
-              // zipFormData.append("filename", "");
-              zipFormData.append("id", this.$store.state.userId);
-              zipFormData.append("name", this.name);
-              zipFormData.append("password", this.password);
-              zipFormData.append("nickname", this.nickname);
-              zipFormData.append("sex", this.sex);
-              zipFormData.append("email", this.email);
-              zipFormData.append("birthday", this.birthday);
-              zipFormData.append("selected", userProvince);
-              zipFormData.append("citySelected", userCity);
-              zipFormData.append("postcode", this.postcode);
-              zipFormData.append("address", this.address);
-
-              let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-              this.$ajax.post('http://localhost:3000/users/uploadInfo', zipFormData,config
-              ).then(function (response) {
-                console.log(response);
-                console.log(response.data);
-                console.log(response.bodyText);
-                // location.href = `/user/${_this.$store.state.userId}/aboutme`;
-              });
-              // setTimeout(() => {
-              //   if (this.upath) {
-              //
-              //   } else {
-              //     alert("请选择图片!");
-              //   }
-              // }, 20);
-            }, 1000);
-          },
+          //上传头像
           up:function () {
             setTimeout(() => {
               let _this = this;
@@ -377,6 +325,26 @@
               }, 20);
             }, 1000);
           },
+
+          selectLogin() {
+            let _this = this;
+            this.$ajax.get(`http://localhost:3000/users/${this.$store.state.userId}`
+            ).then(function (result) {
+              _this.name = result.data.data.userName;
+              _this.password = result.data.data.userPwd;
+              _this.nickname = result.data.data.userNickname;
+              _this.sex = result.data.data.userSex;
+              _this.email = result.data.data.userEmail;
+              _this.birthday = result.data.data.userBirthday;
+              _this.selected = result.data.data.userProvince;
+              _this.postcode = result.data.data.userPostcode;
+              _this.address = result.data.data.userAddress;
+              _this.headpic = result.data.data.userHeadPic;
+            }, function (err) {
+              console.log(err);
+            });
+          }
+
         },
         watch: {
           selected: function () {
@@ -417,4 +385,68 @@
   .myText {
     width: 280px;
   }
+
+  #loginHead {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+    margin-bottom: 20px;
+  }
+  .saveHead {
+    margin-top: 10px;
+    margin-left: 33px;
+    /*border: none;*/
+    background-color: transparent;
+    color: #5E5E5E;
+    /*font-size: 14px;*/
+
+  }
+  .saveHead:hover {
+    color: #4e91ff;
+  }
+
+
+  #myPic {
+    width: 150px;
+    height: 150px;
+    border: 1px solid transparent;
+    border-radius: 150px;
+  }
+
+  #myFile {
+    width: 150px;
+    height: 150px;
+    border: 1px solid transparent;
+    border-radius: 150px;
+    background-color: #ccc;
+    opacity: 0.5;
+    box-sizing: border-box;
+    position: absolute;
+    top: -1px;
+    left: 15px;
+    display: none;
+  }
+
+  #myPic:hover #myFile {
+    display: block;
+  }
+
+  [type = "file"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .btn-default {
+    background-color: transparent;
+    color: #5E5E5E;
+  }
+  .btn-default:hover {
+    color: #4e91ff;
+  }
+
+  .saveText {
+    margin-left: -20px;
+  }
+
 </style>

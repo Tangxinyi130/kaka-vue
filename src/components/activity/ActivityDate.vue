@@ -41,7 +41,7 @@
         created(){
           this.$ajax({
             method: 'get',
-            url: 'http://localhost:3000/activity'
+            url: `${axios.defaults.baseURL}/activity`
           }).then(res => {
             for(let i=0;i<res.data.data.activityYear.length;i++){
               this.years.push(res.data.data.activityYear[i].activityYear);

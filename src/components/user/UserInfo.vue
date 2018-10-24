@@ -46,12 +46,39 @@
             _this.headpic = result.data.data.userHeadPic;
             _this.userid = result.data.data.userId;
             _this.sex = result.data.data.userSex;
-            _this.birthday = result.data.data.userBirthday.substring(0, 10);
+            // _this.birthday = result.data.data.userBirthday.substring(0, 10);
+            _this.birthday = _this.changeTime(result.data.data.userBirthday);
             _this.attentionnum = result.data.data.userAttentionNum;
             _this.fansnum = result.data.data.userFansNum;
           }, function (err) {
             console.log(err);
           })
+        },
+        // computed: {
+        //   changeTime: {
+        //     get(id){
+        //       let date = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+        //         return date;
+        //     }
+        //   }
+        // },
+
+        methods: {
+          changeTime(date){
+            date = new Date(date);
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            m = m < 10 ? '0' + m : m;
+            var d = date.getDate();
+            d = d < 10 ? ('0' + d) : d;
+            var h = date.getHours();
+            h = h < 10 ? ('0' + h) : h;
+            var mm = date.getMinutes();
+            mm = mm < 10 ? ('0' + mm) : mm;
+            var s = date.getSeconds();
+            s = s < 10 ? ('0' + s) : s;
+            return y + '-' + m + '-' + d;
+          },
         }
     }
 </script>
