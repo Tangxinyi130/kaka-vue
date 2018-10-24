@@ -9,7 +9,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="#" style="font-weight: bold">拾·笺</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,7 @@
                 <ul class="dropdown-menu">
                   <!--<router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>-->
                   <li><a class="text-color" :href="'/user/' + userId + '/aboutme'">我的首页</a></li>
-                  <router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>
+                  <!--<router-link tag="li" role="presentation" to="/myactivity"><a class="text-color">我的活动</a></router-link>-->
                   <router-link tag="li" role="presentation" to="/searchcard"><a class="text-color">查询明信片</a></router-link>
                   <li @click="logOff"><a class="text-color" href="/">退出登录</a></li>
                 </ul>

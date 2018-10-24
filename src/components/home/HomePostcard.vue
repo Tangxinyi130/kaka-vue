@@ -1,12 +1,15 @@
 <template>
     <div id="homeUser">
-      <div class="row">
+      <div class="row" id="dynamic-box">
         <div class="col-md-12" id="dynamic">
-            <div class="progress" style="width: 70%">
-              <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{width:( unabsorbedNum/ transmitsNum) * 100 + '%'}">
-                {{unabsorbedNum}}
-              </div>
+          <div class="progress" style="width: 80%">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{width:( unabsorbedNum/ transmitsNum) * 100 + '%'}">
+              {{unabsorbedNum}}
             </div>
+          </div>
+        </div>
+        <div class="col-md-12 dynamic-des">
+          已经发送还未被确认收到的数量
         </div>
       </div>
       <div class="row">
@@ -46,7 +49,7 @@
       },
       mounted(){
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/statusBar/${this.$store.state.userId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/statusBar/${this.$store.state.userId}`
         ).then(function(result){
           _this.transmitsNum = result.data.data.transmitsNum;
           _this.unabsorbedNum = result.data.data.unabsorbedNum[0].unabsorbedNum;
@@ -66,16 +69,30 @@
     max-width: 750px;
     margin:0 auto;
   }
-  #dynamic{
+  #dynamic-box{
     height: 100px;
+    background-color: #d5d5ab;
+  }
+  #dynamic{
     display: flex;
     max-width: 750px;
+    height: 50px;
     width: 100%;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
-    background-color: salmon;
     border-radius: 5px;
+  }
+  #dynamic .progress{
+    margin-top: 50px;
+  }
+  .dynamic-des{
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #8cb9f5;
+    font-size: 16px;
   }
   #sendCard,#receiveCard{
     height: 100px;

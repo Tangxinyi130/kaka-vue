@@ -8,8 +8,9 @@ import $ from 'jquery'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 Vue.use(ElementUI);
+axios.defaults.baseURL = "http://localhost:3001";
 
 /* eslint-disable no-new */
 new Vue({
@@ -17,5 +18,5 @@ new Vue({
   router,
 components: { App },
 template: '<App/>',
-  store: store
+  store: store,
 })

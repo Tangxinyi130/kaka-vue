@@ -7,13 +7,13 @@
       <div class="contant">
         <!--粉丝与关注-->
         <div>
-          <!--城市排行-->
-          <div class="row">
-            <div class="maplist_top">
-              <img src="../../assets/images/maplist/list.png" alt="">
-              <span class="maplist_titile">地区排行榜</span>
-            </div>
-          </div>
+          <!-- 关注的用户排行榜 -->
+          <!--<div class="row">-->
+            <!--<div class="maplist_top">-->
+              <!--<img src="../../assets/images/maplist/list.png" alt="">-->
+              <!--<span class="maplist_titile">关注的用户排行榜</span>-->
+            <!--</div>-->
+          <!--</div>-->
           <div class="row">
             <div class="maplist_bottom">
               <table class="table" border="0" style="text-align: center;">
@@ -22,7 +22,8 @@
                     <!--<img src="../../assets/images/maplist/top.png" alt="">-->
                     <span class="stitle">排名</span>
                   </td>
-                  <td class="col-sm-2"><span class="maplist_region stitle">省份</span></td>
+
+                  <td class="col-sm-2"><span class="maplist_region stitle">用户名</span></td>
                   <td class="col-sm-5"><span class="maplist_num stitle">收到的明信片数量</span></td>
                 </tr>
                 <tr v-if="list[0].region">
@@ -98,13 +99,12 @@
       },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/mapCharts/${this.$route.params.id}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/list/${this.$store.state.userId}`
         ).then(function (result) {
           for(var key in result.data.data) {
-            _this.list[key].region = result.data.data[key].cardSendRegion;
-            _this.list[key].num = result.data.data[key].cardSum;
+            _this.list[key].region = result.data.data[key].userNickname;
+            _this.list[key].num = result.data.data[key].receiveNum;
           }
-          // console.log(_this.list);
         }, function (err) {
           console.log(err);
         });
@@ -117,10 +117,6 @@
     color: #5E5E5E;;
   }
 
-  #set {
-
-    padding-bottom: 30px;
-  }
   .contant {
     background-color: #fafafa;
     padding-bottom: 30px;
@@ -136,38 +132,9 @@
     color: white;
     margin-left: 20px;
   }
-  .headPic {
-    width: 122px;
-    height: 122px;
-    border-radius: 122px;
-    border: 1px solid #797979;
-  }
-  .row.head {
-    text-align: center;
-    padding-top: 30px;
-  }
 
-  .others {
-    border: 1px solid #797979;
-    border-radius: 3px;
-    height: 140px;
-    padding-top: 8px;
-    margin-bottom: 5px;
-  }
-  .othersHead {
-    margin-left: 20px;
-  }
-  .othersInfo {
-    padding-top: 10px;
-  }
   .othersInfo div {
     padding-bottom: 5px;
-  }
-  .othersBtn {
-    padding-top: 10px;
-  }
-  .showOthers {
-    margin-top: 20px;
   }
 
 
@@ -179,7 +146,7 @@
   }
   .maplist_top img {
     margin-top: -10px;
-    margin-left: 10px;
+    margin-left: 25px;
   }
   .maplist_titile {
     /*display: inline-block;*/

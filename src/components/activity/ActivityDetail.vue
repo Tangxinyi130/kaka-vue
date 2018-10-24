@@ -33,7 +33,7 @@
       created(){
           this.$ajax({
             method:"get",
-            url:`http://localhost:3000/activity/topic/${this.activityId}`
+            url:`${axios.defaults.baseURL}/activity/topic/${this.activityId}`
           }).then((res)=>{
             this.activityInfor=res.data.data[0]
             console.log(this.activityInfor.activityStartDate)

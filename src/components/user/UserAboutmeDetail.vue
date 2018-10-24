@@ -39,7 +39,7 @@
       },
       created() {
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/users/aboutUser/${this.id}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/aboutUser/${this.id}`
         ).then(function (result) {
           _this.aboutme = result.data.data.userAboutMe;
         }, function (err) {

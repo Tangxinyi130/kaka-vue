@@ -79,11 +79,20 @@
             realDynamic:{},
           }
         },
+        methods:{
+          picsrc(realDynamic){
+            for(let i in realDynamic){
+              realDynamic[i].senderHeadPic = `${axios.defaults.baseURL}${realDynamic[i].senderHeadPic}`;
+              realDynamic[i].receiverHeadPic = `${axios.defaults.baseURL}${realDynamic[i].receiverHeadPic}`;
+            }
+          }
+        },
         mounted(){
           let _this = this;
-          this.$ajax.post(`http://localhost:3000/realtimeDynamic`
+          this.$ajax.post(`${axios.defaults.baseURL}/realtimeDynamic`
           ).then(function(result){
             _this.realDynamic = result.data.data;
+            _this.picsrc(_this.realDynamic);
           },function (err) {
             console.log(err);
           })

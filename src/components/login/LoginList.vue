@@ -22,8 +22,8 @@
             </div>
             <div style="height: 20px;" class="row"></div>
             <div style="font-size: 12px;" class="row">
-                  <div class="col-sm-5 col-sm-offset-1"><input type="checkbox"/>记住密码</div>
-                  <div class="col-sm-4 col-sm-offset-2"><router-link to="/" style="">忘记密码?</router-link></div>
+                  <!--<div class="col-sm-5 col-sm-offset-1"><input type="checkbox"/>记住密码</div>-->
+                  <!--<div class="col-sm-4 col-sm-offset-2"><router-link to="/" style="">忘记密码?</router-link></div>-->
             </div>
             <div style="height: 30px"></div>
             <div style="" class="row">
@@ -35,7 +35,7 @@
             </div>
             <div class="row" style="border-bottom: 1px #ccc solid;margin-top:20px;"></div>
             <div class="row" style="margin-top:5px;font-size: 12px">
-                  <div class="col-sm-6 col-sm-offset-7">其他方式 qq 微信</div>
+                  <!--<div class="col-sm-6 col-sm-offset-7">其他方式 qq 微信</div>-->
             </div>
       </form>
     </div>
@@ -45,7 +45,7 @@
   //将用户id存到localStorage中
   function save(tel) {
     $.ajax({
-      url: "http://localhost:3000/users/getUserId",
+      url: `${axios.default.baseURL}/users/getUserId`,
       type: "post",
       data: {
         userTel: tel
@@ -74,7 +74,7 @@
     methods: {
       toLogin: function () {
         let _this =this;
-        axios.post("http://localhost:3000/users/doLogin",
+        axios.post(`${axios.default.baseURL}/users/doLogin`,
           {
             username: _this.username,
             password: _this.password
@@ -86,7 +86,7 @@
           } else if (result.data.data == 3) {
             alert("登录成功");
             save(_this.username);
-            location.href = "http://localhost:8080";
+            location.href = "/";
           } else {
             alert("服务器错误");
           }

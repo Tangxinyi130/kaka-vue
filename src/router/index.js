@@ -20,6 +20,7 @@ import ActivityAllList from "@/components/activity/ActivityAllList.vue"
 import Login from "@/components/login/Login.vue"
 import Register from "@/components/register/Register.vue"
 import newRegister from "@/components/register/newRegister.vue"
+
 // import RegisterNumber from "@/components/register/RegisterNumber.vue"
 // import RegisterPassword from "@/components/register/RegisterPassword.vue"
 // import RegisterSuccess from "@/components/register/RegisterSuccess.vue"
@@ -43,6 +44,8 @@ import UserSet from "@/components/user/UserSet.vue"
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 import UserAttentionFans from "@/components/user/UserAttentionFans.vue"
+import UserAttentionSearch from "@/components/user/UserAttentionSearch.vue"
+
 import ActivityDetail from "@/components/activity/ActivityDetail.vue"
 import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
@@ -54,6 +57,7 @@ Vue.prototype.$ajax = axios
 Vue.use(Router)
 
 export default new Router({
+
   mode: "history",
   routes: [
     {path: '/', name: 'Home', component: Home},
@@ -117,7 +121,8 @@ export default new Router({
     {path: "/userset", component: UserSet},
     {path: "/attention/:id", component: UserAttention, children: [
         {path: "att", component: UserAttentionOthers},
-        {path: "fan", component: UserAttentionFans}
+        {path: "fan", component: UserAttentionFans},
+        {path: "search/:name", component: UserAttentionSearch}
       ]
     },
   ]

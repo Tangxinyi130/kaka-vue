@@ -60,12 +60,19 @@
           recentPic:{},
         }
       },
+      methods:{
+        picsrc(recentPic){
+          for(let i in recentPic){
+            recentPic[i].cardPic = `${axios.defaults.baseURL}${recentPic[i].cardPic}`;
+          }
+        }
+      },
       mounted(){
         let _this = this;
-        this.$ajax.post(`http://localhost:3000/recentPostcards`
+        this.$ajax.post(`${axios.defaults.baseURL}/recentPostcards`
         ).then(function(result){
           _this.recentPic = result.data.data[0];
-          console.log(_this.recentPic);
+          _this.picsrc(_this.recentPic);
         },function (err) {
           console.log(err);
         })
