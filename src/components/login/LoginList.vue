@@ -45,7 +45,7 @@
   //将用户id存到localStorage中
   function save(tel) {
     $.ajax({
-      url: "http://localhost:3000/users/getUserId",
+      url: `${axios.default.baseURL}/users/getUserId`,
       type: "post",
       data: {
         userTel: tel
@@ -74,7 +74,7 @@
     methods: {
       toLogin: function () {
         let _this =this;
-        axios.post("http://localhost:3000/users/doLogin",
+        axios.post(`${axios.default.baseURL}/users/doLogin`,
           {
             username: _this.username,
             password: _this.password

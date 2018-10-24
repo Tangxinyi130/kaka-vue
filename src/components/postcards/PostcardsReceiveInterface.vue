@@ -87,7 +87,7 @@
         this.$store.state.cardId = $("#cardId").val();
         console.log(this.$store.state.cardId );
         let _this = this;
-        this.$ajax.get(`http://localhost:3000/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
+        this.$ajax.get(`${axios.default.baseURL}/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
         ).then(function (result) {
           _this.receivecards = result.data.data.receivecards;
           if( _this.receivecards>0){
@@ -135,7 +135,7 @@
       getUserAddress() {
         let _this = this;
         //根据明信片查询双方的id
-        this.$ajax.get(`http://localhost:3000/users/getTwoUser/${this.$store.state.cardId}`
+        this.$ajax.get(`${axios.default.baseURL}/users/getTwoUser/${this.$store.state.cardId}`
         ).then(function (result) {
           _this.a.userId = result.data.data.cardSender;
           _this.b.userId = result.data.data.cardReceiver;
@@ -145,7 +145,7 @@
 
         setTimeout(() => {
           //获取两地的地址
-          this.$ajax.get(`http://localhost:3000/receive/getAddress/${this.a.userId}/${this.b.userId}`
+          this.$ajax.get(`${axios.default.baseURL}/receive/getAddress/${this.a.userId}/${this.b.userId}`
           ).then(function (result) {
             _this.a.address = result.data.data[0].userAddress;
             _this.b.address = result.data.data[1].userAddress;
@@ -286,7 +286,7 @@
       updateDistance() {
         let _this = this;
         //根据明信片查询双方的id
-        this.$ajax.get(`http://localhost:3000/receive/insertDistance/${this.distance}/${this.$store.state.cardId}`
+        this.$ajax.get(`${axios.default.baseURL}/receive/insertDistance/${this.distance}/${this.$store.state.cardId}`
         ).then(function (result) {
 
         })
