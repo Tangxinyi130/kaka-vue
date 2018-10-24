@@ -58,7 +58,7 @@
         $("#input_conta").html("");  //清除发布框的文本内容
         $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
         $.ajax({
-          url: 'http://localhost:3000/postcards/addcomment',
+          url: `${axios.defaults.baseURL}/postcards/addcomment`,
           type: "post",
           data: {
             'commentUserId':this.userId,

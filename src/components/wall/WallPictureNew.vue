@@ -59,7 +59,7 @@
         if(JSON.stringify(this.$route.params)==='{}'){
           this.$ajax({
             method:'get',
-            url: "http://localhost:3000/wall/walls/1"
+            url: `${axios.defaults.baseURL}/wall/walls/1`
           }).then((res)=>{
             this.allPic=res.data.data;
           })
@@ -69,7 +69,7 @@
           console.log(this.page)
           this.$ajax({
             method:'get',
-            url: `http://localhost:3000/wall/walls/${this.page}`
+            url: `${axios.defaults.baseURL}/wall/walls/${this.page}`
           }).then((res)=>{
             this.allPic=res.data.data;
             console.log(this.allPic)
@@ -79,7 +79,7 @@
           console.log('搜索城市:'+this.city)
           this.$ajax({
             method:'get',
-            url: `http://localhost:3000/wall/search/${this.city}/${this.page}`
+            url: `${axios.defaults.baseURL}/wall/search/${this.city}/${this.page}`
             //  http://localhost:3000/wall/search/${this.city} 这是搜索城市
             //  http://localhost:3000/wall/search/${this.city}/1 城市的第一页,这样就行了啊
           }).then((res)=>{

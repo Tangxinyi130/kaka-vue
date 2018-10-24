@@ -35,7 +35,8 @@
             method:"get",
             url:`${axios.defaults.baseURL}/activity/topic/${this.activityId}`
           }).then((res)=>{
-            this.activityInfor=res.data.data[0]
+            this.activityInfor=res.data.data[0];
+            this.activityInfor.goodsPic = `${axios.defaults.baseURL}${this.activityInfor.goodsPic}`;
             console.log(this.activityInfor.activityStartDate)
           })
       }

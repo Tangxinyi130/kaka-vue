@@ -43,16 +43,17 @@
            created(){
         this.$ajax({
           method:'get',
-          url:'http://localhost:3000/postcards/'+this.cardId
+          url:`${axios.defaults.baseURL}/postcards/`+this.cardId
         }).then((res)=>{
-          this.postcardPic=res.data.data.cardInformation[0]
+          this.postcardPic=res.data.data.cardInformation[0];
+          this.postcardPic.cardPic = `${axios.defaults.baseURL}${this.postcardPic.cardPic}`;
           console.log(this.postcardPic)
           this.cardComment=res.data.data.cardComment
           console.log(this.cardComment.length)
           for(let i=0;i<this.cardComment.length;i++){
             this.$ajax({
               method:'get',
-              url:'http://localhost:3000/users/'+this.cardComment[i].commentUserId
+              url:`${axios.defaults.baseURL}/users/`+this.cardComment[i].commentUserId
             }).then((res)=>{
               this.cardComment[i].commentUserId=res.data.data.userName
             })
