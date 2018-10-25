@@ -11,7 +11,7 @@
             <td class="stitle">收到时间</td>
             <td class="stitle">图片</td>
           </tr>
-          <tr v-for="data in receiveCard">
+          <tr v-for="data in myActData1">
             <td><router-link :to="'/postcards/' + data.cardId" style="color: #5E5E5E; text-underline: none">{{data.cardId}}</router-link></td>
             <td>{{data.userNickname}}</td>
             <td>{{data.cardSendRegion}}</td>
@@ -21,12 +21,20 @@
               <div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
               </div>
-              <!--<div v-if="!data.cardPic" @click="upPic(data.cardId)" class="point">-->
-                <!--<img src="../../assets/images/usercenter/upload4.png" alt="">-->
-              <!--</div>-->
             </td>
           </tr>
         </table>
+        <div class="block text-right">
+          <span class="demonstration"></span>
+          <el-pagination ref="elpage"
+                         @current-change="change()"
+                         :current-page.sync="pageIndex"
+                         layout="prev, pager, next"
+                         :total="pageCount"
+                         :page-size = "pagesize"
+          >
+          </el-pagination>
+        </div>
         <div v-if="showPic">
           <div class="fade"></div>
           <div class="succ-pop">
@@ -35,10 +43,8 @@
             <button @click="showPic = !showPic" class="btn">关闭</button>
           </div>
         </div>
-
+      </div>
     </div>
-    </div>
-
 </template>
 
 <script>
@@ -57,7 +63,29 @@
           postcardStr: "",
           upath:'',  //保存选中的文件
           mydata: "",
+          pageIndex: 1,
+          pagesize: 10,
+          pageCount:0,
+          activitys: [],
+          myActData: []
         }
+      },
+      computed: {
+        myActData1() {
+          return this.activitys
+        }
+      },
+      mounted() {
+        let _this=this
+        this.$ajax.get(`${axios.defaults.baseURL}/users/userReceived/${this.$route.params.id}`
+        ).then((result) =>{
+          _this.myActData= result.data.data;
+          _this.changeArrTime(_this.myActData);
+          // console.log(result.data)
+          _this.pageCount=_this.myActData.length
+          _this.loadData()
+        })
+
       },
       methods: {
         showThis(id) {
@@ -95,55 +123,32 @@
             }
           }
         },
-
-        // //上传图片
-        // upPic:function () {
-        //   setTimeout(() => {
-        //     let _this = this;
-        //     // console.log(this.upath);
-        //     // console.log("this.mydata:  " + this.mydata)
-        //     var zipFormData = new FormData();
-        //     //依次添加多个文件
-        //     for(var i = 0 ; i< this.upath.length ; i++){
-        //       zipFormData.append('filename', this.upath[i]);
-        //     }
-        //     //添加其他的表单元素
-        //     // zipFormData.append('mydata',this.mydata)
-        //     zipFormData.append("mydata", this.$store.state.cardId);
-        //     let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-        //     this.$ajax.post('http://localhost:3000/receive/uploadfile', zipFormData,config
-        //     ).then(function (response) {
-        //       console.log(response);
-        //       console.log(response.data);
-        //       console.log(response.bodyText);
-        //     });
-        //     setTimeout(() => {
-        //       if (this.upath) {
-        //         location.href = `/user/${_this.$store.state.userId}/aboutme`;
-        //       } else {
-        //         alert("请选择图片!");
-        //       }
-        //     }, 20);
-        //   }, 1000);
-        // },
-        //
-        // //选中文件后，将文件保存到实例的变量中
-        // changeImage(e) {
-        //   this.upath = e.target.files;
-        // }
-
-
+        loadData() {
+          this.activitys = [];
+          let start = (this.pageIndex - 1) * this.pagesize;
+          let end = start + this.pagesize;
+          // console.log(this.myActData[1]);
+          if(end>=this.pageCount){
+            end=this.pageCount
+          }
+          for (var i = start; i < end; i++) {
+            this.activitys.push(this.myActData[i])
+          }
+        },
+        change() {
+          this.loadData();
+        },
       },
-      created() {
-        let _this = this;
-        this.$ajax.get(`${axios.defaults.baseURL}/users/userReceived/${this.$route.params.id}`
-        ).then(function (result) {
-          _this.receiveCard = result.data.data;
-          _this.changeArrTime(_this.receiveCard);
-        }, function (err) {
-          console.log(err);
-        });
-      }
+      // created() {
+      //   let _this = this;
+      //   this.$ajax.get(`${axios.defaults.baseURL}/users/userReceived/${this.$route.params.id}`
+      //   ).then(function (result) {
+      //     _this.receiveCard = result.data.data;
+      //     _this.changeArrTime(_this.receiveCard);
+      //   }, function (err) {
+      //     console.log(err);
+      //   });
+      // }
     }
 </script>
 

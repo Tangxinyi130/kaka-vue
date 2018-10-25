@@ -38,7 +38,6 @@
   .btn {
     width: 70px;
     height: 30px;
-    /*line-height: 30px;*/
     color: #5E5E5E;
     border: 1px solid #797979;
     text-align: center;
