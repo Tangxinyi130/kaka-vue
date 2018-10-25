@@ -25,34 +25,12 @@
         <div class="commentNickname">{{content.userNickname}}</div>
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
-          <!--<div class="commentID">ID：{{content.commentUserId}}</div>-->
-
           <div v-html="content.commentContent">
             <p contenteditable="true" id="input_conta">
               {{content.commentContent}}
             </p>
           </div>
-
         </div>
-
-
-        <!--<h3 style="color: #5E5E5E">全部评论</h3>-->
-        <!--<div v-for="content in cardComment" class="commentDiv">-->
-        <!--<div class="commentUserInfo">-->
-        <!--<div>-->
-        <!--<img :src="content.commentUserHead" alt="" class="headPic" style="z-index: 999">-->
-        <!--</div>-->
-        <!--<div>ID：{{content.commentUserId}}</div>-->
-        <!--<div>昵称：{{content.commentUserNickname}}</div>-->
-        <!--</div>-->
-        <!--<div v-html="content.commentContent" class="commentDetail">-->
-        <!--<p contenteditable="true" id="input_conta">-->
-        <!--{{content.commentContent}}-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--<div>{{content.commentTime}}</div>-->
-        <!--<div style="clear: both"></div>-->
-        <!--</div>-->
       </div>
     </div>
   </div>
@@ -147,34 +125,23 @@
     margin-left: 5px;
     color: #5e5e5e;
   }
-
   #allComment {
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 20px;
-    /*height: 300px;*/
+    color: #5e5e5e;
   }
   .commentHead {
     float: left;
   }
   .commentDetail {
     margin-left: 20px;
-    /*background-color: lightsalmon;*/
-    /*background-image: url("../../assets/images/comment.png");*/
-    /*background-repeat: no-repeat;*/
-    /*border: 1px solid #797979;*/
-    /*width: 50px;*/
     padding: 20px;
     display: inline-block;
     margin-bottom: 30px;
     border-style: solid;
     border-image: url("../../assets/images/comment.png") 51/20px round;
   }
-  .commentID {
-    float: left;
-    margin-right: 20px;
-  }
-
   .headPic {
     width: 85px;
     height: 85px;

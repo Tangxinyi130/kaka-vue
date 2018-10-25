@@ -11,7 +11,7 @@
             <td class="stitle">收到时间</td>
             <td class="stitle">图片</td>
           </tr>
-          <tr v-for="data in sendCard">
+          <tr v-for="data in myActData1">
             <td><router-link :to="'/postcards/' + data.cardId" style="color: #5E5E5E; text-underline: none">{{data.cardId}}</router-link></td>
             <td>{{data.userNickname}}</td>
             <td>{{data.cardReceiveRegion}}</td>
@@ -22,13 +22,20 @@
               <div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">
                 <img src="../../assets/images/usercenter/userpostcard.png" alt="">
               </div>
-              <!--<router-link :to="'/user/' + id + '/send/' + data.cardId">-->
-                <!---->
-              <!--</router-link>-->
             </td>
           </tr>
         </table>
-
+        <div class="block text-right">
+          <span class="demonstration"></span>
+          <el-pagination ref="elpage"
+                         @current-change="change()"
+                         :current-page.sync="pageIndex"
+                         layout="prev, pager, next"
+                         :total="pageCount"
+                         :page-size = "pagesize"
+          >
+          </el-pagination>
+        </div>
         <div v-if="showPic">
           <div class="fade"></div>
           <div class="succ-pop">
@@ -38,9 +45,7 @@
           </div>
         </div>
       </div>
-
     </div>
-
 </template>
 
 <script>
@@ -51,9 +56,30 @@
             id: this.$route.params.id,
             sendCard: [],
             showPic: false,
-            postcardStr: ""
+            postcardStr: "",
+            pageIndex: 1,
+            pagesize: 10,
+            pageCount:0,
+            activitys: [],
+            myActData: []
           }
         },
+      computed: {
+        myActData1() {
+          return this.activitys
+        }
+      },
+      mounted() {
+        let _this=this
+        this.$ajax.get(`${axios.defaults.baseURL}/users/userSend/${this.$route.params.id}`
+        ).then((result) =>{
+          _this.myActData= result.data.data;
+          _this.changeArrTime(_this.myActData);
+          // console.log(result.data)
+          _this.pageCount=_this.myActData.length
+          _this.loadData()
+        })
+      },
       methods: {
         showThis(id) {
           this.showPic = true;
@@ -61,7 +87,6 @@
           let _this = this;
           this.$ajax.get(`${axios.defaults.baseURL}/users/showPic/${this.postcardId}`
           ).then(function (result) {
-
             _this.postcardStr = `${axios.defaults.baseURL}${result.data.data.cardPic}`;
           }, function (err) {
             console.log(err);
@@ -73,10 +98,23 @@
             if (x[key].cardReceiveTime) {
               x[key].cardReceiveTime = this.changeTime(x[key].cardReceiveTime);
             }
-
           }
         },
-
+        loadData() {
+          this.activitys = [];
+          let start = (this.pageIndex - 1) * this.pagesize;
+          let end = start + this.pagesize;
+          // console.log(this.myActData[1]);
+          if(end>=this.pageCount){
+            end=this.pageCount
+          }
+          for (var i = start; i < end; i++) {
+            this.activitys.push(this.myActData[i])
+          }
+        },
+        change() {
+          this.loadData();
+        },
         changeTime(date){
           date = new Date(date);
           var y = date.getFullYear();
@@ -92,20 +130,7 @@
           s = s < 10 ? ('0' + s) : s;
           return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
         },
-
       },
-        created() {
-          // this.getSend();
-            let _this = this;
-            this.$ajax.get(`${axios.defaults.baseURL}/users/userSend/${this.$route.params.id}`
-            ).then(function (result) {
-              _this.sendCard = result.data.data;
-              // console.log(result.data.data);
-              _this.changeArrTime(_this.sendCard);
-            }, function (err) {
-              console.log(err);
-            });
-        }
     }
 </script>
 
