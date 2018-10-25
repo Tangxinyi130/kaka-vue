@@ -45,7 +45,8 @@
 }
   .con{
     height:500px;
-    background-color:lightgoldenrodyellow
+    /*background-color:lightgoldenrodyellow*/
+
   }
   .con-nav{
     height:53px;
@@ -57,5 +58,9 @@
     line-height:52px;
     font-size:18px;
     color: white
+  }
+  .con-body{
+    /*border: 1px solid red;*/
+    background-color: #fafafa;
   }
 </style>
