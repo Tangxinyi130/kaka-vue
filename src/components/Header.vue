@@ -31,7 +31,7 @@
 
             <ul class="nav navbar-nav navbar-right" v-if="!isLogin">
               <router-link tag="li" active-class="active" role="presentation" to="/login"><a class="text-color">登录</a></router-link>
-              <router-link tag="li" active-class="active" role="presentation" to="/newregister"><a class="text-color">注册</a></router-link>
+              <router-link tag="li" active-class="active" role="presentation" to="/register"><a class="text-color">注册</a></router-link>
             </ul>
 
             <ul class="nav navbar-nav navbar-right" v-if="isLogin">

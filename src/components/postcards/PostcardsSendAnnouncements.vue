@@ -1,14 +1,14 @@
 <template>
     <div class="con">
-        <div class="container">
-            <div class="row con-nav">
-                <div class="col-sm-12 con-nav-row">发送明信片</div>
-            </div>
-            <div class="row con-body">
-                <div class="container col-sm-8 col-sm-offset-2">
-                    <div class="row con-body-row"  v-if="$store.state.postSendAnn">
-                        <p class="con-body-row-p" >注册协议</p>
-                        <p style="margin-left:15px">
+      <div class="container">
+        <div class="row con-nav">
+          <div class="col-sm-12 con-nav-row">发送明信片</div>
+        </div>
+        <div class="row con-body">
+          <div class="container col-sm-8 col-sm-offset-2">
+            <div class="row con-body-row"  v-if="$store.state.postSendAnn">
+              <p class="con-body-row-p" >注册协议</p>
+              <p style="margin-left:15px">
                               第1条:服务概要/目的<br>
                               第２条:本条约的使用范围<br>
                               第3条:本服务的权利<br>
@@ -23,50 +23,48 @@
                               用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担
                               用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。
                               用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时，本公司会立即提供新的账号及密码后重新通知用户。
-                        </p>
-                      <form>
-                          <div class="row body-row-form">
-                              <button type="button" class="btn  btn-lg body-row-form-btn"  @click="submit" >
-                                  <span style="color: white">同意去发送</span>
-                              </button>
-                          </div>
-                      </form>
+              </p>
+              <form>
+                <div class="row body-row-form">
+                  <button type="button" class="btn  btn-lg body-row-form-btn"  @click="submit" >
+                    <span style="color: white">同意去发送</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="container col-sm-12 body-con" v-if="$store.state.postSend">
+              <div class="row body-con-row1">
+                <div col-sm-7></div>
+                <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1">
+                  <img :src="userHeadPic" alt="" width="150px" height="150px" style=" border-radius:50%;">
+                </div>
+                <div class="col-sm-7  user-msg">
+                  <div class="row" style="height:10px"></div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-3">
+                      <span class="user"> 接收方介绍 </span>
                     </div>
-                    <div class="container col-sm-12 body-con" v-if="$store.state.postSend">
-                        <div class="row body-con-row1">
-                             <div col-sm-7 ></div>
-                              <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1">
-                                <!--<h3>头像</h3>-->
-                                <img :src="userHeadPic" alt="" width="150px" height="150px" style=" border-radius:50%;">
-                              </div>
-                              <div class="col-sm-7  user-msg">
-                            <div class="row" style="height:10px"></div>
-                            <div class="row">
-                              <div class="col-sm-4 col-sm-offset-3">
-                                <span class="user"> 接收方介绍 </span>
-                              </div>
-                            </div>
-                               <div style="height: 10px"></div>
-                            <div class="row ">
-                              <div class="col-sm-3 col-sm-offset-1" > 姓名:{{userNickname}}  </div>
-                              <div class="col-sm-3 col-sm-offset-1" > 性别:{{userSex}} </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-4 col-sm-offset-1 " >生日:{{ userBirthday}}  </div>
-                            </div>
-                                <div class="row">
-                                  <div class="col-sm-5 col-sm-offset-1" ><p>地址:{{userProvince}}{{userCity}}</p> </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-sm-5 col-sm-offset-1" style="margin-top:-10px">邮箱:{{userEmail}}</div>
-                                </div>
-
-                          </div>
-                        </div>
-                        <div class="row">
+                  </div>
+                  <div style="height: 10px"></div>
+                  <div class="row ">
+                    <div class="col-sm-3 col-sm-offset-1" > 姓名:{{userNickname}}  </div>
+                    <div class="col-sm-3 col-sm-offset-1" > 性别:{{userSex}} </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-1 " >生日:{{ userBirthday}}  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1" ><p>地址:{{userProvince}}{{userCity}}</p> </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-5 col-sm-offset-1" style="margin-top:-10px">邮箱:{{userEmail}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
                               <div class="col-sm-10 col-sm-offset-1"></div>
                         </div>
-                        <div class="row body-con-row2">
+              <div class="row body-con-row2">
                               <div class="col-sm-10 col-sm-offset-1 body-con-row2-col1">
                                   <div class="row">
                                       <div class="col-sm-8 col-sm-offset-3" style="font-size: 14px">
@@ -79,7 +77,7 @@
                                   </div>
                               </div>
                         </div>
-                        <div class="row">
+              <div class="row">
                           <div class="col-sm-8 col-sm-offset-5 body-con-row3">
                               <form>
                                   <button type="button" class="btn btn-lg but"  @click="tohome">
@@ -88,9 +86,9 @@
                               </form>
                           </div>
                         </div>
-                    </div>
-                </div>
             </div>
+          </div>
+        </div>
         </div>
     </div>
 </template>
@@ -113,7 +111,7 @@
         userNickname:'',
         userProvince:'',
         userSex:0,
-        receivemsg:{}
+        receivemsg:{},
       }
     },
     created() {
@@ -122,7 +120,7 @@
       console.log(this.$store.state.postSendAnn);
       console.log(this.$store.state.postSend)
       let _this = this;
-      this.$ajax.get(`${axios.default.baseURL}/send/limitTimes/`+(localStorage.userId)
+      this.$ajax.get(`${axios.defaults.baseURL}/send/limitTimes/`+(localStorage.userId)
       ).then(function (result) {
         console.log(result.data.data);
         _this.times = result.data.data.times;
@@ -130,6 +128,7 @@
         _this.addresscounts=result.data.data.addresscount;
         _this.emailcounts=result.data.data.useremail;
         _this.sendemail=result.data.data.sendemail;
+
         console.log("我是已经发送次数的总数"+_this.times)
         console.log("我是pool池里面的数据总数"+_this.pooltimes)
         console.log("我是否有地址1，无地址。0有地址"+_this.addresscounts)
@@ -144,9 +143,13 @@
         this.$router.replace({path:"/"})
       },
       sendEmail:function(){
+        console.log("发邮件的时候接收方的明信片"+this.cardId);
+        let thecardid=this.cardId;
+        console.log("我是thecardid"+thecardid);
+        // console.log(`路由：${axios.defaults.baseURL}`);
         this.$ajax({
           method:'get',
-          url:`${axios.default.baseURL}/send/sendEmail/`+(localStorage.userId)
+          url:`${axios.defaults.baseURL}/send/sendEmail/`+(localStorage.userId)+'/'+(thecardid)
         }).then((res)=>{
           console.log("成功")
         })
@@ -162,19 +165,20 @@
       // },
       send:function(){
         let _this = this;
-        this.$ajax.get(`${axios.default.baseURL}/send/sendPostcard/`+(localStorage.userId)
+        this.$ajax.get(`${axios.defaults.baseURL}/send/sendPostcard/`+(localStorage.userId)
         ).then(function (result) {
           // console.log(result.data.data.userHeadPic);
           console.log(result.data.data);
           _this.receivemsg=result.data.data;
           _this.userNickname = result.data.data.userNickname;
-          _this.userHeadPic = `${axios.default.baseURL}${result.data.data.userHeadPic}`;
+          _this.userHeadPic = `${axios.defaults.baseURL}${result.data.data.userHeadPic}`;
           _this.userProvince = result.data.data.userProvince;
           _this.userCity = result.data.data.userCity;
           _this.userSex = result.data.data.userSex;
           _this.userEmail = result.data.data.userEmail;
           _this.cardId = result.data.data.cardId;
           _this.userBirthday = result.data.data.userBirthday.substring(0,10);
+          console.log("完成发送功能的时候接收方的邮箱"+_this.userEmail);
         }, function (err) {
           console.log(err);
         })
@@ -197,8 +201,10 @@
                 location.href = "/";
               }else {
                 // ***********
-                this.send();
-                this.sendEmail();
+                  this.send();
+                  setTimeout(()=>{
+                    this.sendEmail();
+                  },3000);
                 this.$store.state.postSendAnn=false;
                 this.$store.state.postSend=true;
                 // ***************

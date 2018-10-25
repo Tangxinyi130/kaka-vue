@@ -61,7 +61,7 @@
           //添加其他的表单元素
           zipFormData.append("mydata", this.$store.state.cardId);
           let config = { headers: { 'Content-Type': 'multipart/form-data' } };
-          this.$ajax.post(`${axios.default.baseURL}/receive/uploadfile`, zipFormData,config
+          this.$ajax.post(`${axios.defaults.baseURL}/receive/uploadfile`, zipFormData,config
           ).then(function (response) {
             console.log(response);
             console.log(response.data);

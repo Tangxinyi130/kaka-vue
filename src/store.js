@@ -27,9 +27,9 @@ export default new Vuex.Store({
     city:'',
     postSend: false,
     postSendAnn:true,
+    userPhone:'',
     offset:0,
     sumPage:0,
-
     //查找用户
     mySearchUser: [],
   },

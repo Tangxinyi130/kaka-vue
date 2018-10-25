@@ -1,14 +1,14 @@
 <template>
   <div class="con">
     <div class="container con1">
-        <div class="row con-nav">
-            <div class="col-sm-12 con-nav-col">接收明信片</div>
-        </div>
-        <div class="row con-body">
-            <div class="container col-sm-8 col-sm-offset-2 con-body-con">
-              <div style="height:80px"></div>
-                <form>
-                    <div v-if="$store.state.send">
+      <div class="row con-nav">
+        <div class="col-sm-12 con-nav-col">接收明信片</div>
+      </div>
+      <div class="row con-body">
+        <div class="container col-sm-8 col-sm-offset-2 con-body-con">
+          <div style="height:80px"></div>
+          <form>
+            <div v-if="$store.state.send">
                         <!--<div class="row body-con-row1">-->
                             <!--<div class="col-sm-5 col-sm-offset-6">接收一张明信片</div>-->
                         <!--</div>-->
@@ -39,20 +39,19 @@
                 </div>
               </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-offset-4" style="height:130px; margin-top:20px;">
-                            <app-postcardsreceiveupload></app-postcardsreceiveupload>
-                        </div>
-                    </div>
-                </form>
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-4" style="height:130px; margin-top:20px;">
+                <app-postcardsreceiveupload></app-postcardsreceiveupload>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
   import PostcardsReceiveUpload from "./PostcardsReceiveUpload";
-
   export default {
     name: "PostcardsReceiveInterface",
     components: {
@@ -87,7 +86,7 @@
         this.$store.state.cardId = $("#cardId").val();
         console.log(this.$store.state.cardId );
         let _this = this;
-        this.$ajax.get(`${axios.default.baseURL}/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
+        this.$ajax.get(`${axios.defaults.baseURL}/receive/doReceive/` + (this.$store.state.cardId)+'/'+localStorage.userId
         ).then(function (result) {
           _this.receivecards = result.data.data.receivecards;
           if( _this.receivecards>0){
@@ -103,9 +102,6 @@
               //计算距离
               _this.getDistance();
             }, 1000);
-
-
-
           }else {
             alert("您的明信片可能不小心输入错误了，请仔细检查哦！");
           }
@@ -120,7 +116,6 @@
         this.$store.state.send = true;
         this.$store.state.upload = false;
       },
-
       //获取地区的经纬度
       SearchByStationName(keyword, callback) {
         var map = new BMap.Map("container");
@@ -135,7 +130,7 @@
       getUserAddress() {
         let _this = this;
         //根据明信片查询双方的id
-        this.$ajax.get(`${axios.default.baseURL}/users/getTwoUser/${this.$store.state.cardId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/getTwoUser/${this.$store.state.cardId}`
         ).then(function (result) {
           _this.a.userId = result.data.data.cardSender;
           _this.b.userId = result.data.data.cardReceiver;
@@ -145,7 +140,7 @@
 
         setTimeout(() => {
           //获取两地的地址
-          this.$ajax.get(`${axios.default.baseURL}/receive/getAddress/${this.a.userId}/${this.b.userId}`
+          this.$ajax.get(`${axios.defaults.baseURL}/receive/getAddress/${this.a.userId}/${this.b.userId}`
           ).then(function (result) {
             _this.a.address = result.data.data[0].userAddress;
             _this.b.address = result.data.data[1].userAddress;
@@ -286,7 +281,7 @@
       updateDistance() {
         let _this = this;
         //根据明信片查询双方的id
-        this.$ajax.get(`${axios.default.baseURL}/receive/insertDistance/${this.distance}/${this.$store.state.cardId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/receive/insertDistance/${this.distance}/${this.$store.state.cardId}`
         ).then(function (result) {
 
         })
