@@ -68,18 +68,20 @@
           var _this=this;
           $('#co').attr("disabled", true)
           _this.count=60;
-          _this.btnName = '请在'+ _this.count+'秒后重新获取验证码';
-          window.setInterval(function () {
-            if(_this.count>0){
+          _this.btnName = _this.count+'秒后重新获取';
+          var time = window.setInterval(function () {
+            if(_this.count > 0){
               _this.count--;
-              let btname='请在'+ _this.count+'秒后重新获取验证码';
+              let btname = _this.count+'秒后重新获取';
               _this.btnName =btname;
-            console.log(_this.count)
-            }else {
+            // console.log(_this.count)
+            }
+            if (_this.count == 0){
               // _this.count=''
               _this.btnName = "获取验证码";
               $('#co').attr("disabled", false);
               _this.codetrue =0;
+              clearTimeout(time);
             }
           },1000)
          console.log($('#co').val());
@@ -91,8 +93,8 @@
             num += Math.floor(Math.random()*10);
           }
           this.Num = num;
-          console.log(this.Num)
-          console.log("给"+this.inputTel+"发送短信")
+          console.log(this.Num);
+          console.log("给"+this.inputTel+"发送短信");
           // this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=109157&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
           //   .then((res)=>{
           //     console.log(res)
@@ -169,6 +171,10 @@
   /*.getCoBtn {*/
     /*!*disabled: disabled;*!*/
   /*}*/
+  #co {
+    width: 123px;
+    color: #5e5e5e;
+  }
   .con{
     height:500px;
     color: #5e5e5e;
