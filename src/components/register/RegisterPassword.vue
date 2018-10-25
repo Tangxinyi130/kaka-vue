@@ -76,7 +76,7 @@
            let _this = this;
            console.log("注册的手机号"+this.$store.state.userPhone);
            console.log("注册的密码是:"+_this.Pwd1)
-           console.log( "加密后密码"+hex_md5(_this.Pwd1));
+           // console.log( "加密后密码"+hex_md5(_this.Pwd1));
            this.$ajax.get(`${axios.defaults.baseURL}/users/insertUser/` + (this.$store.state.userPhone) + '/' + (_this.Pwd1)
            ).then(function (result) {
            }, function (err) {

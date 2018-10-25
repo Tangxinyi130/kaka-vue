@@ -41,8 +41,6 @@
           </div>
         </div>
       </div>
-
-      <div style="height: 200px"></div>
     </div>
 </template>
 
@@ -113,15 +111,5 @@
     border: 1px solid #797979;
     border-radius: 3px;
     padding: 30px;
-    /*box-sizing: border-box;*/
-    /*padding-bottom: 30px;*/
-    /*padding-left: 30px;*/
-    /*padding-right: 30px;*/
   }
-  /*.btns {*/
-    /*margin-left: 70px;*/
-  /*}*/
-  /*.btn div {*/
-    /*margin-right: 20px;*/
-  /*}*/
 </style>
