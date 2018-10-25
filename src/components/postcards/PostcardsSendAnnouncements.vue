@@ -1,30 +1,26 @@
 <template>
-    <div class="con">
-      <div class="container">
-        <div class="row con-nav">
-          <div class="col-sm-12 con-nav-row">发送明信片</div>
-        </div>
-        <div class="row con-body">
-          <div class="container col-sm-8 col-sm-offset-2">
-            <div class="row con-body-row"  v-if="$store.state.postSendAnn">
-              <p class="con-body-row-p" >注册协议</p>
-              <p style="margin-left:15px">
-                              第1条:服务概要/目的<br>
-                              第２条:本条约的使用范围<br>
-                              第3条:本服务的权利<br>
-                              第4条:网站账号ID及密码<br>
-                &nbsp;&nbsp;          本服务旨在为用户提供本公司商品信息，并接受购买商品的订单。
-                &nbsp;&nbsp;          本条约适用于由于本服务而产生的用户和本公司之间的所有事项
-                              本公司在未得到用户允许的情况下，对本条约拥有变更的权利。并且，本公司将使用合适的方法告知用户
-                &nbsp;&nbsp;          用户在遵守本条约前提下，承诺只使用本公司提供的服务。本服务中提供的信息及相关著作权等一些知识产权，属本公司所有。
-                              用户在使用本服务时，对网站提供的信息，数据，图像用作其他用途时，本公司有追究的权利。<br>
-                &nbsp;&nbsp;          本公司对于利用本服务的用户，免费提供网站登录的账号及密码。
-                              用户对从本公司接收的账号和密码的保管，以及运营管理负有全部的责任。若因用户的保管及使用管理上的遗漏所产生的损害，本公司不承担一切法律责任。
-                              用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担
-                              用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。
-                              用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时，本公司会立即提供新的账号及密码后重新通知用户。
-              </p>
-              <form>
+  <div class="con">
+    <div class="container">
+      <div class="row con-nav">
+        <div class="col-sm-12 con-nav-row">发送明信片</div>
+      </div>
+      <div class="row con-body">
+        <div class="container col-sm-8 col-sm-offset-2">
+          <div class="row con-body-row"  v-if="$store.state.postSendAnn">
+            <div class="text-center agreen">
+              <p>注册协议</p>
+             </div>
+            <div class="col-sm-offset-2 ag">第1条:服务概要/目的</div>
+            <div class="col-sm-offset-2 ag">第２条:本条约的使用范围</div>
+            <div class="col-sm-offset-2 ag">第3条:本服务的权利</div>
+            <div class="col-sm-offset-2 ag">第4条:网站账号ID及密码</div>
+            <div class="col-sm-offset-1">
+              <span>本服务旨在为用户提供本公司商品信息，并接受购买商品的订单。本条约适用于由于本服务而产生的用户和本公司</span>
+            </div>
+            <div>
+                之间的所有事项本公司在未得到用户允许的情况下，对本条约拥有变更的权利。并且，本公司将使用合适的方法告知用户用户在遵守本条约前提下，承诺只使用本公司提供的服务。本服务中提供的信息及相关著作权等一些知识产权，属本公司所有。用户在使用本服务时，对网站提供的信息，数据，图像用作其他用途时，本公司有追究的权利。本公司对于利用本服务的用户，免费提供网站登录的账号及密码。用户对从本公司接收的账号和密码的保管，以及运营管理负有全部的责任。若因用户的保管及使用管理上的遗漏所产生的损害，本公司不承担一切法律责任。用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时， 本公司会立即提供新的账号及密码后重新通知用户。
+            </div>
+            <form>
                 <div class="row body-row-form">
                   <button type="button" class="btn  btn-lg body-row-form-btn"  @click="submit" >
                     <span style="color: white">同意去发送</span>
@@ -32,13 +28,13 @@
                 </div>
               </form>
             </div>
-            <div class="container col-sm-12 body-con" v-if="$store.state.postSend">
-              <div class="row body-con-row1">
-                <div col-sm-7></div>
-                <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1">
+          <div class="container col-sm-12 body-con" v-if="$store.state.postSend">
+            <div class="row body-con-row1">
+              <div col-sm-7></div>
+              <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1">
                   <img :src="userHeadPic" alt="" width="150px" height="150px" style=" border-radius:50%;">
                 </div>
-                <div class="col-sm-7  user-msg">
+              <div class="col-sm-7  user-msg">
                   <div class="row" style="height:10px"></div>
                   <div class="row">
                     <div class="col-sm-4 col-sm-offset-3">
@@ -60,37 +56,36 @@
                     <div class="col-sm-5 col-sm-offset-1" style="margin-top:-10px">邮箱:{{userEmail}}</div>
                   </div>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1"></div>
+            </div>
+            <div class="row body-con-row2">
+              <div class="col-sm-10 col-sm-offset-1 body-con-row2-col1">
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-3" style="font-size: 14px">
+                    <div style="height: 15px"></div>
+                    小提示：【{{userNickname}}】的用户信息已发送到你的邮箱<br>
+                    记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
+                    ID：<span style="font-weight: bold">{{cardId}}</span>
+                  </div>
+                </div>
               </div>
-              <div class="row">
-                              <div class="col-sm-10 col-sm-offset-1"></div>
-                        </div>
-              <div class="row body-con-row2">
-                              <div class="col-sm-10 col-sm-offset-1 body-con-row2-col1">
-                                  <div class="row">
-                                      <div class="col-sm-8 col-sm-offset-3" style="font-size: 14px">
-                                      <div style="height: 15px"></div>
-                                        小提示：【{{userNickname}}】的用户信息已发送到你的邮箱<br>
-                                        记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
-
-                                        ID：<span style="font-weight: bold">{{cardId}}</span>
-                                      </div>
-                                  </div>
-                              </div>
-                        </div>
-              <div class="row">
-                          <div class="col-sm-8 col-sm-offset-5 body-con-row3">
-                              <form>
-                                  <button type="button" class="btn btn-lg but"  @click="tohome">
-                                      <span style="color: white">返回首页</span>
-                                  </button><br>
-                              </form>
-                          </div>
-                        </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 col-sm-offset-5 body-con-row3">
+                <form>
+                  <button type="button" class="btn btn-lg but"  @click="tohome">
+                    <span style="color: white">返回首页</span>
+                  </button><br>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
   export default {
@@ -243,7 +238,8 @@
   }
   .con-body{
     height:500px;
-    background-color:lightgoldenrodyellow
+    background-color:#fafafa;
+    color: #5e5e5e;
   }
   .con-body-row{
     height:380px;
@@ -270,7 +266,8 @@
     height:380px;
     background-color:#fafafa;
     margin-top:30px;
-    background-image:url("../../assets/p31.jpg") ;
+    /*background-image:url("../../assets/p31.jpg") ;*/
+    border: 3px dashed #ccc;
   }
   .body-con-row1{
     height:133px
@@ -308,5 +305,13 @@
     width:130px;
     background-color:lightskyblue;
     margin-top: 20px;
+  }
+  .ag{
+    font-weight: bold;
+  }
+  .agreen{
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
   }
 </style>

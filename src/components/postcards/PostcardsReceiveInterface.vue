@@ -297,7 +297,7 @@
   }
   .con1{
     height:580px;
-    background-color:lightgoldenrodyellow
+    background-color:#fafafa
   }
   .con-nav{
     height:53px;
@@ -318,7 +318,7 @@
     height:400px;
     background-color:#fafafa;
     /*border: 1px solid red;*/
-    background-image: url("../../assets/p51.jpg");
+    /*background-image: url("../../assets/p51.jpg");*/
   }
   /*.body-con-row1{*/
     /*font-size: 18px;*/
