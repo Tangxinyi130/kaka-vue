@@ -34,7 +34,7 @@
   }
   .con-body{
     height: 560px;
-    background-color:lightgoldenrodyellow
+    background-color:#fafafa;
   }
   .body-nav{
     height:53px;
