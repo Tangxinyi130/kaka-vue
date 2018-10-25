@@ -25,14 +25,11 @@
         <div class="commentNickname">{{content.userNickname}}</div>
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
-          <!--<div class="commentID">ID：{{content.commentUserId}}</div>-->
-
           <div v-html="content.commentContent">
             <p contenteditable="true" id="input_conta">
               {{content.commentContent}}
             </p>
           </div>
-
         </div>
 
 

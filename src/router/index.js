@@ -51,7 +51,6 @@ import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
 
-import test from "@/components/wall/test.vue"
 
 Vue.prototype.$ajax = axios
 Vue.use(Router)

@@ -8,11 +8,11 @@
     <div class="row">
       <ul class="list-group" id="my-data">
       <li class="list-group-item" v-for="(year,key) in years" @click="type=key">
-        <span class="data-year"></span><span class="data-year-txt">{{year}}
+        <span class="data-year"></span><span class="data-year-txt"><span style="cursor: pointer;">{{year}}</span>
           <div v-if="type==key">
             <ul>
-               <li v-for="month in months[key]" class="month">
-                 <router-link role="presentation" :to="'/activity/'+year+'/'+month.activityMonth">{{month.activityMonth}}月</router-link>
+               <li v-for="month in months[key]" class="month" >
+                 <router-link role="presentation" tag="li" :to="'/activity/'+year+'/'+month.activityMonth"><span style="color:#515151; cursor: pointer;">{{month.activityMonth}}月</span></router-link>
                </li>
             </ul>
           </div>
@@ -84,7 +84,8 @@
     top:-16px;
   }
   .month{
-    padding: 0;
+    /*padding: 0;*/
+    margin-left: 30px;
     margin-top: 20px;
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="background-color: antiquewhite">
+  <div class="container" style="background-color: #fafafa">
     <div class="row">
       <!--<router-view></router-view>-->
       <activity-list></activity-list>
