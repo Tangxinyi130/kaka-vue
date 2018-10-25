@@ -138,6 +138,11 @@
   span.ranking-index[title='3'] .list{
     background-image: url("../../assets/images/rankingList/third.png");
   }
+  .ranking-item .ranking-index{
+    font-size: 15px;
+    font-family: Algerian;
+    color: #cc1d18;
+  }
   .ranking-headepic{
     width: 48px;
     height: 48px;
@@ -151,7 +156,7 @@
   .ranking-bron{
     width: 40px;
     font-size: 15px;
-    color: rgba(173, 172, 177, 0.36);
+    color: #5E5E5E;
   }
   .ranking-recever{
     width: 80px;

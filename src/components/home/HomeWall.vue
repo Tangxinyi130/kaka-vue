@@ -2,20 +2,20 @@
   <div id="homeWall">
     <div class="wall-box">
       <div class="wall-nav"><span class="wall-nav-text">近期明信片</span></div>
-      <div class="row">
-        <div v-for="item in recentPic" class="col-xs-6 col-sm-3 col-md-3">
-          <div class="thumbnail">
-            <a href="">
-              <img :src="item.cardPic" height="200px" alt="">
-            </a>
-            <div class="caption">
-              <span class="text-cardid">{{item.cardId}}</span>
+      <div class="wall-item-box">
+        <div class="row">
+          <div v-for="item in recentPic" class="col-xs-6 col-sm-4 col-md-3">
+            <div class="thumbnail">
               <a href="">
-                <span class="glyphicon glyphicon-heart"></span>
+                <img :src="item.cardPic" class="cardPic" alt="">
               </a>
-              <a href="">
-                <span>收藏</span>
-              </a>
+              <div class="caption">
+                <span class="like"><span @click="addLike(item.cardId)" class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;{{item.cardLike}}</span>
+                <span class="text-cardid">{{item.cardId}}</span>
+                <a href="">
+                  <span class="collSty" @click="collectionAdd(item.cardId)">收藏</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -30,24 +30,40 @@
       data(){
         return {
           recentPic:{},
+          likeNum:0,
         }
       },
       methods:{
-        picsrc(recentPic){
-          for(let i in recentPic){
+        picsrc(recentPic) {
+          for (let i in recentPic) {
             recentPic[i].cardPic = `${axios.defaults.baseURL}${recentPic[i].cardPic}`;
           }
+        },
+        addLike(cardId){
+          this.$ajax.get(`${axios.defaults.baseURL}/postcards/like/${cardId}`)
+            .then(function (result) {
+            },function (err) {
+              console.log(err);
+            });
+          this.$router.replace('')
+          this.getRecentCard()
+        },
+        dislike(cardId){
+
+        },
+        getRecentCard(){
+          let _this = this;
+          this.$ajax.post(`${axios.defaults.baseURL}/recentPostcards`
+          ).then(function(result){
+            _this.recentPic = result.data.data[0];
+            _this.picsrc(_this.recentPic);
+          },function (err) {
+            console.log(err);
+          })
         }
       },
       mounted(){
-        let _this = this;
-        this.$ajax.post(`${axios.defaults.baseURL}/recentPostcards`
-        ).then(function(result){
-          _this.recentPic = result.data.data[0];
-          _this.picsrc(_this.recentPic);
-        },function (err) {
-          console.log(err);
-        })
+        this.getRecentCard();
       },
     }
 </script>
@@ -77,75 +93,158 @@
   }
   .wall-item-box{
     max-width: 1100px;
-    height: 450px;
     margin: 0 auto;
-    overflow: hidden;
   }
-  .wall-item{
-    width: 250px;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    float:left;
-  }
-  .wall-item img{
-    width:180px;
-    height:135px;
-  }
-  @media  screen and (max-width: 479px) {
-    .wall-item{
-      width: 190px;
-      height: 140px;
-      margin: 6px;
+
+  @media  screen and (max-width: 483px) {
+    .cardPic{
+      width: 178px;
+      max-height: 84px;
     }
-    .wall-item img{
-      width:190px;
-      height:98px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 27px;
+      text-align: left;
+      line-height: 27px;
+    }
+    .caption .text-cardid{
+     display: none;
+    }
+    .caption .like{
+      max-width: 150px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption{
+      position: relative;
+    }
+    .caption .collSty{
+      max-width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
+      position: absolute;
+      right: 5%;
     }
 
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
-    .wall-item{
-      width: 200px;
-      height: 150px;
-      margin: 9px;
+  @media screen and (min-width: 484px) and (max-width: 767px){
+    .cardPic{
+      width: 300px;
+      min-height: 130px;
+      max-height: 130px;
     }
-    .wall-item img{
-      width:200px;
-      height:105px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 30px;
+      text-align: left;
+      line-height: 30px;
+    }
+    .caption .text-cardid{
+      display: none;
+    }
+    .caption .like{
+      width: 75px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption{
+      position: relative;
+    }
+    .caption .collSty{
+      width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
+      position: absolute;
+      right: 5%;
     }
   }
   @media screen and (min-width:768px) and (max-width:991px ){
-    .wall-item{
+    .cardPic{
       width: 220px;
-      height: 170px;
-      margin: 14px;
+      height: 100px;
     }
-    .wall-item img{
-      width:220px;
-      height:119px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 26px;
+      text-align: left;
+      line-height: 28px;
+    }
+    .caption .text-cardid{
+      width: 76px;
+      color: #5e5e5e;
+      font-size: 14px;
+    }
+    .caption .like{
+      width: 75px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption .collSty{
+      width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
     }
   }
   @media screen and (min-width:992px) and (max-width:1199px ){
-    .wall-item{
+    .cardPic{
       width: 210px;
-      height: 170px;
-      margin: 16px;
+      height: 130px;
     }
-    .wall-item img{
-      width:210px;
-      height:119px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 28px;
+      text-align: left;
+      line-height: 28px;
+    }
+    .caption .text-cardid{
+      width: 80px;
+      color: #5e5e5e;
+      font-size: 14px;
+    }
+    .caption .like{
+      width: 70px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 17px;
+    }
+    .caption .collSty{
+      width: 30px;
+      color: #3a8ee6;
+      font-size: 13px;
     }
   }
   @media screen and (min-width: 1200px){
-    .wall-item{
+    .cardPic{
       width: 250px;
-      height: 200px;
-      margin: 12px;
+      height: 150px;
     }
-    .wall-item img{
-      width:250px;
-      height:140px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 30px;
+      text-align: left;
+      line-height: 30px;
+    }
+    .caption .text-cardid{
+      width: 100px;
+      color: #5e5e5e;
+      font-size: 16px;
+    }
+    .caption .like{
+      width: 80px;
+      color: #3c868a;
+      font-size: 20px;
+      line-height: 20px;
+    }
+    .caption .collSty{
+      width: 30px;
+      color: #3a8ee6;
+      font-size: 15px;
     }
   }
 </style>
