@@ -12,7 +12,7 @@
             <td class="stitle">图片</td>
           </tr>
           <tr v-for="data in receiveCard">
-            <td>{{data.cardId}}</td>
+            <td><router-link :to="'/postcards/' + data.cardId" style="color: #5E5E5E; text-underline: none">{{data.cardId}}</router-link></td>
             <td>{{data.userNickname}}</td>
             <td>{{data.cardSendRegion}}</td>
             <td>{{data.cardSendTime}}</td>
@@ -32,7 +32,7 @@
           <div class="succ-pop">
             <!--<h3>查看明信片图片id:{{postcardId}}</h3>-->
             <img :src="postcardStr" alt="" id="show">
-            <button @click="showPic = !showPic">关闭</button>
+            <button @click="showPic = !showPic" class="btn">关闭</button>
           </div>
         </div>
 
@@ -176,7 +176,15 @@
     z-index: 999;
     border-radius: 5px;
   }
-
+  /*#show {*/
+    /*position: fixed;*/
+    /*top: 100px;*/
+    /*left: 400px;*/
+  /*}*/
+  /*.btn {*/
+    /*position: absolute;*/
+    /*top: 70px;*/
+  /*}*/
 
 
   .userReceive {

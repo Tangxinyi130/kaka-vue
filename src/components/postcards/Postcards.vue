@@ -20,16 +20,16 @@
           'postcards-detailPic':postcardsDetailPicture
         },
       methods : {
-        getMsg() {
-          this.$ajax({
-            method: 'get',
-            url: `${axios.defaults.baseURL}/postcards/JS-00001`
-          }).then(res => {
-            console.log(res)
-            this.msg = JSON.stringify(res.data.data);
-            document.getElementById('main').innerHTML= this.msg
-          })
-        }
+        // getMsg() {
+        //   this.$ajax({
+        //     method: 'get',
+        //     url: `${axios.defaults.baseURL}/postcards/JS-00001`
+        //   }).then(res => {
+        //     console.log(res)
+        //     this.msg = JSON.stringify(res.data.data);
+        //     document.getElementById('main').innerHTML= this.msg
+        //   })
+        // }
       }
     }
 </script>

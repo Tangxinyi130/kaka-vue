@@ -20,7 +20,7 @@
           </div>
           <div class="row">
             <div id="search">
-              <input type="text" v-model="searchInput" id="searchInput">
+              <input type="text" v-model="searchInput" id="searchInput" placeholder="请输入用户名">
               <router-link :to="'/attention/' + this.$store.state.userId + '/search/' + this.searchInput">
                 <img src="../../assets/images/usercenter/search.png" alt="">
               </router-link>

@@ -111,7 +111,7 @@
         userNickname:'',
         userProvince:'',
         userSex:0,
-        receivemsg:{},
+        receivemsg:{}
       }
     },
     created() {
