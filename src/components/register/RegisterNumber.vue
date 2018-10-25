@@ -87,20 +87,28 @@
          console.log($('#co').val());
         },
         sendCode(){
-          this.Num = '';
-          let num = this.Num;      //容器
-          for(let i =0;i<6;i++){   //循环六次
-            num += Math.floor(Math.random()*10);
+          if (this.inputTel) {
+            this.Num = '';
+            let num = this.Num;      //容器
+            for(let i =0;i<6;i++){   //循环六次
+              num += Math.floor(Math.random()*10);
+            }
+            this.Num = num;
+            console.log(this.Num);
+            console.log("给"+this.inputTel+"发送短信");
+            // this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=109157&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
+            //   .then((res)=>{
+            //     console.log(res)
+            //   }).catch(err=>{console.log(err)})
+            this.getsecond();
+          } else {
+            alert("请输入手机号！")
           }
-          this.Num = num;
-          console.log(this.Num);
-          console.log("给"+this.inputTel+"发送短信");
-          // this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=109157&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
-          //   .then((res)=>{
-          //     console.log(res)
-          //   }).catch(err=>{console.log(err)})
-          this.getsecond();
-        },
+          // if(this.inputTel==''){
+          //   alert('')
+          // }else {
+
+          },
         submit:function () {
           console.log("下一步之前手机号" + this.teltrue)
           console.log("下一步之前验证码" + this.codetrue)
