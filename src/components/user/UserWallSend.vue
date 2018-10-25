@@ -23,7 +23,7 @@
         },
       created() {
         let _this = this;
-        this.$ajax.get(`${axios.defaults.baseURL}/users/userWallSend/${this.$store.state.userId}`
+        this.$ajax.get(`${axios.defaults.baseURL}/users/userWallSend/${this.$route.params.id}`
         ).then(function (result) {
           _this.pics = result.data.data;
           for(var i in _this.pics) {

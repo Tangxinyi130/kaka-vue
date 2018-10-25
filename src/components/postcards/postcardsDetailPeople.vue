@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
       <div class="row">
         <div class="top">详情</div>
       </div>
@@ -102,7 +102,8 @@
             <div style="clear: both"></div>
             <div id="km_days">
               <p class="text">{{cardsInformation.cardDistance}} km  </p>
-              <p class="text">{{cardsInformation.DAY}} days</p>
+              <p class="text" v-if="cardsInformation.DAY != '?'">{{cardsInformation.DAY}} days</p>
+              <p class="text" v-if="cardsInformation.DAY == '?'">在途中</p>
             </div>
 
 
@@ -174,12 +175,6 @@
             this.isSend();
             this.isReceive();
           }, 20);
-
-
-
-
-
-
         },
         mounted() {
           //地图显示
@@ -387,7 +382,8 @@
   }
 
   .twoPeople{
-    margin-top: 30px;
+    padding-top: 30px;
+    /*background-color: #fafafa;*/
   }
   .top{
     height: 52px;

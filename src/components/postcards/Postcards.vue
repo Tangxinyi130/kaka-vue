@@ -35,5 +35,7 @@
 </script>
 
 <style scoped>
-
+  .container {
+    background-color: #fafafa;
+  }
 </style>
