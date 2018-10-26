@@ -58,8 +58,8 @@ Vue.use(Router)
 export default new Router({
 
   mode: "history",
-  routes: [
-    {path: '/', name: 'Home', component: Home},
+  routes: [  {path: '/', name: 'Home', component: Home},
+
     {path: "/postcards/:cardId", component: Postcards},
     {path: "/postcardssend", component: PostcardsSend},
     {path: "/postcardsreceive", component: PostcardsReceive},

@@ -3,49 +3,24 @@
     <div class="wall-box">
       <div class="wall-nav"><span class="wall-nav-text">近期明信片</span></div>
       <div class="wall-item-box">
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <div>
-             <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-            <a href="">
-              <span class="glyphicon glyphicon-heart"></span>
-            </a>
-            <a href="">
-              <span>收藏</span>
-            </a>
+        <div class="row">
+          <div v-for="(item,index) in recentPic" class="col-xs-6 col-sm-4 col-md-3">
+            <div class="thumbnail">
+              <a href="">
+                <img :src="item.cardPic" class="cardPic" alt="">
+              </a>
+              <div class="caption">
+                <span class="like">
+                  <span class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
+                  {{item.cardLike}}{{item.active}}
+                </span>
+                <span class="text-cardid">{{item.cardId}}</span>
+                <a href="">
+                  <span class="collSty" @click="collectionAdd(item.cardId)">收藏</span>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-          <a >
-            <span class="glyphicon glyphicon-heart"></span>
-          </a>
-          <a>
-            <span>收藏</span>
-          </a>
-        </div>
-        <div v-for="item in recentPic" class="wall-item">
-          <a :href="'/postcards/'+item.cardId">
-            <img :src="item.cardPic">
-          </a>
-          <span class="text-cardid">
-            {{item.cardId}}
-          </span>
-          <a>
-            <span class="glyphicon glyphicon-heart"></span>
-          </a>
-          <a >
-            <span>收藏</span>
-          </a>
         </div>
       </div>
     </div>
@@ -58,36 +33,79 @@
       data(){
         return {
           recentPic:{},
+          likeNum:{},
         }
       },
       methods:{
-        picsrc(recentPic){
-          for(let i in recentPic){
+        cunlikeNum(){
+          for(let i in this.recentPic ){
+            (this.likeNum)[i].cardId= (this.recentPic)[i].cardId;
+            (this.likeNum)[i].cardLike = (this.recentPic)[i].cardLike;
+          }
+        },
+        picsrc(recentPic) {
+          for (let i in recentPic) {
             recentPic[i].cardPic = `${axios.defaults.baseURL}${recentPic[i].cardPic}`;
           }
+        },
+        addLike(cardId){
+          this.$ajax.get(`${axios.defaults.baseURL}/postcards/like/${cardId}`)
+            .then(function (result) {
+            },function (err) {
+              console.log(err);
+            });
+          this.getRecentCard();
+          this.$router.replace({
+            path:'/',name:'Home'
+          })
+        },
+        // addStar(index,cardId,count){
+        //   if(this.recentPic[index].active==false){
+        //     this.recentPic[index].active = true;
+        //     this.likeNum[index] =count+1;
+        //     console.log(`like+1`);
+        //   }
+        // },
+        unStar(index,cardId){
+          this.recentPic[index].active =false;
+          this.recentPic[index].starCount -=1;
+        },
+        dislike(cardId){
+
+        },
+        getRecentCard(){
+          let _this = this;
+          this.$ajax.post(`${axios.defaults.baseURL}/recentPostcards`
+          ).then(function(result){
+            _this.recentPic = result.data.data[0];
+            _this.picsrc(_this.recentPic);
+            for(let i in _this.recentPic){
+              (_this.recentPic)[i].active = false;
+              (_this.recentPic)[i].starCount = 0;
+              (_this.recentPic)[i].starCount = (_this.recentPic)[i].cardLike;
+            }
+            _this.cunlikeNum();
+          },function (err) {
+            console.log(err);
+          })
         }
       },
-      mounted(){
-        let _this = this;
-        this.$ajax.post(`${axios.defaults.baseURL}/recentPostcards`
-        ).then(function(result){
-          _this.recentPic = result.data.data[0];
-          _this.picsrc(_this.recentPic);
-        },function (err) {
-          console.log(err);
-        })
+      created(){
+        this.getRecentCard();
+
       },
+      mounted(){
+
+      }
     }
 </script>
 
 <style scoped>
   #homeWall{
-    height: 500px;
     margin-top:15px;
   }
   .wall-box{
     max-width: 1140px;
-    height: 510px;
     margin: 0 auto;
     background-color: honeydew;
     border-radius: 5px 5px 0px 0px;
@@ -107,75 +125,161 @@
   }
   .wall-item-box{
     max-width: 1100px;
-    height: 450px;
     margin: 0 auto;
-    overflow: hidden;
   }
-  .wall-item{
-    width: 250px;
-    height: 200px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    float:left;
+  .like-star{
+    cursor: pointer;
+    color: #ccc;
   }
-  .wall-item img{
-    width:180px;
-    height:135px;
-  }
-  @media  screen and (max-width: 479px) {
-    .wall-item{
-      width: 190px;
-      height: 140px;
-      margin: 6px;
+  @media  screen and (max-width: 483px) {
+    .cardPic{
+      width: 178px;
+      max-height: 84px;
     }
-    .wall-item img{
-      width:190px;
-      height:98px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 27px;
+      text-align: left;
+      line-height: 27px;
+    }
+    .caption .text-cardid{
+     display: none;
+    }
+    .caption .like{
+      max-width: 150px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption{
+      position: relative;
+    }
+    .caption .collSty{
+      max-width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
+      position: absolute;
+      right: 5%;
     }
 
   }
-  @media screen and (min-width: 480px) and (max-width: 767px){
-    .wall-item{
-      width: 200px;
-      height: 150px;
-      margin: 9px;
+  @media screen and (min-width: 484px) and (max-width: 767px){
+    .cardPic{
+      width: 300px;
+      min-height: 130px;
+      max-height: 130px;
     }
-    .wall-item img{
-      width:200px;
-      height:105px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 30px;
+      text-align: left;
+      line-height: 30px;
+    }
+    .caption .text-cardid{
+      display: none;
+    }
+    .caption .like{
+      width: 75px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption{
+      position: relative;
+    }
+    .caption .collSty{
+      width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
+      position: absolute;
+      right: 5%;
     }
   }
   @media screen and (min-width:768px) and (max-width:991px ){
-    .wall-item{
+    .cardPic{
       width: 220px;
-      height: 170px;
-      margin: 14px;
+      height: 100px;
     }
-    .wall-item img{
-      width:220px;
-      height:119px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 26px;
+      text-align: left;
+      line-height: 28px;
+    }
+    .caption .text-cardid{
+      width: 76px;
+      color: #5e5e5e;
+      font-size: 14px;
+    }
+    .caption .like{
+      width: 75px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 14px;
+    }
+    .caption .collSty{
+      width: 35px;
+      color: #3a8ee6;
+      text-align: right;
+      font-size: 16px;
     }
   }
   @media screen and (min-width:992px) and (max-width:1199px ){
-    .wall-item{
+    .cardPic{
       width: 210px;
-      height: 170px;
-      margin: 16px;
+      height: 130px;
     }
-    .wall-item img{
-      width:210px;
-      height:119px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 28px;
+      text-align: left;
+      line-height: 28px;
+    }
+    .caption .text-cardid{
+      width: 80px;
+      color: #5e5e5e;
+      font-size: 14px;
+    }
+    .caption .like{
+      width: 70px;
+      color: #3c868a;
+      font-size: 18px;
+      line-height: 17px;
+    }
+    .caption .collSty{
+      width: 30px;
+      color: #3a8ee6;
+      font-size: 13px;
     }
   }
   @media screen and (min-width: 1200px){
-    .wall-item{
+    .cardPic{
       width: 250px;
-      height: 200px;
-      margin: 12px;
+      height: 150px;
     }
-    .wall-item img{
-      width:250px;
-      height:140px;
+    .text-cardid,.like,.collSty{
+      display: inline-block;
+      height: 30px;
+      text-align: left;
+      line-height: 30px;
+    }
+    .caption .text-cardid{
+      width: 100px;
+      color: #5e5e5e;
+      font-size: 16px;
+    }
+    .caption .like{
+      width: 80px;
+      color: #3c868a;
+      font-size: 20px;
+      line-height: 20px;
+    }
+    .caption .collSty{
+      width: 30px;
+      color: #3a8ee6;
+      font-size: 15px;
     }
   }
 </style>
