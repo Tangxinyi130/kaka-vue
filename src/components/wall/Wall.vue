@@ -1,18 +1,20 @@
 <template>
   <div>
     <my-search></my-search>
-    <my-picturelist></my-picturelist>
+    <!--<my-picturelist></my-picturelist>-->
+    <wall-newpicture></wall-newpicture>
   </div>
 </template>
 
 <script>
   import mysearch from './WallSearch'
-  import mypicturelist from './WallPictureList'
+  import WallNewPicture from './WallNewPicture'
+
     export default {
         name: "Wall",
       components:{
         'my-search':mysearch,
-        'my-picturelist':mypicturelist
+        'wall-newpicture':WallNewPicture
       }
     }
 </script>

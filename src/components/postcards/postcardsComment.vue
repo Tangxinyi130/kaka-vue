@@ -1,20 +1,24 @@
 <template>
-  <div class="row" >
-    <div id="publish">
-    <h3>评论内容</h3>
+  <div>
+    <div class="row" >
+      <div>
+        <p class="text commentTitle">评论内容</p>
       <!-- 发布内容输入框，利用Html5的新属性contenteditable，实现可编辑文本 ，会自动将插入的IMG标签解析-->
       <div class="publish_container">
-        <p contenteditable="true" id="input_conta"></p>
+       <p contenteditable="true" id="input_conta"></p>
       </div>
-  </div>
-    <!-- 表情和发送-->
-    <div class="face_container">
-      <!-- 表情Icon，点击触发事件，动态生成表情并显示 -->
-      <span @click=make_face() class="make_face" ><img src="/static/eoim/face.png" width="32px" height="32px" alt=""></span>
-      <!--<span class="send" @click=send()>选择表情</span>-->
-      <span class="send btn btn-default " @click=send()>发送</span>
-      <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
-      <div id="face" style="width: 300px;height: 192px;" @click=choice_face($event) v-if="flag"></div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- 表情和发送-->
+      <div class="face_container">
+        <!-- 表情Icon，点击触发事件，动态生成表情并显示 -->
+        <span @click=make_face() class="make_face" ><img src="/static/eoim/face2.png"alt=""></span>
+        <!--<span class="send" @click=send()>选择表情</span>-->
+        <span class="send btn btn-default " @click=send()>发送评论</span>
+        <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
+        <div id="face" style="width: 300px;height: 192px;" @click=choice_face($event) v-if="flag"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -54,21 +58,25 @@
         }
       },
       send(){
-        var text=$("#input_conta").html();  //获得发布框的文本内容，表情会以整个img标签文本显示
-        $("#input_conta").html("");  //清除发布框的文本内容
-        $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
-        $.ajax({
-          url: `${axios.defaults.baseURL}/postcards/addcomment`,
-          type: "post",
-          data: {
-            'commentUserId':this.userId,
-            'commentCardId':this.$route.params.cardId,
-            'commentContent':text,
-          },
-          success: function (data) {
-            console.info(data);
-          }
-        });
+        if (this.$store.state.userId) {
+          var text=$("#input_conta").html();  //获得发布框的文本内容，表情会以整个img标签文本显示
+          $("#input_conta").html("");  //清除发布框的文本内容
+          $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
+          $.ajax({
+            url: `${axios.defaults.baseURL}/postcards/addcomment`,
+            type: "post",
+            data: {
+              'commentUserId':this.userId,
+              'commentCardId':this.$route.params.cardId,
+              'commentContent':text,
+            },
+            success: function (data) {
+              console.info(data);
+            }
+          });
+        } else {
+          alert("请先登录！");
+        }
       }
     },
     computed: mapGetters([
@@ -81,10 +89,34 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .publish_container{
+  .make_face {
+    margin-left: 25px;
+  }
+  .btn-default {
+    margin-right: 25px;
+    color: #5e5e5e;
+    background-color: transparent;
+  }
+  .btn-default:hover {
+    color: #4e91ff;
+  }
 
+  .text {
+    color: #5e5e5e;
+  }
+  .commentTitle {
+    margin-left: 25px;
+    margin-right: 20px;
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .publish_container{
     border:1px solid #ccc;
-    padding:0;
+    /*padding:0;*/
+    margin-left: 20px;
+    margin-right: 20px;
   }
   #input_conta{
     margin:0;

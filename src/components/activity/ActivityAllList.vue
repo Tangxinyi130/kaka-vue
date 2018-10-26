@@ -5,42 +5,44 @@
     <div class="row">
       <div class="contList">
         <ul class="cont-list">
+
           <li class="am-gallery-item" v-for="data in myActData1">
-            <router-link :to="'/activitydetail/' + data.activityId">
+            <div style="min-height: 210px;border-bottom: 1px solid #797979;padding-left: 25px;padding-top: 12px">
               <div class="img_box col-md-4">
                 <a href="">
-                  <img width="100%" height="162" :src='data.goodsPic'>
+                  <img width="100%" style="min-height:162px" :src='data.goodsPic'>
                 </a>
               </div>
               <div class="intro col-md-8">
-                <h3>
-                  <a href="/">
+                <router-link :to="'/activitydetail/' + data.activityId">
+                <h3 style="color:#515151">
+                  <a href="#" style="color:#515151">
                     {{data.activityName}}
                   </a>
                 </h3>
-                <p style="height: 100px" v-html="data.activityDetails"></p>
+                </router-link>
+                <p style="height: 100px;color:#515151;">{{data.activityDetails}}</p>
                 <div class="iconCon">
-							<span>
-                <i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
-							</span>
-                  <span><i class="iconfont glyphicon glyphicon-shopping-cart" ></i><b>0</b></span>
+							    <span class="iconfont glyphicon glyphicon-time"></span>
                 </div>
               </div>
-            </router-link>
+            </div>
           </li>
+
         </ul>
       </div>
     </div>
     <!--分页-->
     <div class="row text-center">
       <div class="block">
-        <span class="demonstration"></span>
+        <span class="demonstration" ></span>
         <el-pagination ref="elpage"
                        @current-change="change()"
                        :current-page.sync="pageIndex"
                        layout="prev, pager, next"
                        :total="pageCount"
                        :page-size = "pagesize"
+
         >
         </el-pagination>
       </div>
@@ -60,6 +62,7 @@
               pageCount:0,
               myActData:[],
               activitys:[]
+
 
             }
         },
@@ -171,4 +174,6 @@
 .intro{
   margin-left: -10px;
 }
+
+
 </style>

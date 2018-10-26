@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <app-postcardssendannouncements></app-postcardssendannouncements>
-    </div>
+  <div>
+    <app-postcardssendannouncements></app-postcardssendannouncements>
+  </div>
 </template>
 <script>
   import PostcardsSendAnnouncements from "./PostcardsSendAnnouncements";
