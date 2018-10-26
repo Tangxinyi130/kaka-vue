@@ -22,8 +22,8 @@
                 <div>粉丝数：{{data.thisUserFansCount}}</div>
               </div>
               <div class="col-sm-2 othersBtn">
-                <button v-if="data.isAttention == 0 && data.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
-                <button v-if="data.isAttention == 1 && data.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
+                <button v-if="data.isAttention == 0 && data.userId != userId && userId != null" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(data.userId)">关注</button>
+                <button v-if="data.isAttention == 1 && data.userId != userId && userId != null" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(data.userId)">取消关注</button>
               </div>
 
 
@@ -96,7 +96,10 @@
         ).then(function (result) {
           _this.others = result.data.data;
           for (var i in _this.others) {
-            _this.others[i].userHeadPic = `${axios.defaults.baseURL}${_this.others[i].userHeadPic}`
+            _this.others[i].userHeadPic = `${axios.defaults.baseURL}${_this.others[i].userHeadPic}`;
+            if (_this.others[i].joinTime == null) {
+              _this.others[i].joinTime = 0;
+            }
           }
 
         }, function (err) {

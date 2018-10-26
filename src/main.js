@@ -10,9 +10,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-// axios.defaults.baseURL = "http://10.40.4.50:3001";
-axios.defaults.baseURL = "http://localhost:3001";
-
+axios.defaults.baseURL = "http://localhost:3000";
 
 /* eslint-disable no-new */
 new Vue({
