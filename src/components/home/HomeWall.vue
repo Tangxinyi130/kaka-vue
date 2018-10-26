@@ -4,13 +4,16 @@
       <div class="wall-nav"><span class="wall-nav-text">近期明信片</span></div>
       <div class="wall-item-box">
         <div class="row">
-          <div v-for="item in recentPic" class="col-xs-6 col-sm-4 col-md-3">
+          <div v-for="(item,index) in recentPic" class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
               <a href="">
                 <img :src="item.cardPic" class="cardPic" alt="">
               </a>
               <div class="caption">
-                <span class="like"><span @click="addLike(item.cardId)" class="glyphicon glyphicon-heart"></span>&nbsp;&nbsp;{{item.cardLike}}</span>
+                <span class="like">
+                  <span class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
+                  {{item.cardLike}}{{item.active}}
+                </span>
                 <span class="text-cardid">{{item.cardId}}</span>
                 <a href="">
                   <span class="collSty" @click="collectionAdd(item.cardId)">收藏</span>
@@ -30,10 +33,16 @@
       data(){
         return {
           recentPic:{},
-          likeNum:0,
+          likeNum:{},
         }
       },
       methods:{
+        cunlikeNum(){
+          for(let i in this.recentPic ){
+            (this.likeNum)[i].cardId= (this.recentPic)[i].cardId;
+            (this.likeNum)[i].cardLike = (this.recentPic)[i].cardLike;
+          }
+        },
         picsrc(recentPic) {
           for (let i in recentPic) {
             recentPic[i].cardPic = `${axios.defaults.baseURL}${recentPic[i].cardPic}`;
@@ -45,8 +54,21 @@
             },function (err) {
               console.log(err);
             });
-          this.$router.replace('')
-          this.getRecentCard()
+          this.getRecentCard();
+          this.$router.replace({
+            path:'/',name:'Home'
+          })
+        },
+        // addStar(index,cardId,count){
+        //   if(this.recentPic[index].active==false){
+        //     this.recentPic[index].active = true;
+        //     this.likeNum[index] =count+1;
+        //     console.log(`like+1`);
+        //   }
+        // },
+        unStar(index,cardId){
+          this.recentPic[index].active =false;
+          this.recentPic[index].starCount -=1;
         },
         dislike(cardId){
 
@@ -57,14 +79,24 @@
           ).then(function(result){
             _this.recentPic = result.data.data[0];
             _this.picsrc(_this.recentPic);
+            for(let i in _this.recentPic){
+              (_this.recentPic)[i].active = false;
+              (_this.recentPic)[i].starCount = 0;
+              (_this.recentPic)[i].starCount = (_this.recentPic)[i].cardLike;
+            }
+            _this.cunlikeNum();
           },function (err) {
             console.log(err);
           })
         }
       },
-      mounted(){
+      created(){
         this.getRecentCard();
+
       },
+      mounted(){
+
+      }
     }
 </script>
 
@@ -95,7 +127,10 @@
     max-width: 1100px;
     margin: 0 auto;
   }
-
+  .like-star{
+    cursor: pointer;
+    color: #ccc;
+  }
   @media  screen and (max-width: 483px) {
     .cardPic{
       width: 178px;
