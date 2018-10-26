@@ -3,7 +3,7 @@
   <div class="rightc col-md-4">
   <div class="col-md-10 col-md-offset-2">
     <div class="row">
-      <div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px">全部</div>
+      <router-link to="/activity"><div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px;color:#515151;">全部</div></router-link>
     </div>
     <div class="row">
       <ul class="list-group" id="my-data">

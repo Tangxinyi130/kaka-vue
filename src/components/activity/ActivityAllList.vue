@@ -23,7 +23,8 @@
                 </router-link>
                 <p style="height: 100px;color:#515151;">{{data.activityDetails}}</p>
                 <div class="iconCon">
-							    <span class="iconfont glyphicon glyphicon-time"></span>
+							    <span class="iconfont glyphicon glyphicon-time" style="color: #cccccc"></span>
+                  <span style="color: #cccccc">{{data.activityStartDate}}</span>
                 </div>
               </div>
             </div>
@@ -62,8 +63,6 @@
               pageCount:0,
               myActData:[],
               activitys:[]
-
-
             }
         },
       computed:{
@@ -81,6 +80,7 @@
         activityPic(data){
           for(let i in data){
             data[i].goodsPic = `${axios.defaults.baseURL}${data[i].goodsPic}`
+            data[i].activityStartDate=this.changeTime(data[i].activityStartDate)
           }
         },
         loadData() {
@@ -108,7 +108,7 @@
             axios.get(`${axios.defaults.baseURL}/activity/${year}/${month}`).then((res) =>{
               _this.myActData= res.data.data;
               _this.activityPic(_this.myActData);
-              _this.pageCount=_this.myActData.length
+              _this.pageCount=_this.myActData.length;
               console.log("结果"+_this.pageCount)
               _this.loadData()
             })
@@ -121,8 +121,23 @@
               _this.loadData()
             })
           }
+        },
+        changeTime(date){
+          date = new Date(date);
+          var y = date.getFullYear();
+          var m = date.getMonth() + 1;
+          m = m < 10 ? '0' + m : m;
+          var d = date.getDate();
+          d = d < 10 ? ('0' + d) : d;
+          var h = date.getHours();
+          h = h < 10 ? ('0' + h) : h;
+          var mm = date.getMinutes();
+          mm = mm < 10 ? ('0' + mm) : mm;
+          var s = date.getSeconds();
+          s = s < 10 ? ('0' + s) : s;
+          return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
+        },
 
-        }
       },
 
       // watch:{
