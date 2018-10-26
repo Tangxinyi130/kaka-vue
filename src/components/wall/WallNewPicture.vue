@@ -3,7 +3,7 @@
     <Waterfall :gutterWidth="10" :minCol="3" :maxCol="4" :gutterHeight="10" ref="waterfall" :fixWidth="0">
       <WaterfallItem v-for="(src, index) in dataArr" :key="index" :width="250" class="item animated fadeIn">
         <div style="background-color: white;border:7px solid white" id="pic">
-          <img :src="src">
+         <router-link :to="'/postcards/'+src.cardId"><img :src="src.cardPic"></router-link>
         </div>
       </WaterfallItem>
     </Waterfall>
@@ -44,9 +44,10 @@
         this.allPic=res.data.data.allPicture;
         console.log(`${axios.defaults.baseURL}${this.allPic[0].cardPic}`)
         this.picsrc(this.allPic);
-        for(let i=0;i<this.allPic.length;i++){
-          this.items.push(this.allPic[i].cardPic)
-        }
+        // for(let i=0;i<this.allPic.length;i++){
+        //   this.items.push(this.allPic[i].cardPic)
+        // }
+        this.items=this.allPic
         console.log("哈哈1"+this.items)
         var count = 7
         console.log(this.items.slice(count * this.page, count * (this.page + 1)))

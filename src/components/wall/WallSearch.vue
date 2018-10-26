@@ -129,6 +129,7 @@
   }
   .cityName{
     cursor: pointer;
+    margin-left: 20px;
   }
 
   @media  screen and (max-width: 479px) {
