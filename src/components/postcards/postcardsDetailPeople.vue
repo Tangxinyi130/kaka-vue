@@ -126,6 +126,8 @@
 
 <script>
   import {mapGetters} from "vuex"
+  import start from "../../assets/images/start4.png"
+  import end from "../../assets/images/end4.png"
     export default {
         name: "cardDetail",
         computed: mapGetters([
@@ -226,10 +228,27 @@
                     map.centerAndZoom(new BMap.Point(104.403119, 38.028658), 3);
                     point1 = new BMap.Point(_this.a.lng, _this.a.lat);
                     point2 = new BMap.Point(_this.b.lng, _this.b.lat);
-                    var points = [point1,point2];
-                    var curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5}); //创建弧线对象
-                    map.addOverlay(curve); //添加到地图中
-                    curve.enableEditing(); //开启编辑功能
+
+                    // var points = [point1,point2];
+                    // var curve = new BMapLib.CurveLine(points, {strokeColor:"blue", strokeWeight:3, strokeOpacity:0.5}); //创建弧线对象
+                    // map.addOverlay(curve); //添加到地图中
+                    // curve.enableEditing(); //开启编辑功能
+
+
+                    var polyline = new BMap.Polyline([
+                      point1,
+                      point2,
+                    ], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});   //创建折线
+                    map.addOverlay(polyline);   //增加折线
+
+                    var myIcon1 = new BMap.Icon(start, new BMap.Size(36,36));
+                    var marker1 = new BMap.Marker(point1,{icon:myIcon1});  // 创建标注
+                    map.addOverlay(marker1);              // 将标注添加到地图中
+
+                    var myIcon2 = new BMap.Icon(end, new BMap.Size(36,36));
+                    var marker2 = new BMap.Marker(point2,{icon:myIcon2});  // 创建标注
+                    map.addOverlay(marker2);              // 将标注添加到地图中
+
                   }, 1000)
 
                 })
@@ -256,9 +275,9 @@
             localSearch.enableAutoViewport(); //允许自动调节窗体大小
             localSearch.setSearchCompleteCallback(function (searchResult) {
               let poi = searchResult.getPoi(0);
-              map.centerAndZoom(poi.point, 13);
-              var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
-              map.addOverlay(marker);
+              // map.centerAndZoom(poi.point, 13);
+              // var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+              // map.addOverlay(marker);
               callback(poi);
             });
             localSearch.search(keyword);
