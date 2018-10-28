@@ -80,7 +80,7 @@
          console.log(e.target.innerHTML)
           this.inputVal=e.target.innerHTML
           this.searchResult=false
-          this.$router.replace({path:'/wall/search/'+this.inputVal+"/1"})
+          this.$router.replace({path:'/wall/search/'+this.inputVal})
         }
       },
 

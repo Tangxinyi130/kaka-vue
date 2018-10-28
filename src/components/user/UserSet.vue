@@ -60,16 +60,9 @@
                   <div class="form-group">
                     <label class="col-sm-2 control-label">所在地区</label>
                     <div class="col-sm-10">
-                      <!--<select name="pro" id ="pro" onchange="change()">-->
-                        <!--<option value="-1">省份</option>-->
-                      <!--</select>-->
-                      <!--<select id="city" name="city">-->
-                      <!--<option value="-1">城市</option>-->
-                    <!--</select>-->
 
 
-                      <!--<input type="text" name="pro" v-model="myPro" style="display: none">-->
-                      <!--<input type="text" name="city" v-model="myCity" style="display: none">-->
+
                       <select  form="setUser" v-model="selected" name="selected" id="selPro" autofocus v-if="provinceL" style="width: 150px;" class="form-control">
                         <!--<option disabled value="请选择城市">请选择城市</option>-->
                         <option form="setUser" v-for="(item,index) in provinceL" :value="item">{{item.name}}</option>
