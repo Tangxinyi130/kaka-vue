@@ -1,7 +1,7 @@
 <template>
     <footer class="container-fluid">
       <div class="container" style="text-align: center">
-        <p>@CopyRight 2018 拾笺</p>
+        <p>&copy;CopyRight 2018 拾笺</p>
       </div>
     </footer>
 </template>

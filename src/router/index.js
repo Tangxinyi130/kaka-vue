@@ -62,6 +62,7 @@ export default new Router({
   routes: [  {path: '/', name: 'Home', component: Home},
 
     {path: "/postcards/:cardId", component: Postcards},
+
     {path: "/postcardssend", component: PostcardsSend},
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
@@ -69,7 +70,7 @@ export default new Router({
     // {path: "/email", component:email},
 
     {path: "/wall", component: Wall,children:[
-        {path:"",component:Wall},
+        {path:"",component:WallNewPicture},
         // {path:":page",component:WallPictureList},
         {path:"search/:city",component:WallNewPicture}
       ]},

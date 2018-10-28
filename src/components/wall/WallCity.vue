@@ -1,8 +1,8 @@
 <template>
   <div class="col-xs-12 col-md-12 allCity">
       <ul>
-        <li><a href="/wall">全部</a></li>
-        <li v-for="city in allCityName" @click="upshow"><a :href="'/wall/search/'+city">{{city}}</a></li>
+        <li><a href="/wall" style="color:#515151">全部</a></li>
+        <li v-for="city in allCityName" @click="upshow"><a :href="'/wall/search/'+city" style="color:#515151">{{city}}</a></li>
       </ul>
     </div>
 </template>

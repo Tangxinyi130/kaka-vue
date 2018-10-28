@@ -5,12 +5,13 @@
         <img :src="postcardPic.cardPic" width="100%"  alt="">
       </div>
       <div class="col-md-4 text-center comment">
-        <span class="btn btn-default glyphicon glyphicon-thumbs-up" style="font-size: 30px"></span>
-        <span class="btn btn-default glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
+        <span class="btn glyphicon glyphicon-thumbs-up" style="font-size: 30px"></span>
+        <span v-if="flag"><span class="btn glyphicon glyphicon-heart-empty" style="font-size: 30px" @click="myLike" ></span>收藏</span>
+        <span v-else ><span class="btn glyphicon glyphicon-heart" style="font-size: 30px" @click="unLike" ></span>已收藏</span>
       </div>
     </div>
     <div>
-      <postcards-comment></postcards-comment>
+      <postcards-comment @all-comment="updataComment"></postcards-comment>
     </div>
     <div class="row">
       <div class="allCommentTitle">
@@ -45,46 +46,18 @@
               cardId:this.$route.params.cardId,
               cardComment:{},
               postcardPic:{},
-              userComment:{}
+              userComment:{},
+              flag:true
             }
         },
         components:{
            'postcards-comment':postcardsComment
         },
+      watch:{
+          "$route":"getDetail"
+      },
         created(){
-          this.$ajax({
-            method:'get',
-            url:`${axios.defaults.baseURL}/postcards/`+this.cardId
-          }).then((res)=>{
-            this.postcardPic = res.data.data.cardInformation[0];
-            this.postcardPic.cardPic = `${axios.defaults.baseURL}${this.postcardPic.cardPic}`;
-            console.log(this.postcardPic);
-            this.cardComment = res.data.data.cardComment;
-            console.log("cardComment： " + JSON.stringify(this.cardComment));
-            for (var i in this.cardComment) {
-              this.cardComment[i].commentTime = this.changeTime(this.cardComment[i].commentTime);
-              this.cardComment[i].userHeadPic = `${axios.defaults.baseURL}${this.cardComment[i].userHeadPic}`
-            }
-
-            console.log(this.cardComment.length);
-            // for(let i=0;i<this.cardComment.length;i++){
-            //   this.$ajax({
-            //     method:'get',
-            //     url:`${axios.defaults.baseURL}/users/` + this.cardComment[i].commentUserId
-            //   }).then((res) => {
-            //     this.userComment = res.data.data;
-            //     for (var i in this.userComment) {
-            //       this.userComment[i].userHeadPic = `${axios.defaults.baseURL}${res.data.data.userHeadPic}`;
-            //     }
-            //     console.log(this.userComment);
-            //     // this.cardComment[i].commentUserId = res.data.data.userId;
-            //     // this.cardComment[i].commentUserNickname = res.data.data.userNickname;
-            //     // // console.log("头像： " + res.data.data.userHeadPic);
-            //     // // console.log("路径： " + axios.defaults.baseURL);
-            //     // this.cardComment[i].commentUserHead = `${axios.defaults.baseURL}${res.data.data.userHeadPic}`;
-            //   })
-            // }
-          })
+          this.getDetail();
       },
         methods: {
           //修改数据库取出的时间格式
@@ -103,6 +76,59 @@
             s = s < 10 ? ('0' + s) : s;
             return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
           },
+          getDetail(){
+            this.$ajax({
+              method:'get',
+              url:`${axios.defaults.baseURL}/postcards/`+this.cardId
+            }).then((res)=>{
+              this.postcardPic = res.data.data.cardInformation[0];
+              this.postcardPic.cardPic = `${axios.defaults.baseURL}${this.postcardPic.cardPic}`;
+              this.cardComment = res.data.data.cardComment;
+              for (var i in this.cardComment) {
+                this.cardComment[i].commentTime = this.changeTime(this.cardComment[i].commentTime);
+                this.cardComment[i].userHeadPic = `${axios.defaults.baseURL}${this.cardComment[i].userHeadPic}`
+              }
+              this.$ajax({
+                method:'get',
+                url:`${axios.defaults.baseURL}/postcards/getcollection/${this.cardId}/${this.$store.state.userId}`
+              }).then((res)=>{
+                if(res.data.data.length==0){
+                  this.flag=true
+                }else{
+                  this.flag=false
+                }
+              })
+
+            })
+          },
+          myLike(){
+            console.log(this.$store.state.userId)
+            this.$ajax({
+              method:'get',
+              url:`${axios.defaults.baseURL}/postcards/collect/${this.cardId}/${this.$store.state.userId}`
+            }).then((res)=>{
+              console.log("收藏")
+              this.flag=false
+            })
+          },
+          unLike(){
+            console.log(this.$store.state.userId)
+            this.$ajax({
+              method:'get',
+              url:`${axios.defaults.baseURL}/postcards/uncollect/${this.cardId}/${this.$store.state.userId}`
+            }).then((res)=>{
+              console.log("不收藏")
+              this.flag=true
+            })
+          },
+          updataComment(data){
+            for (var i in data) {
+              data[i].commentTime = this.changeTime(data[i].commentTime);
+              data[i].userHeadPic = `${axios.defaults.baseURL}${data[i].userHeadPic}`
+            }
+            this.cardComment=data;
+
+          }
         }
     }
 </script>
