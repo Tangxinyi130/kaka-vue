@@ -109,14 +109,14 @@
   max-width: 750px;
   height: 450px;
   margin: 0 auto;
-  background-color: honeydew;
+  background-color: #fafafa;
   border-radius: 5px 5px 0px 0px;
 }
 .dynamic-nav{
   max-width: 750px;
   height: 45px;
   line-height: 45px;
-  background-color: #528970;
+  background-color: #91bfbf;
   border-radius: 5px 5px 0px 0px;
 }
 .dynamic-nav .dynamic-nav-text{

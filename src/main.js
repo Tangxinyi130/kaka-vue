@@ -7,10 +7,14 @@ import store from "./store.js"
 import $ from 'jquery'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper);
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "http://localhost:3000";
 
 /* eslint-disable no-new */
 new Vue({

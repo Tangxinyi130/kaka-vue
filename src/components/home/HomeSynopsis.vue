@@ -65,7 +65,7 @@
   #homeSynopsis{
     height: 300px;
     max-width: 750px;
-    background-color: aqua;
+    background-color: #fafafa;
   }
   #myCarousel{
     height: 300px;

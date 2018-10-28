@@ -71,7 +71,7 @@
   }
   #dynamic-box{
     height: 100px;
-    background-color: #d5d5ab;
+    background-color: #fafafa;
   }
   #dynamic{
     display: flex;

@@ -92,7 +92,7 @@
     padding: 0;
   }
   .card{
-    background-color: azure;
+    background-color: #fafafa;
     border-radius: 5px;
   }
   .card-header{

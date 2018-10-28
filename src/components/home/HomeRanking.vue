@@ -61,14 +61,14 @@
     max-width: 360px;
     height: 450px;
     margin: 0 auto;
-    background-color: honeydew;
+    background-color: #fafafa;
     border-radius: 5px 5px 0px 0px;
   }
   .ranking-nav{
     max-width: 360px;
     height: 45px;
     line-height: 45px;
-    background-color: #C1A174;
+    background-color: #d5d5ab;
     border-radius: 5px 5px 0px 0px;
   }
   .ranking-info{

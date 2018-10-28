@@ -6,15 +6,15 @@
         <div class="row">
           <div v-for="(item,index) in recentPic" class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
-              <a href="">
+              <a >
                 <img :src="item.cardPic" class="cardPic" alt="">
               </a>
               <div class="caption">
                 <span class="like">
                   <span class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
-                  {{item.cardLike}}{{item.active}}
+                  {{item.cardLike}}
                 </span>
-                <span class="text-cardid">{{item.cardId}}</span>
+                <a :href="'/postcards/' + item.cardId"><span class="text-cardid">{{item.cardId}}</span></a>
                 <a href="">
                   <span class="collSty" @click="collectionAdd(item.cardId)">收藏</span>
                 </a>
@@ -37,12 +37,12 @@
         }
       },
       methods:{
-        cunlikeNum(){
-          for(let i in this.recentPic ){
-            (this.likeNum)[i].cardId= (this.recentPic)[i].cardId;
-            (this.likeNum)[i].cardLike = (this.recentPic)[i].cardLike;
-          }
-        },
+        // cunlikeNum(){
+        //   for(let i in this.recentPic ){
+        //     (this.likeNum)[i].cardId= (this.recentPic)[i].cardId;
+        //     (this.likeNum)[i].cardLike = (this.recentPic)[i].cardLike;
+        //   }
+        // },
         picsrc(recentPic) {
           for (let i in recentPic) {
             recentPic[i].cardPic = `${axios.defaults.baseURL}${recentPic[i].cardPic}`;
@@ -84,7 +84,7 @@
               (_this.recentPic)[i].starCount = 0;
               (_this.recentPic)[i].starCount = (_this.recentPic)[i].cardLike;
             }
-            _this.cunlikeNum();
+            // _this.cunlikeNum();
           },function (err) {
             console.log(err);
           })
@@ -107,15 +107,16 @@
   .wall-box{
     max-width: 1140px;
     margin: 0 auto;
-    background-color: honeydew;
+    background-color: #fafafa;
     border-radius: 5px 5px 0px 0px;
   }
   .wall-nav{
     max-width: 1140px;
     height: 45px;
     line-height: 45px;
-    background-color: #7C6254;
+    background-color: #C1A174;
     border-radius: 5px 5px 0px 0px;
+    position: relative;
   }
   .wall-nav .wall-nav-text{
     font-size: 18px;
@@ -126,6 +127,8 @@
   .wall-item-box{
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+    top: 10px;
   }
   .like-star{
     cursor: pointer;
