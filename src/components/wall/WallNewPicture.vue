@@ -41,31 +41,6 @@
       getPicture(){
         var that = this
         console.log("测试："+this.$route.params.city)
-        // if(JSON.stringify(this.$route.params)==='{}') {
-        //   this.$ajax({
-        //     method: 'get',
-        //     url: `${axios.defaults.baseURL}/wall`
-        //   })
-        //     .then((res) => {
-        //       this.allPic = res.data.data.allPicture;
-        //       console.log(`${axios.defaults.baseURL}${this.allPic[0].cardPic}`)
-        //       this.picsrc(this.allPic);
-        //       this.items = this.allPic
-        //       console.log("哈哈1" + this.items)
-        //       var count = 7
-        //       console.log(this.items.slice(count * this.page, count * (this.page + 1)))
-        //       this.dataArr = this.dataArr.concat(this.items.slice(count * this.page, count * (this.page + 1)))
-        //       this.page += 1;
-        //       window.addEventListener('scroll', function () {
-        //         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-        //         if (scrollTop + window.innerHeight >= document.body.clientHeight) {
-        //           console.log(that.items.slice(count * that.page, count * (that.page + 1)))
-        //           that.dataArr = that.dataArr.concat(that.items.slice(count * that.page, count * (that.page + 1)))
-        //           that.page += 1;
-        //         }
-        //       })
-        //     })
-        // }else{
         if(this.$route.params.city!=undefined){
           this.city=this.$route.params.city
           console.log('搜索城市:'+this.city)
@@ -79,6 +54,7 @@
             console.log("哈哈2" + this.items)
             var count = 7
             console.log(this.items.slice(count * this.page, count * (this.page + 1)))
+            this.dataArr = [];
             this.dataArr = this.dataArr.concat(this.items.slice(count * this.page, count * (this.page + 1)))
             this.page += 1;
             window.addEventListener('scroll', function () {
@@ -103,6 +79,7 @@
                   console.log("哈哈1" + this.items)
                   var count = 7
                   console.log(this.items.slice(count * this.page, count * (this.page + 1)))
+                  this.dataArr = [];
                   this.dataArr = this.dataArr.concat(this.items.slice(count * this.page, count * (this.page + 1)))
                   this.page += 1;
                   window.addEventListener('scroll', function () {

@@ -13,11 +13,11 @@
       <!-- 表情和发送-->
       <div class="face_container">
         <!-- 表情Icon，点击触发事件，动态生成表情并显示 -->
-        <span @click=make_face() class="make_face" ><img src="/static/eoim/face2.png"alt=""></span>
+        <span @click="flag=!flag" class="make_face" ><img src="/static/eoim/face2.png"alt=""></span>
         <!--<span class="send" @click=send()>选择表情</span>-->
         <span class="send btn btn-default " @click=send()>发送评论</span>
         <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
-        <div id="face" style="width: 300px;height: 192px;" @click=choice_face($event) v-if="flag"></div>
+        <div id="face" style="width: 350px;height: 190px;background-color: white;" @click=choice_face($event) v-if="flag" v-html="eoimImg"></div>
       </div>
     </div>
   </div>
@@ -31,23 +31,17 @@
     data(){
       return {
         flag:false,
-        isClick: false
+        isClick: false,
+        eoimImg:""
       }
     },
-    methods:{
-      make_face(){
-        // if (this.isClick) {
-        //   this.flag = false;
-        // } else {
-          for(var i=1;i<=54;i++){      //根据表情文件数量决定循环次数，这里为75个表情
-            $("div#face").append(`<img src="/static/eoim/${i}.png" class="eoimPic" width="32px" height="32px" >`);
-
+    mounted(){
+      console.log(this.$route.params.cardId)
+      for(var i=1;i<=77;i++) {
+        this.eoimImg += `<img src="/static/eoim/${i}.png" class="eoimPic" width="20px" height="20px" style="margin-left: 10px;margin-top: 5px;">`;
           }
-          this.flag = true;
-          // this.flag = true;
-          // this.isClick = true;
-
-      },
+    },
+    methods:{
       choice_face(e){
         if(e.target.nodeName=="IMG"){
           var choice=e.target;
@@ -62,18 +56,36 @@
           var text=$("#input_conta").html();  //获得发布框的文本内容，表情会以整个img标签文本显示
           $("#input_conta").html("");  //清除发布框的文本内容
           $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
-          $.ajax({
+          // $.ajax({
+          //   url: `${axios.defaults.baseURL}/postcards/addcomment`,
+          //   type: "post",
+          //   data: {
+          //     'commentUserId':this.userId,
+          //     'commentCardId':this.$route.params.cardId,
+          //     'commentContent':text,
+          //   },
+          //   success: function (data){
+          //     console.info(data);
+          //   }
+          // });
+          this.$ajax({
+            method: "post",
             url: `${axios.defaults.baseURL}/postcards/addcomment`,
-            type: "post",
-            data: {
-              'commentUserId':this.userId,
-              'commentCardId':this.$route.params.cardId,
-              'commentContent':text,
-            },
-            success: function (data) {
-              console.info(data);
-            }
-          });
+             data: {
+                'commentUserId':this.userId,
+                'commentCardId':this.$route.params.cardId,
+                'commentContent':text,
+              }
+          }).then((res)=>{
+            this.$ajax({
+              method:'get',
+              url:`${axios.defaults.baseURL}/postcards/`+this.$route.params.cardId
+            }).then((res)=>{
+              console.log("id:"+res.data.data.cardComment[0].commentUserId)
+              this.$emit('all-comment',res.data.data.cardComment)
+            })
+          })
+
         } else {
           alert("请先登录！");
         }
@@ -91,6 +103,7 @@
 <style scoped>
   .make_face {
     margin-left: 25px;
+
   }
   .btn-default {
     margin-right: 25px;
@@ -120,19 +133,19 @@
   }
   #input_conta{
     margin:0;
+    font-size:16px;
     min-height: 150px;
     text-align:left;
   }
-  .icon-emoji{
-    height: 64px;
-    width: 64px;
-    display:inline-block;
-    border:1px solid #ccc;
-  }
+ .eoimPic{
+   cursor: pointer;
+ }
   #face{
     position: absolute;
     z-index: 999;
     overflow: hidden;
+    padding-top: 5px;
+    cursor: pointer;
   }
 
   .btn{

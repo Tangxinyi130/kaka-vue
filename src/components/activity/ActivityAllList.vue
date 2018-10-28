@@ -7,7 +7,7 @@
         <ul class="cont-list">
 
           <li class="am-gallery-item" v-for="data in myActData1">
-            <div style="min-height: 210px;border-bottom: 1px solid #797979;padding-left: 25px;padding-top: 12px">
+            <div style="min-height: 210px;border-bottom: 1px solid #797979;padding-left: 25px;padding-top: 12px;margin-left: 25px;">
               <div class="img_box col-md-4">
                 <a href="">
                   <img width="100%" style="min-height:162px" :src='data.goodsPic'>
@@ -136,7 +136,7 @@
           var s = date.getSeconds();
           s = s < 10 ? ('0' + s) : s;
           return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
-        },
+        }
 
       },
 
