@@ -54,18 +54,19 @@
 
 <style scoped>
   #homeRanking{
+    /*max-width: 360px;*/
     height: 450px;
     margin-top:15px;
   }
   .ranking-box{
-    max-width: 360px;
+    /*max-width: 360px;*/
     height: 450px;
     margin: 0 auto;
     background-color: #fafafa;
     border-radius: 5px 5px 0px 0px;
   }
   .ranking-nav{
-    max-width: 360px;
+    /*max-width: 360px;*/
     height: 45px;
     line-height: 45px;
     background-color: #d5d5ab;
@@ -97,7 +98,9 @@
     padding-left: 15px;
   }
   .ranking-title{
-    max-width: 350px;
+    /*max-width: 350px;*/
+    font-size: 18px;
+    color: #737373;
     margin: 0 auto;
     height: 40px;
     line-height: 38px;
@@ -105,7 +108,7 @@
   }
   .ranking-item{
     margin: 0 auto;
-    max-width: 350px;
+    /*max-width: 350px;*/
     height: 60px;
     border-bottom:1px solid #ccc;
     margin-top:5px;

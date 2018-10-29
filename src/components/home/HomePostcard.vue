@@ -1,5 +1,5 @@
 <template>
-    <div id="homeUser">
+    <div id="homePostcard">
       <div class="row" id="dynamic-box">
         <div class="col-md-12" id="dynamic">
           <div class="progress" style="width: 80%">
@@ -62,10 +62,10 @@
 </script>
 
 <style scoped>
-  #homeUser{
+  #homePostcard{
     height: 200px;
   }
-  #homeUser .row{
+  #homePostcard .row{
     max-width: 750px;
     margin:0 auto;
   }
@@ -112,6 +112,47 @@
 
   }
   @media screen and (min-width:768px) and (max-width:991px ){
+    #homePostcard{
+      height: 160px;
+    }
+    #homePostcard .row{
+      max-width: 750px;
+      margin:0 auto;
+    }
+    #dynamic-box{
+      height: 80px;
+      background-color: #fafafa;
+    }
+    #dynamic{
+      display: flex;
+      max-width: 750px;
+      height: 40px;
+      width: 100%;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+    }
+    #dynamic .progress{
+      margin-top: 40px;
+    }
+    .dynamic-des{
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+      text-align: center;
+      color: #8cb9f5;
+      font-size: 16px;
+    }
+    #sendCard,#receiveCard{
+      height: 80px;
+      text-align: center;
+      line-height: 80px;
+    }
+    #sendCard img,#receiveCard img{
+      width: 40px;
+      height: 40px;
+    }
 
   }
   @media screen and (min-width:992px) and (max-width:1199px ){
