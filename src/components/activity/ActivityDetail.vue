@@ -1,23 +1,22 @@
 <template>
-    <div class="container ">
-      <div class="row activityDetail text-center">
-        活动标题
-      </div>
-      <div class="row">
-        <p class="activityStart">活动开始：{{activityInfor.activityStartDate}}</p>
-      </div>
-      <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-          <img width="100%" :src="activityInfor.goodsPic" alt="">
+  <div class="container ">
+    <div class="row activityDetail text-center">活动标题</div>
+    <div class="row con">
+      <div style="height: 50px;" ></div>
+      <div class="col-sm-10 col-sm-offset-1 con-con">
+        <div class="text-center t-name" >
+          {{activityInfor.activityName}}
+          <p>活动时间:{{activityInfor.activityStartDate.substring(0,10)}}至{{activityInfor.activityEndDate.substring(0,10)}}</p>
         </div>
-      </div>
-      <div class="activity-content">
-        {{activityInfor.goodsDetails}}
-      </div>
-      <div class="row">
-        <router-link to="/activity/activityconfire"><button class="btn btn-default btn-lg ">立即预约</button></router-link>
+        <div class="col-sm-offset-1 t-detail">
+            {{activityInfor.activityDetails}}
+          </div>
+        <div class="im">
+            <img  :src="activityInfor.goodsPic" alt="">
+          </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -71,6 +70,31 @@
   .btn{
     margin:0 auto;
     display: table;
+  }
+  .con{
+    height:540px;
+    /*border: 1px solid red;*/
+    background-color: #fafafa;
+  }
+  .con-con{
+    height: 440px;
+    /*border: 1px solid red;*/
+    color: #5e5e5e;
+  }
+  .im{
+   height: 300px;
+    /*border:1px solid red;*/
+  }
+  .t-name{
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .t-name p{
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .t-detail{
+    font-size: 16px;
   }
   .activityStart{
     margin-top: 20px;

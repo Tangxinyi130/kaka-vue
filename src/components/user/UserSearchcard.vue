@@ -137,13 +137,13 @@
   }
   .con-body{
     height:500px;
-    background-color:lightgoldenrodyellow
+    background-color:#fafafa
   }
   .row-tab{
     height:300px;
     margin-top:10px;
     background-color:#fafafa;
-    /*border: 1px solid red*/
+    border: 1px solid #5e5e5e
   }
   .glyphicon{
     font-size:18px;

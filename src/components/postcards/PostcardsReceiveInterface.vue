@@ -4,47 +4,39 @@
       <div class="row con-nav">
         <div class="col-sm-12 con-nav-col">接收明信片</div>
       </div>
-      <div class="row con-body">
-        <div class="container col-sm-8 col-sm-offset-2 con-body-con">
-          <div style="height:80px"></div>
-          <form>
-            <div v-if="$store.state.send">
-                        <!--<div class="row body-con-row1">-->
-                            <!--<div class="col-sm-5 col-sm-offset-6">接收一张明信片</div>-->
-                        <!--</div>-->
-                        <div class="row body-con-row2">
-                            <div class="col-sm-5 col-sm-offset-6">
-                                <span>请输入明信片的ID:</span><br><br>
-                                <input type="text" class="form-control" id="cardId" placeholder="请输入明信片的ID">
-                            </div>
-                        </div>
-                        <!--<div class="row">-->
-              <!--<div class="col-sm-10 col-sm-offset-5" style="height:35px;margin-top: 10px;font-size: 18px;">-->
-              <!--<span>给对方的一段话：</span>-->
-              <!--</div>-->
-              <!--</div>-->
-              <!--<div class="row">-->
-              <!--<div class="col-sm-8 col-sm-offset-3 text-center" style="height:35px;margin-top:2px">-->
-              <!--<textarea rows="6" cols="40"></textarea>-->
-              <!--</div>-->
-              <!--</div>-->
-                        <div class="row">
-                          <div class="col-sm-10 col-sm-offset-1" style="height:30px;"></div>
-                        </div>
-                        <div class="row">
-                  <div class="col-sm-10 col-sm-offset-6" style="height:30px;">
-                      <button type="button" class="btn but btn-lg"  @click="submit">
-                          <span style="color: white">提交</span>
-                      </button>
-                </div>
+      <div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
+          <div style="height:30px"></div>
+          <img src="../../assets/shou.png" style="width:100%;"/>
+        </div>
+        <div class="col-sm-7 con-body">
+          <div style="height:160px"></div>
+          <div class="col-sm-9 col-sm-offset-2" style="border:3px dashed #ccc">
+            <div  style="height:250px;"v-if="$store.state.send">
+              <form class="">
+                <div>
+                  <div class="row" style="height: 50px"></div>
+                  <div class="row text-center"><p>请输入要接收明信片的ID</p></div>
+                  <div class="row body-con-row2 col-sm-6 col-sm-offset-3">
+                   <input type="text" class="form-control" id="cardId" placeholder="请输入明信片的ID">
+                  </div>
+                  <div class="row" style="height: 80px;"></div>
+                  <div class="row text-center">
+                    <button type="button" class="btn but btn-lg"  @click="submit">
+                      <span style="color: white">提交</span>
+                    </button>
               </div>
-                    </div>
-            <div class="row">
-              <div class="col-sm-10 col-sm-offset-4" style="height:130px; margin-top:20px;">
+              </div>
+              </form>
+            </div>
+            <!--************************************-->
+            <div class="row" v-if="$store.state.upload">
+              <div class="col-sm-8 col-sm-offset-2" style="height:250px;">
                 <app-postcardsreceiveupload></app-postcardsreceiveupload>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -292,11 +284,11 @@
 <style scoped>
   .con{
     width:100%;
-    height:590px;
+    height:650px;
     background-color:#ebf6df
   }
   .con1{
-    height:580px;
+    height:600px;
     background-color:#fafafa
   }
   .con-nav{
@@ -311,26 +303,24 @@
     color: white
   }
   .con-body{
-    height:447px;
+    height:616px;
   }
   .con-body-con{
     margin-top:30px;
-    height:400px;
-    background-color:#fafafa;
-    /*border: 1px solid red;*/
-    /*background-image: url("../../assets/p51.jpg");*/
+    height:450px;
+    color: #5e5e5e;
   }
-  /*.body-con-row1{*/
-    /*font-size: 18px;*/
-    /*margin-top: 30px*/
-  /*}*/
   .body-con-row2{
-    margin-top: 20px;
     font-size: 16px;
-    margin-top: 60px
+    margin-top:20px
   }
   .but{
-      width:80px;
-      background-color:lightskyblue
+      width:120px;
+    background-color: #9e9e9e;
+  }
+  p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5e5e;
   }
 </style>

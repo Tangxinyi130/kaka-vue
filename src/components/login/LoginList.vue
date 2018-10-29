@@ -28,7 +28,7 @@
         <div style="height: 30px"></div>
         <div style="" class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <button id="toLogin" @click="toLogin" type="button" class="btn btn-primary btn-lg" style="width:180px;">
+            <button id="toLogin" @click="toLogin" type="button" class="btn bt btn-lg" style="">
               登 录
             </button>
           </div>
@@ -100,6 +100,12 @@
 <style scoped>
     .con{
         height:300px;
+        background-color:#efefef;
+    }
+  .bt{
+    background-color: #9e9e9e;
+    width:180px;
+    color: white;
   }
 
 </style>

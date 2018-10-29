@@ -16,6 +16,6 @@
     font-family: Calibri;
     font-style: italic;
     font-weight: bold;
-    color: lightgrey;
+    color:#5e5e5e;
   }
 </style>

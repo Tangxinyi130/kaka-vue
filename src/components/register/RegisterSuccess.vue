@@ -17,7 +17,7 @@
             <div class="row"style="height: 30px"></div>
             <div class="row" >
               <div class="col-sm-4 col-sm-offset-5">
-                <button type="button" class="btn btn-primary btn-lg" style="width:120px;" @click="submit">
+                <button type="button" class="btn bt btn-lg" style="width:120px;" @click="submit">
                   <span style="color: white">点我登录</span>
                 </button>
               </div>
@@ -63,5 +63,8 @@
   .wc{
     font-size:18px;
     /*border: 1px solid red*/
+  }
+  .bt{
+    background-color: #9e9e9e;
   }
 </style>
