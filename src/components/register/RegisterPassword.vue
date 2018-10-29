@@ -20,7 +20,7 @@
                             <span :Pwd2="Pwd2">{{tiShi5}}</span>
                           </div>
                           <div class="col-sm-10  col-sm-offset-1" style="margin-top: 20px;">
-                            <button type="button" class="btn btn-primary btn-lg " style="width:130px;" @click="submit">
+                            <button type="button" class="btn bt btn-lg " style="width:130px;" @click="submit">
                               <span style="color: white">保存密码</span>
                             </button>
                           </div>
@@ -76,7 +76,6 @@
            let _this = this;
            console.log("注册的手机号"+this.$store.state.userPhone);
            console.log("注册的密码是:"+_this.Pwd1)
-           // console.log( "加密后密码"+hex_md5(_this.Pwd1));
            this.$ajax.get(`${axios.defaults.baseURL}/users/insertUser/` + (this.$store.state.userPhone) + '/' + (_this.Pwd1)
            ).then(function (result) {
            }, function (err) {
@@ -119,4 +118,7 @@
     /*border: 1px solid red*/
   }
   span{color: red;}
+  .bt{
+    background-color: #9e9e9e;
+  }
 </style>

@@ -1,11 +1,8 @@
 <template>
-  <div style="width: 300px;height: 300px;background-color:lightgrey" v-if="$store.state.upload">
-    <div class="container con">
-      <div class="row con-nav" >
-        <div class="col-sm-12 con-nav-body">上传图片</div>
-      </div>
-      <form con-form >
+  <div>
+    <form con-form >
         <div class="row" style="height: 30px"></div>
+        <div class="row text-center"> <p>请上传明信片的照片</p></div>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
             <input type="file"
@@ -16,7 +13,7 @@
             <input type="text" v-model="mydata" style="display: none">
           </div>
         </div>
-        <div class="row" style="height: 30px"></div>
+        <div class="row" style="height: 20px"></div>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
               <button type="button" class="btn btn-lg con-form-btn" @click="up">
@@ -24,7 +21,7 @@
             </button>
           </div>
         </div>
-        <div class="row" style="height: 30px"></div>
+        <div class="row" style="height: 20px"></div>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
             <button type="button" class="btn  btn-lg con-form-btn" @click="cancel">
@@ -33,7 +30,6 @@
           </div>
         </div>
       </form>
-    </div>
   </div>
 </template>
 <script>
@@ -87,26 +83,19 @@
 
   }
 </script>
-
 <style scoped>
   .con{
     width: 300px;
     height: 300px;
-    background-color:lavender;
-  }
-  .con-nav{
-    height:53px;
-    background-color:#528970
-  }
-  .con-nav-body{
-    width:200px;
-    height:53px;
-    line-height:52px;
-    font-size:18px;
-    color: white;
+    background-color:#fafafa;
   }
   .con-form-btn{
-    width:140px;
-    background-color:lightskyblue;
+    width:122px;
+    background-color:#5e5e5e;
+  }
+  p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5e5e;
   }
 </style>
