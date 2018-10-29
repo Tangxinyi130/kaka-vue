@@ -28,11 +28,11 @@
                     <!--<input type="button"class="btn btn-default  formStyle3 " @click="sendCode" id="co" value="获取短信验证码"/>-->
                     <button type="button" class="btn btn-default  formStyle3 getCoBtn" @click="sendCode" id="co">{{btnName}}</button><br>
                   </div>
-                  <div class="row col-sm-10"style="height:30px;">
-                    <span :vCode="vCode" class="spanW"style="margin-top: 20px;">{{tiShi3}}</span>
+                  <div class="row col-sm-10" style="height:30px;">
+                    <span :vCode="vCode" class="spanW" style="margin-top: 20px;">{{tiShi3}}</span>
                   </div>
-                  <div class="row col-sm-10  col-sm-offset-1"style="margin-top: 20px;">
-                    <button type="button" class="btn btn-primary btn-lg col-xs-6 col-xs-offset-3"@click="submit">
+                  <div class="row col-sm-10  col-sm-offset-1" style="margin-top: 20px;">
+                    <button type="button" class="btn btn-primary btn-lg col-xs-6 col-xs-offset-3" @click="submit">
                       <span style="color: white">下一步</span>
                     </button>
                   </div>
