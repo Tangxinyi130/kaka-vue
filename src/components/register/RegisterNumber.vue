@@ -32,7 +32,7 @@
                     <span :vCode="vCode" class="spanW"style="margin-top: 20px;">{{tiShi3}}</span>
                   </div>
                   <div class="row col-sm-10  col-sm-offset-1"style="margin-top: 20px;">
-                    <button type="button" class="btn btn-primary btn-lg col-xs-6 col-xs-offset-3"@click="submit">
+                    <button  type="button" class="btn btn-lg bt col-xs-6 col-xs-offset-3"@click="submit">
                       <span style="color: white">下一步</span>
                     </button>
                   </div>
@@ -211,5 +211,8 @@
   }
   span{
     color: red;
+  }
+  .bt{
+    background-color: #9e9e9e;
   }
 </style>

@@ -8,17 +8,17 @@
         <div class="container col-sm-8 col-sm-offset-2">
           <div class="row con-body-row"  v-if="$store.state.postSendAnn">
             <div class="text-center agreen">
-              <p>注册协议</p>
+              <p>发送协议</p>
              </div>
-            <div class="col-sm-offset-2 ag">第1条:服务概要/目的</div>
-            <div class="col-sm-offset-2 ag">第２条:本条约的使用范围</div>
-            <div class="col-sm-offset-2 ag">第3条:本服务的权利</div>
-            <div class="col-sm-offset-2 ag">第4条:网站账号ID及密码</div>
-            <div class="col-sm-offset-1">
-              <span>本服务旨在为用户提供本公司商品信息，并接受购买商品的订单。本条约适用于由于本服务而产生的用户和本公司</span>
+            <div class="">
+              <p class="tishi">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本服务旨在为用户提供本公司商品信息，并接受购买商品的订单。本条约适用于由于本服务而产生的用户和本公司之间的所有事项本公司在未得到用户允许的情况下，对本条约拥有变更的权利。并且，本公司将使用合适的方法告知用户用户在遵守本条约前提下，承诺只使用本公司提供的服务。本服务中提供的信息及相关著作权等一些知识产权，属本公司所有。</p>
             </div>
-            <div>
-                之间的所有事项本公司在未得到用户允许的情况下，对本条约拥有变更的权利。并且，本公司将使用合适的方法告知用户用户在遵守本条约前提下，承诺只使用本公司提供的服务。本服务中提供的信息及相关著作权等一些知识产权，属本公司所有。用户在使用本服务时，对网站提供的信息，数据，图像用作其他用途时，本公司有追究的权利。本公司对于利用本服务的用户，免费提供网站登录的账号及密码。用户对从本公司接收的账号和密码的保管，以及运营管理负有全部的责任。若因用户的保管及使用管理上的遗漏所产生的损害，本公司不承担一切法律责任。用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时， 本公司会立即提供新的账号及密码后重新通知用户。
+            <div class="col-sm-offset-1 ag">第1条:服务概要/目的</div>
+            <div class="col-sm-offset-1 ag">第２条:本条约的使用范围</div>
+            <div class="col-sm-offset-1 ag">第3条:本服务的权利</div>
+            <div class="col-sm-offset-1 ag">第4条:网站账号ID及密码</div>
+            <div class="tishi">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户在使用本服务时，对网站提供的信息，数据，图像用作其他用途时，本公司有追究的权利。本公司对于利用本服务的用户，免费提供网站登录的账号及密码。用户对从本公司接收的账号和密码的保管，以及运营管理负有全部的责任。若因用户的保管及使用管理上的遗漏所产生的损害，本公司不承担一切法律责任。用户利用账号和密码使用本服务的的行为均视同客户的行为，由此产生的有关责任均由用户承担用户若想更换账号和密码时，必须在本公司的指导下取得本公司的许可后，按照本公司指定方式进行变更。用户在使用的账号及密码被盗，或认为有被盗嫌疑的情况下，应立即通知本公司。届时， 本公司会立即提供新的账号及密码后重新通知用户。
             </div>
             <form>
                 <div class="row body-row-form">
@@ -28,59 +28,51 @@
                 </div>
               </form>
             </div>
-          <div class="container col-sm-12 body-con" v-if="$store.state.postSend">
-            <div class="row body-con-row1">
-              <div col-sm-7></div>
-              <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1">
-                  <img :src="userHeadPic" alt="" width="150px" height="150px" style=" border-radius:50%;">
+          <!--***************************************************-->
+          <div class="container col-sm-12 body-con" v-if="$store.state.postSend" style="">
+           <div class="row body-con-row1" style="margin-top:30px">
+             <div style="">
+              <div class="text-center">
+                <span class="user"> 接收方介绍 </span>
+              </div>
+             </div>
+             <div style="height:10px"></div>
+             <div style="height:150px">
+               <div style="height:10px"></div>
+               <div class="col-sm-2 col-sm-offset-1 body-con-row1-col1" style="">
+                <img :src="userHeadPic" alt="" width="125px" height="125px" style=" border-radius:50%;">
+               </div>
+              <div class="col-sm-8 " style="height: 150px;">
+                <div style="height:10px"></div>
+                <div class="detaile" >
+                  <div class="col-sm-3"> 姓名:{{userNickname}} </div>
+                  <div class="col-sm-2">性别:{{xingbie}}</div>
+                  <div class="col-sm-4">生日:{{ userBirthday}}</div>
                 </div>
-              <div class="col-sm-7  user-msg">
-                  <div class="row" style="height:10px"></div>
-                  <div class="row">
-                    <div class="col-sm-4 col-sm-offset-3">
-                      <span class="user"> 接收方介绍 </span>
-                    </div>
-                  </div>
-                  <div style="height: 10px"></div>
-                  <div class="row ">
-                    <div class="col-sm-3 col-sm-offset-1" > 姓名:{{userNickname}}  </div>
-                    <div class="col-sm-3 col-sm-offset-1" > 性别:{{userSex}} </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4 col-sm-offset-1 " >生日:{{ userBirthday}}  </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1" ><p>地址:{{userProvince}}{{userCity}}</p> </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-5 col-sm-offset-1" style="margin-top:-10px">邮箱:{{userEmail}}</div>
-                  </div>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-10 col-sm-offset-1"></div>
-            </div>
-            <div class="row body-con-row2">
-              <div class="col-sm-10 col-sm-offset-1 body-con-row2-col1">
-                <div class="row">
-                  <div class="col-sm-8 col-sm-offset-3" style="font-size: 14px">
-                    <div style="height: 15px"></div>
-                    小提示：【{{userNickname}}】的用户信息已发送到你的邮箱<br>
-                    记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
-                    ID：<span style="font-weight: bold">{{cardId}}</span>
-                  </div>
+                <div class="detaile">
+                  <div class="col-sm-3">粉丝:{{receiveFans}}</div>
+                  <div class="col-sm-2">关注:{{receiveAttion}}</div>
+                  <div class="col-sm-4">地址:{{userProvince}}{{userCity}}</div>
+                  <div class="col-sm-12">邮箱:{{userEmail}}</div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-8 col-sm-offset-5 body-con-row3">
-                <form>
-                  <button type="button" class="btn btn-lg but"  @click="tohome">
-                    <span style="color: white">返回首页</span>
-                  </button><br>
-                </form>
-              </div>
-            </div>
+             </div>
+             <div style="height:120px">
+               <div style="height:40px"></div>
+               <div style="" class="el-col-sm-offset-1">
+               小提示：【{{userNickname}}】的用户信息已发送到你的邮箱
+               记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
+               ID：<span style="font-weight: bold">{{cardId}}</span>
+               </div>
+               <div class="col-sm-offset-5">
+               <form>
+               <button type="button" class="btn btn-lg but"  @click="tohome">
+               <span style="color: white">返回首页</span>
+               </button><br>
+               </form>
+               </div>
+             </div>
+           </div>
           </div>
         </div>
       </div>
@@ -106,7 +98,10 @@
         userNickname:'',
         userProvince:'',
         userSex:0,
-        receivemsg:{}
+        receiveFans:0,
+        receiveAttion:0,
+        receivemsg:{},
+        xingbie:'男'
       }
     },
     created() {
@@ -173,6 +168,14 @@
           _this.userEmail = result.data.data.userEmail;
           _this.cardId = result.data.data.cardId;
           _this.userBirthday = result.data.data.userBirthday.substring(0,10);
+          _this.receiveFans=result.data.data.receiveFans;
+          _this.receiveAttion=result.data.data.receiveAttion;
+          if(_this.userSex==1){
+            _this.xingbie='女';
+          };
+          console.log(_this.userSex+'性别是'+_this.xingbie);
+          console.log("接收方的粉丝是"+_this.receiveFans);
+          console.log("接收方的关注数是"+ _this.receiveAttion);
           console.log("完成发送功能的时候接收方的邮箱"+_this.userEmail);
         }, function (err) {
           console.log(err);
@@ -237,7 +240,7 @@
     color: white
   }
   .con-body{
-    height:500px;
+    height:480px;
     background-color:#fafafa;
     color: #5e5e5e;
   }
@@ -259,7 +262,7 @@
   }
   .body-row-form-btn{
     width:124px;
-    background-color:lightskyblue
+    background-color:#9e9e9e
   }
   .body-con{
     /*border: 1px solid red;*/
@@ -268,15 +271,16 @@
     margin-top:30px;
     /*background-image:url("../../assets/p31.jpg") ;*/
     border: 3px dashed #ccc;
+    /*background-image: url("../../assets/reg2.jpg");*/
   }
   .body-con-row1{
-    height:133px
+    height:350px
   }
   .body-con-row1-col1{
     /*border:1px solid black;*/
     width:150px;
     height:150px;
-    margin-top:30px;
+    /*margin-top:30px;*/
     border-radius:50%;
   }
   body-con-row2{
@@ -303,7 +307,7 @@
   }
   .but{
     width:130px;
-    background-color:lightskyblue;
+    background-color:#9e9e9e;
     margin-top: 20px;
   }
   .ag{
@@ -314,4 +318,12 @@
     font-size: 18px;
     margin-top: 10px;
   }
+  .tishi{
+    line-height: 26px;
+  }
+  .detaile{
+    /*border: 1px solid red;*/
+    height:30px;line-height: 30px
+  }
+
 </style>

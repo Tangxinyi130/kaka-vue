@@ -51,13 +51,14 @@
         addLike(cardId){
           this.$ajax.get(`${axios.defaults.baseURL}/postcards/like/${cardId}`)
             .then(function (result) {
+              this.getRecentCard();
             },function (err) {
               console.log(err);
             });
-          this.getRecentCard();
-          this.$router.replace({
-            path:'/',name:'Home'
-          })
+
+          // this.$router.replace({
+          //   path:'/',name:'Home'
+          // })
         },
         // addStar(index,cardId,count){
         //   if(this.recentPic[index].active==false){
@@ -90,13 +91,10 @@
           })
         }
       },
-      created(){
+      mounted(){
         this.getRecentCard();
 
       },
-      mounted(){
-
-      }
     }
 </script>
 
