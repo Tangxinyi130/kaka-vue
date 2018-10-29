@@ -55,7 +55,6 @@
           swiperOption:{
             spaceBetween: 30,
             effect: 'fade',
-            loop: true,
             speed:1000,
             autoplay : {
               delay:4000
@@ -128,14 +127,12 @@
     /*display: flex;*/
   /*}*/
   .blog-slider {
-    width: 95%;
+    width: 100%;
     position: relative;
     max-width: 800px;
     margin: auto;
-    background: #fff;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+    background: #fafafa;
     padding: 25px;
-    border-radius: 25px;
     height: 265px;
     transition: all .3s;
   }
@@ -306,8 +303,15 @@
   }
   .blog-slider__text {
     color: #4e4a67;
-    margin-bottom: 8px;
-    line-height: 1.4em;
+    margin-bottom: 10px;
+    line-height: 1.5em;
+    overflow: hidden;
+    height: 80px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
   }
   .blog-slider__button {
     display: -ms-inline-flexbox;
@@ -391,7 +395,24 @@
 
   @media  screen and (max-width: 479px) {
     #homeActivity{
-      height: 500px;
+      height: 440px;
+    }
+    .blog-slider__text {
+      color: #4e4a67;
+      margin-bottom: 10px;
+      line-height: 1.5em;
+      overflow: hidden;
+      height: 40px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+    }
+    .blog-slider {
+      min-height: 390px;
+      /*height: auto;*/
+      /*margin: 180px auto;*/
     }
   }
   @media screen and (min-width: 480px) and (max-width: 767px){
@@ -404,6 +425,18 @@
       /*height: auto;*/
       /*margin: 180px auto;*/
     }
+    .blog-slider__text {
+      color: #4e4a67;
+      margin-bottom: 10px;
+      line-height: 1.5em;
+      overflow: hidden;
+      height: 40px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+    }
   }
   @media screen and (min-width:768px) and (max-width:991px ){
     .blog-slider {
@@ -412,6 +445,18 @@
     }
     .blog-slider__img{
       display: none;
+    }
+    .blog-slider__text {
+      color: #4e4a67;
+      margin-bottom: 10px;
+      line-height: 1.5em;
+      overflow: hidden;
+      height: 80px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
     }
     #homeActivity{
       height: 305px;
@@ -432,8 +477,16 @@
     }
     .blog-slider__text {
       color: #4e4a67;
-      margin-bottom: 8px;
-      line-height: 1.4em;
+      margin-bottom: 10px;
+      line-height: 1.5em;
+      overflow: hidden;
+      height: 80px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+
     }
     .blog-slider__button{
       display: inline-flex;
@@ -456,6 +509,13 @@
       color: #4e4a67;
       margin-bottom: 10px;
       line-height: 1.5em;
+      overflow: hidden;
+      height: 80px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
     }
   }
 </style>

@@ -1,10 +1,10 @@
 <template>
     <div class="container">
       <div class="row" v-if="!isLogin">
-        <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="col-xs-12 col-sm-12  col-lg-8">
           <app-homesynopsis></app-homesynopsis>
         </div>
-        <div class="hidden-xs hidden-sm col-md-4">
+        <div class="hidden-xs hidden-sm  hidden-md col-lg-4">
           <div class="login">
             <app-homelogin></app-homelogin>
           </div>
@@ -12,10 +12,13 @@
       </div>
 
       <div class="row" v-if="isLogin">
+        <div class="min-user col-sm-4">
+          <app-homeuser></app-homeuser>
+        </div>
         <div class="col-sm-8" >
           <app-homepostcard></app-homepostcard>
         </div>
-        <div class="col-sm-4">
+        <div class="model-user col-sm-4">
           <app-homeuser></app-homeuser>
         </div>
       </div>
@@ -94,18 +97,31 @@
 
 <style scoped>
   @media  screen and (max-width: 479px) {
-
+    .min-user{
+      display: block;
+    }
+    .model-user{
+      display: none;
+    }
   }
   @media screen and (min-width: 480px) and (max-width: 767px){
-
+    .min-user{
+      display: none;
+    }
   }
   @media screen and (min-width:768px) and (max-width:991px ){
-
+    .min-user{
+      display: none;
+    }
   }
   @media screen and (min-width:992px) and (max-width:1199px ){
-
+    .min-user{
+      display: none;
+    }
   }
   @media screen and (min-width: 1200px){
-
+    .min-user{
+      display: none;
+    }
   }
 </style>
