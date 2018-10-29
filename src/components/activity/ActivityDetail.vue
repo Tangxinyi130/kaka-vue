@@ -18,6 +18,7 @@
     </div>
   </div>
 </template>
+
 <script>
     export default {
         name: "ActivityDetail",
@@ -27,6 +28,23 @@
             activityInfor:[]
           }
       },
+      methods:{
+        changeTime(date){
+          date = new Date(date);
+          var y = date.getFullYear();
+          var m = date.getMonth() + 1;
+          m = m < 10 ? '0' + m : m;
+          var d = date.getDate();
+          d = d < 10 ? ('0' + d) : d;
+          var h = date.getHours();
+          h = h < 10 ? ('0' + h) : h;
+          var mm = date.getMinutes();
+          mm = mm < 10 ? ('0' + mm) : mm;
+          var s = date.getSeconds();
+          s = s < 10 ? ('0' + s) : s;
+          return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
+        }
+      },
       created(){
           this.$ajax({
             method:"get",
@@ -35,10 +53,12 @@
             this.activityInfor=res.data.data[0];
             this.activityInfor.goodsPic = `${axios.defaults.baseURL}${this.activityInfor.goodsPic}`;
             console.log(this.activityInfor.activityStartDate)
+            this.activityInfor.activityStartDate=this.changeTime(this.activityInfor.activityStartDate);
           })
       }
     }
 </script>
+
 <style scoped>
 .activityDetail{
   height: 52px;
@@ -75,5 +95,9 @@
   }
   .t-detail{
     font-size: 16px;
+  }
+  .activityStart{
+    margin-top: 20px;
+    font-size:16px;
   }
 </style>

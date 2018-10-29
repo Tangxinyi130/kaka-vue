@@ -1,6 +1,6 @@
 <template>
   <div id="homeInfomation">
-    <p style="font-size: 18px; color: #666; text-align: center;line-height: 18px">本站数据量统计</p>
+    <div class="info-nav"><span class="info-text">本站数据量统计</span></div>
     <table>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/users.png" alt=""></td>
@@ -65,9 +65,22 @@
 <style scoped>
   #homeInfomation{
     margin-top: 15px;
-    height: 270px;
-    max-width: 360px;
-    background-color: honeydew;
+    height: 305px;
+    /*max-width: 360px;*/
+    background-color: #fafafa;
+  }
+  .info-nav{
+    max-width: 1140px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #d5d5ab;
+    border-radius: 5px 5px 0px 0px;
+  }
+  .info-nav .info-text{
+    font-size: 18px;
+    color: whitesmoke;
+    display: inline-block;
+    padding-left: 15px;
   }
   #homeInfomation table{
     margin: 0 auto;

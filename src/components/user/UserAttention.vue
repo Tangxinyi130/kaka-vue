@@ -2,35 +2,19 @@
     <div>
       <!--<h3>关注和粉丝id:{{id}}</h3>-->
       <div  class="container" id="set">
-        <!--<div class="contanier">-->
-          <div class="row">
-            <div class="col-sm-8">
-              <div class="top">
-                <div class="topTitle">粉丝与关注</div>
-              </div>
-              <app-attention-detail></app-attention-detail>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="top">
+              <div class="topTitle">粉丝与关注</div>
             </div>
-            <div class="col-sm-4">
-              <app-attention-list></app-attention-list>
-              <!--<div class="top">-->
-                <!--<div class="topTitle">关注的用户排行榜</div>-->
-              <!--</div>-->
-              <!--<div class="contant">-->
-                <!--粉丝与关注-->
-              <!--</div>-->
-              <!--&lt;!&ndash;<div class="topTitle top">关注的用户排行榜</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;<div class="contant">&ndash;&gt;-->
-                <!--&lt;!&ndash;粉丝与关注&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            </div>
+            <app-attention-detail></app-attention-detail>
           </div>
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--用户排行榜-->
+          <div class="col-sm-4">
+            <app-attention-list></app-attention-list>
+          </div>
+        </div>
       </div>
-      <hr>
-
-
-      <hr>
-
     </div>
 </template>
 

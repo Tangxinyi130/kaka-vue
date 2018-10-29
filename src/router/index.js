@@ -13,6 +13,7 @@ import PostcardsReceive from "@/components/postcards/PostcardsReceive.vue"
 import Wall from "@/components/wall/Wall.vue"
 import WallPicture from "@/components/wall/Wallpicture.vue"
 import WallPictureList from "@/components/wall/WallPictureList.vue"
+import WallNewPicture from "@/components/wall/WallNewPicture.vue"
 
 import Activity from "@/components/activity/Activity.vue"
 import ActivityAllList from "@/components/activity/ActivityAllList.vue"
@@ -51,7 +52,6 @@ import ActivityConfire from "@/components/activity/ActivityConfire"
 import ActivityPaySucess from "@/components/activity/ActivityPaySucess"
 
 
-import test from "@/components/wall/test.vue"
 
 Vue.prototype.$ajax = axios
 Vue.use(Router)
@@ -59,9 +59,10 @@ Vue.use(Router)
 export default new Router({
 
   mode: "history",
-  routes: [
-    {path: '/', name: 'Home', component: Home},
+  routes: [  {path: '/', name: 'Home', component: Home},
+
     {path: "/postcards/:cardId", component: Postcards},
+
     {path: "/postcardssend", component: PostcardsSend},
     {path: "/postcardsreceive", component: PostcardsReceive},
     {path: "/postcardsreceiveupload", component:PostcardsReceiveUpload},
@@ -69,9 +70,9 @@ export default new Router({
     // {path: "/email", component:email},
 
     {path: "/wall", component: Wall,children:[
-        {path:"",component:WallPicture},
-        {path:":page",component:WallPictureList},
-        {path:"search/:city/:page",component:WallPictureList}
+        {path:"",component:WallNewPicture},
+        // {path:":page",component:WallPictureList},
+        {path:"search/:city",component:WallNewPicture}
       ]},
 
     {path: "/activity", component: Activity,children:[

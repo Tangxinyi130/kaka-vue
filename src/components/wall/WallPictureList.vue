@@ -1,10 +1,7 @@
 <template>
-  <div class="container text-center" style="background-color: antiquewhite">
+  <div class="container text-center" style="background-color: #fafafa">
     <div>
       <wall-picture></wall-picture>
-      <!--<router-view></router-view>-->
-      <!--<wall-picturenew></wall-picturenew>-->
-      <!--<my-test></my-test>-->
       <wall-pagebtn :sumCount="sumCount" :id="id"></wall-pagebtn>
     </div>
   </div>
@@ -12,8 +9,6 @@
 
 <script>
   import wallpicture from './Wallpicture'
-  import WallPictureNew from './WallPictureNew'
-  import test from './test'
   import WallPagebtn from './WallPagebtn'
     export default {
         name: "WallPicture",
@@ -29,8 +24,7 @@
       components:{
         'wall-picture':wallpicture,
         'wall-pagebtn':WallPagebtn,
-        'wall-picturenew':WallPictureNew,
-        'my-test':test
+
       },
       watch:{
           "$route":"getPic"

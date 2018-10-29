@@ -6,29 +6,31 @@
         <div  v-for="item in realDynamic" class="dynamic-item">
           <div v-if="item.state=='发送'" class="dynamic-item-detail">
             <a :href="'/user/' + item.cardSenderId + '/aboutme'">
-              <img :src="item.senderHeadPic" width="40" height="40" alt="">
+              <img class="headPic" :src="item.senderHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardSenderName}}</span>
             </a>
             <span class="region">{{item.cardSendRegion}}</span>
             <span class="state">{{item.state}}了一张明信片给</span>
             <a :href="'/user/' + item.cardReceiverId + '/aboutme'">
-              <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+              <img class="headPic" :src="item.receiverHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardReceiverName}}</span>
             </a>
             <span class="region">{{item.cardReceiveRegion}}</span>
           </div>
           <div v-if="item.state=='收到'" class="dynamic-item-detail">
             <a href="">
-              <img :src="item.receiverHeadPic" width="40" height="40" alt="">
+              <img class="headPic" :src="item.receiverHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardReceiverName}}</span>
             </a>
             <span class="region">{{item.cardReceiveRegion}}</span>
-            <span class="state">{{item.state}}了一张明信片来自</span>
+
+            <span class="state">{{item.state}}了来自</span>
             <a href="">
-              <img :src="item.senderHeadPic" width="40" height="40" alt="">
+              <img  class="headPic" :src="item.senderHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardSenderName}}</span>
             </a>
             <span class="region">{{item.cardSendRegion}}</span>
+            <span class="state">寄的一张明信片</span>
           </div>
         </div>
       </div>
@@ -70,8 +72,6 @@
         });
     }
   });
-
-
     export default {
         name: "HomeDynamic",
         data(){
@@ -109,14 +109,14 @@
   max-width: 750px;
   height: 450px;
   margin: 0 auto;
-  background-color: honeydew;
+  background-color: #fafafa;
   border-radius: 5px 5px 0px 0px;
 }
 .dynamic-nav{
   max-width: 750px;
   height: 45px;
   line-height: 45px;
-  background-color: #528970;
+  background-color: #91bfbf;
   border-radius: 5px 5px 0px 0px;
 }
 .dynamic-nav .dynamic-nav-text{
@@ -134,19 +134,35 @@
 .dynamic-item-detail {
   height: 50px;
   width: 100%;
-  border: 1px solid #ccc;
+  line-height: 50px;
+  font-size: 15px;
+  color: #5E5E5E;
+  /*vertical-align: middle;*/
+  /*border: 1px solid #ccc;*/
   border-radius: 4px;
 }
+/*.dynamic-item-detail:hover{*/
+  /*border: 1px solid #ccc;*/
+  /*box-shadow: #c1a174;*/
+/*}*/
 .dynamic-item-detail .username{
-  font-size:14px;
+  font-size:16px;
   font-weight: bold;
   color: #1db0ff;
 }
+.dynamic-item-detail .region{
+  color: #535e5a;
+}
 .dynamic-item-detail .state{
-  font-size: 14px;
+  font-size: 15px;
 }
 .dynamic-item-detail a{
   text-decoration: none;
+}
+.dynamic-item-detail .headPic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 @media  screen and (max-width: 479px) {

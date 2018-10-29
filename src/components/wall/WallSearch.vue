@@ -11,13 +11,13 @@
       </div>
       <div class="col-xs-2 col-md-3 ">
           <div class="input-group wallSearch-a">
-            <div class="col-xs-7 col-md-9">
+            <div class="inputCity col-xs-7 col-md-9">
               <input type="text" class="form-control" @keyup="mysearch" placeholder="输入搜索省..." v-model="inputVal">
               <ul v-if="searchResult" id="show">
-                <li v-for="index in result" @click="choice_city">{{index}}</li>
+                <li v-for="index in result" class="cityName" :value="index" @click="choice_city($event)">{{index}}</li>
               </ul>
             </div>
-            <div class="col-xs-5 col-md-3">
+            <div class="col-xs-4 col-md-3">
               <span class="glyphicon glyphicon-search"></span>
             </div>
           </div>
@@ -76,8 +76,11 @@
           this.searchResult=true;
           return this.result;
         },
-        choice_city(){
-          console.log(this.val())
+        choice_city(e){
+         console.log(e.target.innerHTML)
+          this.inputVal=e.target.innerHTML
+          this.searchResult=false
+          this.$router.replace({path:'/wall/search/'+this.inputVal})
         }
       },
 
@@ -123,5 +126,38 @@
   }
   .wallpublic {
     color: white;
+  }
+  .cityName{
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  @media  screen and (max-width: 479px) {
+    .inputCity{
+      display:none;
+    }
+    .wallSearch-a{
+      margin-left: -16px;
+    }
+  }
+  @media screen and (min-width: 480px) and (max-width: 767px){
+    .inputCity{
+      display:none;
+    }
+    .wallSearch-a{
+      margin-left: -16px;
+    }
+  }
+  @media screen and (min-width:768px) and (max-width:991px ){
+    .inputCity{
+      display:none;
+    }
+
+  }
+  @media screen and (min-width:992px) and (max-width:1199px ){
+
+  }
+  @media screen and (min-width: 1200px){
+
   }
 </style>

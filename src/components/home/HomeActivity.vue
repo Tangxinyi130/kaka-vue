@@ -1,80 +1,178 @@
 <template>
   <div id="homeActivity">
-    <div style="width: 740px; height: 240px; margin: 0 auto;position: absolute; top: 35px">
-      <ul class="cont-list">
-        <li class="am-gallery-item">
-          <router-link :to="'/activitydetail/' + activityData.activityId">
-            <div class="img_box col-md-4">
-              <a href="">
-                <img width="100%" height="162" :src='activityData.goodsPic'>
-              </a>
-            </div>
-            <div class="intro col-md-8">
-              <h3>
-                <a href="/">
-                  {{activityData.activityName}}
-                </a>
-              </h3>
-              <p style="height: 100px">{{activityData.activityDetails}}</p>
-              <div class="iconCon">
-                <span>
-                  <i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
-                </span>
-                <span><i class="iconfont glyphicon glyphicon-shopping-cart" ></i><b>0</b></span>
-              </div>
-            </div>
-          </router-link>
-        </li>
-      </ul>
+    <div class="activity-nav"><span class="activity-text">近期活动</span></div>
+    <div style="margin-top: 10px; height: 240px; max-width:1220px;">
+      <swiper ref="mySwiper" :options="swiperOption">
+        <swiper-slide class="item">
+          <div class="homeactivity">
+
+              <img class="img-activity"  src="../../assets/images/img_3.jpg" alt="">
+
+            <div class="activity-des" ></div>
+          </div>
+
+        </swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item"> xiangqingSlide2</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide3</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide4</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide5</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide6</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide7</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide8</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide9</swiper-slide>
+        <br><br><br>
+        <swiper-slide class="item">Slide10</swiper-slide>
+      </swiper>
     </div>
   </div>
 
 </template>
 
 <script>
+  import 'swiper/dist/css/swiper.css'
+  import {swiper,swiperSlide} from 'vue-awesome-swiper'
     export default {
         name: "HomeActivity",
+      components:{
+        swiper,
+        swiperSlide,
+      },
       data(){
         return {
-          activityData:{}
+          activityData:{},
+          swiperOption: {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 2,
+            speed:500,
+            loop : true,
+            autoplay : {
+              delay:3000
+            },
+            autoplayDisableOnInteraction:true,
+            // slidesPerView: "auto",
+            coverflowEffect: {
+              rotate: 15,
+              stretch: -100, // slide左右距离
+              depth: 400, // slide前后距离
+              modifier: 0.5, //
+              slideShadows: true // 滑块遮罩层
+
+            },
+            on:{
+              click:()=>{
+                let swiper = this.$refs.mySwiper.swiper;
+                let i = swiper.activeIndex;
+                let flag = this.imgList[i];
+                location.href = flag.url
+              }
+            }
+            // pagination: {
+            //   el: ".swiper-pagination",
+            //   type: "bullets"
+            // }
+          }
         }
       },
-      created(){
-        this.$ajax({
-          method: 'get',
-          url: `${axios.defaults.baseURL}/activity`
-        }).then(res => {
-          // for(let i=0;i<res.data.data.allData.length;i++){
-          this.activityData=res.data.data.allData[1];
-          this.activityData.goodsPic = `${axios.defaults.baseURL}${this.activityData.goodsPic}`
-          // }
-        })
-      }
+      methods:{
+        getRecentActivity(){
+          this.$ajax({
+            method:'get',
+            url:`${axios.default.baseURL}/activity`
+          }).then(res=>{
+            this.activityData = res.data.data;
+            this.activityData.goodsPic = `${axios.default.baseURL}${this.activityData.goodsPic}`
+          })
+        }
+      },
     }
 </script>
 
 <style scoped>
+  *{
+    margin: 0;
+    padding: 0;
+  }
   #homeActivity{
     margin-top: 15px;
-    height: 270px;
-    background-color: whitesmoke;
+    height: 305px;
+    background-color: #fafafa;
   }
-  ul{
-    list-style: none;
+  .activity-nav{
+    max-width: 1140px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #91bfbf;
+    border-radius: 5px 5px 0px 0px;
   }
-  .iconCon{
-    text-align: right;
-    margin-right: 20px;
-  }
-  img{
-    margin: 12px -20px;
-  }
-
-  .cont-list>li{
-    padding: 0;
+  .activity-nav .activity-text{
+    font-size: 18px;
+    color: whitesmoke;
+    display: inline-block;
+    padding-left: 15px;
   }
   .intro{
     margin-left: -10px;
+  }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    background: #ddd;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  .homeactivity{
+    background-color: yellow;
+    margin: 0;
+    padding: 0;
+    height: 95%;
+    width: 95%;
+  }
+  .img-activity{
+    width:100%;
+    height: 100%;
+    position: relative;
+  }
+  .activity-des{
+    width:100%;
+    height: 100%;
+    background-color: rgba(61, 192, 255, 0.2);
+    position: absolute;
+    display: none;
+    top: 0;
+  }
+  .img-activity:hover.activity-des{
+    display: block;
+    cursor: pointer;
+  }
+  .activity-left{
+
+  }
+  .activity-right{
+
   }
   @media  screen and (max-width: 479px) {
 

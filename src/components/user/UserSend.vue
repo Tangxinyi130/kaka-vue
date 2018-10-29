@@ -195,4 +195,8 @@
   .point {
     cursor: pointer;
   }
+  #show {
+    width: 750px;
+    height: 450px;
+  }
 </style>

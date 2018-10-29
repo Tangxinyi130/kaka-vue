@@ -3,16 +3,16 @@
   <div class="rightc col-md-4">
   <div class="col-md-10 col-md-offset-2">
     <div class="row">
-      <div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px">全部</div>
+      <router-link to="/activity"><div class="col-md-5 text-center" style="height: 70px;background-color: rgba(145, 191, 191, 1);line-height: 70px;font-size: 20px;color:#515151;">全部</div></router-link>
     </div>
     <div class="row">
       <ul class="list-group" id="my-data">
       <li class="list-group-item" v-for="(year,key) in years" @click="type=key">
-        <span class="data-year"></span><span class="data-year-txt">{{year}}
+        <span class="data-year"></span><span class="data-year-txt"><span style="cursor: pointer;">{{year}}</span>
           <div v-if="type==key">
-            <ul>
-               <li v-for="month in months[key]" class="month">
-                 <router-link role="presentation" :to="'/activity/'+year+'/'+month.activityMonth">{{month.activityMonth}}月</router-link>
+            <ul class="list-group">
+               <li v-for="month in months[key]" class="month" >
+                 <router-link role="presentation" :to="'/activity/'+year+'/'+month.activityMonth"><span style="color:#515151; cursor: pointer;">{{month.activityMonth}}月</span></router-link>
                </li>
             </ul>
           </div>
@@ -84,8 +84,9 @@
     top:-16px;
   }
   .month{
-    padding: 0;
+    /*padding: 0;*/
     margin-top: 20px;
+    margin-left: 30px;
   }
 
 

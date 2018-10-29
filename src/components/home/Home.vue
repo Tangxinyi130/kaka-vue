@@ -30,17 +30,23 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-4" >
+        <div class="col-sm-5" >
           <app-homeinformation></app-homeinformation>
         </div>
-        <div class="col-sm-8">
-          <app-homeactivity></app-homeactivity>
+        <div class="col-sm-7">
+          <app-homeactivity1></app-homeactivity1>
+          <!--<app-homeactivity></app-homeactivity>-->
         </div>
       </div>
 
       <div class="row" >
         <app-homewall></app-homewall>
       </div>
+      <!--<div class="row">-->
+        <!--<div class="col-sm-10">-->
+          <!--<app-homeactivity1></app-homeactivity1>-->
+        <!--</div>-->
+      <!--</div>-->
 
     </div>
 
@@ -57,7 +63,7 @@
   import HomePostcard from "@/components/home/HomePostcard";
   import HomeUser from "@/components/home/HomeUser";
   import LoginList from "@/components/login/LoginList.vue"
-
+  import HomeActivity1 from "@/components/home/HomeActivity1.vue"
   import {mapGetters} from "vuex"
     export default {
         name: "Home",
@@ -72,6 +78,7 @@
           "app-homepostcard": HomePostcard,
           "app-homeuser": HomeUser,
           "app-login":LoginList,
+          "app-homeactivity1":HomeActivity1
         },
       computed: mapGetters([
         "isLogin",

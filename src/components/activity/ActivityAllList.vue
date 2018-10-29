@@ -5,42 +5,45 @@
     <div class="row">
       <div class="contList">
         <ul class="cont-list">
+
           <li class="am-gallery-item" v-for="data in myActData1">
-            <router-link :to="'/activitydetail/' + data.activityId">
+            <div style="min-height: 210px;border-bottom: 1px solid #797979;padding-left: 25px;padding-top: 12px;margin-left: 25px;">
               <div class="img_box col-md-4">
                 <a href="">
-                  <img width="100%" height="162" :src='data.goodsPic'>
+                  <img width="100%" style="min-height:162px" :src='data.goodsPic'>
                 </a>
               </div>
               <div class="intro col-md-8">
-                <h3>
-                  <a href="/">
+                <router-link :to="'/activitydetail/' + data.activityId">
+                <h3 style="color:#515151">
+                  <a href="#" style="color:#515151">
                     {{data.activityName}}
                   </a>
                 </h3>
-                <p style="height: 100px">{{data.activityDetails}}</p>
+                </router-link>
+                <p style="height: 100px;color:#515151;">{{data.activityDetails}}</p>
                 <div class="iconCon">
-							<span>
-                <i class="iconfont glyphicon glyphicon-heart-empty"></i><b>0</b>
-							</span>
-                  <span><i class="iconfont glyphicon glyphicon-shopping-cart" ></i><b>0</b></span>
+							    <span class="iconfont glyphicon glyphicon-time" style="color: #cccccc"></span>
+                  <span style="color: #cccccc">{{data.activityStartDate}}</span>
                 </div>
               </div>
-            </router-link>
+            </div>
           </li>
+
         </ul>
       </div>
     </div>
     <!--分页-->
     <div class="row text-center">
       <div class="block">
-        <span class="demonstration"></span>
+        <span class="demonstration" ></span>
         <el-pagination ref="elpage"
                        @current-change="change()"
                        :current-page.sync="pageIndex"
                        layout="prev, pager, next"
                        :total="pageCount"
                        :page-size = "pagesize"
+
         >
         </el-pagination>
       </div>
@@ -60,7 +63,6 @@
               pageCount:0,
               myActData:[],
               activitys:[]
-
             }
         },
       computed:{
@@ -78,6 +80,7 @@
         activityPic(data){
           for(let i in data){
             data[i].goodsPic = `${axios.defaults.baseURL}${data[i].goodsPic}`
+            data[i].activityStartDate=this.changeTime(data[i].activityStartDate)
           }
         },
         loadData() {
@@ -105,7 +108,7 @@
             axios.get(`${axios.defaults.baseURL}/activity/${year}/${month}`).then((res) =>{
               _this.myActData= res.data.data;
               _this.activityPic(_this.myActData);
-              _this.pageCount=_this.myActData.length
+              _this.pageCount=_this.myActData.length;
               console.log("结果"+_this.pageCount)
               _this.loadData()
             })
@@ -118,8 +121,23 @@
               _this.loadData()
             })
           }
-
+        },
+        changeTime(date){
+          date = new Date(date);
+          var y = date.getFullYear();
+          var m = date.getMonth() + 1;
+          m = m < 10 ? '0' + m : m;
+          var d = date.getDate();
+          d = d < 10 ? ('0' + d) : d;
+          var h = date.getHours();
+          h = h < 10 ? ('0' + h) : h;
+          var mm = date.getMinutes();
+          mm = mm < 10 ? ('0' + mm) : mm;
+          var s = date.getSeconds();
+          s = s < 10 ? ('0' + s) : s;
+          return y + '-' + m + '-' + d + " " + h + ":" + mm + ":" + s;
         }
+
       },
 
       // watch:{
@@ -171,4 +189,6 @@
 .intro{
   margin-left: -10px;
 }
+
+
 </style>

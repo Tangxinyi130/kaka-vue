@@ -18,12 +18,13 @@
               <span style="margin-left: 30px">粉丝：{{user.userFansNum}}</span>
             </router-link>
           </div>
-          <div class="row">
+          <div class="row" v-if="id == userId">
             <div id="search">
-              <input type="text" v-model="searchInput" id="searchInput" placeholder="请输入用户名">
-              <router-link :to="'/attention/' + this.$store.state.userId + '/search/' + this.searchInput">
+              <input type="text" v-model="searchInput" id="searchInput" placeholder="请输入用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入用户名'" @keydown.13="toSearchLink">
+              <router-link :to="'/attention/' + this.$store.state.userId + '/search/' + this.searchInput" v-if="this.searchInput">
                 <img src="../../assets/images/usercenter/search.png" alt="">
               </router-link>
+              <img src="../../assets/images/usercenter/search.png" alt="" v-if="!this.searchInput">
             </div>
           </div>
         </div>
@@ -34,8 +35,13 @@
 </template>
 
 <script>
+  import {mapGetters} from "vuex"
     export default {
         name: "UserAttentionInfo",
+        computed: mapGetters([
+          "isLogin",
+          "userId"
+        ]),
         data() {
           return {
             id: this.$route.params.id,
@@ -56,21 +62,20 @@
       methods: {
           searchUser() {
             let _this = this;
-            // console.log(this.searchInput);
             this.$ajax.get(`${axios.defaults.baseURL}/users/attention/searchUser/${this.$store.state.userId}/${this.searchInput}`
             ).then(function (result) {
                _this.$store.state.mySearchUser = result.data.data;
               for (var i in _this.$store.state.mySearchUser) {
                 _this.$store.state.mySearchUser[i].userHeadPic = `${axios.defaults.baseURL}${_this.$store.state.mySearchUser[i].userHeadPic}`
               }
-
-
               setTimeout(() => {}, 20);
-
-               // console.log(_this.$store.state.mySearchUser);
             }, function (err) {
               console.log(err);
             });
+          },
+          toSearchLink() {
+            this.$router.push({path: '/attention/' + this.$store.state.userId + '/search/' + this.searchInput})
+            // location.href = '/attention/' + this.$store.state.userId + '/search/' + this.searchInput;
           }
       }
     }
@@ -103,16 +108,16 @@
     margin-top: 20px;
     border: 1px solid #aaa;
     border-radius: 13px;
-    height: 34px;
-    line-height: 34px;
+    height: 35px;
+    line-height: 35px;
     /*width: 250px;*/
   }
   #searchInput {
     height: 30px;
-    /*border: 1px solid black;*/
-    border-radius: 15px;
+    line-height: 30px;
     border: none;
     margin-left: 8px;
+    outline: medium;
   }
 
 </style>
