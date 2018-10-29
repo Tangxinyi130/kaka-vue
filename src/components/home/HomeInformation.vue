@@ -4,29 +4,29 @@
     <table>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/users.png" alt=""></td>
-        <td>:&nbsp;&nbsp;<span> {{usersCount}}</span>:&nbsp;&nbsp;用户加入我们的网站</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;JOIN US:<span> {{usersCount}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/send.png" alt=""></td>
-        <td>:&nbsp;&nbsp;<span>{{travelingCardNum}}</span>:&nbsp;&nbsp;明信片正在漂流</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片正在漂流:<span>{{travelingCardNum}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/receive.png" alt=""></td>
-        <td>:&nbsp;&nbsp;<span>{{receivedNum}}</span>:&nbsp;&nbsp;张总收到明信片</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;总收到明信片:<span>{{receivedNum}}</span></td>
       </tr>
       <tr>
         <td> <img width="30px" height="30px" src="../../assets/images/home/time.png" alt=""></td>
-        <td>::&nbsp;&nbsp;<span>{{recentReceivedNum}}</span>:&nbsp;&nbsp;最近一小时收到的明信片</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;最近一小时收到的明信片:<span>{{recentReceivedNum}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/china.png" alt=""></td>
-        <td>:&nbsp;&nbsp;<span>{{cityTotal}}</span>:&nbsp;&nbsp;个省份已经加入</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;参与的省份:<span>{{cityTotal}}</span></td>
       </tr>
       <tr>
         <td>
           <img width="30px" height="30px" src="../../assets/images/home/distance.png" alt="">
         </td>
-        <td>:&nbsp;&nbsp;<span>{{distanceTotal}}</span>:&nbsp;&nbsp;的明信片漂流总距离</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片漂流的总距离:<span>{{distanceTotal}}</span></td>
       </tr>
     </table>
   </div>
@@ -65,7 +65,7 @@
 <style scoped>
   #homeInfomation{
     margin-top: 15px;
-    height: 305px;
+    height: 320px;
     /*max-width: 360px;*/
     background-color: #fafafa;
   }
@@ -84,6 +84,7 @@
   }
   #homeInfomation table{
     margin: 0 auto;
+    margin-top:15px;
   }
   #homeInfomation table tr{
     height: 38px;
