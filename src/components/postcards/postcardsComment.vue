@@ -5,7 +5,7 @@
         <p class="text commentTitle">评论内容</p>
       <!-- 发布内容输入框，利用Html5的新属性contenteditable，实现可编辑文本 ，会自动将插入的IMG标签解析-->
       <div class="publish_container">
-       <p contenteditable="true" id="input_conta"></p>
+       <p contenteditable="true" id="input_conta" ></p>
       </div>
       </div>
     </div>

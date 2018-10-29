@@ -27,9 +27,9 @@
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
           <div v-html="content.commentContent">
-            <p contenteditable="true" id="input_conta">
-              {{content.commentContent}}
-            </p>
+            <!--<p contenteditable="true" id="input_conta">-->
+              <!--{{content.commentContent}}-->
+            <!--</p>-->
           </div>
         </div>
       </div>
@@ -173,5 +173,8 @@
     height: 85px;
     border-radius: 85px;
     border: 1px solid #797979;
+  }
+  .btn{
+    box-shadow:none;
   }
 </style>
