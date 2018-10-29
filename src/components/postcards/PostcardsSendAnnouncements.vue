@@ -101,7 +101,7 @@
         receiveFans:0,
         receiveAttion:0,
         receivemsg:{},
-        xingbie:'男'
+        xingbie: ""
       }
     },
     created() {
@@ -168,12 +168,14 @@
           _this.userEmail = result.data.data.userEmail;
           _this.cardId = result.data.data.cardId;
           _this.userBirthday = result.data.data.userBirthday.substring(0,10);
-          _this.receiveFans=result.data.data.receiveFans;
-          _this.receiveAttion=result.data.data.receiveAttion;
-          if(_this.userSex==1){
-            _this.xingbie='女';
-          };
-          console.log(_this.userSex+'性别是'+_this.xingbie);
+          if (result.data.data.receiveFans) {
+            _this.receiveFans = result.data.data.receiveFans;
+          }
+          if (result.data.data.receiveAttion) {
+            _this.receiveAttion = result.data.data.receiveAttion;
+          }
+          _this.xingbie = _this.userSex;
+          // console.log(_this.userSex+'性别是'+_this.xingbie);
           console.log("接收方的粉丝是"+_this.receiveFans);
           console.log("接收方的关注数是"+ _this.receiveAttion);
           console.log("完成发送功能的时候接收方的邮箱"+_this.userEmail);
