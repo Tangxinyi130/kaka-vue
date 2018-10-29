@@ -45,14 +45,16 @@
                       <!--<input type="email" name="email" class="form-control myText" v-model="email" form="setUser">-->
                     <!--</div>-->
                   <!--</div>-->
-
-                  <div class="form-group">
+<!--******************************************************-->
+                  <div class="form-group ">
                     <label class="col-sm-2 control-label">email</label>
-                    <div class="col-sm-10">
-                      <input type="email" name="email" class="form-control myText" v-model="email" form="setUser">
+                    <div class="col-sm-10 formStyle">
+                      <input type="email" name="email" class="form-control myText leftStyle" v-model="email" form="setUser">
+                      <div class="em"><span :email="email">{{tiShi1}}</span></div>
                     </div>
-                  </div>
 
+                  </div>
+           <!--*****************-->
                   <!--显示邮箱是否输入正确的提示-->
                   
 
@@ -96,9 +98,9 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-10  text-center saveText">
-                      <button  form="setUser" @click="save" class="btn btn-default" v-if="name && password && nickname && sex && email && birthday
+                      <button  form="setUser" @click="save" class="btn btn-default" v-if="name && password && nickname && sex && isQQ && birthday
                 && indexProvince && indexCity && postcode && address">保存修改信息</button>
-                      <button class="btn btn-default" disabled="false" v-if="!(name && password && nickname && sex && email && birthday
+                      <button class="btn btn-default" disabled="false" v-if="!(name && password && nickname && sex && isQQ && birthday
                 && indexProvince && indexCity && postcode && address)">请继续完善信息</button>
                     </div>
                   </div>
@@ -167,6 +169,7 @@
             address: "",
             headpic: "",
             isQQ: false,    //qq邮箱是否正确
+            tishi1:'',
             isSaveHead: false,
             province: [
               {item: 0, pro: "北京", city: ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "顺义区", "通州区", "大兴区", "房山区", "门头沟区", "昌平区", "平谷区", "密云区", "怀柔区", "延庆区"]},
@@ -324,11 +327,17 @@
           },
         },
         watch: {
-          //判断是否是qq邮箱
-          checkQQ() {
-            var reg = "^[A-Za-z0-9_-]+@qq\.com$";
-
-          }
+          email(){
+            const _this = this;
+            const reg =/^[A-Za-z0-9_-]+@qq\.com$/ ;
+            if(!(reg.test(_this.email))){
+              _this.isQQ=false;
+              _this.tiShi1 = 'qq邮箱输入不正确！';
+            }else{
+              _this.tiShi1 = '';
+              _this.isQQ=true;
+            }
+          },
         }
     }
 </script>
@@ -422,6 +431,10 @@
 
   .saveText {
     margin-left: -20px;
+  }
+  .em{
+    height:10px;
+    color: red;
   }
 
 </style>
