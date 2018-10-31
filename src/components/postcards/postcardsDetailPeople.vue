@@ -1,7 +1,8 @@
 <template>
     <div>
       <div class="row">
-        <div class="top">详情</div>
+        <!--<div class="top">详情</div>-->
+        <div class="top">明信片ID：{{cardId}}</div>
       </div>
       <div class="row twoPeople" >
         <div class="col-xs-12 col-md-6 ">
@@ -113,9 +114,9 @@
             <div class="twoPeopleMap">
               <div id="container"
                    style="position: absolute;
-                    width: 430px;
-                    height: 350px;
-                    border: 1px solid gray;
+                    width: 540px;
+                    height: 360px;
+                    border: 1px solid #ccc;
                     overflow:hidden;">
               </div>
             </div>

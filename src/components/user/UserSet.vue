@@ -8,7 +8,7 @@
           <div class="setForm">
 
             <div class="row">
-              <form class="form-horizontal" id="setUser" method="post">
+              <form class="form-horizontal" id="setUser" method="post" >
                 <div class="col-xs-12 col-sm-6 col-sm-offset-1 col-md-offset-2 col-md-5 col-lg-offset-1 col-lg-6">
                   <div class="form-group">
                     <label class="col-sm-2 control-label">姓名</label>
@@ -45,16 +45,17 @@
                       <!--<input type="email" name="email" class="form-control myText" v-model="email" form="setUser">-->
                     <!--</div>-->
                   <!--</div>-->
-
-                  <div class="form-group">
+<!--******************************************************-->
+                  <div class="form-group ">
                     <label class="col-sm-2 control-label">email</label>
-                    <div class="col-sm-10">
-                      <input type="email" name="email" class="form-control myText" v-model="email" form="setUser">
+                    <div class="col-sm-10 formStyle">
+                      <input type="email" name="email" class="form-control myText leftStyle" v-model="email" form="setUser">
+                      <div class="em"><span :email="email">{{tiShi1}}</span></div>
                     </div>
                   </div>
-
+           <!--*****************-->
                   <!--显示邮箱是否输入正确的提示-->
-                  
+
 
 
                   <div class="form-group">
@@ -96,14 +97,18 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-10  text-center saveText">
-                      <button  form="setUser" @click="save" class="btn btn-default" v-if="name && password && nickname && sex && email && birthday
-                && indexProvince && indexCity && postcode && address">保存修改信息</button>
-                      <button class="btn btn-default" disabled="false" v-if="!(name && password && nickname && sex && email && birthday
-                && indexProvince && indexCity && postcode && address)">请继续完善信息</button>
+                      <button type="button" @click="save" class="btn btn-default saveBtn" v-if="name && password && nickname && sex && isQQ && birthday
+                && indexProvince && indexCity && postcode && address && isQQ">保存修改信息</button>
+                      <button type="button" class="btn btn-default saveBtn" disabled="false" v-if="!(name && password && nickname && sex && isQQ && birthday
+                && indexProvince && indexCity && postcode && address && isQQ)">请继续完善信息</button>
                     </div>
                   </div>
                 </div>
               </form>
+
+
+
+
 
               <div class="col-xs-12 col-sm-4 col-md-5 col-lg-5">
                 <form class="form-horizontal" id="updateHead" method="post" enctype="multipart/form-data"></form>
@@ -129,8 +134,6 @@
           </div>
         </div>
       </div>
-
-      <div style="height: 100px"></div>
     </div>
 
 </template>
@@ -167,6 +170,7 @@
             address: "",
             headpic: "",
             isQQ: false,    //qq邮箱是否正确
+            tishi1:'',
             isSaveHead: false,
             province: [
               {item: 0, pro: "北京", city: ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "顺义区", "通州区", "大兴区", "房山区", "门头沟区", "昌平区", "平谷区", "密云区", "怀柔区", "延庆区"]},
@@ -212,12 +216,12 @@
         methods: {
           //保存设置的文本信息
           save() {
-            if (this.name && this.password && this.nickname && this.sex && this.email && this.birthday
-                && this.indexProvince && this.indexCity && this.postcode && this.address) {
               let province = this.province[this.indexProvince].pro;
               let _this = this;
-              this.$ajax.post(`${axios.defaults.baseURL}/users/updata`,
-                {
+              $.ajax({
+                url: `${axios.defaults.baseURL}/users/updata`,
+                type: "post",
+                data: {
                   userName: _this.name,
                   userPwd: _this.password,
                   userNickname: _this.nickname,
@@ -229,19 +233,12 @@
                   userPostcode: _this.postcode,
                   userAddress: _this.address,
                   userId: _this.userid,
-                }).then(function (result) {
-                setTimeout(() => {}, 20);
-                location.href = `/user/${_this.$store.state.userId}/aboutme`;
-              }, function (err) {
-                setTimeout(() => {}, 20);
-                location.href = `/user/${_this.$store.state.userId}/aboutme`;
-                console.log(err)
+                },
+                success: function (result) {
+                  alert("修改成功");
+                  location.href = `/user/${_this.$store.state.userId}/aboutme`;
+                }
               })
-              // setTimeout(() => {}, 20);
-              // location.href = `/user/${_this.$store.state.userId}/aboutme`;
-            } else {
-
-            }
           },
           //选中文件后，将文件保存到实例的变量中
           changeImage(e) {
@@ -278,6 +275,7 @@
               });
               setTimeout(() => {
                 if (this.upath) {
+                  alert("修改成功");
                   location.href = `/user/${_this.$store.state.userId}/aboutme`;
                 } else {
                   alert("请选择图片!");
@@ -324,18 +322,28 @@
           },
         },
         watch: {
-          //判断是否是qq邮箱
-          checkQQ() {
-            var reg = "^[A-Za-z0-9_-]+@qq\.com$";
-
-          }
+          email(){
+            const _this = this;
+            const reg =/^[A-Za-z0-9_-]+@qq\.com$/ ;
+            if(!(reg.test(_this.email))){
+              _this.isQQ=false;
+              _this.tiShi1 = "请输入QQ邮箱";
+            }else{
+              _this.tiShi1 = '';
+              _this.isQQ=true;
+            }
+          },
         }
     }
 </script>
 
 <style scoped>
+  .saveBtn {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
   #set {
-    /*height: 590px;*/
     background-color: #fafafa;
   }
   .top {
@@ -350,7 +358,6 @@
   }
   .bottom {
     background-color: #fafafa;
-    /*height: 600px;*/
   }
 
   .setForm {
@@ -370,11 +377,8 @@
   .saveHead {
     margin-top: 10px;
     margin-left: 33px;
-    /*border: none;*/
     background-color: transparent;
     color: #5E5E5E;
-    /*font-size: 14px;*/
-
   }
   .saveHead:hover {
     color: #4e91ff;
@@ -422,6 +426,10 @@
 
   .saveText {
     margin-left: -20px;
+  }
+  .em{
+    height:10px;
+    color: red;
   }
 
 </style>
