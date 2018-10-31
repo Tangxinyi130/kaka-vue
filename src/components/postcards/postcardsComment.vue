@@ -17,7 +17,7 @@
         <!--<span class="send" @click=send()>选择表情</span>-->
         <span class="send btn btn-default " @click=send()>发送评论</span>
         <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
-        <div id="face" style="width: 350px;height: 190px;background-color: white;" @click=choice_face($event) v-if="flag" v-html="eoimImg"></div>
+        <div id="face" style="width: 340px;height: 190px;background-color: white;border:1px solid #cccccc;margin-left: 20px;" @click=choice_face($event) v-if="flag" v-html="eoimImg"></div>
       </div>
     </div>
   </div>
