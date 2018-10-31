@@ -10,7 +10,7 @@
                   <img :src="data.userHeadPic" alt="" class="headPic othersHead">
                 </router-link>
               </div>
-              <div class="col-sm-3 othersInfo">
+              <div class="col-sm-4 othersInfo">
                 <div>用户ID：{{data.userId}}</div>
                 <div>昵称：{{data.userNickname}}</div>
                 <div>性别：{{data.userSex}}</div>
@@ -167,6 +167,7 @@
   }
   .othersBtn {
     padding-top: 10px;
+    margin-left: -20px;
   }
   .showOthers {
     margin-top: 20px;

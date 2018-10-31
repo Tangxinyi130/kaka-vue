@@ -3,7 +3,7 @@
       <!--用户地图-->
       <div id="container"
            style="
-                width: 400px;
+                width: 445px;
                 height: 300px;
                 border: 1px solid gray;
                 overflow:hidden;">

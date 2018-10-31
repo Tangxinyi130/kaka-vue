@@ -15,10 +15,13 @@
 <script>
     import UserMapCollection from "./UserMapCollection.vue"
     import UserMapList from "./UserMapList.vue"
+    import UserMapCollectionTest from "./UserMapCollectionTest"
     export default {
         name: "UserMap",
         components: {
-          "app-mapcollection": UserMapCollection,
+          // "app-mapcollection": UserMapCollection,
+
+          "app-mapcollection": UserMapCollectionTest,
           "app-maplist": UserMapList
         }
     }
