@@ -35,6 +35,7 @@
   }
   .con-body{
     height: 560px;
+    /*background-image: url("");*/
     background-color:#fafafa;
   }
   .body-nav{
@@ -55,7 +56,7 @@
   .body-con-con{
     /*margin-top:30px;*/
     height:360px;
-    background-color:#fafafa;
+    /*background-color:#fafafa;*/
     /*opacity: 0.5;*/
     /*background-image: url("../../assets/p12.jpg");*/
   }

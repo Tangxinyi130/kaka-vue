@@ -9,11 +9,11 @@
               <img :src="data.userHeadPic" alt="" class="headPic othersHead">
             </router-link>
           </div>
-          <div class="col-sm-3 othersInfo">
+          <div class="col-sm-4 othersInfo">
             <div>用户ID：{{data.userId}}</div>
             <div>昵称：{{data.userNickname}}</div>
             <div>性别：{{data.userSex}}</div>
-            <div>地区：{{data.userProvince}}  {{data.userCity}}</div>
+            <div>地区：{{data.userProvince}} {{data.userCity}}</div>
           </div>
           <div class="col-sm-3 othersInfo">
             <div>加入天数：{{data.joinTime}}</div>
@@ -100,6 +100,7 @@
           let _this = this;
           this.$ajax.get(`${axios.defaults.baseURL}/users/attention/focus/${this.$store.state.userId}/${otherId}`
           ).then(function (result) {
+            // _this.mycreate();
               location.href = `/attention/${_this.$store.state.userId}/att`;
           }, function (err) {
             console.log(err);
@@ -110,6 +111,7 @@
           let _this = this;
           this.$ajax.get(`${axios.defaults.baseURL}/users/attention/unfollow/${this.$store.state.userId}/${otherId}`
           ).then(function (result) {
+            // _this.mycreate();
             location.href = `/attention/${_this.$store.state.userId}/att`;
           }, function (err) {
             console.log(err);
@@ -163,6 +165,7 @@
   }
   .othersBtn {
     padding-top: 10px;
+    margin-left: -20px;
   }
   .showOthers {
     margin-top: 20px;
