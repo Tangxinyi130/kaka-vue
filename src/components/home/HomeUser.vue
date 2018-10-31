@@ -16,7 +16,7 @@
         <div class="card-body">
             <ul class="user-info">
               <li class="user-info-li">
-                <a href="">
+                <a :href="'/attention/'+userId+'/att'">
                   <div class="user-item">
                     <strong>{{attentionNum}}</strong>
                     <span>我的关注</span>
@@ -24,7 +24,7 @@
                 </a>
               </li>
               <li class="user-info-li">
-                <a href="">
+                <a :href="'attention/'+userId+'/fan'">
                   <div class="user-item">
                     <strong>{{fansNum}}</strong>
                     <span>我的粉丝</span>
@@ -32,11 +32,11 @@
                 </a>
               </li>
               <li class="user-info-li">
-                <a href="">
-                  <div class="user-item">
-                    <strong>{{collectionNum}}</strong>
-                    <span>我的收藏</span>
-                  </div>
+                <a :href="'/user/'+userId+'/wall/collection'">
+                    <div class="user-item">
+                      <strong>{{collectionNum}}</strong>
+                      <span>我的收藏</span>
+                    </div>
                 </a>
               </li>
             </ul>

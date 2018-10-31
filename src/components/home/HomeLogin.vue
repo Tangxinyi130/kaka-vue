@@ -19,7 +19,7 @@
               <!--<router-link to="/" style="">忘记密码?</router-link>-->
           </div>
         </div>
-        <button type="submit" @click="toLogin" class="btn btn-default btn-info form-control" style="margin-top: -20px">登录</button>
+        <button type="button" @click="toLogin" class="btn btn-default btn-info form-control" style="margin-top: -20px">登录</button>
       </form>
       <div style="height: 1px; border-top:1px solid #ccc; margin-top: 12px "></div>
       <div style="height: 30px; line-height: 30px">

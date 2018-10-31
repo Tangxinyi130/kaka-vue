@@ -71,6 +71,21 @@
         }
       },
       methods:{
+        changeTime(date){
+          date = new Date(date);
+          var y = date.getFullYear();
+          var m = date.getMonth() + 1;
+          m = m < 10 ? '0' + m : m;
+          var d = date.getDate();
+          d = d < 10 ? ('0' + d) : d;
+          var h = date.getHours();
+          h = h < 10 ? ('0' + h) : h;
+          var mm = date.getMinutes();
+          mm = mm < 10 ? ('0' + mm) : mm;
+          var s = date.getSeconds();
+          s = s < 10 ? ('0' + s) : s;
+          return y + '年' + m + '月' + d + "日";
+        },
         getRecentActivity(){
           this.$ajax({
             method:'get',
@@ -82,7 +97,9 @@
             this.activityData1.goodsPic = `${axios.defaults.baseURL}${this.activityData1.goodsPic}`;
             this.activityData2.goodsPic = `${axios.defaults.baseURL}${this.activityData2.goodsPic}`;
             this.activityData3.goodsPic = `${axios.defaults.baseURL}${this.activityData3.goodsPic}`;
-            console.log(this.activityData2);
+            this.activityData1.activityStartDate = this.changeTime(this.activityData1.activityStartDate);
+            this.activityData2.activityStartDate = this.changeTime(this.activityData2.activityStartDate);
+            this.activityData3.activityStartDate = this.changeTime(this.activityData3.activityStartDate);
           })
         }
       },
@@ -227,17 +244,17 @@
     transform: translateX(-80px);
     overflow: hidden;
   }
-  .blog-slider__img:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(147deg, #90bebe4d 0%, #8ebbbc 74%);
-    border-radius: 20px;
-    opacity: 0.8;
-  }
+  /*.blog-slider__img:after {*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background-image: linear-gradient(147deg, #90bebe4d 0%, #8ebbbc 74%);*/
+    /*border-radius: 20px;*/
+    /*opacity: 0.8;*/
+  /*}*/
   .blog-slider__img img {
     width: 100%;
     height: 100%;
@@ -316,7 +333,7 @@
   .blog-slider__button {
     display: -ms-inline-flexbox;
     display: inline-flex;
-    background-image: linear-gradient(147deg, #a6f5f5c4 0%, #56fabd 74%);
+    background-image: linear-gradient(147deg, #bad4aa 0%, #bad4aa 74%);
     padding: 10px 30px;
     border-radius: 50px;
     color: #fff;
