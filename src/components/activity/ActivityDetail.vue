@@ -1,6 +1,6 @@
 <template>
   <div class="container ">
-    <div class="row activityDetail text-center">活动标题</div>
+    <div class="row activityDetail text-center">{{activityInfor.activityName}}</div>
     <div class="row con">
       <div style="height: 50px;" ></div>
       <div class="col-sm-10 col-sm-offset-1 con-con">

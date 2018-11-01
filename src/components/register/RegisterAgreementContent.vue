@@ -18,7 +18,7 @@
                   </div>
                   <div style="height: 30px"></div>
                   <div class="text-center">
-                    <button type="button" class="btn bt btn-lg " style="width:200px;" @click="submit">
+                    <button type="button" class="btn bt  btn-lg " style="width:200px;" @click="submit">
                       <span>注册阅读并同意条款 </span>
                     </button>
                   </div>
@@ -77,7 +77,7 @@
     font-weight: bold;
   }
   .bt{
-    background-color: #9e9e9e;
+    background-color:  #BDD1C5;
     color: white;
   }
 </style>
