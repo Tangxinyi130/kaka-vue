@@ -16,12 +16,15 @@
                       <input type="text" name="myname" class="form-control myText" v-model="name" form="setUser">
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">密码</label>
-                    <div class="col-sm-10">
-                      <input type="password" name="password" class="form-control myText" v-model="password" form="setUser">
-                    </div>
-                  </div>
+
+                  <!--<div class="form-group">-->
+                    <!--<label class="col-sm-2 control-label">密码</label>-->
+                    <!--<div class="col-sm-10">-->
+                      <!--<input type="password" name="password" class="form-control myText" v-model="password" form="setUser">-->
+                      <!--<span :password="password" style="color: red">{{tiShi4}}</span>-->
+                    <!--</div>-->
+                  <!--</div>-->
+
                   <div class="form-group">
                     <label class="col-sm-2 control-label">昵称</label>
                     <div class="col-sm-10">
@@ -38,14 +41,6 @@
                     </label>
                   </div>
 
-
-                  <!--<div class="form-group">-->
-                    <!--<label class="col-sm-2 control-label">email</label>-->
-                    <!--<div class="col-sm-10">-->
-                      <!--<input type="email" name="email" class="form-control myText" v-model="email" form="setUser">-->
-                    <!--</div>-->
-                  <!--</div>-->
-<!--******************************************************-->
                   <div class="form-group ">
                     <label class="col-sm-2 control-label">email</label>
                     <div class="col-sm-10 formStyle">
@@ -53,10 +48,6 @@
                       <div class="em"><span :email="email">{{tiShi1}}</span></div>
                     </div>
                   </div>
-           <!--*****************-->
-                  <!--显示邮箱是否输入正确的提示-->
-
-
 
                   <div class="form-group">
                     <label class="col-sm-2 control-label">出生日期</label>
@@ -97,16 +88,14 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-10  text-center saveText">
-                      <button type="button" @click="save" class="btn btn-default saveBtn" v-if="name && password && nickname && sex && isQQ && birthday
+                      <button type="button" @click="save" class="btn btn-default saveBtn" v-if="name &&  nickname && sex && isQQ && birthday
                 && indexProvince && indexCity && postcode && address && isQQ">保存修改信息</button>
-                      <button type="button" class="btn btn-default saveBtn" disabled="false" v-if="!(name && password && nickname && sex && isQQ && birthday
+                      <button type="button" class="btn btn-default saveBtn" disabled="false" v-if="!(name && nickname && sex && isQQ && birthday
                 && indexProvince && indexCity && postcode && address && isQQ)">请继续完善信息</button>
                     </div>
                   </div>
                 </div>
               </form>
-
-
 
 
 
@@ -161,7 +150,7 @@
             upath:'',  //保存选中的文件
             userid: this.$store.state.userId,
             name: "",
-            password: "",
+            // password: "",
             nickname: "",
             sex: "",
             email: "",
@@ -170,8 +159,11 @@
             address: "",
             headpic: "",
             isQQ: false,    //qq邮箱是否正确
-            tishi1:'',
+            tiShi1:'',
             isSaveHead: false,
+            // tiShi4:"",
+            // pw:0,
+            // isTruePw: true,
             province: [
               {item: 0, pro: "北京", city: ["东城区", "西城区", "朝阳区", "丰台区", "石景山区", "海淀区", "顺义区", "通州区", "大兴区", "房山区", "门头沟区", "昌平区", "平谷区", "密云区", "怀柔区", "延庆区"]},
               {item: 1, pro: "天津", city: ["和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "滨海新区", "东丽区", "西青区", "津南区", "北辰区", "武清区", "宝坻区", "宁河区", "静海区", "蓟州区"]},
@@ -223,7 +215,7 @@
                 type: "post",
                 data: {
                   userName: _this.name,
-                  userPwd: _this.password,
+                  // userPwd: _this.password,
                   userNickname: _this.nickname,
                   userSex: _this.sex,
                   userEmail: _this.email,
@@ -289,7 +281,7 @@
             this.$ajax.get(`${axios.defaults.baseURL}/users/${this.$store.state.userId}`
             ).then(function (result) {
               _this.name = result.data.data.userName;
-              _this.password = result.data.data.userPwd;
+              // _this.password = result.data.data.userPwd;
               _this.nickname = result.data.data.userNickname;
               _this.sex = result.data.data.userSex;
               _this.email = result.data.data.userEmail;
@@ -333,6 +325,20 @@
               _this.isQQ=true;
             }
           },
+          // password(){
+          //   const _this = this;
+          //   const reg = /^([a-zA-Z0-9]|[._]){6,12}$/;
+          //   if(!reg.test(_this.password)){
+          //     _this.tiShi4 = '请输入6-12个数字、字母或者带“_”、“.”的密码';
+          //     _this.pw = 0;
+          //     _this.isTruePw = false;
+          //   }else {
+          //     _this.tiShi4 = '';
+          //     _this.pw=1;
+          //     _this.same=0;
+          //     _this.isTruePw = true;
+          //   }
+          // },
         }
     }
 </script>

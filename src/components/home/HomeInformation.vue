@@ -4,29 +4,29 @@
     <table>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/users.png" alt=""></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;JOIN US:<span> {{usersCount}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;JOIN US：<span> {{usersCount}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/send.png" alt=""></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片正在漂流:<span>{{travelingCardNum}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片正在漂流：<span>{{travelingCardNum}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/receive.png" alt=""></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;总收到明信片:<span>{{receivedNum}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;总收到明信片：<span>{{receivedNum}}</span></td>
       </tr>
       <tr>
         <td> <img width="30px" height="30px" src="../../assets/images/home/time.png" alt=""></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;最近一小时收到的明信片:<span>{{recentReceivedNum}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;最近一小时收到的明信片：<span>{{recentReceivedNum}}</span></td>
       </tr>
       <tr>
         <td><img width="30px" height="30px" src="../../assets/images/home/china.png" alt=""></td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;参与的省份:<span>{{cityTotal}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;参与的省份：<span>{{cityTotal}}</span></td>
       </tr>
       <tr>
         <td>
           <img width="30px" height="30px" src="../../assets/images/home/distance.png" alt="">
         </td>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片漂流的总距离:<span>{{distanceTotal}}</span></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;明信片漂流的总距离：<span>{{distanceTotal}}</span></td>
       </tr>
     </table>
   </div>
@@ -52,7 +52,7 @@
           _this.receivedNum = info.receivedNum[0].receivedNum;
           _this.recentReceivedNum = info.recentReceivedNum[0].receivedNum;
           _this.travelingCardNum = info.travelingCardNum[0].travelingCardNum;
-          _this.distanceTotal = info.distanceTotal[0].distanceTotal;
+          _this.distanceTotal = info.distanceTotal[0].distanceTotal.toFixed(1);
           _this.usersCount = info.usersNum[0].usersCount;
           _this.cityTotal = info.cityTotal[0].cityTotal;
         },function (err) {

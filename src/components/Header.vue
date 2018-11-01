@@ -21,8 +21,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">明信片 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <router-link tag="li" role="presentation" to="/postcardssend"@click.native="change" ><a class="text-color">发送</a></router-link>
-                  <router-link tag="li" role="presentation" to="/postcardsreceive"@click.native="changeReceive" ><a class="text-color">收到</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardssend" @click.native="change" ><a class="text-color">发送</a></router-link>
+                  <router-link tag="li" role="presentation" to="/postcardsreceive" @click.native="changeReceive" ><a class="text-color">收到</a></router-link>
                 </ul>
               </li>
               <router-link tag="li" active-class="active" role="presentation" to="/wall"><a class="text-color">展示墙</a></router-link>
@@ -45,7 +45,7 @@
                   <li @click="logOff"><a class="text-color" href="/">退出登录</a></li>
                 </ul>
               </li>
-              <router-link tag="li" role="presentation" to="/userset"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
+              <router-link tag="li" role="presentation" to="/userset/info"><a class="text-color"><span class="glyphicon glyphicon-cog"></span>  设置</a></router-link>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

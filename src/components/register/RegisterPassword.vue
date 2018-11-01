@@ -10,22 +10,22 @@
               </div>
               <div class="row" style="height:30px"></div>
                 <form style="margin-top: 20px">
-                        <div class="row col-sm-4  text-center col-sm-offset-4">
-                          <div class="col-sm-10 col-sm-offset-1 formStyle1">
-                            <input type="password" class="form-control leftStyle" placeholder="请输入密码" v-model="Pwd1">
-                            <span :Pwd1="Pwd1">{{tiShi4}}</span>
-                          </div>
-                          <div class="col-sm-10 col-sm-offset-1 formStyle1" style="margin-top: 30px">
-                            <input type="password" class="form-control leftStyle" placeholder="再次输入密码" v-model="Pwd2">
-                            <span :Pwd2="Pwd2">{{tiShi5}}</span>
-                          </div>
-                          <div class="col-sm-10  col-sm-offset-1" style="margin-top: 20px;">
-                            <button type="button" class="btn bt btn-lg " style="width:130px;" @click="submit">
-                              <span style="color: white">保存密码</span>
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+                  <div class="row col-sm-4  text-center col-sm-offset-4">
+                    <div class="col-sm-10 col-sm-offset-1 formStyle1">
+                      <input type="password" class="form-control leftStyle" placeholder="请输入密码" v-model="Pwd1">
+                      <span :Pwd1="Pwd1">{{tiShi4}}</span>
+                    </div>
+                    <div class="col-sm-10 col-sm-offset-1 formStyle1" style="margin-top: 30px">
+                      <input type="password" class="form-control leftStyle" placeholder="再次输入密码" v-model="Pwd2">
+                      <span :Pwd2="Pwd2">{{tiShi5}}</span>
+                    </div>
+                    <div class="col-sm-10  col-sm-offset-1" style="margin-top: 20px;">
+                      <button type="button" class="btn bt btn-lg " style="width:130px;" @click="submit">
+                        <span style="color: white">保存密码</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
         </div>
       </div>
     </div>
