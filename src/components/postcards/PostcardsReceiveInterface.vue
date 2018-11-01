@@ -284,11 +284,11 @@
 <style scoped>
   .con{
     width:100%;
-    height:650px;
+    /*height:650px;*/
     background-color:#ebf6df
   }
   .con1{
-    height:600px;
+    /*height:600px;*/
     background-color:#fafafa
   }
   .con-nav{
@@ -303,7 +303,7 @@
     color: white
   }
   .con-body{
-    height:616px;
+    /*height:616px;*/
   }
   .con-body-con{
     margin-top:30px;
@@ -316,7 +316,7 @@
   }
   .but{
       width:120px;
-    background-color: #9e9e9e;
+    background-color: #BDD1C5;
   }
   p{
     font-size: 16px;

@@ -22,8 +22,8 @@
             </div>
             <form>
                 <div class="row body-row-form">
-                  <button type="button" class="btn  btn-lg body-row-form-btn"  @click="submit" >
-                    <span style="color: white">同意去发送</span>
+                  <button type="button" class="btn  bt  btn-lg" @click="submit" >
+                    <span style="color: white" class="">同意去发送</span>
                   </button>
                 </div>
               </form>
@@ -54,6 +54,7 @@
                   <!--<div class="col-sm-2">关注:{{receiveAttion}}</div>-->
                   <div class="col-sm-4">地区:{{userProvince}}&nbsp;&nbsp;{{userCity}}</div>
                   <div class="col-sm-12">邮箱:{{userEmail}}</div>
+                  <div class="col-sm-12">明信片ID:{{cardId}}</div>
                 </div>
               </div>
              </div>
@@ -61,13 +62,13 @@
                <div style="height:40px"></div>
                <div style="" class="el-col-sm-offset-1">
                小提示：【{{userNickname}}】的用户信息已发送到你的邮箱
-               记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br>
-               ID：<span style="font-weight: bold">{{cardId}}</span>
+               记得寄出明信片哦！别忘了将明信片的编号写在明信片上哦！<br><br>
+               <!--ID：<span style="font-weight: bold">{{cardId}}</span>-->
                </div>
                <div class="col-sm-offset-5">
                <form>
-               <button type="button" class="btn btn-lg but"  @click="tohome">
-               <span style="color: white">返回首页</span>
+               <button type="button" class="btn bt btn-lg"  @click="tohome">
+               <span  style="color: white">返回首页</span>
                </button><br>
                </form>
                </div>
@@ -100,6 +101,8 @@
         userSex:0,
         receiveFans:0,
         receiveAttion:0,
+        receiveDetailAddress:'',
+        receiveCode:'',
         receivemsg:{},
         xingbie: ""
       }
@@ -136,10 +139,13 @@
         console.log("发邮件的时候接收方的明信片"+this.cardId);
         let thecardid=this.cardId;
         console.log("我是thecardid"+thecardid);
-        // console.log(`路由：${axios.defaults.baseURL}`);
+        //接收方的id，接收方的昵称，接收方的性别，接收方的生日，接收方的地址，接收方的邮编
+        console.log("接收方的信息"+this.receivemsg.userNickname);
+        let remsNickname=this.receivemsg.userNickname;
+        console.log(`路由：${axios.defaults.baseURL}`);
         this.$ajax({
           method:'get',
-          url:`${axios.defaults.baseURL}/send/sendEmail/`+(localStorage.userId)+'/'+(thecardid)
+          url:`${axios.defaults.baseURL}/send/sendEmail/`+(localStorage.userId)+'/'+(thecardid)+'/'+(remsNickname)+'/'+(this.userSex)+'/'+(this.userBirthday)+'/'+(this.receiveDetailAddress)+'/'+(this.receiveCode)+'/'+(this.userEmail)
         }).then((res)=>{
           console.log("成功")
         })
@@ -160,6 +166,8 @@
           // console.log(result.data.data.userHeadPic);
           console.log(result.data.data);
           _this.receivemsg=result.data.data;
+          _this.receiveDetailAddress=result.data.data.receiveDetailAddress;
+          _this.receiveCode=result.data.data.receiveCode;
           _this.userNickname = result.data.data.userNickname;
           _this.userHeadPic = `${axios.defaults.baseURL}${result.data.data.userHeadPic}`;
           _this.userProvince = result.data.data.userProvince;
@@ -168,6 +176,8 @@
           _this.userEmail = result.data.data.userEmail;
           _this.cardId = result.data.data.cardId;
           _this.userBirthday = result.data.data.userBirthday.substring(0,10);
+          console.log("我是的id"+_this.cardId);
+          console.log("我是头像"+_this.userHeadPic);
           if (result.data.data.receiveFans) {
             _this.receiveFans = result.data.data.receiveFans;
           }
@@ -202,9 +212,9 @@
               }else {
                 // ***********
                   this.send();
-                  setTimeout(()=>{
-                    this.sendEmail();
-                  },3000);
+                  // setTimeout(()=>{
+                  //   this.sendEmail();
+                  // },3000);
                 this.$store.state.postSendAnn=false;
                 this.$store.state.postSend=true;
                 // ***************
@@ -264,7 +274,7 @@
   }
   .body-row-form-btn{
     width:124px;
-    background-color:#9e9e9e
+    /*background-color:#9e9e9e*/
   }
   .body-con{
     /*border: 1px solid red;*/
@@ -309,7 +319,6 @@
   }
   .but{
     width:130px;
-    background-color:#9e9e9e;
     margin-top: 20px;
   }
   .ag{
@@ -326,6 +335,9 @@
   .detaile{
     /*border: 1px solid red;*/
     height:30px;line-height: 30px
+  }
+  .bt{
+    background-color: #BDD1C5;
   }
 
 </style>
