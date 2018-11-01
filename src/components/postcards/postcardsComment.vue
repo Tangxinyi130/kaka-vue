@@ -54,38 +54,42 @@
       send(){
         if (this.$store.state.userId) {
           var text=$("#input_conta").html();  //获得发布框的文本内容，表情会以整个img标签文本显示
-          $("#input_conta").html("");  //清除发布框的文本内容
-          $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
-          // $.ajax({
-          //   url: `${axios.defaults.baseURL}/postcards/addcomment`,
-          //   type: "post",
-          //   data: {
-          //     'commentUserId':this.userId,
-          //     'commentCardId':this.$route.params.cardId,
-          //     'commentContent':text,
-          //   },
-          //   success: function (data){
-          //     console.info(data);
-          //   }
-          // });
-          this.$ajax({
-            method: "post",
-            url: `${axios.defaults.baseURL}/postcards/addcomment`,
-             data: {
-                'commentUserId':this.userId,
-                'commentCardId':this.$route.params.cardId,
-                'commentContent':text,
-              }
-          }).then((res)=>{
+          console.log('text：'+text)
+          if(text!="") {
+            $("#input_conta").html("");  //清除发布框的文本内容
+            $("div#face").hide();      //隐藏表情选择// 上传图片并发送给后台
+            // $.ajax({
+            //   url: `${axios.defaults.baseURL}/postcards/addcomment`,
+            //   type: "post",
+            //   data: {
+            //     'commentUserId':this.userId,
+            //     'commentCardId':this.$route.params.cardId,
+            //     'commentContent':text,
+            //   },
+            //   success: function (data){
+            //     console.info(data);
+            //   }
+            // });
             this.$ajax({
-              method:'get',
-              url:`${axios.defaults.baseURL}/postcards/`+this.$route.params.cardId
-            }).then((res)=>{
-              console.log("id:"+res.data.data.cardComment[0].commentUserId)
-              this.$emit('all-comment',res.data.data.cardComment)
+              method: "post",
+              url: `${axios.defaults.baseURL}/postcards/addcomment`,
+              data: {
+                'commentUserId': this.userId,
+                'commentCardId': this.$route.params.cardId,
+                'commentContent': text,
+              }
+            }).then((res) => {
+              this.$ajax({
+                method: 'get',
+                url: `${axios.defaults.baseURL}/postcards/` + this.$route.params.cardId
+              }).then((res) => {
+                console.log("id:" + res.data.data.cardComment[0].commentUserId)
+                this.$emit('all-comment', res.data.data.cardComment)
+              })
             })
-          })
-
+          }else{
+            alert("内容不能为空！")
+          }
         } else {
           alert("请先登录！");
         }

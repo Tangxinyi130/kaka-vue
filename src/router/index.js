@@ -57,7 +57,6 @@ Vue.prototype.$ajax = axios
 Vue.use(Router)
 
 export default new Router({
-
   mode: "history",
   routes: [  {path: '/', name: 'Home', component: Home},
 
@@ -126,5 +125,12 @@ export default new Router({
         {path: "search/:name", component: UserAttentionSearch}
       ]
     },
-  ]
-})
+  ],
+  // scrollBehavior(to, from, savedPosition) {
+  //   if (savedPosition) {
+  //     return savedPosition
+  //   } else {
+  //     return {x: 0, y: 0}
+  //   }
+  // }
+  })

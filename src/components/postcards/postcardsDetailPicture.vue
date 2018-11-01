@@ -5,14 +5,16 @@
         <img :src="postcardPic.cardPic" width="100%"  alt="">
       </div>
       <div class="col-md-4 text-center comment">
-        <span class="btn glyphicon glyphicon-thumbs-up" style="font-size: 30px"></span>
-        <span v-if="flag"><span class="btn glyphicon glyphicon-heart-empty" style="font-size: 30px" @click="myLike" ></span>收藏</span>
-        <span v-else ><span class="btn glyphicon glyphicon-heart" style="font-size: 30px" @click="unLike" ></span>已收藏</span>
+        <span class="btn glyphicon glyphicon-thumbs-up" @click="myNum" style="font-size: 30px;"></span><span style="font-size:18px;padding-top: 30px;display: inline-block;" >{{likeNum}}</span>
+        <span v-if="flag"><span class="btn glyphicon glyphicon-heart-empty" style="font-size: 30px" @click="myCollection" ></span>收藏</span>
+        <span v-else ><span class="btn glyphicon glyphicon-heart" style="font-size: 30px" @click="unCollection" ></span>已收藏</span>
       </div>
     </div>
+    <!--发表评论-->
     <div>
       <postcards-comment @all-comment="updataComment"></postcards-comment>
     </div>
+    <!--全部评论-->
     <div class="row">
       <div class="allCommentTitle">
         <p>全部评论</p>
@@ -44,8 +46,8 @@
 <script>
   import postcardsComment from './postcardsComment'
     export default {
-        name: "postcardsDetailPicture",
-        data(){
+      name: "postcardsDetailPicture",
+      data(){
             return {
               cardId:this.$route.params.cardId,
               cardComment:{},
@@ -54,21 +56,27 @@
               flag:true,
               show:true,
               unshow:false,
-              n:3
+              n:3,
+              likeNum:1
             }
         },
-        components:{
+      components:{
            'postcards-comment':postcardsComment
         },
       watch:{
           "$route":"getDetail"
       },
-        created(){
+      created(){
           this.getDetail();
-
+          this.$ajax({
+            method:'get',
+            url:`${axios.defaults.baseURL}/postcards/collection/`+this.cardId
+          }).then((res)=>{
+            console.log("点赞数"+res.data.data.likeNum[0].cardLike)
+            this.likeNum=res.data.data.likeNum[0].cardLike;
+          })
       },
-
-        methods: {
+      methods: {
           //修改数据库取出的时间格式
           changeTime(date){
             date = new Date(date);
@@ -110,7 +118,7 @@
 
             })
           },
-          myLike(){
+          myCollection(){
             console.log(this.$store.state.userId)
             this.$ajax({
               method:'get',
@@ -120,7 +128,7 @@
               this.flag=false
             })
           },
-          unLike(){
+          unCollection(){
             console.log(this.$store.state.userId)
             this.$ajax({
               method:'get',
@@ -155,8 +163,23 @@
             this.n=3;
             this.show=true;
             this.unshow=false;
+          },
+          myNum(){
+            console.log('插入点赞数')
+            this.$ajax({
+              method:'get',
+              url:`${axios.defaults.baseURL}/postcards/like/`+this.cardId
+            }).then((res)=>{
+              this.$ajax({
+                method:'get',
+                url:`${axios.defaults.baseURL}/postcards/collection/`+this.cardId
+              }).then((res)=>{
+                console.log("新的点赞数："+res.data.data.likeNum[0].cardLike)
+                this.likeNum=res.data.data.likeNum[0].cardLike;
+              })
+            })
           }
-        }
+      }
     }
 </script>
 
