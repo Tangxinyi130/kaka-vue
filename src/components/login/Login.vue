@@ -4,15 +4,23 @@
             <div class="row body-nav">
                 <div class="col-sm-12 body-nav-con">登录</div>
             </div>
-            <div class="row body-con">
-                <div class="logo text-center"><p>拾.笺</p></div>
-                <div class="container col-sm-10 col-sm-offset-1 body-con-con">
-                    <div class="row body-con-con-row">
-                        <div class="col-sm-3 col-sm-offset-1 body-con-con-row-col1"><app-loginslogan></app-loginslogan></div>
-                        <div class="col-sm-4 col-sm-offset-4 body-con-con-row-col2"><app-loginlist></app-loginlist></div>
-                    </div>
-                </div>
+          <!--*************************************-->
+          <div class="row" style="">
+            <div class=" body-con col-sm-7" style="">
+              <div style="height:50px"></div>
+              <div class=" body-con-con-row-col1 col-sm-offset-3" style=""><app-loginslogan></app-loginslogan></div>
+              <div><img src="../../assets/deng.png" width="370px" height="370px;"style=""/></div>
             </div>
+          <!--<div class="col-sm-4"style="height: 530px;">-->
+            <!--<div style="height:90px"></div>-->
+            <!--<div class=" body-con-con-row-col1"><app-loginslogan></app-loginslogan></div>-->
+          <!--</div>-->
+          <div class=" body-con col-sm-5" style="">
+            <div style="height:50px"></div>
+            <div class="col-sm-10 el-col-sm-offset-1 body-con-con-row-col2"><app-loginlist></app-loginlist></div>
+          </div>
+          </div>
+          <!--*******************************-->
       </div>
     </div>
 </template>
@@ -30,11 +38,11 @@
 <style scoped>
   .con{
     width:100%;
-    height:590px;
+    /*height:590px;*/
     background-color:#ebf6df
   }
   .con-body{
-    height: 560px;
+    /*height: 560px;*/
     /*background-image: url("");*/
     background-color:#fafafa;
   }
@@ -51,11 +59,11 @@
     color: white
   }
   .body-con{
-    height:447px;
+    height:507px;
   }
   .body-con-con{
     /*margin-top:30px;*/
-    height:360px;
+    height:300px;
     /*background-color:#fafafa;*/
     /*opacity: 0.5;*/
     /*background-image: url("../../assets/p12.jpg");*/
@@ -67,9 +75,8 @@
 
   }
   .body-con-con-row-col1{
-    height:200px;
-    margin-top:50px;
-
+    height:100px;
+    margin-top:40px;
   }
   .body-con-con-row-col2{
     height:300px;

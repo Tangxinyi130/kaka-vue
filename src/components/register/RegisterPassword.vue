@@ -20,7 +20,7 @@
                             <span :Pwd2="Pwd2">{{tiShi5}}</span>
                           </div>
                           <div class="col-sm-10  col-sm-offset-1" style="margin-top: 20px;">
-                            <button type="button" class="btn bt btn-lg " style="width:130px;" @click="submit">
+                            <button type="button" class="btn bt   btn-lg " style="width:130px;" @click="submit">
                               <span style="color: white">保存密码</span>
                             </button>
                           </div>
@@ -119,6 +119,6 @@
   }
   span{color: red;}
   .bt{
-    background-color: #9e9e9e;
+    background-color: #BDD1C5;
   }
 </style>

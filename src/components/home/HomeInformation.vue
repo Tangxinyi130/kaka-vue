@@ -73,7 +73,7 @@
     max-width: 1140px;
     height: 45px;
     line-height: 45px;
-    background-color: #d5d5ab;
+    background-color: #c1a174;
     border-radius: 5px 5px 0px 0px;
   }
   .info-nav .info-text{

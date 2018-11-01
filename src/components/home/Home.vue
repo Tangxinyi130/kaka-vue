@@ -81,7 +81,7 @@
           "app-homepostcard": HomePostcard,
           "app-homeuser": HomeUser,
           "app-login":LoginList,
-          "app-homeactivity1":HomeActivity1
+          "app-homeactivity1":HomeActivity1,
         },
       computed: mapGetters([
         "isLogin",
