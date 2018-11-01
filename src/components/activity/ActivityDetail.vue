@@ -13,8 +13,12 @@
           </div>
         <div class="im">
             <img  :src="activityInfor.goodsPic" alt="">
-          </div>
+        </div>
+        <div>
+          <h1 style="text-align: center;"><span style="font-weight: bold;"></span>余丹荆最可爱啊哈哈哈</h1><p>&nbsp; &nbsp; &nbsp; 戏u国土有愈发以偷偷给与关于g</p><p>货币与个体开回回回</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img src="http://localhost:3000/eoim/2.png" alt="[哭笑]" data-w-e="1"></p><p>改好与会怀疑一九&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;v与国会hi哦囧</p><p>&nbsp; &nbsp; &nbsp; 并与还故意</p>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -72,12 +76,12 @@
     display: table;
   }
   .con{
-    height:540px;
+    /*height:540px;*/
     /*border: 1px solid red;*/
     background-color: #fafafa;
   }
   .con-con{
-    height: 440px;
+    /*height: 440px;*/
     /*border: 1px solid red;*/
     color: #5e5e5e;
   }

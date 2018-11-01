@@ -5,7 +5,7 @@
       <div class="ranking-info">
         <div class="ranking-title">
           <span class="ranking-index">排名</span>
-          <span class="ranking-user"></span>
+          <span class="ranking-user">用户</span>
           <span class="ranking-recever">总收件数</span>
         </div>
           <div v-for="item in rankingInfo" class="ranking-item">
@@ -69,7 +69,7 @@
     /*max-width: 360px;*/
     height: 45px;
     line-height: 45px;
-    background-color: #d5d5ab;
+    background-color: #c1a174;
     border-radius: 5px 5px 0px 0px;
   }
   .ranking-info{

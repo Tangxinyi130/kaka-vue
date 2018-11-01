@@ -19,7 +19,7 @@
       </div>
     </div>
     <div id="allComment">
-      <div class="row" v-for="content in cardComment">
+      <div class="row" v-for="(content,i) in cardComment" v-if="i<n">
         <div class="commentHead">
           <img :src="content.userHeadPic" alt="" class="headPic">
         </div>
@@ -27,12 +27,16 @@
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
           <div v-html="content.commentContent">
-            <p contenteditable="true" id="input_conta">
-              {{content.commentContent}}
-            </p>
+            <!--<p contenteditable="true" id="input_conta">-->
+              <!--{{content.commentContent}}-->
+            <!--</p>-->
           </div>
         </div>
       </div>
+      <div v-if="cardComment.length==0" class="text-center comment-text" >暂无评论</div>
+      <div v-else-if="cardComment.length<=n"></div>
+      <div @click="onload" v-else-if="show" class="lot text-center comment-text1" ><span class="glyphicon glyphicon-refresh"></span>加载更多</div>
+      <div @click="hidden" v-if="unshow" class="unlot text-center comment-text1" ><span class="glyphicon glyphicon-menu-up"></span>收起</div>
     </div>
   </div>
 </template>
@@ -47,7 +51,10 @@
               cardComment:{},
               postcardPic:{},
               userComment:{},
-              flag:true
+              flag:true,
+              show:true,
+              unshow:false,
+              n:3
             }
         },
         components:{
@@ -58,7 +65,9 @@
       },
         created(){
           this.getDetail();
+
       },
+
         methods: {
           //修改数据库取出的时间格式
           changeTime(date){
@@ -128,6 +137,24 @@
             }
             this.cardComment=data;
 
+          },
+          onload(){
+            if(this.n<this.cardComment.length){
+              if(this.n+3>=this.cardComment.length){
+                this.n+=3;
+                this.show=false;
+                this.unshow=true;
+              }else{
+                this.n+=3;
+              }
+            }else{
+              this.show=false
+            }
+          },
+          hidden(){
+            this.n=3;
+            this.show=true;
+            this.unshow=false;
           }
         }
     }
@@ -174,4 +201,16 @@
     border-radius: 85px;
     border: 1px solid #797979;
   }
+  .btn{
+    box-shadow:none;
+  }
+  .comment-text{
+    padding-bottom: 10px;
+    color:#cccccc;
+    cursor: pointer;
+  }
+.comment-text1{
+  padding-bottom: 10px;
+  cursor: pointer;
+}
 </style>

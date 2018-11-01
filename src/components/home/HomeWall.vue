@@ -14,10 +14,9 @@
                   <span class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
                   {{item.cardLike}}
                 </span>
-                <a :href="'/postcards/' + item.cardId"><span class="text-cardid">{{item.cardId}}</span></a>
-                <a href="">
-                  <span class="collSty" @click="collectionAdd(item.cardId)">收藏</span>
-                </a>
+                <a :href="'/postcards/' + item.cardId"><span class="text-cardid">{{item.cardId}}{{item.flag}}</span></a>
+                  <span v-if="item.flag"><span class="collSty btn glyphicon glyphicon-heart-empty"  @click="myLike(item.cardId,index)"></span>收藏</span>
+                  <span v-else><span class="collSty btn glyphicon glyphicon-heart" @click="unLike(item.cardId,index)"></span>已收藏</span>
               </div>
             </div>
           </div>
@@ -28,15 +27,24 @@
 </template>
 
 <script>
+  import VueStar from 'vue-star'
     export default {
         name: "HomeWall",
+      components:{
+        VueStar,
+
+      },
       data(){
         return {
           recentPic:{},
           likeNum:{},
+          flag:true,
         }
       },
       methods:{
+        handleClick(){
+
+        },
         // cunlikeNum(){
         //   for(let i in this.recentPic ){
         //     (this.likeNum)[i].cardId= (this.recentPic)[i].cardId;
@@ -49,9 +57,10 @@
           }
         },
         addLike(cardId){
+          var _this =this;
           this.$ajax.get(`${axios.defaults.baseURL}/postcards/like/${cardId}`)
             .then(function (result) {
-              this.getRecentCard();
+              _this.getRecentCard();
             },function (err) {
               console.log(err);
             });
@@ -67,12 +76,16 @@
         //     console.log(`like+1`);
         //   }
         // },
-        unStar(index,cardId){
-          this.recentPic[index].active =false;
-          this.recentPic[index].starCount -=1;
-        },
-        dislike(cardId){
-
+        // unStar(index,cardId){
+        //   this.recentPic[index].active =true;
+        //   this.recentPic[index].starCount -=1;
+        // },
+        // dislike(cardId){
+        //
+        // },
+        getCollection(){
+          let _this =this;
+          this.$ajax.get(``)
         },
         getRecentCard(){
           let _this = this;
@@ -85,13 +98,35 @@
               (_this.recentPic)[i].starCount = 0;
               (_this.recentPic)[i].starCount = (_this.recentPic)[i].cardLike;
             }
+            console.log(_this.recentPic);
             // _this.cunlikeNum();
           },function (err) {
             console.log(err);
           })
-        }
+        },
+        myLike(cardId,index) {
+          console.log(this.$store.state.userId)
+          this.$ajax({
+            method: 'get',
+            url: `${axios.defaults.baseURL}/postcards/collect/${cardId}/${this.$store.state.userId}`
+          }).then((res) => {
+            console.log("收藏")
+            this.recentPic[index].flag = false;
+            console.log(this.recentPic[index].flag);
+          })
+        },
+        unLike(cardId,index){
+          console.log(this.$store.state.userId);
+          this.$ajax({
+            method:'get',
+            url:`${axios.defaults.baseURL}/postcards/uncollect/${cardId}/${this.$store.state.userId}`
+          }).then((res)=>{
+            console.log("不收藏")
+            this.recentPic[index].flag=true;
+          })
+        },
       },
-      mounted(){
+      created(){
         this.getRecentCard();
 
       },
@@ -112,7 +147,7 @@
     max-width: 1140px;
     height: 45px;
     line-height: 45px;
-    background-color: #C1A174;
+    background-color: #528970;
     border-radius: 5px 5px 0px 0px;
     position: relative;
   }
@@ -131,6 +166,9 @@
   .like-star{
     cursor: pointer;
     color: #ccc;
+  }
+  .caption .collSty:hover{
+    cursor: pointer;
   }
   @media  screen and (max-width: 483px) {
     .cardPic{
@@ -162,6 +200,9 @@
       font-size: 16px;
       position: absolute;
       right: 5%;
+    }
+    .caption .collSty:hover{
+     cursor: pointer;
     }
 
   }

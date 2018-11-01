@@ -8,11 +8,15 @@
                  :style="{backgroundImage:`url(${anhui.prov})`,zIndex:anhui.show}"></div>
             <!--<a style=" position:absolute; top:355px; left:555px; z-index:10;" href="#">安徽</a>-->
           </div>
+
+
           <div class="city">
             <div class="citybg" style="top:9px; left:296px; width:318px; height:272px; display:block;"
                  :style="{backgroundImage:`url(${neimeng.prov})`,zIndex:neimeng.show}"></div>
             <!--<a style="position:absolute; top:211px; left:424px; z-index:10;" href="#">内蒙</a>-->
           </div>
+
+
           <div class="city">
             <div class="citybg" style="top:1px; left:550px; width:165px; height:151px; display:block;"
                  :style="{backgroundImage:`url(${heilongjiang.prov})`,zIndex:heilongjiang.show}"></div>
@@ -103,16 +107,12 @@
                  :style="{backgroundImage:`url(${shandong.prov})`,zIndex:shandong.show}"></div>
             <!--<a style="position:absolute;top:281px; left:540px; z-index:10;" href="index.html">山东</a>-->
           </div>
+
           <div class="city">
             <div class="citybg" style="top:305px; left:539px; width:93px; height:72px; display: block"
                  :style="{backgroundImage:`url(${jiangsu.prov})`,zIndex:jiangsu.show}"></div>
             <!--<a style="position:absolute;top:321px; left:570px; z-index:10;" href="index.html">江苏</a>-->
           </div>
-          <!--<div class="city">-->
-          <!--<div class="citybg" style="top:556px; left:442px; width:89px; height:88px; display: block"-->
-          <!--:style="{backgroundImage:`url(${hainan.prov})`,zIndex:hainan.show}"></div>-->
-          <!--&lt;!&ndash;<a style="position:absolute;top:565px; left:450px; z-index:10;" href="index.html">海南</a>&ndash;&gt;-->
-          <!--</div>-->
 
           <div class="city">
             <div class="citybg" style="top:556px; left:442px; width:43px; height:39px; display: block"
@@ -209,6 +209,144 @@
   import zhejiang from '../../assets/images/map/zhejiang.png'
   import jiangxi from '../../assets/images/map/jiangxi.png'
   import chongqing from '../../assets/images/map/chongqing.png'
+
+
+  // import anhui1 from "../../assets/images/map1/anhui1.png"
+  // import neimeng1 from '../../assets/images/map1/neimeng1.png'
+  // import heilongjiang1 from '../../assets/images/map1/heilongjiang1.png'
+  // import xinjiang1 from '../../assets/images/map1/xinjiang1.png'
+  // import xizang1 from '../../assets/images/map1/xizang1.png'
+  // import qinghai1 from '../../assets/images/map1/qinghai1.png'
+  // import gansu1 from '../../assets/images/map1/gansu1.png'
+  // import ningxia1 from '../../assets/images/map1/ningxia1.png'
+  // import shanghai1 from '../../assets/images/map1/shanghai1.png'
+  // import liaoning1 from '../../assets/images/map1/liaoning1.png'
+  // import guangdong1 from '../../assets/images/map1/guangdong1.png'
+  // import guangxi1 from '../../assets/images/map1/guangxi1.png'
+  // import henan1 from '../../assets/images/map1/henan1.png'
+  // import shanxi1 from '../../assets/images/map1/shanxi1.png'
+  // import shanxi21 from '../../assets/images/map1/shanxi21.png'
+  // import hebei1 from '../../assets/images/map1/hebei1.png'
+  // import jilin1 from '../../assets/images/map1/jilin1.png'
+  // import beijing1 from '../../assets/images/map1/beijing1.png'
+  // import tianjin1 from '../../assets/images/map1/tianjin1.png'
+  // import shandong1 from '../../assets/images/map1/shandong1.png'
+  // import jiangsu1 from '../../assets/images/map1/jiangsu1.png'
+  // import hainan1 from '../../assets/images/map1/hainan1.png'
+  // import hubei1 from '../../assets/images/map1/hubei1.png'
+  // import yunnan1 from '../../assets/images/map1/yunnan1.png'
+  // import sichuan1 from '../../assets/images/map1/sichuan1.png'
+  // import guizhou1 from '../../assets/images/map1/guizhou1.png'
+  // import taiwan1 from '../../assets/images/map1/taiwan1.png'
+  // import fujian1 from '../../assets/images/map1/fujian1.png'
+  // import hunan1 from '../../assets/images/map1/hunan1.png'
+  // import zhejiang1 from '../../assets/images/map1/zhejiang1.png'
+  // import jiangxi1 from '../../assets/images/map1/jiangxi1.png'
+  // import chongqing1 from '../../assets/images/map1/chongqing1.png'
+  //
+  //
+  // import anhui2 from '../../assets/images/map2/anhui2.png'
+  // import neimeng2 from '../../assets/images/map2/neimeng2.png'
+  // import heilongjiang2 from '../../assets/images/map2/heilongjiang2.png'
+  // import xinjiang2 from '../../assets/images/map2/xinjiang2.png'
+  // import xizang2 from '../../assets/images/map2/xizang2.png'
+  // import qinghai2 from '../../assets/images/map2/qinghai2.png'
+  // import gansu2 from '../../assets/images/map2/gansu2.png'
+  // import ningxia2 from '../../assets/images/map2/ningxia2.png'
+  // import shanghai2 from '../../assets/images/map2/shanghai2.png'
+  // import liaoning2 from '../../assets/images/map2/liaoning2.png'
+  // import guangdong2 from '../../assets/images/map2/guangdong2.png'
+  // import guangxi2 from '../../assets/images/map2/guangxi2.png'
+  // import henan2 from '../../assets/images/map2/henan2.png'
+  // import shanxi2 from '../../assets/images/map2/shanxi2.png'
+  // import shanxi22 from '../../assets/images/map2/shanxi22.png'
+  // import hebei2 from '../../assets/images/map2/hebei2.png'
+  // import jilin2 from '../../assets/images/map2/jilin2.png'
+  // import beijing2 from '../../assets/images/map2/beijing2.png'
+  // import tianjin2 from '../../assets/images/map2/tianjin2.png'
+  // import shandong2 from '../../assets/images/map2/shandong2.png'
+  // import jiangsu2 from '../../assets/images/map2/jiangsu2.png'
+  // import hainan2 from '../../assets/images/map2/hainan2.png'
+  // import hubei2 from '../../assets/images/map2/hubei2.png'
+  // import yunnan2 from '../../assets/images/map2/yunnan2.png'
+  // import sichuan2 from '../../assets/images/map2/sichuan2.png'
+  // import guizhou2 from '../../assets/images/map2/guizhou2.png'
+  // import taiwan2 from '../../assets/images/map2/taiwan2.png'
+  // import fujian2 from '../../assets/images/map2/fujian2.png'
+  // import hunan2 from '../../assets/images/map2/hunan2.png'
+  // import zhejiang2 from '../../assets/images/map2/zhejiang2.png'
+  // import jiangxi2 from '../../assets/images/map2/jiangxi2.png'
+  // import chongqing2 from '../../assets/images/map2/chongqing2.png'
+  //
+  //
+  // import anhui3 from '../../assets/images/map3/anhui3.png'
+  // import neimeng3 from '../../assets/images/map3/neimeng3.png'
+  // import heilongjiang3 from '../../assets/images/map3/heilongjiang3.png'
+  // import xinjiang3 from '../../assets/images/map3/xinjiang3.png'
+  // import xizang3 from '../../assets/images/map3/xizang3.png'
+  // import qinghai3 from '../../assets/images/map3/qinghai3.png'
+  // import gansu3 from '../../assets/images/map3/gansu3.png'
+  // import ningxia3 from '../../assets/images/map3/ningxia3.png'
+  // import shanghai3 from '../../assets/images/map3/shanghai3.png'
+  // import liaoning3 from '../../assets/images/map3/liaoning3.png'
+  // import guangdong3 from '../../assets/images/map3/guangdong3.png'
+  // import guangxi3 from '../../assets/images/map3/guangxi3.png'
+  // import henan3 from '../../assets/images/map3/henan3.png'
+  // import shanxi3 from '../../assets/images/map3/shanxi3.png'
+  // import shanxi23 from '../../assets/images/map3/shanxi23.png'
+  // import hebei3 from '../../assets/images/map3/hebei3.png'
+  // import jilin3 from '../../assets/images/map3/jilin3.png'
+  // import beijing3 from '../../assets/images/map3/beijing3.png'
+  // import tianjin3 from '../../assets/images/map3/tianjin3.png'
+  // import shandong3 from '../../assets/images/map3/shandong3.png'
+  // import jiangsu3 from '../../assets/images/map3/jiangsu3.png'
+  // import hainan3 from '../../assets/images/map3/hainan3.png'
+  // import hubei3 from '../../assets/images/map3/hubei3.png'
+  // import yunnan3 from '../../assets/images/map3/yunnan3.png'
+  // import sichuan3 from '../../assets/images/map3/sichuan3.png'
+  // import guizhou3 from '../../assets/images/map3/guizhou3.png'
+  // import taiwan3 from '../../assets/images/map3/taiwan3.png'
+  // import fujian3 from '../../assets/images/map3/fujian3.png'
+  // import hunan3 from '../../assets/images/map3/hunan3.png'
+  // import zhejiang3 from '../../assets/images/map3/zhejiang3.png'
+  // import jiangxi3 from '../../assets/images/map3/jiangxi3.png'
+  // import chongqing3 from '../../assets/images/map3/chongqing3.png'
+  //
+  // import anhui4 from '../../assets/images/map4/anhui4.png'
+  // import neimeng4 from '../../assets/images/map4/neimeng4.png'
+  // import heilongjiang4 from '../../assets/images/map4/heilongjiang4.png'
+  // import xinjiang4 from '../../assets/images/map4/xinjiang4.png'
+  // import xizang4 from '../../assets/images/map4/xizang4.png'
+  // import qinghai4 from '../../assets/images/map4/qinghai4.png'
+  // import gansu4 from '../../assets/images/map4/gansu4.png'
+  // import ningxia4 from '../../assets/images/map4/ningxia4.png'
+  // import shanghai4 from '../../assets/images/map4/shanghai4.png'
+  // import liaoning4 from '../../assets/images/map4/liaoning4.png'
+  // import guangdong4 from '../../assets/images/map4/guangdong4.png'
+  // import guangxi4 from '../../assets/images/map4/guangxi4.png'
+  // import henan4 from '../../assets/images/map4/henan4.png'
+  // import shanxi4 from '../../assets/images/map4/shanxi4.png'
+  // import shanxi24 from '../../assets/images/map4/shanxi24.png'
+  // import hebei4 from '../../assets/images/map4/hebei4.png'
+  // import jilin4 from '../../assets/images/map4/jilin4.png'
+  // import beijing4 from '../../assets/images/map4/beijing4.png'
+  // import tianjin4 from '../../assets/images/map4/tianjin4.png'
+  // import shandong4 from '../../assets/images/map4/shandong4.png'
+  // import jiangsu4 from '../../assets/images/map4/jiangsu4.png'
+  // import hainan4 from '../../assets/images/map4/hainan4.png'
+  // import hubei4 from '../../assets/images/map4/hubei4.png'
+  // import yunnan4 from '../../assets/images/map4/yunnan4.png'
+  // import sichuan4 from '../../assets/images/map4/sichuan4.png'
+  // import guizhou4 from '../../assets/images/map4/guizhou4.png'
+  // import taiwan4 from '../../assets/images/map4/taiwan4.png'
+  // import fujian4 from '../../assets/images/map4/fujian4.png'
+  // import hunan4 from '../../assets/images/map4/hunan4.png'
+  // import zhejiang4 from '../../assets/images/map4/zhejiang4.png'
+  // import jiangxi4 from '../../assets/images/map4/jiangxi4.png'
+  // import chongqing4 from '../../assets/images/map4/chongqing4.png'
+
+
+
     export default {
         name: "UserMapCollection",
       data(){
@@ -244,7 +382,144 @@
           hunan: {prov:hunan, show:-1},
           zhejiang: {prov:zhejiang, show:-1},
           jiangxi: {prov:jiangxi, show:-1},
-          chongqing: {prov:chongqing, show:-1}
+          chongqing: {prov:chongqing, show:-1},
+
+
+          // anhui1:{prov:anhui1, show:-1},  //show为1表示显示
+          // neimeng1:{prov:neimeng1, show:-1},//show为-1表示隐藏
+          // heilongjiang1: {prov:heilongjiang1, show:-1},
+          // xinjiang1: {prov:xinjiang1, show:-1},
+          // xizang1: {prov:xizang1, show:-1},
+          // qinghai1: {prov:qinghai1, show:-1},
+          // gansu1: {prov:gansu1, show:-1},
+          // ningxia1: {prov:ningxia1, show:-1},
+          // shanghai1: {prov:shanghai1, show:-1},
+          // liaoning1: {prov:liaoning1, show:-1},
+          // guangdong1: {prov:guangdong1, show:-1},
+          // guangxi1: {prov:guangxi1, show:-1},
+          // henan1: {prov:henan1, show:-1},
+          // shanxi1: {prov:shanxi1, show:-1},  //陕西
+          // shanxi21: {prov:shanxi21, show:-1}, //山西
+          // hebei1: {prov:hebei1, show:-1},
+          // jilin1: {prov:jilin1, show:-1},
+          // beijing1: {prov:beijing1, show:-1},
+          // tianjin1: {prov:tianjin1, show:-1},
+          // shandong1: {prov:shandong1, show:-1},
+          // jiangsu1: {prov:jiangsu1, show:-1},
+          // hainan1: {prov:hainan1, show:-1},
+          // hubei1: {prov:hubei1, show:-1},
+          // yunnan1: {prov:yunnan1, show:-1},
+          // sichuan1: {prov:sichuan1, show:-1},
+          // guizhou1: {prov:guizhou1, show:-1},
+          // taiwan1: {prov:taiwan1, show:-1},
+          // fujian1: {prov:fujian1, show:-1},
+          // hunan1: {prov:hunan1, show:-1},
+          // zhejiang1: {prov:zhejiang1, show:-1},
+          // jiangxi1: {prov:jiangxi1, show:-1},
+          // chongqing1: {prov:chongqing1, show:-1},
+          //
+          //
+          // anhui2:{prov:anhui2, show:-1},  //show为1表示显示
+          // neimeng2:{prov:neimeng2, show:-1},//show为-1表示隐藏
+          // heilongjiang2: {prov:heilongjiang2, show:-1},
+          // xinjiang2: {prov:xinjiang2, show:-1},
+          // xizang2: {prov:xizang2, show:-1},
+          // qinghai2: {prov:qinghai2, show:-1},
+          // gansu2: {prov:gansu2, show:-1},
+          // ningxia2: {prov:ningxia2, show:-1},
+          // shanghai2: {prov:shanghai2, show:-1},
+          // liaoning2: {prov:liaoning2, show:-1},
+          // guangdong2: {prov:guangdong2, show:-1},
+          // guangxi2: {prov:guangxi2, show:-1},
+          // henan2: {prov:henan2, show:-1},
+          // shanxi2: {prov:shanxi2, show:-1},  //陕西
+          // shanxi22: {prov:shanxi22, show:-1}, //山西
+          // hebei2: {prov:hebei2, show:-1},
+          // jilin2: {prov:jilin2, show:-1},
+          // beijing2: {prov:beijing2, show:-1},
+          // tianjin2: {prov:tianjin2, show:-1},
+          // shandong2: {prov:shandong2, show:-1},
+          // jiangsu2: {prov:jiangsu2, show:-1},
+          // hainan2: {prov:hainan2, show:-1},
+          // hubei2: {prov:hubei2, show:-1},
+          // yunnan2: {prov:yunnan2, show:-1},
+          // sichuan2: {prov:sichuan2, show:-1},
+          // guizhou2: {prov:guizhou2, show:-1},
+          // taiwan2: {prov:taiwan2, show:-1},
+          // fujian2: {prov:fujian2, show:-1},
+          // hunan2: {prov:hunan2, show:-1},
+          // zhejiang2: {prov:zhejiang2, show:-1},
+          // jiangxi2: {prov:jiangxi2, show:-1},
+          // chongqing2: {prov:chongqing2, show:-1},
+          //
+          // anhui3:{prov:anhui3, show:-1},  //show为1表示显示
+          // neimeng3:{prov:neimeng3, show:-1},//show为-1表示隐藏
+          // heilongjiang3: {prov:heilongjiang3, show:-1},
+          // xinjiang3: {prov:xinjiang3, show:-1},
+          // xizang3: {prov:xizang3, show:-1},
+          // qinghai3: {prov:qinghai3, show:-1},
+          // gansu3: {prov:gansu3, show:-1},
+          // ningxia3: {prov:ningxia3, show:-1},
+          // shanghai3: {prov:shanghai3, show:-1},
+          // liaoning3: {prov:liaoning3, show:-1},
+          // guangdong3: {prov:guangdong3, show:-1},
+          // guangxi3: {prov:guangxi3, show:-1},
+          // henan3: {prov:henan3, show:-1},
+          // shanxi3: {prov:shanxi3, show:-1},  //陕西
+          // shanxi23: {prov:shanxi23, show:-1}, //山西
+          // hebei3: {prov:hebei3, show:-1},
+          // jilin3: {prov:jilin3, show:-1},
+          // beijing3: {prov:beijing3, show:-1},
+          // tianjin3: {prov:tianjin3, show:-1},
+          // shandong3: {prov:shandong3, show:-1},
+          // jiangsu3: {prov:jiangsu3, show:-1},
+          // hainan3: {prov:hainan3, show:-1},
+          // hubei3: {prov:hubei3, show:-1},
+          // yunnan3: {prov:yunnan3, show:-1},
+          // sichuan3: {prov:sichuan3, show:-1},
+          // guizhou3: {prov:guizhou3, show:-1},
+          // taiwan3: {prov:taiwan3, show:-1},
+          // fujian3: {prov:fujian3, show:-1},
+          // hunan3: {prov:hunan3, show:-1},
+          // zhejiang3: {prov:zhejiang3, show:-1},
+          // jiangxi3: {prov:jiangxi3, show:-1},
+          // chongqing3: {prov:chongqing3, show:-1},
+          //
+          //
+          // anhui4:{prov:anhui4, show:-1},  //show为1表示显示
+          // neimeng4:{prov:neimeng4, show:-1},//show为-1表示隐藏
+          // heilongjiang4: {prov:heilongjiang4, show:-1},
+          // xinjiang4: {prov:xinjiang4, show:-1},
+          // xizang4: {prov:xizang4, show:-1},
+          // qinghai4: {prov:qinghai4, show:-1},
+          // gansu4: {prov:gansu4, show:-1},
+          // ningxia4: {prov:ningxia4, show:-1},
+          // shanghai4: {prov:shanghai4, show:-1},
+          // liaoning4: {prov:liaoning4, show:-1},
+          // guangdong4: {prov:guangdong4, show:-1},
+          // guangxi4: {prov:guangxi4, show:-1},
+          // henan4: {prov:henan4, show:-1},
+          // shanxi4: {prov:shanxi4, show:-1},  //陕西
+          // shanxi24: {prov:shanxi24, show:-1}, //山西
+          // hebei4: {prov:hebei4, show:-1},
+          // jilin4: {prov:jilin4, show:-1},
+          // beijing4: {prov:beijing4, show:-1},
+          // tianjin4: {prov:tianjin4, show:-1},
+          // shandong4: {prov:shandong4, show:-1},
+          // jiangsu4: {prov:jiangsu4, show:-1},
+          // hainan4: {prov:hainan4, show:-1},
+          // hubei4: {prov:hubei4, show:-1},
+          // yunnan4: {prov:yunnan4, show:-1},
+          // sichuan4: {prov:sichuan4, show:-1},
+          // guizhou4: {prov:guizhou4, show:-1},
+          // taiwan4: {prov:taiwan4, show:-1},
+          // fujian4: {prov:fujian4, show:-1},
+          // hunan4: {prov:hunan4, show:-1},
+          // zhejiang4: {prov:zhejiang4, show:-1},
+          // jiangxi4: {prov:jiangxi4, show:-1},
+          // chongqing4: {prov:chongqing4, show:-1},
+
+
         }
       },
       methods:{
