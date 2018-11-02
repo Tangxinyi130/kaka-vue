@@ -10,7 +10,7 @@
               <!--活动图片-->
               <div class="img_box col-md-4">
                 <a href="">
-                  <img width="100%" style="min-height:162px" :src='data.activityImg'>
+                  <img width="100%" style="min-height:162px" :src='data.activityImage'>
                 </a>
               </div>
               <!--活动介绍-->
@@ -22,7 +22,7 @@
                   </a>
                 </h3>
                 </router-link>
-                <p style="height: 100px;color:#515151;text-overflow: ellipsis;overflow: hidden;">{{data.activityDetails}}</p>
+                <p class="p_detail">{{data.activityDetails}}</p>
                 <div class="iconCon">
 							    <span class="iconfont glyphicon glyphicon-time" style="color: #cccccc"></span>
                   <span style="color: #cccccc">{{data.activityStartDate}}</span>
@@ -59,7 +59,7 @@
             return {
               activityData:{},
               pageIndex: 1,
-              pagesize: 2,
+              pagesize: 3,
               pageCount:0,
               myActData:[],
               activitys:[]
@@ -79,7 +79,7 @@
       methods:{
         activityPic(data){
           for(let i in data){
-            data[i].activityImg = `${axios.defaults.baseURL}${data[i].activityImg}`
+            data[i].activityImage = `${axios.defaults.baseURL}${data[i].activityImage}`
             data[i].activityStartDate=this.changeTime(data[i].activityStartDate)
             data[i].activityDetails=data[i].activityDetails.replace(/<[^<>]+>/gi,"")
           }
@@ -183,14 +183,24 @@
     margin: 12px -20px;
  }
 
-.cont-list>li{
-  padding: 0;
-}
-.intro{
-  /*margin-left: -10px;*/
-}
-.activityPage{
-  padding-bottom: 10px;
-}
-
+  .cont-list>li{
+    padding: 0;
+  }
+  .intro{
+    margin-left: -15px;
+  }
+  .activityPage{
+    padding:10px 0;
+    /*padding-bottom: 10px;*/
+  }
+  .p_detail{
+    overflow:hidden;
+    display:-webkit-box;
+    text-overflow:ellipsis;
+    white-space:normal;
+    max-height: 100px;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    color:#5e5e5e;
+  }
 </style>
