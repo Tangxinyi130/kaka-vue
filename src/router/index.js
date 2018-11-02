@@ -65,7 +65,7 @@ Vue.prototype.$ajax = axios
 Vue.use(Router)
 
 export default new Router({
-  linkExactActiveClass:'set',
+  // linkExactActiveClass:'set',
   mode: "history",
   routes: [  {path: '/', name: 'Home', component: Home},
 

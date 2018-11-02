@@ -52,7 +52,7 @@
                 <div class="detaile">
                   <div class="col-sm-3">粉丝:{{receiveFans}}</div>
                   <div class="col-sm-2">关注:{{receiveAttion}}</div>
-                  <div class="col-sm-4">地区:{{userProvince}}&nbsp;&nbsp;{{userCity}}</div>
+                  <div class="col-sm-5">地区:{{userProvince}}&nbsp;&nbsp;{{userCity}}</div>
                   <div class="col-sm-12">邮箱:{{userEmail}}</div>
                   <div class="col-sm-12">明信片ID:{{cardId}}</div>
                 </div>
