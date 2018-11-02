@@ -2,7 +2,7 @@
     <div>
       <div class="row">
         <!--<div class="top">详情</div>-->
-        <div class="top">明信片ID：{{cardId}}</div>
+        <div class="top" id="top">明信片ID：{{cardId}}</div>
       </div>
       <div class="row twoPeople" >
         <div class="col-xs-12 col-md-6 ">
@@ -115,9 +115,10 @@
               <div id="container"
                    style="position: absolute;
                     width: 540px;
-                    height: 360px;
+                    height: 320px;
                     border: 1px solid #ccc;
-                    overflow:hidden;">
+                    overflow:hidden;
+              ">
               </div>
             </div>
         </div>
@@ -158,6 +159,7 @@
           }
         },
         created(){
+          document.documentElement.scrollTop = document.body.scrollTop = 0;
           let _this = this;
           this.$ajax({
             method:'get',
@@ -386,7 +388,7 @@
   #introduction {
     width: 90%;
     height: 150px;
-    margin-top:150px;
+    margin-top:170px;
     margin-left:20px;
     border: 4px dashed #bdd1ff;
     text-align: center;

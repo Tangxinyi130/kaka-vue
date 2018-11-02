@@ -17,8 +17,12 @@
       "app-header": Header,
       "app-footer":Footer,
     },
-    // isLogin,
-    // userId,
+    created() {
+      let loading = document.getElementById("Loading");
+      if (loading != null) {
+        document.body.removeChild(loading);
+      }
+    }
   }
 </script>
 
