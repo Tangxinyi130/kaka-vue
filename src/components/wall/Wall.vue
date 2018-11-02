@@ -15,6 +15,12 @@
       components:{
         'my-search':mysearch,
         'wall-newpicture':WallNewPicture
+      },
+      created() {
+        let loading = document.getElementById("Loading");
+        if (loading != null) {
+          document.body.removeChild(loading);
+        }
       }
     }
 </script>

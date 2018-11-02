@@ -41,7 +41,15 @@ import UserMap from "@/components/user/UserMap.vue"
 import UserPic from "@/components/user/UserPic.vue"
 import UserMyActivity from "@/components/user/UserMyactivity.vue"
 import UserSearchcard from "@/components/user/UserSearchcard.vue"
+
+//用户设置
 import UserSet from "@/components/user/UserSet.vue"
+import UserSetNew from "@/components/user/UserSetNew.vue"
+import UserSetInfo from "@/components/user/UserSetInfo.vue"
+import UserSetPwd from "@/components/user/UserSetPwd.vue"
+import UserSetHeadpic from "@/components/user/UserSetHeadpic.vue"
+
+
 import UserAttention from "@/components/user/UserAttention.vue"
 import UserAttentionOthers from "@/components/user/UserAttentionOthers.vue"
 import UserAttentionFans from "@/components/user/UserAttentionFans.vue"
@@ -119,7 +127,17 @@ export default new Router({
     },
     {path: "/myactivity", component: UserMyActivity},
     {path: "/searchcard", component: UserSearchcard},
-    {path: "/userset", component: UserSet},
+
+    //用户设置
+    // {path: "/userset", component: UserSet},
+    {path: "/userset", component: UserSetNew, children: [
+        {path: "info", component: UserSetInfo},
+        {path: "pwd", component: UserSetPwd},
+        // {path: "headpic", component: UserSetHeadpic}
+      ]
+    },
+
+
     {path: "/attention/:id", component: UserAttention, children: [
         {path: "att", component: UserAttentionOthers},
         {path: "fan", component: UserAttentionFans},

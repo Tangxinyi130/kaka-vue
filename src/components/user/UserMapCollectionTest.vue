@@ -914,40 +914,6 @@
     name: "UserMapCollectionTest",
     data(){
       return {
-        // anhui:{prov:anhui, show:-1},  //show为1表示显示
-        // neimeng:{prov:neimeng, show:-1},//show为-1表示隐藏
-        // heilongjiang: {prov:heilongjiang, show:-1},
-        // xinjiang: {prov:xinjiang, show:-1},
-        // xizang: {prov:xizang, show:-1},
-        // qinghai: {prov:qinghai, show:-1},
-        // gansu: {prov:gansu, show:-1},
-        // ningxia: {prov:ningxia, show:-1},
-        // shanghai: {prov:shanghai, show:-1},
-        // liaoning: {prov:liaoning, show:-1},
-        // guangdong: {prov:guangdong, show:-1},
-        // guangxi: {prov:guangxi, show:-1},
-        // henan: {prov:henan, show:-1},
-        // shanxi: {prov:shanxi, show:-1},  //陕西
-        // shanxi2: {prov:shanxi2, show:-1}, //山西
-        // hebei: {prov:hebei, show:-1},
-        // jilin: {prov:jilin, show:-1},
-        // beijing: {prov:beijing, show:-1},
-        // tianjin: {prov:tianjin, show:-1},
-        // shandong: {prov:shandong, show:-1},
-        // jiangsu: {prov:jiangsu, show:-1},
-        // hainan: {prov:hainan, show:-1},
-        // hubei: {prov:hubei, show:-1},
-        // yunnan: {prov:yunnan, show:-1},
-        // sichuan: {prov:sichuan, show:-1},
-        // guizhou: {prov:guizhou, show:-1},
-        // taiwan: {prov:taiwan, show:-1},
-        // fujian: {prov:fujian, show:-1},
-        // hunan: {prov:hunan, show:-1},
-        // zhejiang: {prov:zhejiang, show:-1},
-        // jiangxi: {prov:jiangxi, show:-1},
-        // chongqing: {prov:chongqing, show:-1},
-
-
         anhui1:{prov:anhui1, show:-1},  //show为1表示显示
         neimeng1:{prov:neimeng1, show:-1},//show为-1表示隐藏
         heilongjiang1: {prov:heilongjiang1, show:-1},
@@ -1081,8 +1047,6 @@
         zhejiang4: {prov:zhejiang4, show:-1},
         jiangxi4: {prov:jiangxi4, show:-1},
         chongqing4: {prov:chongqing4, show:-1},
-
-
       }
     },
     methods:{

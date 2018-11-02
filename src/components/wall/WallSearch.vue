@@ -12,13 +12,13 @@
       <div class="col-xs-2 col-md-3 ">
           <div class="input-group wallSearch-a">
             <div class="inputCity col-xs-7 col-md-9">
-              <input type="text" class="form-control" @keyup="mysearch" placeholder="输入搜索省..." v-model="inputVal">
+              <input type="text" class="form-control" @keyup="mysearch" @keydown.13="toSearch" placeholder="输入搜索省..." v-model="inputVal">
               <ul v-if="searchResult" id="show">
                 <li v-for="index in result" class="cityName" :value="index" @click="choice_city($event)">{{index}}</li>
               </ul>
             </div>
             <div class="col-xs-4 col-md-3">
-              <span class="glyphicon glyphicon-search"></span>
+              <span class="glyphicon glyphicon-search" @click="toSearch"></span>
             </div>
           </div>
 
@@ -80,7 +80,11 @@
          console.log(e.target.innerHTML)
           this.inputVal=e.target.innerHTML
           this.searchResult=false
-          this.$router.replace({path:'/wall/search/'+this.inputVal})
+          // this.$router.replace({path:'/wall/search/'+this.inputVal})
+          window.location.href="/wall/search/"+this.inputVal
+        },
+        toSearch(){
+          window.location.href="/wall/search/"+this.inputVal
         }
       },
 

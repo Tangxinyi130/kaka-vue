@@ -4,15 +4,16 @@
     <div class="leftc col-md-8">
     <div class="row">
       <div class="contList">
-        <ul class="cont-list">
-
-          <li class="am-gallery-item" v-for="data in myActData1">
+        <div class="cont-list">
+          <div class="am-gallery-item" v-for="data in myActData1">
             <div style="min-height: 210px;border-bottom: 1px solid #797979;padding-left: 25px;padding-top: 12px;margin-left: 25px;">
+              <!--活动图片-->
               <div class="img_box col-md-4">
                 <a href="">
-                  <img width="100%" style="min-height:162px" :src='data.goodsPic'>
+                  <img width="100%" style="min-height:162px" :src='data.activityImage'>
                 </a>
               </div>
+              <!--活动介绍-->
               <div class="intro col-md-8">
                 <router-link :to="'/activitydetail/' + data.activityId">
                 <h3 style="color:#515151">
@@ -21,20 +22,19 @@
                   </a>
                 </h3>
                 </router-link>
-                <p style="height: 100px;color:#515151;">{{data.activityDetails}}</p>
+                <p class="p_detail">{{data.activityDetails}}</p>
                 <div class="iconCon">
 							    <span class="iconfont glyphicon glyphicon-time" style="color: #cccccc"></span>
                   <span style="color: #cccccc">{{data.activityStartDate}}</span>
                 </div>
               </div>
             </div>
-          </li>
-
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
     <!--分页-->
-    <div class="row text-center">
+    <div class="row text-center activityPage">
       <div class="block">
         <span class="demonstration" ></span>
         <el-pagination ref="elpage"
@@ -54,12 +54,12 @@
 
 <script>
     export default {
-        name: "AcyivityAllList",
-        data(){
+      name: "AcyivityAllList",
+      data(){
             return {
               activityData:{},
               pageIndex: 1,
-              pagesize: 2,
+              pagesize: 3,
               pageCount:0,
               myActData:[],
               activitys:[]
@@ -79,9 +79,11 @@
       methods:{
         activityPic(data){
           for(let i in data){
-            data[i].goodsPic = `${axios.defaults.baseURL}${data[i].goodsPic}`
+            data[i].activityImage = `${axios.defaults.baseURL}${data[i].activityImage}`
             data[i].activityStartDate=this.changeTime(data[i].activityStartDate)
+            data[i].activityDetails=data[i].activityDetails.replace(/<[^<>]+>/gi,"")
           }
+          console.log(data[0].activityDetails)
         },
         loadData() {
           this.activitys = [];
@@ -139,7 +141,6 @@
         }
 
       },
-
       // watch:{
       //    "$router":"created"
       // },
@@ -171,7 +172,6 @@
 </script>
 
 <style scoped>
-
   ul{
     list-style: none;
   }
@@ -183,12 +183,24 @@
     margin: 12px -20px;
  }
 
-.cont-list>li{
-  padding: 0;
-}
-.intro{
-  margin-left: -10px;
-}
-
-
+  .cont-list>li{
+    padding: 0;
+  }
+  .intro{
+    margin-left: -15px;
+  }
+  .activityPage{
+    padding:10px 0;
+    /*padding-bottom: 10px;*/
+  }
+  .p_detail{
+    overflow:hidden;
+    display:-webkit-box;
+    text-overflow:ellipsis;
+    white-space:normal;
+    max-height: 100px;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    color:#5e5e5e;
+  }
 </style>
