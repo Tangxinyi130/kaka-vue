@@ -6,8 +6,8 @@
       </div>
       <div class="col-md-4 text-center comment">
         <span class="btn glyphicon glyphicon-thumbs-up" @click="myNum" style="font-size: 30px;"></span><span style="font-size:18px;padding-top: 30px;display: inline-block;" >{{likeNum}}</span>
-        <span v-if="flag"><span class="btn glyphicon glyphicon-heart-empty" style="font-size: 30px" @click="myCollection" ></span>收藏</span>
-        <span v-else ><span class="btn glyphicon glyphicon-heart" style="font-size: 30px" @click="unCollection" ></span>已收藏</span>
+        <span v-if="flag" class="t-font"><span class="btn glyphicon glyphicon-heart-empty" style="font-size: 30px" @click="myCollection" ></span>收藏</span>
+        <span v-else class="t-font"><span class="btn glyphicon glyphicon-heart" style="font-size: 30px" @click="unCollection" ></span>已收藏</span>
       </div>
     </div>
     <!--发表评论-->
@@ -37,8 +37,8 @@
       </div>
       <div v-if="cardComment.length==0" class="text-center comment-text" >暂无评论</div>
       <div v-else-if="cardComment.length<=n"></div>
-      <div @click="onload" v-else-if="show" class="lot text-center comment-text1" ><span class="glyphicon glyphicon-refresh"></span>加载更多</div>
-      <div @click="hidden" v-if="unshow" class="unlot text-center comment-text1" ><span class="glyphicon glyphicon-menu-up"></span>收起</div>
+      <div @click="onload" v-else-if="show" class="lot text-center comment-text1 t-font" ><span class="glyphicon glyphicon-refresh"></span>加载更多</div>
+      <div @click="hidden" v-if="unshow" class="unlot text-center comment-text1 t-font" ><span class="glyphicon glyphicon-menu-up"></span>收起</div>
     </div>
   </div>
 </template>
@@ -236,4 +236,7 @@
   padding-bottom: 10px;
   cursor: pointer;
 }
+  .t-font{
+    color:#5e5e5e;
+  }
 </style>
