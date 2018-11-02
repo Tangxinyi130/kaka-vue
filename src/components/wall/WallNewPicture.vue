@@ -51,7 +51,7 @@
             this.allPic=res.data.data;
             this.picsrc(this.allPic);
             this.items = this.allPic
-            console.log("哈哈2" + this.items)
+            console.log("哈哈2" + this.allPic)
             var count = 7
             console.log(this.items.slice(count * this.page, count * (this.page + 1)))
             this.dataArr = [];
@@ -94,7 +94,9 @@
         }
       }
     },
-
+    // destroyed () {
+    //   window.removeEventListener('scroll', this.getPicture); // 离开页面 关闭监听 不然会报错
+    // }
   }
 </script>
 
