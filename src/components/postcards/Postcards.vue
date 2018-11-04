@@ -24,6 +24,7 @@
         if (loading != null) {
           document.body.removeChild(loading);
         }
+        localStorage.setItem("route",this.$route.path)
       },
       methods : {
         // getMsg() {

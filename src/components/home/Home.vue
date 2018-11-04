@@ -72,25 +72,28 @@
 
   import {mapGetters} from "vuex"
     export default {
-        name: "Home",
-        components: {
-          "app-homesynopsis": HomeSynopsis,
-          "app-homelogin": HomeLogin,
-          "app-homedynamic": HomeDynamic,
-          "app-homeranking": HomeRanking,
-          "app-homeactivity": HomeActivity,
-          "app-homeinformation": HomeInformation,
-          "app-homewall": HomeWall,
-          // "app-homepostcard": HomePostcard,
-          "app-homepostcard": HomePostcardTest,
-          "app-homeuser": HomeUser,
-          "app-login":LoginList,
-          "app-homeactivity1":HomeActivity1,
-        },
+      name: "Home",
+      components: {
+        "app-homesynopsis": HomeSynopsis,
+        "app-homelogin": HomeLogin,
+        "app-homedynamic": HomeDynamic,
+        "app-homeranking": HomeRanking,
+        "app-homeactivity": HomeActivity,
+        "app-homeinformation": HomeInformation,
+        "app-homewall": HomeWall,
+        // "app-homepostcard": HomePostcard,
+        "app-homepostcard": HomePostcardTest,
+        "app-homeuser": HomeUser,
+        "app-login":LoginList,
+        "app-homeactivity1":HomeActivity1,
+      },
       computed: mapGetters([
         "isLogin",
         "userId",
       ]),
+      created(){
+        localStorage.setItem("route",this.$route.path)
+      }
       // data() {
       //     return {
       //       token: document.cookie
