@@ -9,16 +9,19 @@
   import postcardsDetailPeople from './postcardsDetailPeople'
   import postcardsDetailPicture from './postcardsDetailPicture'
     export default {
-        name: "Postcards",
-        data(){
-          return {
-            msg:''
-          }
-        },
-        components: {
-          'postcards-detail':postcardsDetailPeople,
-          'postcards-detailPic':postcardsDetailPicture
-        },
+      name: "Postcards",
+      data(){
+        return {
+          msg:''
+        }
+      },
+      created(){
+        localStorage.setItem("route",this.$route.path)
+      },
+      components: {
+        'postcards-detail':postcardsDetailPeople,
+        'postcards-detailPic':postcardsDetailPicture
+      },
       methods : {
         // getMsg() {
         //   this.$ajax({

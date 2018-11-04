@@ -28,7 +28,7 @@
         <div class="commentNickname">{{content.userNickname}}</div>
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
-          <div v-html="content.commentContent">
+          <div v-html="content.commentContent" style="font-size:16px;">
             <!--<p contenteditable="true" id="input_conta">-->
               <!--{{content.commentContent}}-->
             <!--</p>-->
@@ -68,6 +68,8 @@
       },
       created(){
           this.getDetail();
+          console.log(this.$route.path)
+          localStorage.setItem("route",this.$route.path)
           this.$ajax({
             method:'get',
             url:`${axios.defaults.baseURL}/postcards/collection/`+this.cardId
@@ -120,6 +122,7 @@
           },
           myCollection(){
             console.log(this.$store.state.userId)
+            if(this.$store.state.userId){
             this.$ajax({
               method:'get',
               url:`${axios.defaults.baseURL}/postcards/collect/${this.cardId}/${this.$store.state.userId}`
@@ -127,6 +130,9 @@
               console.log("收藏")
               this.flag=false
             })
+            }else{
+              alert("请先登入！")
+            }
           },
           unCollection(){
             console.log(this.$store.state.userId)
@@ -166,6 +172,7 @@
           },
           myNum(){
             console.log('插入点赞数')
+            if(this.$store.state.userId){
             this.$ajax({
               method:'get',
               url:`${axios.defaults.baseURL}/postcards/like/`+this.cardId
@@ -178,7 +185,9 @@
                 this.likeNum=res.data.data.likeNum[0].cardLike;
               })
             })
-          }
+          }else{
+              alert("请先登入！")
+            }}
       }
     }
 </script>

@@ -87,7 +87,11 @@
           } else if (result.data.data == 3) {
             alert("登录成功");
             save(_this.username);
-            location.href = "/";
+            console.log(localStorage.getItem("route"))
+            let route=localStorage.getItem("route");
+            console.log(route)
+            // location.href = "/";
+            location.href = `${route}`;
           } else {
             alert("服务器错误");
           }

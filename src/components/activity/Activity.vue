@@ -14,7 +14,10 @@
       components:{
         'activity-carousel':ActivityCarousel,
         'activity-all':ActivityAll
-      }
+      },
+     created(){
+          localStorage.setItem("route",this.$route.path)
+     }
     }
 </script>
 
