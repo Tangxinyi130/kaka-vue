@@ -4,112 +4,117 @@
         <!--<div class="top">详情</div>-->
         <div class="top" id="top">明信片ID：{{cardId}}</div>
       </div>
-      <div class="row twoPeople" >
-        <div class="col-xs-12 col-md-6 ">
-          <ul class="cont-list list-unstyled ">
-            <li class="am-gallery-item" >
-                <div class="img_box col-md-3">
+      <div class="row twoPeople">
+        <li class="col-xs-12 col-md-6" style="list-style: none">
+          <ul class="cont-list list-unstyled" style="border: 3px dashed #bdd1ff; height: 320px">
+            <li class="am-gallery-item" style="margin-top: 30px">
+                <div class="img_box col-md-2" style="margin-left: 10px">
                   <router-link :to="'/user/' + cardsInformation.userId + '/aboutme'">
                     <img :src="cardsInformation.userHeadPic" class="head">
                   </router-link>
                 </div>
-                <div class="intro col-md-3">
+                <div class="intro col-md-3" style="padding-left: 30px; ">
                   <div class="pUserInfo">
-                    <p class="text">
+                    <p class="text" style="padding-right: 15px; font-size: 14px">
                       ID:{{cardsInformation.userId}}
                     </p>
-                    <p class="text">昵称：{{cardsInformation.userNickname}}</p>
+                    <!--<div style="clear: both"></div>-->
+                    <p class="text" style="margin-top: 9px; font-size: 14px">昵称：{{cardsInformation.userNickname}}</p>
                     <div class="iconCon">
-                      <button v-if="userId != null && sendAtt == false && cardsInformation.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId)">关注</button>
-                      <button v-if="userId != null && sendAtt == true && cardsInformation.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId)">取消关注</button>
+                      <button style="font-size: 10px" v-if="userId != null && sendAtt == false && cardsInformation.userId != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId)">关注</button>
+                      <button style="font-size: 10px" v-if="userId != null && sendAtt == true && cardsInformation.userId != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId)">取消关注</button>
                     </div>
+
                   </div>
                 </div>
             </li>
-            <!-- 关注模态框 -->
-            <div class="modal fade bs-example-modal-sm" id="att" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                  </div>
-                  <div class="modal-body">
-                    是否关注？
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" @click="toAtt(clickId)">确定</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-
-            <!-- 取消关注模态框 -->
-            <div class="modal fade bs-example-modal-sm" id="fan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">提示</h4>
-                  </div>
-                  <div class="modal-body">
-                    是否取消关注？
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" @click="cancelAtt(clickId)">确定</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <li class="am-gallery-item ">
-              <div class="img_box col-md-3">
+            <li class="am-gallery-item " >
+              <div class="img_box col-md-2" style="margin-left: 80px">
                 <router-link :to="'/user/' + cardsInformation.userId1 + '/aboutme'">
                   <img :src="cardsInformation.userHeadPic1" class="head">
                 </router-link>
               </div>
-              <div class="intro col-md-3">
+              <div class="intro col-md-3" style=" padding-left: 30px;" >
                 <div class="pUserInfo">
-                  <p class="text">
+                  <p class="text" style="padding-right: 15px; font-size: 14px">
                     ID:{{cardsInformation.userId1}}
                   </p>
-                  <p class="text">昵称：{{cardsInformation.userNickname1}}</p>
+                  <!--<div style="clear: both" ></div>-->
+                  <p class="text" style="margin-top: 9px;font-size: 14px">昵称：{{cardsInformation.userNickname1}}</p>
                   <div class="iconCon">
-                    <button v-if="userId != null && receiveAtt == false && cardsInformation.userId1 != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId1)">关注</button>
-                    <button v-if="userId != null && receiveAtt == true && cardsInformation.userId1 != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId1)">取消关注</button>
+                    <button style="font-size: 10px" v-if="userId != null && receiveAtt == false && cardsInformation.userId1 != userId" class="btn" data-toggle="modal" data-target="#att" @click="getModalId(cardsInformation.userId1)">关注</button>
+                    <button style="font-size: 10px" v-if="userId != null && receiveAtt == true && cardsInformation.userId1 != userId" class="btn"  data-toggle="modal" data-target="#fan" @click="getModalId(cardsInformation.userId1)">取消关注</button>
                   </div>
                 </div>
               </div>
+            </li>
 
+            <li class="am-gallery-item " style="margin-top: -20px">
+              <div id="introduction">
+                <!--<p class="text">相关介绍</p>-->
+                <div class="text addressDiv addStart">
+                  <span class="textT">起始地</span><br>
+                  <span>{{cardsInformation.userProvince}}&nbsp;&nbsp;{{cardsInformation.userCity}}</span>
+                </div>
+                <div class="addressDiv addPic">
+                  <img src="../../assets/images/line.png" alt="" width="259px" height="31px">
+                </div>
+                <div class="text addressDiv addEnd">
+                  <span class="textT">目的地</span><br>
+                  <span>{{cardsInformation.userProvince1}}&nbsp;&nbsp;{{cardsInformation.userCity1}}</span>
+                </div>
+                <div style="clear: both"></div>
+                <div id="km_days">
+                  <p class="text">{{cardsInformation.cardDistance}} km  </p>
+                  <p class="text" v-if="cardsInformation.DAY != '?'">{{cardsInformation.DAY}} days</p>
+                  <p class="text" v-if="cardsInformation.DAY == '?'">在途中</p>
+                </div>
+              </div>
             </li>
           </ul>
-          <div id="introduction">
-            <!--<p class="text">相关介绍</p>-->
-            <div class="text addressDiv addStart">
-              <span class="textT">起始地</span><br>
-              <span>{{cardsInformation.userProvince}}&nbsp;&nbsp;{{cardsInformation.userCity}}</span>
-            </div>
-            <div class="addressDiv addPic">
-              <img src="../../assets/images/line.png" alt="" width="259px" height="31px">
-            </div>
-            <div class="text addressDiv addEnd">
-              <span class="textT">目的地</span><br>
-              <span>{{cardsInformation.userProvince1}}&nbsp;&nbsp;{{cardsInformation.userCity1}}</span>
-            </div>
-            <div style="clear: both"></div>
-            <div id="km_days">
-              <p class="text">{{cardsInformation.cardDistance}} km  </p>
-              <p class="text" v-if="cardsInformation.DAY != '?'">{{cardsInformation.DAY}} days</p>
-              <p class="text" v-if="cardsInformation.DAY == '?'">在途中</p>
-            </div>
+        </li>
 
-
+        <!-- 关注模态框 -->
+        <div class="modal fade bs-example-modal-sm" id="att" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+              </div>
+              <div class="modal-body">
+                是否关注？
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" @click="toAtt(clickId)">确定</button>
+              </div>
+            </div>
           </div>
         </div>
+
+
+        <!-- 取消关注模态框 -->
+        <div class="modal fade bs-example-modal-sm" id="fan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document" style="z-index: 9999">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body">
+                  是否取消关注？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary" @click="cancelAtt(clickId)">确定</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         <div class="col-xs-12 col-md-6">
             <div class="twoPeopleMap">
               <div id="container"
@@ -251,9 +256,7 @@
                     var myIcon2 = new BMap.Icon(end, new BMap.Size(36,36));
                     var marker2 = new BMap.Marker(point2,{icon:myIcon2});  // 创建标注
                     map.addOverlay(marker2);              // 将标注添加到地图中
-
                   }, 1000)
-
                 })
 
               })
@@ -351,6 +354,9 @@
 </script>
 
 <style scoped>
+  /*.iconCon {*/
+    /*margin-left: 20px;*/
+  /*}*/
   #km_days {
     margin-left: -20px;
   }
@@ -390,7 +396,7 @@
     height: 150px;
     margin-top:170px;
     margin-left:20px;
-    border: 4px dashed #bdd1ff;
+    /*border: 4px dashed #bdd1ff;*/
     text-align: center;
   }
 
@@ -416,10 +422,10 @@
     background-color: rgb(82,137,112);
     }
     .head{
-      width: 122px;
-      height: 122px;
-      border-radius: 122px;
-
+      width: 90px;
+      height: 90px;
+      border-radius: 90px;
+      margin-top: 10px;
     }
    .send-text>p,.receive>p{
      text-align: center;

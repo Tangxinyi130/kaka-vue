@@ -2,7 +2,7 @@
     <div class="userSend">
       <!--已发送的明信片-->
       <div class="row">
-        <table class="table" border="1" style="text-align: center; border-radius: 3px">
+        <table class="table" border="1" style="text-align:center; border-radius: 3px">
           <tr class="first_tr">
             <td class="stitle">明信片ID</td>
             <td class="stitle">收取方</td>
@@ -174,7 +174,9 @@
     /*color: #ce002c;*/
   /*}*/
   .userSend {
-    margin-top: -20px;
+    margin-top: -30px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
   .stitle {
     /*font-weight: bold;*/
@@ -187,7 +189,6 @@
     color: #5E5E5E;
     border-radius: 3px;
     line-height: 30px;
-    /*border: 1px solid black;*/
   }
   table .first_tr {
     background-color: #528970;

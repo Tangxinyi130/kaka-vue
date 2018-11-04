@@ -3,7 +3,7 @@
       <!--城市排行-->
       <div class="row">
         <div class="maplist_top">
-          <img src="../../assets/images/maplist/list3.png" alt="">
+          <img src="../../assets/images/maplist/list.png" alt="">
           <span class="maplist_titile">地区排行榜</span>
         </div>
       </div>

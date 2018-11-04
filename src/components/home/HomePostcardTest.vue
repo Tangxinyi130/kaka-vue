@@ -1,13 +1,13 @@
 <template>
   <div id="homePostcard">
-    <img src="../../assets/images/home/tree.png" width="750px" height="190px" alt="">
+    <img src="../../assets/images/home/tree.png" width="750px" height="185px" alt="">
     <!--<img id="chicken" src="../../assets/images/home/chicken7.gif" width="140" height="140" alt="" :style="{left: (unabsorbedNum/ transmitsNum) * 750 + 'px'}">-->
-    <img id="chicken" src="../../assets/images/home/chicken7.gif" width="140" height="140" alt="" :style="{left: chickenLeft}">
+    <img id="chicken" src="../../assets/images/home/chicken7.gif" width="140" height="145" alt="" :style="{left: chickenLeft}">
     <div class="row">
       <!--<div class="col-md-12">-->
         <div class="progress">
           <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{width:( unabsorbedNum/ transmitsNum) * 100 + '%'}">
-            {{unabsorbedNum}}
+            {{unabsorbedNum}}&nbsp;&nbsp;张正在寄信的途中
           </div>
         </div>
       <!--</div>-->
@@ -58,15 +58,15 @@
 <style scoped>
   #chicken {
     position: absolute;
-    top: 70px;
+    top: 60px;
   }
 
   .progress-bar{
-    line-height: 10px;
-    font-size: 10px;
+    line-height: 15px;
+    font-size: 12px;
   }
   .progress {
-    height: 10px;
+    height: 15px;
   }
 
   #homePostcard{

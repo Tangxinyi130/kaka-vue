@@ -66,11 +66,11 @@
                   </div>
                 </li>
               </ul>
-              <div class="row text-center">
-                  <button type="button" class="btn bt btn-lg"  @click="tocx" style="margin-top: 30px">
-                  <span  style="color: white">查询所有</span>
-                </button>
-              </div>
+              <!--<div class="row text-center">-->
+                  <!--<button type="button" class="btn bt btn-lg"  @click="tocx" style="margin-top: 30px">-->
+                  <!--<span  style="color: white">查询所有</span>-->
+                <!--</button>-->
+              <!--</div>-->
             </div>
           </div>
         </div>
@@ -149,20 +149,20 @@
             // console.log(this.allCityId[i])
           }
         });
-        // ****************
-        let _this =this;
-        axios.post(`${axios.defaults.baseURL}/users/UserPostcards`,
-          {
-            userId:localStorage.userId,
-          }).then(function (result) {
-            console.log(result.data.data.length);
-            console.log(result.data.data);
-            for(let i=0;i<result.data.data.length;i++){
-              _this.allda = result.data.data;
-            }
-        }, function (err) {
-          console.log(err);
-        })
+        // // ****************
+        // let _this =this;
+        // axios.post(`${axios.defaults.baseURL}/users/UserPostcards`,
+        //   {
+        //     userId:localStorage.userId,
+        //   }).then(function (result) {
+        //     console.log(result.data.data.length);
+        //     console.log(result.data.data);
+        //     for(let i=0;i<result.data.data.length;i++){
+        //       _this.allda = result.data.data;
+        //     }
+        // }, function (err) {
+        //   console.log(err);
+        // })
       },
 
     }
@@ -175,7 +175,8 @@
   .con{
     width:100%;
     /*height:590px;*/
-    background-color:#ebf6df
+    background-color:#ebf6df;
+    color: #5e5e5e;
   }
   .con-nav{
     height:53px;
