@@ -30,6 +30,7 @@ import User from "@/components/user/User.vue"
 import UserPersonal from "@/components/user/UserPersonal.vue"
 import UserAboutme from "@/components/user/UserAboutme.vue"
 import UserSend from "@/components/user/UserSend.vue"
+import UserSendTest from "@/components/user/UserSendTest.vue"
 import UserReceive from "@/components/user/UserReceive.vue"
 import UserWall from "@/components/user/UserWall.vue"
 
@@ -67,7 +68,9 @@ Vue.use(Router)
 export default new Router({
 
   mode: "history",
-  routes: [  {path: '/', name: 'Home', component: Home},
+  routes: [
+    // {path: "/aaa", component: AAA},
+    {path: '/', name: 'Home', component: Home},
 
     {path: "/postcards/:cardId", component: Postcards},
 
@@ -107,7 +110,11 @@ export default new Router({
     {path: "/user", component: User, children: [
         {path: ":id", component: UserPersonal},
         {path: ":id/aboutme", component: UserAboutme},
-        {path: ":id/send", component: UserSend, children: [
+        // {path: ":id/send", component: UserSend, children: [
+        //     {path: ":postcardId", component: UserPic}
+        //   ]
+        // },
+        {path: ":id/send", component: UserSendTest, children: [
             {path: ":postcardId", component: UserPic}
           ]
         },

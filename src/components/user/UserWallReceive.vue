@@ -4,7 +4,7 @@
     <div v-for="data in myActData1" class="mypic">
       <a :href="'/postcards/' + data.cardId">
         <img :src="data.cardPic" alt="" class="myimg">
-        <div class="myspan">
+        <div class="myspan"  >
           <span>ID:  {{data.cardId}}</span>
         </div>
       </a>

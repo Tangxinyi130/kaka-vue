@@ -18,9 +18,19 @@
             <td>{{data.cardSendTime}}</td>
             <td>{{data.cardReceiveTime}}</td>
             <td>
-              <div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">
-                <img src="../../assets/images/usercenter/userpostcard.png" alt="">
+              <div v-if="data.cardPic" class="point">
+                <el-popover
+                  placement="right"
+                  title=""
+                  trigger="hover">
+                  <img :src="data.cardPic"  style="max-height: 500px;max-width: 700px"/>
+                  <img slot="reference" src="../../assets/images/usercenter/userpostcard.png" :alt="data.cardPic">
+                </el-popover>
               </div>
+
+              <!--<div v-if="data.cardPic" @click="showThis(data.cardId)" class="point">-->
+                <!--<img src="../../assets/images/usercenter/userpostcard.png" alt="">-->
+              <!--</div>-->
             </td>
           </tr>
         </table>
@@ -80,6 +90,13 @@
         this.$ajax.get(`${axios.defaults.baseURL}/users/userReceived/${this.$route.params.id}`
         ).then((result) =>{
           _this.myActData= result.data.data;
+          for (let i in _this.myActData) {
+            if (_this.myActData[i].cardPic != null) {
+              _this.myActData[i].cardPic = `${axios.defaults.baseURL}${_this.myActData[i].cardPic}`;
+            }
+          }
+
+
           _this.changeArrTime(_this.myActData);
           // console.log(result.data)
           _this.pageCount=_this.myActData.length
@@ -193,7 +210,9 @@
 
 
   .userReceive {
-    margin-top: -20px;
+    margin-top: -30px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
   .stitle {
     /*font-weight: bold;*/

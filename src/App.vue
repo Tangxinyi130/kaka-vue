@@ -7,8 +7,6 @@
 </template>
 
 <script>
-  // const isLogin = false;
-  // const userId = 1;
   import Header from "./components/Header.vue";
   import Footer from "./components/Footer.vue";
   export default {

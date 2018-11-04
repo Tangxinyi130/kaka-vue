@@ -9,18 +9,22 @@
   import postcardsDetailPeople from './postcardsDetailPeople'
   import postcardsDetailPicture from './postcardsDetailPicture'
     export default {
-      name: "Postcards",
-      data(){
-        return {
-          msg:''
+        name: "Postcards",
+        data(){
+          return {
+            msg:''
+          }
+        },
+        components: {
+          'postcards-detail':postcardsDetailPeople,
+          'postcards-detailPic':postcardsDetailPicture
+        },
+      created() {
+        let loading = document.getElementById("Loading");
+        if (loading != null) {
+          document.body.removeChild(loading);
         }
-      },
-      created(){
         localStorage.setItem("route",this.$route.path)
-      },
-      components: {
-        'postcards-detail':postcardsDetailPeople,
-        'postcards-detailPic':postcardsDetailPicture
       },
       methods : {
         // getMsg() {

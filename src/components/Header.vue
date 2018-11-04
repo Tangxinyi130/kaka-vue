@@ -36,7 +36,7 @@
 
             <ul class="nav navbar-nav navbar-right" v-if="isLogin">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>  个人中心 <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;{{nickname}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <!--<router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>-->
                   <li><a class="text-color" :href="'/user/' + userId + '/aboutme'">我的首页</a></li>
@@ -63,7 +63,40 @@
           "isLogin",
           "userId"
         ]),
+        data() {
+          return {
+            nickname: "",
+            headpic: ""
+          }
+        },
+        created() {
+          this.logining();
+        },
+        watch() {
+          this.logining();
+        },
+
         methods: {
+          logining() {
+            if (this.$store.state.userId) {
+              let _this = this;
+              this.$ajax.get(`${axios.defaults.baseURL}/users/synopsis/${this.$store.state.userId}`
+              ).then(function (result) {
+                // console.log(result.data.data.userHeadPic);
+                _this.nickname = result.data.data.userNickname;
+                _this.headpic = `${axios.defaults.baseURL}${result.data.data.userHeadPic}`;
+                // _this.userid = result.data.data.userId;
+                // _this.sex = result.data.data.userSex;
+                // _this.birthday = result.data.data.userBirthday.substring(0, 10);
+                // _this.birthday = _this.changeTime(result.data.data.userBirthday);
+                // _this.attentionnum = result.data.data.userAttentionNum;
+                // _this.fansnum = result.data.data.userFansNum;
+              }, function (err) {
+                console.log(err);
+              })
+            }
+          },
+
           logOff: function () {
             localStorage.clear();
           },

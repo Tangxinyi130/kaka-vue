@@ -6,17 +6,18 @@
         <div class="row">
           <div v-for="(item,index) in recentPic" class="col-xs-6 col-sm-4 col-md-3">
             <div class="thumbnail">
-              <a >
+              <a :href="'/postcards/' + item.cardId">
                 <img :src="item.cardPic" class="cardPic" alt="">
               </a>
               <div class="caption">
-                <span class="like">
-                  <span class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
-                  {{item.cardLike}}
+                <a :href="'/postcards/' + item.cardId"><span class="text-cardid">ID：{{item.cardId}}</span></a>
+                <span class="like" >
+                  <span  class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
+                  <span >{{item.cardLike}}</span>
                 </span>
-                <a :href="'/postcards/' + item.cardId"><span class="text-cardid">{{item.cardId}}{{item.flag}}</span></a>
-                  <span v-if="item.flag"><span class="collSty btn glyphicon glyphicon-heart-empty"  @click="myLike(item.cardId,index)"></span>收藏</span>
-                  <span v-else><span class="collSty btn glyphicon glyphicon-heart" @click="unLike(item.cardId,index)"></span>已收藏</span>
+
+                  <!--<span v-if="item.flag"><span class="collSty btn glyphicon glyphicon-heart-empty"  @click="myLike(item.cardId,index)"></span>收藏</span>-->
+                  <!--<span v-else><span class="collSty btn glyphicon glyphicon-heart" @click="unLike(item.cardId,index)"></span>已收藏</span>-->
               </div>
             </div>
           </div>
@@ -164,6 +165,8 @@
     top: 10px;
   }
   .like-star{
+    height: 30px;
+    line-height: 30px;
     cursor: pointer;
     color: #ccc;
   }
@@ -182,13 +185,18 @@
       line-height: 27px;
     }
     .caption .text-cardid{
-     display: none;
+      max-width: 200px;
+      color: #5e5e5e;
+      font-size: 14px;
     }
     .caption .like{
       max-width: 150px;
       color: #3c868a;
       font-size: 18px;
-      line-height: 14px;
+      line-height: 25px;
+      position: absolute;
+      right: 8px;
+
     }
     .caption{
       position: relative;
@@ -219,13 +227,19 @@
       line-height: 30px;
     }
     .caption .text-cardid{
-      display: none;
+      max-width: 200px;
+      color: #5e5e5e;
+      font-size: 14px;
     }
     .caption .like{
       width: 75px;
       color: #3c868a;
       font-size: 18px;
-      line-height: 14px;
+      line-height: 30px;
+      height: 30px;
+      text-align: right;
+      position: absolute;
+      right: 10px;
     }
     .caption{
       position: relative;
@@ -246,12 +260,12 @@
     }
     .text-cardid,.like,.collSty{
       display: inline-block;
-      height: 26px;
+      height: 28px;
       text-align: left;
       line-height: 28px;
     }
     .caption .text-cardid{
-      width: 76px;
+      width: 110px;
       color: #5e5e5e;
       font-size: 14px;
     }
@@ -260,6 +274,7 @@
       color: #3c868a;
       font-size: 18px;
       line-height: 14px;
+      text-align: right;
     }
     .caption .collSty{
       width: 35px;
@@ -280,7 +295,7 @@
       line-height: 28px;
     }
     .caption .text-cardid{
-      width: 80px;
+      width: 110px;
       color: #5e5e5e;
       font-size: 14px;
     }
@@ -289,6 +304,7 @@
       color: #3c868a;
       font-size: 18px;
       line-height: 17px;
+      text-align: right;
     }
     .caption .collSty{
       width: 30px;
@@ -308,7 +324,7 @@
       line-height: 30px;
     }
     .caption .text-cardid{
-      width: 100px;
+      width: 130px;
       color: #5e5e5e;
       font-size: 16px;
     }
@@ -317,6 +333,7 @@
       color: #3c868a;
       font-size: 20px;
       line-height: 20px;
+      text-align: right;
     }
     .caption .collSty{
       width: 30px;
