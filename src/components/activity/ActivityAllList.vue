@@ -17,7 +17,7 @@
               <div class="intro col-md-8">
                 <router-link :to="'/activitydetail/' + data.activityId">
                 <h3 style="color:#515151">
-                  <a href="#" style="color:#515151">
+                  <a href="#" style="color:#5e5e5e;">
                     {{data.activityName}}
                   </a>
                 </h3>
@@ -194,12 +194,13 @@
     /*padding-bottom: 10px;*/
   }
   .p_detail{
+    height:100px;
     overflow:hidden;
     display:-webkit-box;
     text-overflow:ellipsis;
     white-space:normal;
     max-height: 100px;
-    -webkit-line-clamp:4;
+    -webkit-line-clamp:5;
     -webkit-box-orient:vertical;
     color:#5e5e5e;
   }

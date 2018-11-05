@@ -19,6 +19,13 @@
           'postcards-detail':postcardsDetailPeople,
           'postcards-detailPic':postcardsDetailPicture
         },
+      created() {
+        let loading = document.getElementById("Loading");
+        if (loading != null) {
+          document.body.removeChild(loading);
+        }
+        localStorage.setItem("route",this.$route.path)
+      },
       methods : {
         // getMsg() {
         //   this.$ajax({

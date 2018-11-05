@@ -5,9 +5,9 @@
       <div style="height: 50px;" ></div>
       <div class="col-sm-10 col-sm-offset-1 con-con">
         <div class="text-center t-name" >
-          <p class="text-right">活动时间：{{activityInfor.activityStartDate}}</p>
+          <p class="text-right">发布时间：{{activityInfor.activityStartDate}}</p>
         </div>
-        <div class="t-detail" style="color:#515151;" v-html="activityInfor.activityDetails"></div>
+        <div class="t-detail" id="activityDet" style="color:#515151;" v-html="activityInfor.activityDetails"></div>
       </div>
     </div>
   </div>
@@ -81,5 +81,7 @@
  .t-detail{
    padding-bottom: 40px;
  }
-
+  #activityDet p img{
+    width: 20px !important;
+  }
 </style>

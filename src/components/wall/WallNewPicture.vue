@@ -142,10 +142,7 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
-  .fadeIn {
-    -webkit-animation-name: zoomIn;
-    animation-name: zoomIn;
-  }
+
   #pic:hover{
     box-shadow: 5px 5px 5px #888888;
   }
