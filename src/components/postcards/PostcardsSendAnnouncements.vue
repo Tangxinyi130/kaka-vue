@@ -150,15 +150,6 @@
           console.log("成功")
         })
       },
-      // sendEmail:function(){
-      //   let _this = this;
-      //   this.$ajax({
-      //     method:'get',
-      //     url:'http://localhost:3000/send/sendEmail/'+ _this.$store.state.userId
-      //   }).then((res)=>{
-      //     console.log("成功")
-      //   })
-      // },
       send:function(){
         let _this = this;
         this.$ajax.get(`${axios.defaults.baseURL}/send/sendPostcard/`+(localStorage.userId)
@@ -212,9 +203,9 @@
               }else {
                 // ***********
                   this.send();
-                  // setTimeout(()=>{
-                  //   this.sendEmail();
-                  // },3000);
+                  setTimeout(()=>{
+                    this.sendEmail();
+                  },3000);
                 this.$store.state.postSendAnn=false;
                 this.$store.state.postSend=true;
                 // ***************

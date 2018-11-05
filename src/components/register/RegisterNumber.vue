@@ -96,10 +96,10 @@
             this.Num = num;
             console.log(this.Num);
             console.log("给"+this.inputTel+"发送短信");
-            // this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=109157&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
-            //   .then((res)=>{
-            //     console.log(res)
-            //   }).catch(err=>{console.log(err)})
+            this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=111340&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
+              .then((res)=>{
+                console.log(res)
+              }).catch(err=>{console.log(err)})
             this.getsecond();
           } else {
             alert("请输入手机号！")

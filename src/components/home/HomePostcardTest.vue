@@ -7,7 +7,7 @@
       <!--<div class="col-md-12">-->
         <div class="progress">
           <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" :style="{width:( unabsorbedNum/ transmitsNum) * 100 + '%'}">
-            {{unabsorbedNum}}&nbsp;&nbsp;张正在寄信的途中
+            {{unabsorbedNum}}&nbsp;{{postcard}}&nbsp;on&nbsp;the&nbsp;way
           </div>
         </div>
       <!--</div>-->
@@ -26,7 +26,8 @@
         transmitsNum:5,
         unabsorbedNum:0,
         proportion:5,
-        chickenLeft: "-30px"
+        chickenLeft: "-30px",
+        postcard: "postcard"
       }
     },
     mounted(){
@@ -38,12 +39,12 @@
         _this.proportion = result.data.data.proportion;
 
         switch (_this.unabsorbedNum) {
-          case 0: _this.chickenLeft = "-30px"; break;
-          case 1: _this.chickenLeft = "90px"; break;
-          case 2: _this.chickenLeft = "240px"; break;
-          case 3: _this.chickenLeft = "390px"; break;
-          case 4: _this.chickenLeft = "540px"; break;
-          case 5: _this.chickenLeft = "670px"; break;
+          case 0: _this.chickenLeft = "-30px"; _this.postcard = "postcard"; break;
+          case 1: _this.chickenLeft = "90px"; _this.postcard = "postcard"; break;
+          case 2: _this.chickenLeft = "240px"; _this.postcard = "postcards"; break;
+          case 3: _this.chickenLeft = "390px"; _this.postcard = "postcards"; break;
+          case 4: _this.chickenLeft = "540px"; _this.postcard = "postcards"; break;
+          case 5: _this.chickenLeft = "670px"; _this.postcard = "postcards"; break;
           default:
             _this.chickenLeft = "-30px"; break;
         }
