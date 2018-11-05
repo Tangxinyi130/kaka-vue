@@ -22,30 +22,30 @@
           <div style="height: 30px"></div>
           <div class="row" style="">
                  <!--****************-->
-                <div class=""v-if="cz">
-                  <ul class="col-sm-10 col-sm-offset-1">
-                    <div class="row body-nav">
-                      <div class="col-sm-3"> <p>发送人</p></div>
-                      <div class="col-sm-3"> <p>发送时间</p></div>
-                      <div class="col-sm-3"> <p>发送地区</p></div>
-                      <div class="col-sm-3"> <p>明信片ID</p></div>
-                    </div>
-                    <li v-for="data in allda">
-                      <div style="height:20px"></div>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <img :src="pa+data.userHeadPic" class="mag" alt="">
-                          <p>昵称:{{data.userNickname}}</p>
-                        </div>
-                        <div class="col-sm-3 li-div"> <p>{{data.cardSendTime.substring(0, 10)}}</p></div>
-                        <div class="col-sm-3 li-div"> <p>{{data.cardSendRegion}}</p></div>
-                        <div class="col-sm-3 li-div"><p>{{data.cardId}}</p></div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                <!--<div class=""v-if="cz">-->
+                  <!--<ul class="col-sm-10 col-sm-offset-1">-->
+                    <!--<div class="row body-nav">-->
+                      <!--<div class="col-sm-3"> <p>发送人</p></div>-->
+                      <!--<div class="col-sm-3"> <p>发送时间</p></div>-->
+                      <!--<div class="col-sm-3"> <p>发送地区</p></div>-->
+                      <!--<div class="col-sm-3"> <p>明信片ID</p></div>-->
+                    <!--</div>-->
+                    <!--<li v-for="data in allda">-->
+                      <!--<div style="height:20px"></div>-->
+                      <!--<div class="row">-->
+                        <!--<div class="col-sm-3">-->
+                          <!--<img :src="pa+data.userHeadPic" class="mag" alt="">-->
+                          <!--<p>昵称:{{data.userNickname}}</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-3 li-div"> <p>{{data.cardSendTime.substring(0, 10)}}</p></div>-->
+                        <!--<div class="col-sm-3 li-div"> <p>{{data.cardSendRegion}}</p></div>-->
+                        <!--<div class="col-sm-3 li-div"><p>{{data.cardId}}</p></div>-->
+                      <!--</div>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                <!--</div>-->
                 <!--**********************-->
-            <div class=""v-if="!cz">
+            <div class="">
               <ul class="col-sm-10 col-sm-offset-1">
                 <div class="row body-nav">
                   <div class="col-sm-3"> <p>发送人</p></div>
@@ -66,11 +66,11 @@
                   </div>
                 </li>
               </ul>
-              <div class="row text-center">
-                  <button type="button" class="btn bt btn-lg"  @click="tocx" style="margin-top: 30px">
-                  <span  style="color: white">查询所有</span>
-                </button>
-              </div>
+              <!--<div class="row text-center">-->
+                  <!--<button type="button" class="btn bt btn-lg"  @click="tocx" style="margin-top: 30px">-->
+                  <!--<span  style="color: white">查询所有</span>-->
+                <!--</button>-->
+              <!--</div>-->
             </div>
           </div>
         </div>
