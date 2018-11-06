@@ -69,6 +69,7 @@
   import HomeActivity1 from "@/components/home/HomeActivity1.vue"
 
   import HomePostcardTest from "@/components/home/HomePostcardTest";
+  import HomePostcard1 from "@/components/home/HomePostcard1"
 
   import {mapGetters} from "vuex"
     export default {
@@ -82,7 +83,8 @@
         "app-homeinformation": HomeInformation,
         "app-homewall": HomeWall,
         // "app-homepostcard": HomePostcard,
-        "app-homepostcard": HomePostcardTest,
+        // "app-homepostcard": HomePostcardTest,
+        "app-homepostcard":HomePostcard1,
         "app-homeuser": HomeUser,
         "app-login":LoginList,
         "app-homeactivity1":HomeActivity1,

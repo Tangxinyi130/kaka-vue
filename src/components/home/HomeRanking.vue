@@ -172,10 +172,108 @@
 
   }
   @media screen and (min-width:768px) and (max-width:991px ){
-
+    .ranking-title{
+      font-size: 16px;
+    }
+    .ranking-item{
+      height: 50px;
+      border-bottom:1px solid #ccc;
+      margin-top:5px;
+    }
+    .ranking-item .ranking-bron{
+      display: none;
+    }
+    .ranking-user{
+      width: 80px;
+    }
+    .ranking-title .ranking-recever{
+      width: 85px;
+      text-align: right;
+    }
+    .ranking-index{
+      width: 40px;
+    }
+    .ranking-index .list{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: url("../../assets/images/rankingList/top.png");
+      background-size: 30px 30px;
+    }
+    span.ranking-index[title='2'] .list{
+      background-image: url("../../assets/images/rankingList/second.png");
+    }
+    span.ranking-index[title='3'] .list{
+      background-image: url("../../assets/images/rankingList/third.png");
+    }
+    .ranking-item .ranking-index{
+      font-size: 15px;
+      font-family: Algerian;
+      color: #cc1d18;
+    }
+    .ranking-headepic{
+      width: 38px;
+      height: 38px;
+      margin-top: 5px;
+    }
+    .ranking-username{
+      width: 60px;
+      font-size: 16px;
+      color: #4194ff;
+    }
+    .ranking-recever{
+      width: 60px;
+    }
   }
   @media screen and (min-width:992px) and (max-width:1199px ){
 
+    .ranking-user{
+      width: 120px;
+    }
+    .ranking-title .ranking-recever{
+      width: 90px;
+      text-align: right;
+    }
+    .ranking-index{
+      width: 50px;
+    }
+    .ranking-index .list{
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: url("../../assets/images/rankingList/top.png");
+      background-size: 30px 30px;
+    }
+    span.ranking-index[title='2'] .list{
+      background-image: url("../../assets/images/rankingList/second.png");
+    }
+    span.ranking-index[title='3'] .list{
+      background-image: url("../../assets/images/rankingList/third.png");
+    }
+    .ranking-item .ranking-index{
+      font-size: 15px;
+      font-family: Algerian;
+      color: #cc1d18;
+    }
+    .ranking-headepic{
+      width: 48px;
+      height: 48px;
+      margin-top: 5px;
+    }
+    .ranking-username{
+      width: 60px;
+      font-size: 18px;
+      color: #4194ff;
+    }
+    .ranking-bron{
+      display: none;
+      width: 40px;
+      font-size: 15px;
+      color: #5E5E5E;
+    }
+    .ranking-recever{
+      width: 60px;
+    }
   }
   @media screen and (min-width: 1200px){
 

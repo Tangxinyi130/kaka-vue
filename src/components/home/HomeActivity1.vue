@@ -5,7 +5,7 @@
       <div  class="blog-slider">
         <swiper :options="swiperOption" class="blog-slider__wrp swiper-wrapper">
           <swiper-slide class="blog-slider__item swiper-slide">
-            <div class="blog-slider__img"> <img :src="activityData1.goodsPic" alt=""></div>
+            <div class="blog-slider__img"> <img :src="activityData1.activityImage" alt=""></div>
             <div class="blog-slider__content">
               <span class="blog-slider__code">{{activityData1.activityStartDate}}</span>
               <div class="blog-slider__title">{{activityData1.activityName}}</div>
@@ -14,7 +14,7 @@
             </div>
           </swiper-slide>
           <swiper-slide class="blog-slider__item swiper-slide">
-            <div class="blog-slider__img"> <img :src="activityData2.goodsPic" alt=""></div>
+            <div class="blog-slider__img"> <img :src="activityData2.activityImage" alt=""></div>
             <div class="blog-slider__content">
               <span class="blog-slider__code">{{activityData2.activityStartDate}}</span>
               <div class="blog-slider__title">{{activityData2.activityName}}</div>
@@ -23,7 +23,7 @@
             </div>
           </swiper-slide>
           <swiper-slide class="blog-slider__item swiper-slide">
-            <div class="blog-slider__img"> <img :src="activityData3.goodsPic" alt=""></div>
+            <div class="blog-slider__img"> <img :src="activityData3.activityImage" alt=""></div>
             <div class="blog-slider__content">
               <span class="blog-slider__code">{{activityData3.activityStartDate}}</span>
               <div class="blog-slider__title">{{activityData3.activityName}}</div>
@@ -94,12 +94,15 @@
             this.activityData1 = res.data.data.allData[0];
             this.activityData2 = res.data.data.allData[1];
             this.activityData3 = res.data.data.allData[2];
-            this.activityData1.goodsPic = `${axios.defaults.baseURL}${this.activityData1.goodsPic}`;
-            this.activityData2.goodsPic = `${axios.defaults.baseURL}${this.activityData2.goodsPic}`;
-            this.activityData3.goodsPic = `${axios.defaults.baseURL}${this.activityData3.goodsPic}`;
+            this.activityData1.activityImage = `${axios.defaults.baseURL}${this.activityData1.activityImage}`;
+            this.activityData2.activityImage = `${axios.defaults.baseURL}${this.activityData2.activityImage}`;
+            this.activityData3.activityImage = `${axios.defaults.baseURL}${this.activityData3.activityImage}`;
             this.activityData1.activityStartDate = this.changeTime(this.activityData1.activityStartDate);
             this.activityData2.activityStartDate = this.changeTime(this.activityData2.activityStartDate);
             this.activityData3.activityStartDate = this.changeTime(this.activityData3.activityStartDate);
+            this.activityData1.activityDetails=this.activityData1.activityDetails.replace(/<[^<>]+>/gi,"")
+            this.activityData2.activityDetails=this.activityData2.activityDetails.replace(/<[^<>]+>/gi,"")
+            this.activityData3.activityDetails=this.activityData3.activityDetails.replace(/<[^<>]+>/gi,"")
           })
         }
       },
