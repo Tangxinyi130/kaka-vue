@@ -22,22 +22,7 @@
         unabsorbedNum:0,
         proportion:5,
         chickenLeft: "-30px",
-        screenWidth:document.body.clientWidth,
         postcard:"",
-      }
-    },
-    watch:{
-      screenWidth(val){
-        if(!this.timer){
-          this.screenWidth=val;
-          this.timer =true;
-          let _this = this;
-          setTimeout(function () {
-            _this.init();
-            _this.timer = false;
-          },400);
-        }
-        this.screenWidth =val;
       }
     },
     methods:{
@@ -66,13 +51,6 @@
       },
     },
     mounted(){
-      const _this =this;
-      window.onresize=()=>{
-        return (()=>{
-          window.screenWidth = document.body.clientWidth;
-          _this.screenWidth = window.screenWidth;
-        })();
-      }
       this.loadMax();
     },
   }
