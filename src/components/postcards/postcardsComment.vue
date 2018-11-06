@@ -17,7 +17,7 @@
         <!--<span class="send" @click=send()>选择表情</span>-->
         <span class="send btn btn-default " @click=send()>发送评论</span>
         <!-- 表情容器 ，包裹生成的表情，绑定点击表情事件-->
-        <div id="face" style="width: 340px;height: 190px;background-color: white;border:1px solid #cccccc;margin-left: 20px;" @click=choice_face($event) v-if="flag" v-html="eoimImg"></div>
+        <div id="face" style="width: 338px;height: 170px;background-color: white;border:1px solid #cccccc;margin-left: 20px;" @click=choice_face($event) v-if="flag" v-html="eoimImg"></div>
       </div>
     </div>
   </div>
@@ -37,8 +37,8 @@
     },
     mounted(){
       console.log(this.$route.params.cardId)
-      for(var i=1;i<=77;i++) {
-        this.eoimImg += `<img src="/static/eoim/${i}.png" class="eoimPic" width="20px" height="20px" style="margin-left: 10px;margin-top: 5px;">`;
+      for(var i=1;i<=84;i++) {
+        this.eoimImg += `<img src="/static/eoim/${i}.png" class="eoimPic" width="20px" height="20px" style="margin-left: 4px; margin-right:4px; margin-top: 2px;">`;
           }
     },
     methods:{

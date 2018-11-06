@@ -12,7 +12,7 @@
               <div class="caption">
                 <a :href="'/postcards/' + item.cardId"><span class="text-cardid">ID：{{item.cardId}}</span></a>
                 <span class="like" >
-                  <span  class="like-star" @click="addLike(item.cardId)">{{item.active ? '💖': '❤'}}</span>
+                  <span  class="like-star" @click="addLike(item.cardId)">{{'❤'}}</span>
                   <span >{{item.cardLike}}</span>
                 </span>
 
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+
   import VueStar from 'vue-star'
     export default {
         name: "HomeWall",
@@ -65,7 +66,6 @@
             },function (err) {
               console.log(err);
             });
-
           // this.$router.replace({
           //   path:'/',name:'Home'
           // })
@@ -135,6 +135,7 @@
 </script>
 
 <style scoped>
+
   #homeWall{
     margin-top:15px;
   }
@@ -169,6 +170,10 @@
     line-height: 30px;
     cursor: pointer;
     color: #ccc;
+  }
+  .like-star:active{
+    color: red;
+    font-size:20px;
   }
   .caption .collSty:hover{
     cursor: pointer;
