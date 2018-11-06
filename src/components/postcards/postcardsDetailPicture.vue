@@ -28,7 +28,7 @@
         <div class="commentNickname">{{content.userNickname}}</div>
         <div>{{content.commentTime}}</div>
         <div class="commentDetail">
-          <div v-html="content.commentContent" style="font-size:16px;">
+          <div v-html="content.commentContent" style="font-size:18px;">
             <!--<p contenteditable="true" id="input_conta">-->
               <!--{{content.commentContent}}-->
             <!--</p>-->
