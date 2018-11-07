@@ -21,6 +21,7 @@ import ActivityAllList from "@/components/activity/ActivityAllList.vue"
 import Login from "@/components/login/Login.vue"
 import Register from "@/components/register/Register.vue"
 import newRegister from "@/components/register/newRegister.vue"
+import err from "@/components/err.vue"
 
 // import RegisterNumber from "@/components/register/RegisterNumber.vue"
 // import RegisterPassword from "@/components/register/RegisterPassword.vue"
@@ -98,7 +99,6 @@ export default new Router({
     {path: "/login", component: Login},
     {path: "/register", component: Register},
     {path: "/newregister", component:newRegister},
-
     // {path: "/login", component: Login},
     // {path: "/register", component: Register},
     //
@@ -151,5 +151,6 @@ export default new Router({
         {path: "search/:name", component: UserAttentionSearch}
       ]
     },
+    {path:'*',component:err}
   ]
 })
