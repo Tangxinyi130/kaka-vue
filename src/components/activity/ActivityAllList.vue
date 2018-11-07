@@ -81,7 +81,8 @@
           for(let i in data){
             data[i].activityImage = `${axios.defaults.baseURL}${data[i].activityImage}`
             data[i].activityStartDate=this.changeTime(data[i].activityStartDate)
-            data[i].activityDetails=data[i].activityDetails.replace(/<[^<>]+>/gi,"")
+            data[i].activityDetails=data[i].activityDetails.replace(/<[^<>]+>/gi,"");
+            data[i].activityDetails=data[i].activityDetails.replace(/&nbsp;/gi,"");
           }
           console.log(data[0].activityDetails)
         },
