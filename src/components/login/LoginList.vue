@@ -90,8 +90,13 @@
             console.log(localStorage.getItem("route"))
             let route=localStorage.getItem("route");
             console.log(route)
-            // location.href = "/";
-            location.href = `${route}`;
+
+            if (route) {
+              location.href = `${route}`;
+            } else {
+              location.href = "/";
+            }
+
           } else {
             alert("服务器错误");
           }
