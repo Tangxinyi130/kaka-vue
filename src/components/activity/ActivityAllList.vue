@@ -49,6 +49,9 @@
       </div>
     </div>
   </div>
+    <!--<div>-->
+      <!--<button @click="pay">前往支付</button>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -62,7 +65,8 @@
               pagesize: 5,
               pageCount:0,
               myActData:[],
-              activitys:[]
+              activitys:[],
+              link : ""
             }
         },
       computed:{
@@ -77,6 +81,14 @@
           this.mounted();
       },
       methods:{
+        pay() {
+          axios.get(`${axios.defaults.baseURL}/alipay`).then((res) =>{
+            console.log(res.data)
+            this.link = res.data.data
+            // window.open(res.data.data)
+            window.location.href=res.data.data;
+          })
+        },
         activityPic(data){
           for(let i in data){
             data[i].activityImage = `${axios.defaults.baseURL}${data[i].activityImage}`
