@@ -24,7 +24,7 @@
             </a>
             <span class="region">{{item.cardReceiveRegion}}</span>
 
-            <span class="state">{{item.state}}了来自</span>
+            <span class="state">{{item.state}}了</span>
             <a href="">
               <img  class="headPic" :src="item.senderHeadPic" width="40" height="40" alt="">
               <span class="username">{{item.cardSenderName}}</span>
