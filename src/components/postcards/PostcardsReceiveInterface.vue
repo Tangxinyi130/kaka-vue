@@ -97,8 +97,8 @@
           }else {
             alert("您的明信片可能不小心输入错误了，请仔细检查哦！");
           }
-          console.log("成功");
-          console.log("我是receivcards"+_this.receivecards);
+          // console.log("成功");
+          // console.log("我是receivcards"+_this.receivecards);
         }, function (err) {
           console.log(err);
         });
@@ -126,8 +126,8 @@
         ).then(function (result) {
           _this.a.userId = result.data.data.cardSender;
           _this.b.userId = result.data.data.cardReceiver;
-          console.log("发送方" + _this.a.userId);
-          console.log("接收方" + _this.b.userId);
+          // console.log("发送方" + _this.a.userId);
+          // console.log("接收方" + _this.b.userId);
         })
 
         setTimeout(() => {
@@ -136,8 +136,8 @@
           ).then(function (result) {
             _this.a.address = result.data.data[0].userAddress;
             _this.b.address = result.data.data[1].userAddress;
-            console.log("a的地址：" + _this.a.address);
-            console.log("b的地址：" + _this.b.address);
+            // console.log("a的地址：" + _this.a.address);
+            // console.log("b的地址：" + _this.b.address);
           }, function (err) {
             console.log(err);
           });
@@ -151,7 +151,7 @@
           this.SearchByStationName(_this.a.address, async function (data) {
             var point1;
             point1 = data;
-            console.log(data.title + ": "+ data.point.lng + ", " + data.point.lat);
+            // console.log(data.title + ": "+ data.point.lng + ", " + data.point.lat);
             setTimeout(() => {
               _this.a.title = data.title;
               _this.a.lng = data.point.lng;
@@ -162,7 +162,7 @@
             _this.SearchByStationName(_this.b.address, async function (data) {
               var point2;
               point2 = data;
-              console.log(data.title + ": "+ data.point.lng + ", " + data.point.lat);
+              // console.log(data.title + ": "+ data.point.lng + ", " + data.point.lat);
               setTimeout(() => {
                 _this.b.title = data.title;
                 _this.b.lng = data.point.lng;

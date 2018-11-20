@@ -106,11 +106,11 @@
         }
         this.Num = num;
         console.log(this.Num)
-        // axios.get('/proxy?mobile=' + this.mobile + '&tpl_id=107464&tpl_value=%23code%23%3D' +
-        // this.Num + '&key=18fe7a1509f021d5af8849af2d6a370c')
-        //   .then((res)=>{
-        //     console.log(res)
-        //   }).catch(err=>{console.log(err)})
+        axios.get('/proxy?mobile=' + this.mobile + '&tpl_id=107464&tpl_value=%23code%23%3D' +
+        this.Num + '&key=18fe7a1509f021d5af8849af2d6a370c')
+          .then((res)=>{
+            console.log(res)
+          }).catch(err=>{console.log(err)})
       },
       register(){
         const self = this;
@@ -123,7 +123,7 @@
         }else if(self.Pwd2 == ''){
           self.tiShi5 = '密码不能为空！'
         }else{
-          axios.post('http://localhost:3000/users/add', {
+          axios.post(`${axios.defaults.baseURL}/users/add`, {
             mLogin: this.mobile,
             mPassword: this.Pwd1,
           }).then(function (res) {

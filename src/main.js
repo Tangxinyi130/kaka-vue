@@ -17,7 +17,7 @@ Vue.use(VueAwesomeSwiper);
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://47.100.174.141:3000";
 
 /* eslint-disable no-new */
 new Vue({

@@ -11,21 +11,20 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "/proxy":{
-        target:"http://v.juhe.cn/sms/send",
-        "changeOrigin":true,
-        "pathRewrite":{
-          "^/proxy":""
-        },
-        "headers":{
-          "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36"
-        }
-      }
+      // "/proxy":{
+      //   target:"http://v.juhe.cn/sms/send",
+      //   "changeOrigin":true,
+      //   "pathRewrite":{
+      //     "^/proxy":""
+      //   },
+      //   "headers":{
+      //     "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36"
+      //   }
+      // }
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    // host: "10.40.4.50",
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     // autoOpenBrowser: false,
     autoOpenBrowser: true,

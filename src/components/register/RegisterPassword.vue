@@ -58,7 +58,7 @@
         },
         Pwd2(){
           const _this = this;
-          console.log("在输入密码判断的时候的第一个密码"+_this.Pwd1)
+          // console.log("在输入密码判断的时候的第一个密码"+_this.Pwd1)
           if(_this.Pwd1 != _this.Pwd2){
             _this.tiShi5 = '请输入相同的密码'
             _this.same=0;
@@ -70,12 +70,12 @@
       },
       methods:{
         submit:function () {
-          console.log("下一步前密码"+this.pw);
-          console.log("下一步前是否一致"+this.same);
+          // console.log("下一步前密码"+this.pw);
+          // console.log("下一步前是否一致"+this.same);
          if(this.pw==1&&this.same==1){
            let _this = this;
-           console.log("注册的手机号"+this.$store.state.userPhone);
-           console.log("注册的密码是:"+_this.Pwd1)
+           // console.log("注册的手机号"+this.$store.state.userPhone);
+           // console.log("注册的密码是:"+_this.Pwd1)
            this.$ajax.get(`${axios.defaults.baseURL}/users/insertUser/` + (this.$store.state.userPhone) + '/' + (_this.Pwd1)
            ).then(function (result) {
            }, function (err) {
@@ -85,7 +85,7 @@
            this.$store.state.success=true;
          }else {
            alert("请保持密码格式正确和两次密码一致");
-           console.log("请保持密码格式正确和两次密码一致")
+           // console.log("请保持密码格式正确和两次密码一致")
          }
         }
       },
