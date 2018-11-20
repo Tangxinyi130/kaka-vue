@@ -19,7 +19,7 @@
               <router-link tag="li" active-class="active" role="presentation" to="/" exact><a class="text-color">首页</a></router-link>
               <!--<router-link tag="li" active-class="active" role="presentation" to="/postcards"><a class="text-color">明信片</a></router-link>-->
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">明信片 <span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">明信片 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <router-link tag="li" role="presentation" to="/postcardssend" @click.native="change" ><a class="text-color">发送</a></router-link>
                   <router-link tag="li" role="presentation" to="/postcardsreceive" @click.native="changeReceive" ><a class="text-color">收到</a></router-link>
@@ -36,7 +36,7 @@
 
             <ul class="nav navbar-nav navbar-right" v-if="isLogin">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;{{nickname}} <span class="caret"></span></a>
+                <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;{{nickname}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <!--<router-link tag="li" role="presentation" :to="'/user/' + userId + '/aboutme'"><a class="text-color">我的首页</a></router-link>-->
                   <li><a class="text-color" :href="'/user/' + userId + '/aboutme'">我的首页</a></li>

@@ -84,7 +84,7 @@
               clearTimeout(time);
             }
           },1000)
-         console.log($('#co').val());
+         // console.log($('#co').val());
         },
         sendCode(){
           if (this.inputTel) {
@@ -94,12 +94,21 @@
               num += Math.floor(Math.random()*10);
             }
             this.Num = num;
-            console.log(this.Num);
-            console.log("给"+this.inputTel+"发送短信");
-            this.$ajax.get('/proxy?mobile='+this.inputTel+'&tpl_id=111340&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
-              .then((res)=>{
-                console.log(res)
-              }).catch(err=>{console.log(err)})
+            // console.log(this.Num);
+            // console.log("给"+this.inputTel+"发送短信");
+            $.ajax({
+              url: 'http://v.juhe.cn/sms/send?mobile='+this.inputTel+'&tpl_id=111340&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a',
+              type: 'GET',
+              dataType: 'JSONP',
+              success: function (res) {
+
+              }
+            })
+
+            // this.$ajax.get('http://v.juhe.cn/sms/send?mobile='+this.inputTel+'&tpl_id=111340&tpl_value=%23code%23%3D'+this.Num+'&key=f6c00dd68ea7dd48830de054cab57d8a')
+            //   .then((res)=>{
+            //     // console.log(res)
+            //   }).catch(err=>{console.log(err)})
             this.getsecond();
           } else {
             alert("请输入手机号！")
@@ -110,13 +119,13 @@
 
           },
         submit:function () {
-          console.log("下一步之前手机号" + this.teltrue)
-          console.log("下一步之前验证码" + this.codetrue)
+          // console.log("下一步之前手机号" + this.teltrue)
+          // console.log("下一步之前验证码" + this.codetrue)
           if(this.teltrue == 1 && this.codetrue == 1){
             this.$store.state.iphoneNumber = false;
             this.$store.state.setPassword = true;
             this.$store.state.userPhone=$("#tel").val();
-            console.log("注册的手机号"+this.$store.state.userPhone);
+            // console.log("注册的手机号"+this.$store.state.userPhone);
           }else {
             alert("请检查你的手机号和验证码")
           }
@@ -126,13 +135,13 @@
         },
         countTel: function () {
           this.inputTel = $("#tel").val();
-          console.log("输入的手机号是" + this.inputTel);
+          // console.log("输入的手机号是" + this.inputTel);
           let _this = this;
-          console.log(`路由：${axios.defaults.baseURL}`)
+          // console.log(`路由：${axios.defaults.baseURL}`)
           this.$ajax.get(`${axios.defaults.baseURL}/users/getTel/`+(_this.inputTel)
           ).then(function (result) {
-            console.log(_this.inputTel);
-            console.log("输入的手机号在数据库中的数量为"+ result.data.data[0].sum)
+            // console.log(_this.inputTel);
+            // console.log("输入的手机号在数据库中的数量为"+ result.data.data[0].sum)
               if(result.data.data[0].sum > 0){
                 alert("您已经注册过了，点击去登录");
                 _this.tologin();
@@ -151,7 +160,7 @@
               _this.tiShi1 = '手机号不正确！';
               _this.teltrue=0;
             }else{
-              console.log("即将注册的手机号"+$("#tel").val());
+              // console.log("即将注册的手机号"+$("#tel").val());
               _this.tiShi1 = '';
               _this.teltrue=1;
               this.codetrue=0;
