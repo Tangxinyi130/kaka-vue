@@ -35,7 +35,7 @@
         eoimImg:""
       }
     },
-    mounted(){
+    created(){
       console.log(this.$route.params.cardId)
       for(var i=1;i<=84;i++) {
         this.eoimImg += `<img src="/static/eoim/${i}.png" class="eoimPic" width="20px" height="20px" style="margin-left: 4px; margin-right:4px; margin-top: 2px;">`;
